@@ -384,7 +384,7 @@ exports.handler = async function (event) {
 
 
     // =======================================================
-    // 16. 알림톡 템플릿 변수 (NCP 템플릿 원본과 100% 일치)
+    // 16. 알림톡 템플릿 변수 (templateParameters에 #{ } 적용 완료)
     // =======================================================
 
     const bodyData = {
@@ -418,16 +418,16 @@ exports.handler = async function (event) {
 
           templateParameters: {
 
-            "고객명":
+            "#{고객명}":
               cleanName,
 
-            "휴대폰":
+            "#{휴대폰}":
               cleanPhone,
 
-            "방문희망일":
+            "#{방문희망일}":
               cleanDate,
 
-            "방문시간":
+            "#{방문시간}":
               cleanTime
 
           }
