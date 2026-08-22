@@ -116,7 +116,6 @@ exports.handler = async function (event) {
     // =======================================================
 
     if (!/^01[016789]\d{7,8}$/.test(cleanPhone)) {
-
       return {
         statusCode: 400,
         headers: {
@@ -128,7 +127,6 @@ exports.handler = async function (event) {
           error: "올바른 휴대폰 번호가 아닙니다."
         })
       };
-
     }
 
 
@@ -136,10 +134,7 @@ exports.handler = async function (event) {
     // 7. 날짜 형식 검증
     // =======================================================
 
-    if (
-      !/^\d{4}-\d{2}-\d{2}$/.test(cleanDate)
-    ) {
-
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(cleanDate)) {
       return {
         statusCode: 400,
         headers: {
@@ -151,12 +146,44 @@ exports.handler = async function (event) {
           error: "방문 희망일 형식이 올바르지 않습니다."
         })
       };
-
     }
 
 
     // =======================================================
-    // 8. 방문시간 허용값 검증
+    // 8. 실제 날짜인지 확인
+    // =======================================================
+
+    const dateParts =
+      cleanDate.split("-").map(Number);
+
+    const year = dateParts[0];
+    const month = dateParts[1];
+    const day = dateParts[2];
+
+    const checkDate =
+      new Date(year, month - 1, day);
+
+    if (
+      checkDate.getFullYear() !== year ||
+      checkDate.getMonth() !== month - 1 ||
+      checkDate.getDate() !== day
+    ) {
+      return {
+        statusCode: 400,
+        headers: {
+          "Content-Type":
+            "application/json; charset=utf-8"
+        },
+        body: JSON.stringify({
+          success: false,
+          error: "존재하지 않는 날짜입니다."
+        })
+      };
+    }
+
+
+    // =======================================================
+    // 9. 방문시간 허용값 검증
     // =======================================================
 
     const allowedTimes = [
@@ -171,7 +198,6 @@ exports.handler = async function (event) {
     ];
 
     if (!allowedTimes.includes(cleanTime)) {
-
       return {
         statusCode: 400,
         headers: {
@@ -183,12 +209,11 @@ exports.handler = async function (event) {
           error: "방문 희망시간이 올바르지 않습니다."
         })
       };
-
     }
 
 
     // =======================================================
-    // 9. Netlify 환경변수
+    // 10. NCP 환경변수
     // =======================================================
 
     const serviceId =
@@ -211,35 +236,24 @@ exports.handler = async function (event) {
 
 
     // =======================================================
-    // 10. 환경변수 상태 확인
+    // 11. 환경변수 상태 확인
     // =======================================================
 
     console.log(
       "NCP 환경변수 상태:",
       {
-        NCP_BIZ_SERVICE_ID:
-          !!serviceId,
-
-        NCP_ACCESS_KEY:
-          !!accessKey,
-
-        NCP_SECRET_KEY:
-          !!secretKey,
-
-        NCP_PLUS_FRIEND_ID:
-          !!plusFriendId,
-
-        NCP_TEMPLATE_CODE:
-          !!templateCode,
-
-        ADMIN_PHONE:
-          !!adminPhone
+        NCP_BIZ_SERVICE_ID: !!serviceId,
+        NCP_ACCESS_KEY: !!accessKey,
+        NCP_SECRET_KEY: !!secretKey,
+        NCP_PLUS_FRIEND_ID: !!plusFriendId,
+        NCP_TEMPLATE_CODE: !!templateCode,
+        ADMIN_PHONE: !!adminPhone
       }
     );
 
 
     // =======================================================
-    // 11. 환경변수 누락 확인
+    // 12. 환경변수 누락 확인
     // =======================================================
 
     if (
@@ -250,32 +264,27 @@ exports.handler = async function (event) {
       !templateCode ||
       !adminPhone
     ) {
-
       console.error(
         "NCP 환경변수 누락"
       );
 
       return {
         statusCode: 500,
-
         headers: {
           "Content-Type":
             "application/json; charset=utf-8"
         },
-
-        body:
-          JSON.stringify({
-            success: false,
-            error:
-              "서버 환경설정이 완료되지 않았습니다."
-          })
+        body: JSON.stringify({
+          success: false,
+          error:
+            "서버 환경설정이 완료되지 않았습니다."
+        })
       };
-
     }
 
 
     // =======================================================
-    // 12. 관리자 전화번호 정리
+    // 13. 관리자 전화번호 정리
     // =======================================================
 
     const cleanAdminPhone =
@@ -283,7 +292,7 @@ exports.handler = async function (event) {
 
 
     // =======================================================
-    // 13. 관리자 전화번호 검증
+    // 14. 관리자 전화번호 검증
     // =======================================================
 
     if (
@@ -291,32 +300,27 @@ exports.handler = async function (event) {
         cleanAdminPhone
       )
     ) {
-
       console.error(
         "ADMIN_PHONE 형식 오류"
       );
 
       return {
         statusCode: 500,
-
         headers: {
           "Content-Type":
             "application/json; charset=utf-8"
         },
-
-        body:
-          JSON.stringify({
-            success: false,
-            error:
-              "관리자 전화번호 설정이 올바르지 않습니다."
-          })
+        body: JSON.stringify({
+          success: false,
+          error:
+            "관리자 전화번호 설정이 올바르지 않습니다."
+        })
       };
-
     }
 
 
     // =======================================================
-    // 14. NCP SENS API URL
+    // 15. NCP SENS API URL
     // =======================================================
 
     const timestamp =
@@ -336,55 +340,48 @@ exports.handler = async function (event) {
 
 
     // =======================================================
-    // 15. NCP API Signature 생성
+    // 16. NCP API Signature 생성
     // =======================================================
-
-    const space =
-      " ";
-
-    const newLine =
-      "\n";
-
-    const hmac =
-      crypto.createHmac(
-        "sha256",
-        secretKey
-      );
-
-    hmac.update(
-      method
-    );
-
-    hmac.update(
-      space
-    );
-
-    hmac.update(
-      uri
-    );
-
-    hmac.update(
-      newLine
-    );
-
-    hmac.update(
-      timestamp
-    );
-
-    hmac.update(
-      newLine
-    );
-
-    hmac.update(
-      accessKey
-    );
 
     const signature =
-      hmac.digest("base64");
+      crypto
+        .createHmac(
+          "sha256",
+          secretKey
+        )
+        .update(
+          `${method} ${uri}\n${timestamp}\n${accessKey}`
+        )
+        .digest("base64");
 
 
     // =======================================================
-    // 16. 알림톡 템플릿 변수 (templateParameters에 #{ } 적용 완료)
+    // 17. 알림톡 메시지 내용
+    // =======================================================
+
+    const content =
+`[더파크 비스타동원]
+
+신규 방문예약이 접수되었습니다.
+
+고객명: #{고객명}
+휴대폰: #{휴대폰}
+방문희망일: #{방문희망일}
+방문시간: #{방문시간}
+
+예약 내용을 확인 후 고객에게 연락해주세요.`;
+
+
+    // =======================================================
+    // 18. NCP 알림톡 요청 데이터
+    //
+    // 중요:
+    // templateParameters의 KEY에는 #{ }를 넣지 않습니다.
+    //
+    // #{고객명} -> "고객명"
+    // #{휴대폰} -> "휴대폰"
+    // #{방문희망일} -> "방문희망일"
+    // #{방문시간} -> "방문시간"
     // =======================================================
 
     const bodyData = {
@@ -404,30 +401,21 @@ exports.handler = async function (event) {
           to:
             cleanAdminPhone,
 
-          content: 
-            `[더파크 비스타동원]
-
-신규 방문예약이 접수되었습니다.
-
-고객명: #{고객명}
-휴대폰: #{휴대폰}
-방문희망일: #{방문희망일}
-방문시간: #{방문시간}
-
-예약 내용을 확인 후 고객에게 연락해주세요.`,
+          content:
+            content,
 
           templateParameters: {
 
-            "#{고객명}":
+            "고객명":
               cleanName,
 
-            "#{휴대폰}":
+            "휴대폰":
               cleanPhone,
 
-            "#{방문희망일}":
+            "방문희망일":
               cleanDate,
 
-            "#{방문시간}":
+            "방문시간":
               cleanTime
 
           }
@@ -440,19 +428,39 @@ exports.handler = async function (event) {
 
 
     // =======================================================
-    // 17. NCP SENS 알림톡 발송
+    // 19. 발송 데이터 확인 로그
+    // =======================================================
+    //
+    // 개인정보 보호를 위해 이름/전화번호 값은 로그에 남기지 않습니다.
+    // templateParameters의 KEY가 정상인지 확인하기 위한 로그입니다.
+    // =======================================================
+
+    console.log(
+      "NCP 알림톡 발송 준비:",
+      {
+        serviceId: serviceId,
+        templateCode: templateCode,
+        plusFriendId: plusFriendId,
+        recipient: cleanAdminPhone,
+        templateParameterKeys:
+          Object.keys(
+            bodyData.messages[0].templateParameters
+          )
+      }
+    );
+
+
+    // =======================================================
+    // 20. NCP SENS 알림톡 발송
     // =======================================================
 
     const response =
       await fetch(
         url,
         {
-
-          method:
-            "POST",
+          method: "POST",
 
           headers: {
-
             "Content-Type":
               "application/json; charset=utf-8",
 
@@ -464,18 +472,16 @@ exports.handler = async function (event) {
 
             "x-ncp-apigw-signature-v2":
               signature
-
           },
 
           body:
             JSON.stringify(bodyData)
-
         }
       );
 
 
     // =======================================================
-    // 18. NCP 응답 확인
+    // 21. NCP 응답 확인
     // =======================================================
 
     const responseText =
@@ -484,21 +490,17 @@ exports.handler = async function (event) {
     let result = {};
 
     try {
-
       result =
         JSON.parse(responseText);
-
     } catch (error) {
-
       result = {
         raw: responseText
       };
-
     }
 
 
     // =======================================================
-    // 19. NCP API 오류
+    // 22. NCP API 오류
     // =======================================================
 
     if (!response.ok) {
@@ -518,28 +520,29 @@ exports.handler = async function (event) {
 
         body:
           JSON.stringify({
-
             success: false,
-
             error:
               "알림톡 발송에 실패했습니다.",
-
             detail:
               result
-
           })
       };
-
     }
 
 
     // =======================================================
-    // 20. 성공
+    // 23. 성공
     // =======================================================
 
     console.log(
       "NCP SENS 발송 요청 성공:",
-      result
+      {
+        requestId:
+          result.requestId || null,
+
+        messageId:
+          result.messageId || null
+      }
     );
 
 
@@ -561,7 +564,10 @@ exports.handler = async function (event) {
             "방문예약이 접수되었습니다.",
 
           requestId:
-            result.requestId || null
+            result.requestId || null,
+
+          messageId:
+            result.messageId || null
 
         })
 
@@ -571,7 +577,7 @@ exports.handler = async function (event) {
   } catch (error) {
 
     // =======================================================
-    // 21. 서버 예외
+    // 24. 서버 예외
     // =======================================================
 
     console.error(
