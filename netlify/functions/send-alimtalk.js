@@ -405,7 +405,9 @@ exports.handler = async function (event) {
             cleanAdminPhone,
 
           content: 
-            `신규 방문예약이 접수되었습니다.
+            `[더파크 비스타동원]
+
+신규 방문예약이 접수되었습니다.
 
 고객명: #{고객명}
 휴대폰: #{휴대폰}
