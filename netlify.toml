@@ -1,6 +1,10 @@
 [build]
   publish = "."
 
+[functions]
+  directory = "netlify/functions"
+
+# 예약 페이지 슬러그
 [[redirects]]
   from = "/1551-9708"
   to = "/index.html"
@@ -11,6 +15,8 @@
   to = "/index.html"
   status = 200
 
-# Netlify Functions
-[functions]
-  directory = "netlify/functions"
+# Netlify Function
+[[redirects]]
+  from = "/.netlify/functions/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
