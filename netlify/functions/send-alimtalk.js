@@ -19,7 +19,7 @@ function jsonResponse(statusCode, data) {
 
 
 // =========================================================
-// NCP Signature 생성
+// NCP SENS Signature
 // =========================================================
 
 function makeSignature(
@@ -39,7 +39,7 @@ function makeSignature(
 
 
 // =========================================================
-// NCP API 호출
+// NCP SENS API 호출
 // =========================================================
 
 async function ncpRequest({
@@ -65,47 +65,70 @@ async function ncpRequest({
   const url =
     `https://sens.apigw.ntruss.com${uri}`;
 
+  const options = {
+
+    method,
+
+    headers: {
+
+      "Content-Type":
+        "application/json; charset=utf-8",
+
+      "x-ncp-apigw-timestamp":
+        timestamp,
+
+      "x-ncp-iam-access-key":
+        accessKey,
+
+      "x-ncp-apigw-signature-v2":
+        signature
+
+    }
+
+  };
+
+
+  // GET은 body를 보내지 않음
+  if (method !== "GET") {
+
+    options.body =
+      JSON.stringify(body);
+
+  }
+
+
   const response =
-    await fetch(url, {
+    await fetch(
+      url,
+      options
+    );
 
-      method,
 
-      headers: {
-        "Content-Type":
-          "application/json; charset=utf-8",
-
-        "x-ncp-apigw-timestamp":
-          timestamp,
-
-        "x-ncp-iam-access-key":
-          accessKey,
-
-        "x-ncp-apigw-signature-v2":
-          signature
-      },
-
-      body:
-        method === "GET"
-          ? undefined
-          : JSON.stringify(body)
-
-    });
-
-  const text =
+  const responseText =
     await response.text();
+
 
   let result;
 
   try {
+
     result =
-      JSON.parse(text);
+      JSON.parse(
+        responseText
+      );
+
   } catch {
+
     result = {
-      raw: text
+      raw:
+        responseText
     };
+
   }
 
+
   return {
+
     ok:
       response.ok,
 
@@ -114,38 +137,43 @@ async function ncpRequest({
 
     data:
       result
+
   };
+
 }
 
 
 // =========================================================
-// 메인
+// 메인 함수
 // =========================================================
 
 exports.handler = async function (event) {
 
-  // =======================================================
-  // 1. POST만 허용
-  // =======================================================
-
-  if (event.httpMethod !== "POST") {
-
-    return jsonResponse(
-      405,
-      {
-        success: false,
-        error: "Method Not Allowed"
-      }
-    );
-
-  }
-
-
   try {
 
-    // =====================================================
+    // =======================================================
+    // 1. POST만 허용
+    // =======================================================
+
+    if (
+      event.httpMethod !== "POST"
+    ) {
+
+      return jsonResponse(
+        405,
+        {
+          success: false,
+          error:
+            "Method Not Allowed"
+        }
+      );
+
+    }
+
+
+    // =======================================================
     // 2. 환경변수
-    // =====================================================
+    // =======================================================
 
     const serviceId =
       process.env.NCP_BIZ_SERVICE_ID;
@@ -159,17 +187,41 @@ exports.handler = async function (event) {
     const plusFriendId =
       process.env.NCP_PLUS_FRIEND_ID;
 
+    // 템플릿 코드는 dPdir1
     const templateCode =
-      process.env.NCP_TEMPLATE_CODE ||
       "dPdir1";
 
     const adminPhone =
       process.env.ADMIN_PHONE;
 
 
-    // =====================================================
+    // =======================================================
     // 3. 환경변수 확인
-    // =====================================================
+    // =======================================================
+
+    console.log(
+      "NCP 환경변수 상태:",
+      {
+        NCP_BIZ_SERVICE_ID:
+          !!serviceId,
+
+        NCP_ACCESS_KEY:
+          !!accessKey,
+
+        NCP_SECRET_KEY:
+          !!secretKey,
+
+        NCP_PLUS_FRIEND_ID:
+          !!plusFriendId,
+
+        NCP_TEMPLATE_CODE:
+          !!templateCode,
+
+        ADMIN_PHONE:
+          !!adminPhone
+      }
+    );
+
 
     if (
       !serviceId ||
@@ -195,9 +247,9 @@ exports.handler = async function (event) {
     }
 
 
-    // =====================================================
-    // 4. 요청 데이터
-    // =====================================================
+    // =======================================================
+    // 4. 요청 JSON 파싱
+    // =======================================================
 
     let data = {};
 
@@ -222,6 +274,10 @@ exports.handler = async function (event) {
     }
 
 
+    // =======================================================
+    // 5. 입력값
+    // =======================================================
+
     const {
       name,
       phone,
@@ -230,9 +286,9 @@ exports.handler = async function (event) {
     } = data;
 
 
-    // =====================================================
-    // 5. 필수값
-    // =====================================================
+    // =======================================================
+    // 6. 필수값
+    // =======================================================
 
     if (
       !name ||
@@ -253,31 +309,34 @@ exports.handler = async function (event) {
     }
 
 
-    // =====================================================
-    // 6. 데이터 정리
-    // =====================================================
+    // =======================================================
+    // 7. 데이터 정리
+    // =======================================================
 
     const cleanName =
-      String(name).trim();
+      String(name)
+        .trim();
 
     const cleanPhone =
       String(phone)
         .replace(/\D/g, "");
 
     const cleanDate =
-      String(consultDate).trim();
+      String(consultDate)
+        .trim();
 
     const cleanTime =
-      String(consultTime).trim();
+      String(consultTime)
+        .trim();
 
     const cleanAdminPhone =
       String(adminPhone)
         .replace(/\D/g, "");
 
 
-    // =====================================================
-    // 7. 입력값 검증
-    // =====================================================
+    // =======================================================
+    // 8. 이름 검증
+    // =======================================================
 
     if (!cleanName) {
 
@@ -292,6 +351,10 @@ exports.handler = async function (event) {
 
     }
 
+
+    // =======================================================
+    // 9. 고객 전화번호 검증
+    // =======================================================
 
     if (
       !/^01[016789]\d{7,8}$/
@@ -310,6 +373,10 @@ exports.handler = async function (event) {
     }
 
 
+    // =======================================================
+    // 10. 날짜 검증
+    // =======================================================
+
     if (
       !/^\d{4}-\d{2}-\d{2}$/
         .test(cleanDate)
@@ -327,7 +394,52 @@ exports.handler = async function (event) {
     }
 
 
+    // =======================================================
+    // 11. 실제 존재하는 날짜인지 확인
+    // =======================================================
+
+    const [
+      year,
+      month,
+      day
+    ] =
+      cleanDate
+        .split("-")
+        .map(Number);
+
+
+    const checkDate =
+      new Date(
+        year,
+        month - 1,
+        day
+      );
+
+
+    if (
+      checkDate.getFullYear() !== year ||
+      checkDate.getMonth() !== month - 1 ||
+      checkDate.getDate() !== day
+    ) {
+
+      return jsonResponse(
+        400,
+        {
+          success: false,
+          error:
+            "존재하지 않는 날짜입니다."
+        }
+      );
+
+    }
+
+
+    // =======================================================
+    // 12. 방문시간
+    // =======================================================
+
     const allowedTimes = [
+
       "10:00",
       "11:00",
       "12:00",
@@ -336,11 +448,14 @@ exports.handler = async function (event) {
       "15:00",
       "16:00",
       "17:00"
+
     ];
 
 
     if (
-      !allowedTimes.includes(cleanTime)
+      !allowedTimes.includes(
+        cleanTime
+      )
     ) {
 
       return jsonResponse(
@@ -355,10 +470,18 @@ exports.handler = async function (event) {
     }
 
 
+    // =======================================================
+    // 13. 관리자 전화번호
+    // =======================================================
+
     if (
       !/^01[016789]\d{7,8}$/
         .test(cleanAdminPhone)
     ) {
+
+      console.error(
+        "ADMIN_PHONE 형식 오류"
+      );
 
       return jsonResponse(
         500,
@@ -372,17 +495,11 @@ exports.handler = async function (event) {
     }
 
 
-    // =====================================================
-    // 8. ★ dPdir1 템플릿 조회
+    // =======================================================
+    // 14. ★ NCP 템플릿 조회
     //
-    // NCP 공식 API:
-    //
-    // GET
-    // /alimtalk/v2/services/{serviceId}/templates
-    //
-    // channelId 필수
-    // templateCode=dPdir1
-    // =====================================================
+    // dPdir1의 실제 승인 템플릿을 NCP에서 가져옵니다.
+    // =======================================================
 
     const templateUri =
       `/alimtalk/v2/services/${serviceId}/templates` +
@@ -390,12 +507,24 @@ exports.handler = async function (event) {
       `&templateCode=${encodeURIComponent(templateCode)}`;
 
 
+    console.log(
+      "NCP 템플릿 조회 시작:",
+      {
+        templateCode,
+        channelId:
+          plusFriendId
+      }
+    );
+
+
     const templateResponse =
       await ncpRequest({
 
-        method: "GET",
+        method:
+          "GET",
 
-        uri: templateUri,
+        uri:
+          templateUri,
 
         accessKey,
 
@@ -404,16 +533,16 @@ exports.handler = async function (event) {
       });
 
 
-    // =====================================================
-    // 9. 템플릿 조회 실패
-    // =====================================================
+    // =======================================================
+    // 15. 템플릿 조회 API 오류
+    // =======================================================
 
     if (
       !templateResponse.ok
     ) {
 
       console.error(
-        "NCP 템플릿 조회 실패:",
+        "NCP 템플릿 조회 오류:",
         templateResponse.data
       );
 
@@ -431,13 +560,70 @@ exports.handler = async function (event) {
     }
 
 
-    // =====================================================
-    // 10. 템플릿 정보 추출
-    // =====================================================
+    // =======================================================
+    // 16. ★ 중요
+    //
+    // NCP 템플릿 조회 응답은 배열입니다.
+    // =======================================================
+
+    const templateList =
+      Array.isArray(
+        templateResponse.data
+      )
+        ? templateResponse.data
+        : [];
+
+
+    console.log(
+      "NCP 템플릿 조회 결과:",
+      JSON.stringify(
+        templateList,
+        null,
+        2
+      )
+    );
+
+
+    // =======================================================
+    // 17. dPdir1 찾기
+    // =======================================================
 
     const templateData =
-      templateResponse.data;
+      templateList.find(
+        item =>
+          String(
+            item.templateCode
+          ) === templateCode
+      );
 
+
+    if (!templateData) {
+
+      console.error(
+        "dPdir1 템플릿을 찾지 못했습니다.",
+        {
+          templateCode,
+          templateList
+        }
+      );
+
+      return jsonResponse(
+        500,
+        {
+          success: false,
+          error:
+            `알림톡 템플릿 ${templateCode}을(를) 찾을 수 없습니다.`,
+          detail:
+            templateList
+        }
+      );
+
+    }
+
+
+    // =======================================================
+    // 18. 템플릿 정보
+    // =======================================================
 
     console.log(
       "NCP 템플릿 확인:",
@@ -452,31 +638,17 @@ exports.handler = async function (event) {
           templateData.templateStatus,
 
         templateInspectionStatus:
-          templateData.templateInspectionStatus
+          templateData.templateInspectionStatus,
+
+        messageType:
+          templateData.messageType
       }
     );
 
 
-    // =====================================================
-    // 11. 템플릿 정상 여부
-    // =====================================================
-
-    if (
-      templateData.templateCode !==
-      templateCode
-    ) {
-
-      return jsonResponse(
-        500,
-        {
-          success: false,
-          error:
-            "요청한 알림톡 템플릿을 찾을 수 없습니다."
-        }
-      );
-
-    }
-
+    // =======================================================
+    // 19. 템플릿 상태 확인
+    // =======================================================
 
     if (
       templateData.templateStatus &&
@@ -485,7 +657,7 @@ exports.handler = async function (event) {
     ) {
 
       console.error(
-        "템플릿 상태:",
+        "템플릿이 ACTIVE 상태가 아닙니다:",
         templateData.templateStatus
       );
 
@@ -496,16 +668,18 @@ exports.handler = async function (event) {
           error:
             "알림톡 템플릿이 활성 상태가 아닙니다.",
           templateStatus:
-            templateData.templateStatus
+            templateData.templateStatus,
+          templateInspectionStatus:
+            templateData.templateInspectionStatus
         }
       );
 
     }
 
 
-    // =====================================================
-    // 12. 승인된 템플릿 본문
-    // =====================================================
+    // =======================================================
+    // 20. 템플릿 본문
+    // =======================================================
 
     const registeredContent =
       String(
@@ -514,6 +688,10 @@ exports.handler = async function (event) {
 
 
     if (!registeredContent) {
+
+      console.error(
+        "템플릿 content가 없습니다."
+      );
 
       return jsonResponse(
         500,
@@ -527,19 +705,9 @@ exports.handler = async function (event) {
     }
 
 
-    // =====================================================
-    // 13. ★ 템플릿 변수 직접 치환
-    //
-    // 예:
-    //
-    // #{고객명}
-    //       ↓
-    // 홍길동
-    //
-    // #{휴대폰}
-    //       ↓
-    // 01012345678
-    // =====================================================
+    // =======================================================
+    // 21. ★ 템플릿 변수 치환
+    // =======================================================
 
     let sendContent =
       registeredContent;
@@ -573,9 +741,9 @@ exports.handler = async function (event) {
       );
 
 
-    // =====================================================
-    // 14. 치환되지 않은 변수가 남아있는지 확인
-    // =====================================================
+    // =======================================================
+    // 22. 치환 확인
+    // =======================================================
 
     const remainingVariables =
       sendContent.match(
@@ -585,11 +753,11 @@ exports.handler = async function (event) {
 
     if (
       remainingVariables &&
-      remainingVariables.length > 0
+      remainingVariables.length
     ) {
 
       console.error(
-        "치환되지 않은 템플릿 변수:",
+        "치환되지 않은 변수:",
         remainingVariables
       );
 
@@ -598,7 +766,7 @@ exports.handler = async function (event) {
         {
           success: false,
           error:
-            "치환되지 않은 알림톡 템플릿 변수가 있습니다.",
+            "알림톡 템플릿의 변수를 모두 치환하지 못했습니다.",
           variables:
             remainingVariables
         }
@@ -607,11 +775,22 @@ exports.handler = async function (event) {
     }
 
 
-    // =====================================================
-    // 15. ★ NCP 알림톡 발송 데이터
+    // =======================================================
+    // 23. ★ 최종 알림톡 내용
+    // =======================================================
+
+    console.log(
+      "알림톡 최종 content:",
+      sendContent
+    );
+
+
+    // =======================================================
+    // 24. ★ SMS 대체발송 내용
     //
-    // templateParameters 사용하지 않음
-    // =====================================================
+    // 알림톡 실패 시에도 실제 고객 정보가 들어가도록
+    // 동일한 sendContent를 사용합니다.
+    // =======================================================
 
     const bodyData = {
 
@@ -624,6 +803,7 @@ exports.handler = async function (event) {
       messages: [
 
         {
+
           countryCode:
             "82",
 
@@ -631,7 +811,10 @@ exports.handler = async function (event) {
             cleanAdminPhone,
 
           content:
-            sendContent
+            sendContent,
+
+          useSmsFailover:
+            true
 
         }
 
@@ -640,34 +823,32 @@ exports.handler = async function (event) {
     };
 
 
-    // =====================================================
-    // 16. 발송 데이터 로그
-    // =====================================================
-
-    console.log(
-      "알림톡 발송 내용:",
-      {
-        templateCode,
-        content:
-          sendContent
-      }
-    );
-
-
-    // =====================================================
-    // 17. ★ 알림톡 발송
-    // =====================================================
+    // =======================================================
+    // 25. 알림톡 발송 요청
+    // =======================================================
 
     const sendUri =
       `/alimtalk/v2/services/${serviceId}/messages`;
 
 
+    console.log(
+      "NCP 알림톡 발송 시작:",
+      {
+        templateCode,
+        to:
+          cleanAdminPhone
+      }
+    );
+
+
     const sendResponse =
       await ncpRequest({
 
-        method: "POST",
+        method:
+          "POST",
 
-        uri: sendUri,
+        uri:
+          sendUri,
 
         accessKey,
 
@@ -679,17 +860,23 @@ exports.handler = async function (event) {
       });
 
 
-    // =====================================================
-    // 18. NCP 발송 API 오류
-    // =====================================================
+    // =======================================================
+    // 26. HTTP 오류
+    // =======================================================
 
     if (
       !sendResponse.ok
     ) {
 
       console.error(
-        "NCP 알림톡 발송 오류:",
-        sendResponse.data
+        "NCP 알림톡 HTTP 오류:",
+        {
+          status:
+            sendResponse.status,
+
+          data:
+            sendResponse.data
+        }
       );
 
       return jsonResponse(
@@ -706,34 +893,84 @@ exports.handler = async function (event) {
     }
 
 
-    // =====================================================
-    // 19. 결과
-    // =====================================================
+    // =======================================================
+    // 27. NCP 발송 결과
+    // =======================================================
 
     console.log(
-      "NCP 알림톡 발송 성공:",
-      sendResponse.data
+      "NCP 알림톡 발송 결과:",
+      JSON.stringify(
+        sendResponse.data,
+        null,
+        2
+      )
     );
 
 
-    // NCP는 현재 발송 요청 성공 시
-    // HTTP 202를 반환합니다.
-    //
-    // 실제 messageId는 messages 안에 있을 수 있습니다.
+    // =======================================================
+    // 28. 메시지 결과 확인
+    // =======================================================
 
     const result =
-      sendResponse.data;
+      sendResponse.data || {};
 
 
-    const messageInfo =
-      Array.isArray(result.messages)
-        ? result.messages[0]
-        : null;
+    const messages =
+      Array.isArray(
+        result.messages
+      )
+        ? result.messages
+        : [];
 
 
-    // =====================================================
-    // 20. 최종 성공
-    // =====================================================
+    const firstMessage =
+      messages[0] || null;
+
+
+    // =======================================================
+    // 29. 요청 자체 실패
+    // =======================================================
+
+    if (
+      firstMessage &&
+      firstMessage.requestStatusCode &&
+      firstMessage.requestStatusCode !==
+        "A000"
+    ) {
+
+      console.error(
+        "알림톡 요청 실패:",
+        firstMessage
+      );
+
+      return jsonResponse(
+        500,
+        {
+          success: false,
+
+          error:
+            firstMessage.requestStatusDesc ||
+            "알림톡 요청에 실패했습니다.",
+
+          requestStatusCode:
+            firstMessage.requestStatusCode,
+
+          requestStatusName:
+            firstMessage.requestStatusName,
+
+          messageId:
+            firstMessage.messageId ||
+            null
+
+        }
+      );
+
+    }
+
+
+    // =======================================================
+    // 30. 성공
+    // =======================================================
 
     return jsonResponse(
       200,
@@ -750,7 +987,11 @@ exports.handler = async function (event) {
           null,
 
         messageId:
-          messageInfo?.messageId ||
+          firstMessage?.messageId ||
+          null,
+
+        requestStatusCode:
+          firstMessage?.requestStatusCode ||
           null
 
       }
@@ -759,9 +1000,9 @@ exports.handler = async function (event) {
 
   } catch (error) {
 
-    // =====================================================
-    // 서버 예외
-    // =====================================================
+    // =======================================================
+    // 31. 서버 오류
+    // =======================================================
 
     console.error(
       "send-alimtalk 서버 오류:",
@@ -772,10 +1013,14 @@ exports.handler = async function (event) {
     return jsonResponse(
       500,
       {
-        success: false,
+
+        success:
+          false,
+
         error:
           error.message ||
           "서버 오류가 발생했습니다."
+
       }
     );
 
