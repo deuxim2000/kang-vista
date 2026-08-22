@@ -62,9 +62,7 @@ a{
   text-decoration:none;
 }
 
-button,
-input,
-select{
+button,input,select{
   font:inherit;
 }
 
@@ -141,9 +139,7 @@ button{
   text-align:right;
 }
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 .header{
   position:fixed;
@@ -218,9 +214,7 @@ button{
   line-height:1;
 }
 
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 .hero{
   position:relative;
@@ -310,9 +304,7 @@ button{
   text-shadow:none;
 }
 
-/* =========================
-   OVERVIEW
-========================= */
+/* OVERVIEW */
 
 .overview-grid{
   display:grid;
@@ -347,9 +339,7 @@ button{
   font-weight:600;
 }
 
-/* =========================
-   PREMIUM
-========================= */
+/* PREMIUM */
 
 .park{
   display:grid;
@@ -394,9 +384,7 @@ button{
   border-left:2px solid #4c9bd4;
 }
 
-/* =========================
-   COMPLEX
-========================= */
+/* COMPLEX */
 
 .complex{
   background:#f8fafc;
@@ -435,9 +423,7 @@ button{
   margin-top:30px;
 }
 
-/* =========================
-   UNIT
-========================= */
+/* UNIT */
 
 .unit-section{
   background:#fff;
@@ -469,7 +455,6 @@ button{
   text-align:center;
   cursor:pointer;
   overflow:hidden;
-  -webkit-tap-highlight-color:transparent;
 }
 
 .unit-vr-link img{
@@ -525,9 +510,7 @@ button{
   background:var(--orange);
 }
 
-/* =========================
-   CONTACT
-========================= */
+/* CONTACT */
 
 .contact-grid{
   display:grid;
@@ -600,31 +583,20 @@ button{
   background:#fff;
 }
 
-/* 날짜 입력 전체 영역 */
+/* 날짜 입력칸 전체 클릭 */
+
 .date-field{
   position:relative;
-  width:100%;
   cursor:pointer;
 }
 
 .date-field input{
+  display:block;
   width:100%;
-  min-height:50px;
+  min-height:48px;
   cursor:pointer;
-}
-
-/*
-  날짜 input은 브라우저별 달력 아이콘을 크게 만들어
-  입력창 전체를 누르기 편하도록 처리
-*/
-.date-field input::-webkit-calendar-picker-indicator{
-  position:absolute;
-  right:0;
-  top:0;
-  width:100%;
-  height:100%;
-  opacity:0;
-  cursor:pointer;
+  -webkit-appearance:auto;
+  appearance:auto;
 }
 
 .date-field::after{
@@ -721,9 +693,7 @@ button{
   pointer-events:none !important;
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 .footer{
   padding:45px 0 100px;
@@ -747,9 +717,7 @@ button{
   font-weight:900;
 }
 
-/* =========================
-   FLOAT
-========================= */
+/* FLOAT */
 
 .float{
   position:fixed;
@@ -786,11 +754,10 @@ button{
   box-shadow:0 7px 25px rgba(0,0,0,.2);
 }
 
-/* =========================
-   POPUP
-========================= */
+/* POPUP */
 
-.popup01{
+.popup01,
+.modal{
   position:fixed;
   inset:0;
   z-index:3000;
@@ -802,7 +769,8 @@ button{
   height:100%;
 }
 
-.popup01.show{
+.popup01.show,
+.modal.show{
   display:flex;
 }
 
@@ -861,25 +829,7 @@ button{
   text-align:center;
 }
 
-/* =========================
-   PRIVACY MODAL
-========================= */
-
-.modal{
-  position:fixed;
-  inset:0;
-  z-index:3000;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  background:rgba(0,0,0,.65);
-  width:100%;
-  height:100%;
-}
-
-.modal.show{
-  display:flex;
-}
+/* PRIVACY MODAL */
 
 .modal-box{
   width:min(700px,92%);
@@ -924,9 +874,7 @@ button{
   font-size:13px;
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width:900px){
 
@@ -1014,61 +962,9 @@ button{
     font-size:30px;
   }
 
-  /*
-    모바일 날짜 입력창 높이 확대
-    전체 줄을 터치하기 편하게 함
-  */
-  .date-field,
   .date-field input{
-    min-height:54px;
-  }
-
-  .date-field input{
+    min-height:52px;
     font-size:16px;
-    padding:15px;
-  }
-
-  .form-row{
-    margin-bottom:18px;
-  }
-}
-
-@media(max-width:480px){
-
-  .hero-main-title{
-    font-size:32px;
-  }
-
-  .hero-subtitle{
-    font-size:22px;
-  }
-
-  .hero-text{
-    font-size:16px;
-  }
-
-  .hero-vr-btn{
-    width:100%;
-    padding:15px 20px;
-  }
-
-  .unit-list{
-    gap:25px;
-  }
-
-  .form{
-    padding:22px 18px;
-  }
-
-  .float{
-    right:12px;
-    bottom:12px;
-  }
-
-  .float-register,
-  .float-phone{
-    width:56px;
-    height:56px;
   }
 }
 </style>
@@ -1076,33 +972,14 @@ button{
 
 <body>
 
-<!-- =========================
-     HEADER
-========================= -->
-
 <header class="header" id="header">
-
   <div class="container nav">
 
-    <button
-      class="logo"
-      type="button"
-      data-target="top"
-      aria-label="더파크 비스타동원 홈"
-    >
-      <img
-        src="images/logo.png"
-        alt="더파크 비스타동원"
-        width="160"
-        height="40"
-      >
+    <button class="logo" type="button" data-target="top" aria-label="더파크 비스타동원 홈">
+      <img src="images/logo.png" alt="더파크 비스타동원" width="160" height="40">
     </button>
 
-    <nav
-      class="menu"
-      id="mainMenu"
-      aria-label="주요 메뉴"
-    >
+    <nav class="menu" id="mainMenu" aria-label="주요 메뉴">
       <button type="button" data-target="overviewSection">사업개요</button>
       <button type="button" data-target="premiumSection">프리미엄</button>
       <button type="button" data-target="locationSection">입지환경</button>
@@ -1112,60 +989,30 @@ button{
       <button type="button" data-target="contactSection">방문예약</button>
     </nav>
 
-    <a
-      class="header-phone"
-      href="tel:15519708"
-    >
-      ☎ 1551-9708
-    </a>
+    <a class="header-phone" href="tel:15519708">☎ 1551-9708</a>
 
-    <button
-      class="mobile-menu"
-      id="menuToggle"
-      type="button"
-      aria-label="메뉴 열기"
-      aria-expanded="false"
-    >
-      ☰
-    </button>
+    <button class="mobile-menu" id="menuToggle" type="button" aria-label="메뉴 열기" aria-expanded="false">☰</button>
 
   </div>
-
 </header>
 
-
-<!-- =========================
-     HERO
-========================= -->
-
+<!-- HERO -->
 <section class="hero" id="home">
 
   <div class="hero-photo">
-
     <img
       src="images/photo01.webp"
       alt="더파크 비스타동원 아파트 조감도"
       fetchpriority="high"
     >
-
   </div>
 
   <div class="container hero-content">
-
-    <div class="hero-label">
-      THE PARK VISTA DONGWON
-    </div>
+    <div class="hero-label">THE PARK VISTA DONGWON</div>
 
     <h1>
-
-      <span class="hero-main-title">
-        공원 속의 프리미엄아파트
-      </span>
-
-      <span class="hero-subtitle">
-        사상공원 민간공원 특례사업
-      </span>
-
+      <span class="hero-main-title">공원 속의 프리미엄아파트</span>
+      <span class="hero-subtitle">사상공원 민간공원 특례사업</span>
     </h1>
 
     <p class="hero-text">
@@ -1174,36 +1021,19 @@ button{
     </p>
 
     <div class="hero-btn-group">
-
-      <button
-        type="button"
-        class="hero-vr-btn"
-        data-target="unitSection"
-      >
+      <button type="button" class="hero-vr-btn" data-target="unitSection">
         ✨ 360° VR 모델하우스 보기
       </button>
-
     </div>
-
   </div>
 
 </section>
 
-
-<!-- =========================
-     OVERVIEW
-========================= -->
-
-<section
-  class="section"
-  id="overviewSection"
->
-
+<!-- OVERVIEW -->
+<section class="section" id="overviewSection">
   <div class="container">
 
-    <div class="label">
-      PROJECT OVERVIEW
-    </div>
+    <div class="label">PROJECT OVERVIEW</div>
 
     <h2 class="title center">
       도시와 자연의 가치를<br>
@@ -1211,14 +1041,12 @@ button{
     </h2>
 
     <p class="desc center">
-      더파크 비스타동원은 자연과 주거가 어우러지는
-      프리미엄 주거공간을 제안합니다.
+      더파크 비스타동원은 자연과 주거가 어우러지는 프리미엄 주거공간을 제안합니다.
     </p>
 
     <div class="overview-grid">
 
       <div class="photo">
-
         <img
           src="images/photo02.webp"
           alt="더파크 비스타동원 사업개요"
@@ -1226,11 +1054,9 @@ button{
           width="600"
           height="400"
         >
-
       </div>
 
       <dl class="info">
-
         <div class="info-row">
           <dt>대지면적</dt>
           <dd>47,839.0000㎡</dd>
@@ -1255,26 +1081,18 @@ button{
           <dt>주택형</dt>
           <dd>전용 84㎡</dd>
         </div>
-
       </dl>
 
     </div>
-
   </div>
-
 </section>
 
-
-<!-- =========================
-     PREMIUM
-========================= -->
-
+<!-- PREMIUM -->
 <section id="premiumSection">
 
   <div class="park">
 
     <div class="photo">
-
       <img
         src="images/photo03.webp"
         alt="사상공원 프리미엄"
@@ -1282,14 +1100,11 @@ button{
         width="600"
         height="400"
       >
-
     </div>
 
     <div class="park-content">
 
-      <div class="label">
-        PREMIUM
-      </div>
+      <div class="label">PREMIUM</div>
 
       <h2>
         프리미엄 라이프를<br>
@@ -1297,8 +1112,7 @@ button{
       </h2>
 
       <p>
-        자연과 주거가 하나가 되는
-        새로운 주거환경을 제안합니다.
+        자연과 주거가 하나가 되는 새로운 주거환경을 제안합니다.
       </p>
 
       <div class="highlight">
@@ -1310,15 +1124,10 @@ button{
 
   </div>
 
-  <div
-    class="section"
-    style="padding-top:30px;"
-  >
-
+  <div class="section" style="padding-top:30px;">
     <div class="container">
 
       <div class="full-image img-premium">
-
         <img
           src="images/premium_total.webp"
           alt="더파크 비스타동원 프리미엄 안내"
@@ -1326,45 +1135,28 @@ button{
           height="2130"
           loading="lazy"
         >
-
       </div>
 
-      <p class="reference">
-        ※ 본 이미지는 참고용 이미지입니다.
-      </p>
+      <p class="reference">※ 본 이미지는 참고용 이미지입니다.</p>
 
     </div>
-
   </div>
 
 </section>
 
-
-<!-- =========================
-     LOCATION
-========================= -->
-
-<section
-  class="section"
-  id="locationSection"
->
+<!-- LOCATION -->
+<section class="section" id="locationSection">
 
   <div class="container">
 
-    <div class="label">
-      LOCATION
-    </div>
+    <div class="label">LOCATION</div>
 
     <h2 class="title center">
       생활과 교통을 가까이 누리는<br>
       편리한 입지환경
     </h2>
 
-    <div
-      class="full-image img-location"
-      style="margin-top:30px;"
-    >
-
+    <div class="full-image img-location" style="margin-top:30px;">
       <img
         src="images/location_total.webp"
         alt="더파크 비스타동원 입지환경"
@@ -1372,34 +1164,22 @@ button{
         height="3432"
         loading="lazy"
       >
-
     </div>
 
-    <p class="reference">
-      ※ 본 이미지는 참고용 이미지입니다.
-    </p>
+    <p class="reference">※ 본 이미지는 참고용 이미지입니다.</p>
 
   </div>
 
 </section>
 
-
-<!-- =========================
-     COMPLEX
-========================= -->
-
-<section
-  class="section complex"
-  id="complexSection"
->
+<!-- COMPLEX -->
+<section class="section complex" id="complexSection">
 
   <div class="container">
 
     <div class="center">
 
-      <div class="label">
-        COMPLEX
-      </div>
+      <div class="label">COMPLEX</div>
 
       <h2 class="title">
         852세대 대단지의<br>
@@ -1433,7 +1213,6 @@ button{
     </div>
 
     <div class="complex-photo full-image">
-
       <img
         src="images/photo05.webp"
         alt="더파크 비스타동원 단지 조감도"
@@ -1441,11 +1220,9 @@ button{
         width="1100"
         height="600"
       >
-
     </div>
 
     <div class="complex-photo full-image">
-
       <img
         src="images/complex_add.webp"
         alt="더파크 비스타동원 단지 안내"
@@ -1453,30 +1230,20 @@ button{
         width="1100"
         height="600"
       >
-
     </div>
 
   </div>
 
 </section>
 
-
-<!-- =========================
-     UNIT
-========================= -->
-
-<section
-  class="section unit-section"
-  id="unitSection"
->
+<!-- UNIT -->
+<section class="section unit-section" id="unitSection">
 
   <div class="container">
 
     <div class="center">
 
-      <div class="label">
-        UNIT PLAN & VR
-      </div>
+      <div class="label">UNIT PLAN & VR</div>
 
       <h2 class="title">
         가족의 라이프스타일을 담은<br>
@@ -1489,39 +1256,22 @@ button{
 
     </div>
 
-
     <div class="unit-list">
 
-
       <!-- 84A -->
-
       <article class="unit-card">
 
         <div class="unit-type">
-
-          <small>
-            TYPE 84A
-          </small>
-
-          <h3>
-            84㎡ A
-          </h3>
-
+          <small>TYPE 84A</small>
+          <h3>84㎡ A</h3>
         </div>
 
-
-        <!--
-          중요:
-          HTTP 주소 그대로 사용합니다.
-          iframe이 아니라 새 창으로 직접 엽니다.
-        -->
-
-        <div
+        <a
           class="unit-vr-link"
-          data-vr-url="http://www.xn--9m1bxju0y9pev6fvvq4qa20m.com/vr/84a.html?v=251014"
-          role="button"
-          tabindex="0"
-          aria-label="84A 타입 360도 VR 보기"
+          href="http://www.xn--9m1bxju0y9pev6fvvq4qa20m.com/vr/84a.html?v=251014"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="84A 타입 360도 VR 새 창으로 보기"
         >
 
           <img
@@ -1536,34 +1286,24 @@ button{
             🔍 A타입 360° VR 보기
           </span>
 
-        </div>
+        </a>
 
       </article>
 
-
       <!-- 84C -->
-
       <article class="unit-card">
 
         <div class="unit-type">
-
-          <small>
-            TYPE 84C
-          </small>
-
-          <h3>
-            84㎡ C
-          </h3>
-
+          <small>TYPE 84C</small>
+          <h3>84㎡ C</h3>
         </div>
 
-
-        <div
+        <a
           class="unit-vr-link"
-          data-vr-url="http://www.xn--9m1bxju0y9pev6fvvq4qa20m.com/vr/84c.html?v=251014"
-          role="button"
-          tabindex="0"
-          aria-label="84C 타입 360도 VR 보기"
+          href="http://www.xn--9m1bxju0y9pev6fvvq4qa20m.com/vr/84c.html?v=251014"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="84C 타입 360도 VR 새 창으로 보기"
         >
 
           <img
@@ -1578,7 +1318,7 @@ button{
             🔥 C타입 360° VR 보기
           </span>
 
-        </div>
+        </a>
 
       </article>
 
@@ -1588,32 +1328,19 @@ button{
 
 </section>
 
-
-<!-- =========================
-     COMMUNITY
-========================= -->
-
-<section
-  class="section community"
-  id="communitySection"
->
+<!-- COMMUNITY -->
+<section class="section community" id="communitySection">
 
   <div class="container">
 
-    <div class="label">
-      COMMUNITY
-    </div>
+    <div class="label">COMMUNITY</div>
 
     <h2 class="title center">
       일상에 품격을 더하는<br>
       프리미엄 커뮤니티
     </h2>
 
-    <div
-      class="full-image img-community"
-      style="margin-top:30px;"
-    >
-
+    <div class="full-image img-community" style="margin-top:30px;">
       <img
         src="images/community_total.webp"
         alt="더파크 비스타동원 커뮤니티 시설 안내"
@@ -1621,31 +1348,22 @@ button{
         height="1442"
         loading="lazy"
       >
-
     </div>
 
-    <p class="reference">
-      ※ 본 이미지는 참고용 이미지입니다.
-    </p>
+    <p class="reference">※ 본 이미지는 참고용 이미지입니다.</p>
 
   </div>
 
 </section>
 
-
-<!-- =========================
-     PROJECT IMAGE
-========================= -->
-
+<!-- PROJECT IMAGE -->
 <section class="section">
 
   <div class="container">
 
     <div class="center">
 
-      <div class="label">
-        PROJECT IMAGE
-      </div>
+      <div class="label">PROJECT IMAGE</div>
 
       <h2 class="title">
         더파크 비스타동원의<br>
@@ -1654,11 +1372,7 @@ button{
 
     </div>
 
-    <div
-      class="full-image"
-      style="margin-top:30px;"
-    >
-
+    <div class="full-image" style="margin-top:30px;">
       <img
         src="images/photo11.webp"
         alt="더파크 비스타동원 프로젝트 이미지"
@@ -1666,32 +1380,20 @@ button{
         width="1100"
         height="600"
       >
-
     </div>
 
   </div>
 
 </section>
 
-
-<!-- =========================
-     CONTACT / RESERVATION
-========================= -->
-
-<section
-  class="section"
-  id="contactSection"
->
+<!-- CONTACT -->
+<section class="section" id="contactSection">
 
   <div class="container contact-grid">
 
-
     <div>
 
-      <div
-        class="label"
-        style="text-align:left;"
-      >
+      <div class="label" style="text-align:left;">
         VISIT RESERVATION
       </div>
 
@@ -1710,37 +1412,21 @@ button{
         class="phone-big"
         aria-label="1551-9708 전화하기"
       >
-
-        <span class="phone-circle">
-          ☎
-        </span>
-
+        <span class="phone-circle">☎</span>
         1551-9708
-
       </a>
 
     </div>
 
+    <form class="form" id="leadForm" novalidate>
 
-    <form
-      class="form"
-      id="leadForm"
-      novalidate
-    >
-
-      <h3>
-        방문예약
-      </h3>
+      <h3>방문예약</h3>
 
       <p class="form-sub">
         방문을 원하시는 정보를 입력해주세요.
       </p>
 
-
-      <!-- 허니팟 -->
-
       <div class="hp-field">
-
         <input
           id="website"
           name="website"
@@ -1748,14 +1434,9 @@ button{
           tabindex="-1"
           autocomplete="off"
         >
-
       </div>
 
-
-      <!-- 이름 -->
-
       <div class="form-row">
-
         <label for="name">
           이름 <span class="required">*</span>
         </label>
@@ -1769,14 +1450,9 @@ button{
           placeholder="이름을 입력해주세요"
           required
         >
-
       </div>
 
-
-      <!-- 전화번호 -->
-
       <div class="form-row">
-
         <label for="phone">
           휴대폰 번호 <span class="required">*</span>
         </label>
@@ -1791,27 +1467,21 @@ button{
           placeholder="010-0000-0000"
           required
         >
-
       </div>
 
-
-      <!-- 방문 날짜 -->
-
+      <!-- 날짜 입력 -->
       <div class="form-row">
 
         <label for="consultDate">
           방문 희망일 <span class="required">*</span>
         </label>
 
-        <!--
-          중요:
-          date-field 전체를 클릭하면 달력 열기를 시도합니다.
-          모바일에서는 input 자체도 크게 만들어 쉽게 터치할 수 있습니다.
-        -->
-
         <div
           class="date-field"
           id="dateField"
+          role="button"
+          tabindex="0"
+          aria-label="방문 희망일 선택"
         >
 
           <input
@@ -1819,15 +1489,11 @@ button{
             name="consultDate"
             type="date"
             required
-            aria-label="방문 희망일"
           >
 
         </div>
 
       </div>
-
-
-      <!-- 방문 시간 -->
 
       <div class="form-row">
 
@@ -1858,9 +1524,6 @@ button{
 
       </div>
 
-
-      <!-- 개인정보 -->
-
       <div class="privacy">
 
         <div class="privacy-head">
@@ -1889,29 +1552,19 @@ button{
           >
 
           <span>
-
-            <span class="required">
-              [필수]
-            </span>
-
+            <span class="required">[필수]</span>
             개인정보 수집 및 이용에 동의합니다.
-
           </span>
 
         </label>
 
         <div class="privacy-summary">
-
           수집항목 : 이름, 휴대폰 번호, 방문 희망일, 방문 희망시간<br>
-
           수집목적 : 방문예약 및 상담<br>
-
           보유기간 : 상담 목적 달성 후 지체 없이 파기
-
         </div>
 
       </div>
-
 
       <button
         class="submit"
@@ -1920,7 +1573,6 @@ button{
       >
         방문예약 신청하기
       </button>
-
 
       <div
         class="message"
@@ -1935,18 +1587,12 @@ button{
 
 </section>
 
-
-<!-- =========================
-     FOOTER
-========================= -->
-
+<!-- FOOTER -->
 <footer class="footer">
 
   <div class="container">
 
-    <h3>
-      현장명 ㅣ 더파크 비스타동원
-    </h3>
+    <h3>현장명 ㅣ 더파크 비스타동원</h3>
 
     <p>
       현장주소 ㅣ 부산광역시 사상구 감전동 산 1-9일원
@@ -1965,11 +1611,9 @@ button{
     </p>
 
     <p class="footer-phone">
-
       <a href="tel:01094892528">
         광고문의 ㅣ 010-9489-2528
       </a>
-
     </p>
 
     <button
@@ -1984,11 +1628,7 @@ button{
 
 </footer>
 
-
-<!-- =========================
-     FLOAT
-========================= -->
-
+<!-- FLOAT -->
 <div class="float">
 
   <button
@@ -2009,11 +1649,7 @@ button{
 
 </div>
 
-
-<!-- =========================
-     POPUP
-========================= -->
-
+<!-- POPUP -->
 <div
   class="popup01"
   id="popup01"
@@ -2026,17 +1662,10 @@ button{
 
     <div class="popup-grid">
 
-
-      <div
-        class="popup-box"
-        id="popupBox1"
-      >
+      <div class="popup-box" id="popupBox1">
 
         <div class="popup-head">
-
-          <strong>
-            공지사항 1
-          </strong>
+          <strong>공지사항 1</strong>
 
           <button
             class="popupCloseBtn"
@@ -2045,7 +1674,6 @@ button{
           >
             ×
           </button>
-
         </div>
 
         <div class="popup-body">
@@ -2059,17 +1687,10 @@ button{
 
       </div>
 
-
-      <div
-        class="popup-box"
-        id="popupBox2"
-      >
+      <div class="popup-box" id="popupBox2">
 
         <div class="popup-head">
-
-          <strong>
-            공지사항 2
-          </strong>
+          <strong>공지사항 2</strong>
 
           <button
             class="popupCloseBtn"
@@ -2078,7 +1699,6 @@ button{
           >
             ×
           </button>
-
         </div>
 
         <div class="popup-body">
@@ -2095,19 +1715,14 @@ button{
     </div>
 
     <div class="popup-notice">
-      팝업을 터치하거나 바깥 영역을 누르면
-      다음 팝업이 열리거나 닫힙니다.
+      팝업을 터치하거나 바깥 영역을 누르면 다음 팝업이 열리거나 닫힙니다.
     </div>
 
   </div>
 
 </div>
 
-
-<!-- =========================
-     PRIVACY MODAL
-========================= -->
-
+<!-- PRIVACY -->
 <div
   class="modal"
   id="privacyModal"
@@ -2119,9 +1734,7 @@ button{
 
     <div class="modal-head">
 
-      <strong>
-        개인정보처리방침
-      </strong>
+      <strong>개인정보처리방침</strong>
 
       <button
         id="policyClose"
@@ -2136,82 +1749,45 @@ button{
     <div class="modal-body">
 
       <div class="policy">
-
-        <h4>
-          1. 개인정보의 수집 및 이용 목적
-        </h4>
-
+        <h4>1. 개인정보의 수집 및 이용 목적</h4>
         <p>
-          방문예약 및 상담 신청, 문의사항 답변과
-          관련 안내를 위해 개인정보를 수집·이용합니다.
+          방문예약 및 상담 신청, 문의사항 답변과 관련 안내를 위해 개인정보를 수집·이용합니다.
         </p>
-
       </div>
 
-
       <div class="policy">
-
-        <h4>
-          2. 수집하는 개인정보 항목
-        </h4>
-
+        <h4>2. 수집하는 개인정보 항목</h4>
         <p>
           이름, 휴대폰 번호, 방문 희망일, 방문 희망시간
         </p>
-
       </div>
 
-
       <div class="policy">
-
-        <h4>
-          3. 개인정보 보유 및 이용기간
-        </h4>
-
+        <h4>3. 개인정보 보유 및 이용기간</h4>
         <p>
           상담 및 방문예약 목적 달성 후 지체 없이 파기합니다.
         </p>
-
       </div>
 
-
       <div class="policy">
-
-        <h4>
-          4. 동의 거부권
-        </h4>
-
+        <h4>4. 동의 거부권</h4>
         <p>
-          이용자는 개인정보 수집 및 이용에 대한
-          동의를 거부할 권리가 있습니다.
+          이용자는 개인정보 수집 및 이용에 대한 동의를 거부할 권리가 있습니다.
         </p>
-
       </div>
 
-
       <div class="policy">
-
-        <h4>
-          5. 개인정보 제3자 제공
-        </h4>
-
+        <h4>5. 개인정보 제3자 제공</h4>
         <p>
           원칙적으로 개인정보를 제3자에게 제공하지 않습니다.
         </p>
-
       </div>
 
-
       <div class="policy">
-
-        <h4>
-          6. 개인정보 보호책임자
-        </h4>
-
+        <h4>6. 개인정보 보호책임자</h4>
         <p>
           상담전화 : 1551-9708
         </p>
-
       </div>
 
     </div>
@@ -2220,33 +1796,18 @@ button{
 
 </div>
 
-
 <script>
 "use strict";
 
 document.addEventListener("DOMContentLoaded", function () {
 
-  /* =========================
-     ELEMENTS
-  ========================= */
+  const header = document.getElementById("header");
+  const mainMenu = document.getElementById("mainMenu");
+  const menuToggle = document.getElementById("menuToggle");
 
-  const header =
-    document.getElementById("header");
-
-  const mainMenu =
-    document.getElementById("mainMenu");
-
-  const menuToggle =
-    document.getElementById("menuToggle");
-
-  const popup =
-    document.getElementById("popup01");
-
-  const popupBox1 =
-    document.getElementById("popupBox1");
-
-  const popupBox2 =
-    document.getElementById("popupBox2");
+  const popup = document.getElementById("popup01");
+  const popupBox1 = document.getElementById("popupBox1");
+  const popupBox2 = document.getElementById("popupBox2");
 
   const privacyModal =
     document.getElementById("privacyModal");
@@ -2260,30 +1821,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const submitButton =
     document.getElementById("submitButton");
 
-  const dateField =
-    document.getElementById("dateField");
+  /* BODY LOCK */
 
-  const consultDate =
-    document.getElementById("consultDate");
+  function updateBodyLock() {
 
-  const phoneInput =
-    document.getElementById("phone");
-
-
-  /* =========================
-     BODY LOCK
-  ========================= */
-
-  function updateBodyLock(){
-
-    const isOpen =
-      Boolean(
-        (popup &&
-          popup.classList.contains("show")) ||
-
-        (privacyModal &&
-          privacyModal.classList.contains("show"))
-      );
+    const isOpen = Boolean(
+      (popup && popup.classList.contains("show")) ||
+      (privacyModal && privacyModal.classList.contains("show"))
+    );
 
     document.body.classList.toggle(
       "modal-open",
@@ -2291,29 +1836,24 @@ document.addEventListener("DOMContentLoaded", function () {
     );
   }
 
+  /* SECTION MOVE */
 
-  /* =========================
-     SECTION MOVE
-  ========================= */
+  function moveToSection(targetId) {
 
-  function moveToSection(targetId){
-
-    if(mainMenu){
+    if (mainMenu) {
       mainMenu.classList.remove("active");
     }
 
-    if(menuToggle){
-
+    if (menuToggle) {
       menuToggle.textContent = "☰";
 
       menuToggle.setAttribute(
         "aria-expanded",
         "false"
       );
-
     }
 
-    if(targetId === "top"){
+    if (targetId === "top") {
 
       window.scrollTo({
         top:0,
@@ -2326,14 +1866,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const target =
       document.getElementById(targetId);
 
-    if(!target){
+    if (!target) {
       return;
     }
 
     const headerHeight =
-      header
-        ? header.offsetHeight - 15
-        : 65;
+      (header ? header.offsetHeight : 80) - 15;
 
     const targetPosition =
       target.getBoundingClientRect().top +
@@ -2346,25 +1884,20 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-
-  /* =========================
-     DATA TARGET
-  ========================= */
-
   document
     .querySelectorAll("[data-target]")
-    .forEach(function(button){
+    .forEach(function (button) {
 
       button.addEventListener(
         "click",
-        function(event){
+        function (event) {
 
           event.preventDefault();
 
           const targetId =
             this.getAttribute("data-target");
 
-          if(targetId){
+          if (targetId) {
             moveToSection(targetId);
           }
 
@@ -2373,20 +1906,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
+  /* MOBILE MENU */
 
-  /* =========================
-     MOBILE MENU
-  ========================= */
-
-  if(menuToggle){
+  if (menuToggle) {
 
     menuToggle.addEventListener(
       "click",
-      function(event){
+      function (event) {
 
         event.preventDefault();
 
-        if(!mainMenu){
+        if (!mainMenu) {
           return;
         }
 
@@ -2406,16 +1936,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
 
-
-  /* =========================
-     HEADER SHADOW
-  ========================= */
+  /* HEADER */
 
   window.addEventListener(
     "scroll",
-    function(){
+    function () {
 
-      if(header){
+      if (header) {
 
         header.classList.toggle(
           "scrolled",
@@ -2425,44 +1952,39 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
     },
-    {
-      passive:true
-    }
+    { passive:true }
   );
 
+  /* POPUP */
 
-  /* =========================
-     POPUP
-  ========================= */
-
-  if(popup){
+  if (popup) {
 
     const isMobile =
       window.innerWidth <= 900;
 
-    if(isMobile){
+    if (isMobile) {
 
-      if(popupBox1){
+      if (popupBox1) {
         popupBox1.classList.add(
           "active-mobile"
         );
       }
 
-      if(popupBox2){
+      if (popupBox2) {
         popupBox2.classList.remove(
           "active-mobile"
         );
       }
 
-    }else{
+    } else {
 
-      if(popupBox1){
+      if (popupBox1) {
         popupBox1.classList.add(
           "active-mobile"
         );
       }
 
-      if(popupBox2){
+      if (popupBox2) {
         popupBox2.classList.add(
           "active-mobile"
         );
@@ -2474,39 +1996,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
     updateBodyLock();
 
-
     popup.addEventListener(
       "click",
-      function(){
+      function () {
 
         const isMobileNow =
           window.innerWidth <= 900;
 
-        if(isMobileNow){
+        if (isMobileNow) {
 
-          if(
+          if (
             popupBox1 &&
             popupBox1.classList.contains(
               "active-mobile"
             )
-          ){
+          ) {
 
             popupBox1.classList.remove(
               "active-mobile"
             );
 
-            if(popupBox2){
+            if (popupBox2) {
               popupBox2.classList.add(
                 "active-mobile"
               );
             }
 
-          }else if(
+          } else if (
             popupBox2 &&
             popupBox2.classList.contains(
               "active-mobile"
             )
-          ){
+          ) {
 
             popup.classList.remove(
               "show"
@@ -2516,7 +2037,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
           }
 
-        }else{
+        } else {
 
           popup.classList.remove(
             "show"
@@ -2529,36 +2050,9 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     );
 
-
-    /* 팝업 닫기 버튼 */
-
-    document
-      .querySelectorAll(".popupCloseBtn")
-      .forEach(function(button){
-
-        button.addEventListener(
-          "click",
-          function(event){
-
-            event.stopPropagation();
-
-            popup.classList.remove(
-              "show"
-            );
-
-            updateBodyLock();
-
-          }
-        );
-
-      });
-
   }
 
-
-  /* =========================
-     PRIVACY MODAL
-  ========================= */
+  /* PRIVACY */
 
   const policyOpen =
     document.getElementById("policyOpen");
@@ -2569,14 +2063,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const policyClose =
     document.getElementById("policyClose");
 
+  function openPrivacyModal(event) {
 
-  function openPrivacyModal(event){
-
-    if(event){
+    if (event) {
       event.preventDefault();
     }
 
-    if(privacyModal){
+    if (privacyModal) {
 
       privacyModal.classList.add(
         "show"
@@ -2588,10 +2081,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
 
+  function closePrivacyModal() {
 
-  function closePrivacyModal(){
-
-    if(privacyModal){
+    if (privacyModal) {
 
       privacyModal.classList.remove(
         "show"
@@ -2603,8 +2095,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
 
-
-  if(policyOpen){
+  if (policyOpen) {
 
     policyOpen.addEventListener(
       "click",
@@ -2613,8 +2104,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
 
-
-  if(policyOpen2){
+  if (policyOpen2) {
 
     policyOpen2.addEventListener(
       "click",
@@ -2623,8 +2113,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
 
-
-  if(policyClose){
+  if (policyClose) {
 
     policyClose.addEventListener(
       "click",
@@ -2633,19 +2122,129 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
 
-
-  if(privacyModal){
+  if (privacyModal) {
 
     privacyModal.addEventListener(
       "click",
-      function(event){
+      function (event) {
 
-        if(
-          event.target ===
-          privacyModal
-        ){
-
+        if (
+          event.target === privacyModal
+        ) {
           closePrivacyModal();
+        }
+
+      }
+    );
+
+  }
+
+  /* DATE */
+
+  const consultDate =
+    document.getElementById("consultDate");
+
+  const dateField =
+    document.getElementById("dateField");
+
+  function getLocalDateString() {
+
+    const today = new Date();
+
+    const yyyy =
+      today.getFullYear();
+
+    const mm =
+      String(today.getMonth() + 1)
+        .padStart(2,"0");
+
+    const dd =
+      String(today.getDate())
+        .padStart(2,"0");
+
+    return (
+      yyyy +
+      "-" +
+      mm +
+      "-" +
+      dd
+    );
+  }
+
+  if (consultDate) {
+
+    consultDate.min =
+      getLocalDateString();
+
+  }
+
+  /*
+   * 날짜 입력칸 전체 클릭
+   *
+   * 모바일 브라우저는 날짜 input의
+   * 달력 UI를 직접 열 수 있는 경우에만
+   * showPicker()를 사용합니다.
+   */
+
+  function openDatePicker() {
+
+    if (!consultDate) {
+      return;
+    }
+
+    try {
+
+      if (
+        typeof consultDate.showPicker ===
+        "function"
+      ) {
+
+        consultDate.showPicker();
+
+      } else {
+
+        consultDate.focus();
+        consultDate.click();
+
+      }
+
+    } catch (error) {
+
+      consultDate.focus();
+
+    }
+
+  }
+
+  if (dateField) {
+
+    dateField.addEventListener(
+      "click",
+      function (event) {
+
+        if (
+          event.target === consultDate
+        ) {
+          return;
+        }
+
+        openDatePicker();
+
+      }
+    );
+
+    dateField.addEventListener(
+      "keydown",
+      function (event) {
+
+        if (
+          event.key === "Enter" ||
+          event.key === " "
+        ) {
+
+          event.preventDefault();
+
+          openDatePicker();
 
         }
 
@@ -2654,120 +2253,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
 
+  /* PHONE AUTO FORMAT */
 
-  /* =========================
-     VR
-     중요:
-     iframe 사용하지 않음
-     HTTP VR 주소를 새 창으로 직접 연결
-  ========================= */
+  const phoneInput =
+    document.getElementById("phone");
 
-  document
-    .querySelectorAll(".unit-vr-link")
-    .forEach(function(link){
-
-      function openVR(event){
-
-        if(event){
-          event.preventDefault();
-        }
-
-        const vrUrl =
-          link.getAttribute(
-            "data-vr-url"
-          );
-
-        if(!vrUrl){
-          return;
-        }
-
-        /*
-          새 창에서 직접 VR 페이지를 엽니다.
-          HTTPS 메인 페이지 안에 HTTP를
-          iframe으로 넣지 않기 때문에
-          Mixed Content 차단을 피할 수 있습니다.
-        */
-
-        const newWindow =
-          window.open(
-            vrUrl,
-            "_blank"
-          );
-
-        /*
-          일부 모바일 브라우저가
-          새 창 열기를 제한하는 경우
-          현재 탭에서 직접 이동
-        */
-
-        if(!newWindow){
-
-          window.location.href =
-            vrUrl;
-
-        }
-
-      }
-
-
-      link.addEventListener(
-        "click",
-        openVR
-      );
-
-
-      /* 키보드 접근성 */
-
-      link.addEventListener(
-        "keydown",
-        function(event){
-
-          if(
-            event.key === "Enter" ||
-            event.key === " "
-          ){
-
-            openVR(event);
-
-          }
-
-        }
-      );
-
-    });
-
-
-  /* =========================
-     PHONE AUTO FORMAT
-  ========================= */
-
-  if(phoneInput){
+  if (phoneInput) {
 
     phoneInput.addEventListener(
       "input",
-      function(){
+      function () {
 
         let value =
-          this.value.replace(
-            /\D/g,
-            ""
-          );
+          this.value.replace(/\D/g,"");
 
-        if(value.length <= 3){
+        if (value.length <= 3) {
 
-          this.value =
-            value;
+          this.value = value;
 
-        }else if(
-          value.length <= 7
-        ){
+        } else if (value.length <= 7) {
 
           this.value =
             value.slice(0,3) +
             "-" +
             value.slice(3);
 
-        }else{
+        } else {
 
           this.value =
             value.slice(0,3) +
@@ -2783,161 +2294,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
 
+  /* RESERVATION */
 
-  /* =========================
-     DATE MIN
-  ========================= */
-
-  function setMinDate(){
-
-    const today =
-      new Date();
-
-    const yyyy =
-      today.getFullYear();
-
-    const mm =
-      String(
-        today.getMonth() + 1
-      ).padStart(
-        2,
-        "0"
-      );
-
-    const dd =
-      String(
-        today.getDate()
-      ).padStart(
-        2,
-        "0"
-      );
-
-    if(consultDate){
-
-      consultDate.min =
-        yyyy +
-        "-" +
-        mm +
-        "-" +
-        dd;
-
-    }
-
-  }
-
-  setMinDate();
-
-
-  /* =========================
-     DATE FIELD
-     전체 영역 클릭
-  ========================= */
-
-  if(dateField && consultDate){
-
-    dateField.addEventListener(
-      "click",
-      function(event){
-
-        /*
-          input 자체를 클릭한 경우에는
-          브라우저 기본 달력 동작을 사용합니다.
-        */
-
-        if(
-          event.target ===
-          consultDate
-        ){
-
-          return;
-
-        }
-
-        /*
-          showPicker()를 지원하는
-          최신 Chrome / Edge / Android
-        */
-
-        try{
-
-          if(
-            typeof consultDate.showPicker ===
-            "function"
-          ){
-
-            consultDate.showPicker();
-
-            return;
-
-          }
-
-        }catch(error){
-
-          console.log(
-            "showPicker 사용 불가:",
-            error
-          );
-
-        }
-
-        /*
-          showPicker를 지원하지 않는
-          브라우저에서는 input으로 포커스
-        */
-
-        consultDate.focus();
-
-      }
-    );
-
-
-    /*
-      날짜 input 클릭 시에도
-      최대한 전체 영역을 사용
-    */
-
-    consultDate.addEventListener(
-      "click",
-      function(){
-
-        try{
-
-          if(
-            typeof consultDate.showPicker ===
-            "function"
-          ){
-
-            consultDate.showPicker();
-
-          }
-
-        }catch(error){
-
-          console.log(
-            "날짜 선택기 호출 실패:",
-            error
-          );
-
-        }
-
-      }
-    );
-
-  }
-
-
-  /* =========================
-     RESERVATION
-  ========================= */
-
-  if(leadForm){
+  if (leadForm) {
 
     leadForm.addEventListener(
       "submit",
-      async function(event){
+      async function (event) {
 
         event.preventDefault();
-
 
         const nameInput =
           document.getElementById("name");
@@ -2965,24 +2330,16 @@ document.addEventListener("DOMContentLoaded", function () {
             "website"
           );
 
-
-        /* 봇 차단 */
-
-        if(
+        if (
           websiteInput &&
           websiteInput.value
-        ){
-
+        ) {
           return;
-
         }
 
-
-        /* 이름 */
-
-        if(
+        if (
           !nameInput.value.trim()
-        ){
+        ) {
 
           alert(
             "이름을 입력해주세요."
@@ -2991,15 +2348,11 @@ document.addEventListener("DOMContentLoaded", function () {
           nameInput.focus();
 
           return;
-
         }
 
-
-        /* 전화번호 */
-
-        if(
+        if (
           !phoneInput.value.trim()
-        ){
+        ) {
 
           alert(
             "휴대폰 번호를 입력해주세요."
@@ -3008,9 +2361,7 @@ document.addEventListener("DOMContentLoaded", function () {
           phoneInput.focus();
 
           return;
-
         }
-
 
         const phone =
           phoneInput.value.replace(
@@ -3018,11 +2369,10 @@ document.addEventListener("DOMContentLoaded", function () {
             ""
           );
 
-
-        if(
+        if (
           phone.length < 10 ||
           phone.length > 11
-        ){
+        ) {
 
           alert(
             "휴대폰 번호를 정확하게 입력해주세요."
@@ -3031,47 +2381,24 @@ document.addEventListener("DOMContentLoaded", function () {
           phoneInput.focus();
 
           return;
-
         }
 
-
-        /* 날짜 */
-
-        if(
+        if (
           !consultDateInput.value
-        ){
+        ) {
 
           alert(
             "방문 희망일을 선택해주세요."
           );
 
-          try{
-
-            if(
-              typeof consultDateInput.showPicker ===
-              "function"
-            ){
-
-              consultDateInput.showPicker();
-
-            }
-
-          }catch(error){
-
-            consultDateInput.focus();
-
-          }
+          consultDateInput.focus();
 
           return;
-
         }
 
-
-        /* 시간 */
-
-        if(
+        if (
           !consultTimeInput.value
-        ){
+        ) {
 
           alert(
             "방문 희망시간을 선택해주세요."
@@ -3080,15 +2407,11 @@ document.addEventListener("DOMContentLoaded", function () {
           consultTimeInput.focus();
 
           return;
-
         }
 
-
-        /* 개인정보 */
-
-        if(
+        if (
           !privacyCheckbox.checked
-        ){
+        ) {
 
           alert(
             "개인정보 수집 및 이용에 동의해주세요."
@@ -3097,25 +2420,17 @@ document.addEventListener("DOMContentLoaded", function () {
           privacyCheckbox.focus();
 
           return;
-
         }
 
-
-        /* 버튼 잠금 */
-
-        submitButton.disabled =
-          true;
-
+        submitButton.disabled = true;
 
         formMessage.textContent =
           "방문예약 접수 및 알림톡 발송 중입니다...";
 
-
         formMessage.className =
           "message show";
 
-
-        try{
+        try {
 
           const response =
             await fetch(
@@ -3147,23 +2462,20 @@ document.addEventListener("DOMContentLoaded", function () {
               }
             );
 
-
           let result = {};
 
-
-          try{
+          try {
 
             result =
               await response.json();
 
-          }catch(jsonError){
+          } catch (jsonError) {
 
             result = {};
 
           }
 
-
-          if(response.ok){
+          if (response.ok) {
 
             formMessage.textContent =
               "방문예약이 성공적으로 접수되었습니다. 곧 연락드리겠습니다!";
@@ -3173,13 +2485,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             leadForm.reset();
 
-            /*
-              reset 후에도 최소 날짜 유지
-            */
-
-            setMinDate();
-
-          }else{
+          } else {
 
             throw new Error(
               result.error ||
@@ -3188,25 +2494,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
           }
 
-        }catch(error){
+        } catch (error) {
 
           console.error(
             "예약 전송 오류:",
             error
           );
 
-
           formMessage.textContent =
             "예약 접수 중 오류가 발생했습니다. 유선(1551-9708)으로 문의해 주세요.";
-
 
           formMessage.className =
             "message show error";
 
-        }finally{
+        } finally {
 
-          submitButton.disabled =
-            false;
+          submitButton.disabled = false;
 
         }
 
