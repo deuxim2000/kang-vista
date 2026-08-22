@@ -211,7 +211,35 @@ exports.handler = async function (event) {
 
 
     // =======================================================
-    // 10. 환경변수 누락 확인
+    // 10. 환경변수 상태 확인
+    // =======================================================
+
+    console.log(
+      "NCP 환경변수 상태:",
+      {
+        NCP_BIZ_SERVICE_ID:
+          !!serviceId,
+
+        NCP_ACCESS_KEY:
+          !!accessKey,
+
+        NCP_SECRET_KEY:
+          !!secretKey,
+
+        NCP_PLUS_FRIEND_ID:
+          !!plusFriendId,
+
+        NCP_TEMPLATE_CODE:
+          !!templateCode,
+
+        ADMIN_PHONE:
+          !!adminPhone
+      }
+    );
+
+
+    // =======================================================
+    // 11. 환경변수 누락 확인
     // =======================================================
 
     if (
@@ -229,25 +257,34 @@ exports.handler = async function (event) {
 
       return {
         statusCode: 500,
+
         headers: {
           "Content-Type":
             "application/json; charset=utf-8"
         },
-        body: JSON.stringify({
-          success: false,
-          error: "서버 환경설정이 완료되지 않았습니다."
-        })
+
+        body:
+          JSON.stringify({
+            success: false,
+            error:
+              "서버 환경설정이 완료되지 않았습니다."
+          })
       };
 
     }
 
 
     // =======================================================
-    // 11. 관리자 전화번호 정리
+    // 12. 관리자 전화번호 정리
     // =======================================================
 
     const cleanAdminPhone =
       String(adminPhone).replace(/\D/g, "");
+
+
+    // =======================================================
+    // 13. 관리자 전화번호 검증
+    // =======================================================
 
     if (
       !/^01[016789]\d{7,8}$/.test(
@@ -261,21 +298,25 @@ exports.handler = async function (event) {
 
       return {
         statusCode: 500,
+
         headers: {
           "Content-Type":
             "application/json; charset=utf-8"
         },
-        body: JSON.stringify({
-          success: false,
-          error: "관리자 전화번호 설정이 올바르지 않습니다."
-        })
+
+        body:
+          JSON.stringify({
+            success: false,
+            error:
+              "관리자 전화번호 설정이 올바르지 않습니다."
+          })
       };
 
     }
 
 
     // =======================================================
-    // 12. NCP SENS API URL
+    // 14. NCP SENS API URL
     // =======================================================
 
     const timestamp =
@@ -295,7 +336,7 @@ exports.handler = async function (event) {
 
 
     // =======================================================
-    // 13. NCP API Signature 생성
+    // 15. NCP API Signature 생성
     // =======================================================
 
     const space =
@@ -343,19 +384,7 @@ exports.handler = async function (event) {
 
 
     // =======================================================
-    // 14. 알림톡 템플릿 변수
-    //
-    // 등록된 템플릿:
-    //
-    // [더파크 비스타동원]
-    //
-    // 신규 방문예약이 접수되었습니다.
-    //
-    // 고객명: #{고객명}
-    // 휴대폰: #{휴대폰}
-    // 방문희망일: #{방문희망일}
-    // 방문시간: #{방문시간}
-    //
+    // 16. 알림톡 템플릿 변수 (content 추가 완료)
     // =======================================================
 
     const bodyData = {
@@ -375,7 +404,13 @@ exports.handler = async function (event) {
           to:
             cleanAdminPhone,
 
-          // ★ 템플릿 변수에 실제 값 전달
+          content: 
+            `[방문예약 안내]
+고객명: ${cleanName}
+휴대폰: ${cleanPhone}
+방문희망일: ${cleanDate}
+방문시간: ${cleanTime}`,
+
           templateParameters: {
 
             "고객명":
@@ -400,7 +435,7 @@ exports.handler = async function (event) {
 
 
     // =======================================================
-    // 15. NCP SENS 알림톡 발송
+    // 17. NCP SENS 알림톡 발송
     // =======================================================
 
     const response =
@@ -435,7 +470,7 @@ exports.handler = async function (event) {
 
 
     // =======================================================
-    // 16. NCP 응답 확인
+    // 18. NCP 응답 확인
     // =======================================================
 
     const responseText =
@@ -458,7 +493,7 @@ exports.handler = async function (event) {
 
 
     // =======================================================
-    // 17. HTTP 오류
+    // 19. NCP API 오류
     // =======================================================
 
     if (!response.ok) {
@@ -494,7 +529,7 @@ exports.handler = async function (event) {
 
 
     // =======================================================
-    // 18. 성공
+    // 20. 성공
     // =======================================================
 
     console.log(
@@ -531,7 +566,7 @@ exports.handler = async function (event) {
   } catch (error) {
 
     // =======================================================
-    // 19. 서버 예외
+    // 21. 서버 예외
     // =======================================================
 
     console.error(
@@ -559,7 +594,7 @@ exports.handler = async function (event) {
 
         })
 
-    };
+      };
 
   }
 
