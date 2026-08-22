@@ -1,5 +1,16 @@
 [build]
   publish = "."
 
+[[redirects]]
+  from = "/1551-9708"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/1551-9708/"
+  to = "/index.html"
+  status = 200
+
+# Netlify Functions
 [functions]
   directory = "netlify/functions"
