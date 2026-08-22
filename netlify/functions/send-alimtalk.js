@@ -384,7 +384,7 @@ exports.handler = async function (event) {
 
 
     // =======================================================
-    // 16. 알림톡 템플릿 변수 (등록된 템플릿 원본과 완벽 일치)
+    // 16. 알림톡 템플릿 변수 (NCP 원본 템플릿과 완벽 일치)
     // =======================================================
 
     const bodyData = {
@@ -405,11 +405,12 @@ exports.handler = async function (event) {
             cleanAdminPhone,
 
           content: 
-            `[방문예약 안내]
-고객명: ${cleanName}
-휴대폰: ${cleanPhone}
-방문희망일: ${cleanDate}
-방문시간: ${cleanTime}`,
+            `신규 방문예약이 접수되었습니다.
+
+고객명: #{고객명}
+휴대폰: #{휴대폰}
+방문희망일: #{방문희망일}
+방문시간: #{방문시간}`,
 
           templateParameters: {
 
