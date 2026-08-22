@@ -51,10 +51,6 @@ body{
   -webkit-text-size-adjust:100%;
 }
 
-body.modal-open{
-  overflow:hidden;
-}
-
 a{
   color:inherit;
   text-decoration:none;
@@ -137,7 +133,10 @@ button{
   text-align:right;
 }
 
-/* HEADER */
+
+/* =====================================================
+   HEADER
+===================================================== */
 
 .header{
   position:fixed;
@@ -212,7 +211,10 @@ button{
   line-height:1;
 }
 
-/* HERO */
+
+/* =====================================================
+   HERO
+===================================================== */
 
 .hero{
   position:relative;
@@ -302,7 +304,10 @@ button{
   text-shadow:none;
 }
 
-/* OVERVIEW */
+
+/* =====================================================
+   OVERVIEW
+===================================================== */
 
 .overview-grid{
   display:grid;
@@ -337,7 +342,10 @@ button{
   font-weight:600;
 }
 
-/* PREMIUM */
+
+/* =====================================================
+   PREMIUM
+===================================================== */
 
 .park{
   display:grid;
@@ -382,7 +390,10 @@ button{
   border-left:2px solid #4c9bd4;
 }
 
-/* COMPLEX */
+
+/* =====================================================
+   COMPLEX
+===================================================== */
 
 .complex{
   background:#f8fafc;
@@ -421,7 +432,10 @@ button{
   margin-top:30px;
 }
 
-/* UNIT */
+
+/* =====================================================
+   UNIT
+===================================================== */
 
 .unit-section{
   background:#fff;
@@ -450,9 +464,13 @@ button{
 
 .unit-vr-link{
   display:block;
+  width:100%;
   text-align:center;
   cursor:pointer;
   overflow:hidden;
+  border:0;
+  background:none;
+  padding:0;
 }
 
 .unit-vr-link img{
@@ -508,7 +526,10 @@ button{
   background:var(--orange);
 }
 
-/* CONTACT */
+
+/* =====================================================
+   CONTACT
+===================================================== */
 
 .contact-grid{
   display:grid;
@@ -689,7 +710,10 @@ button{
   pointer-events:none !important;
 }
 
-/* FOOTER */
+
+/* =====================================================
+   FOOTER
+===================================================== */
 
 .footer{
   padding:45px 0 100px;
@@ -713,7 +737,10 @@ button{
   font-weight:900;
 }
 
-/* FLOAT */
+
+/* =====================================================
+   FLOAT
+===================================================== */
 
 .float{
   position:fixed;
@@ -750,11 +777,12 @@ button{
   box-shadow:0 7px 25px rgba(0,0,0,.2);
 }
 
-/* POPUP */
 
-.popup01,
-.modal,
-.vr-modal{
+/* =====================================================
+   POPUP
+===================================================== */
+
+.popup01{
   position:fixed;
   inset:0;
   z-index:3000;
@@ -766,9 +794,7 @@ button{
   height:100%;
 }
 
-.popup01.show,
-.modal.show,
-.vr-modal.show{
+.popup01.show{
   display:flex;
 }
 
@@ -827,7 +853,26 @@ button{
   text-align:center;
 }
 
-/* PRIVACY MODAL */
+
+/* =====================================================
+   PRIVACY MODAL
+===================================================== */
+
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:4000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,.65);
+  width:100%;
+  height:100%;
+}
+
+.modal.show{
+  display:flex;
+}
 
 .modal-box{
   width:min(700px,92%);
@@ -872,78 +917,21 @@ button{
   font-size:13px;
 }
 
-/* VR MODAL */
 
-.vr-modal{
-  z-index:5000;
-  padding:15px;
-  background:rgba(0,0,0,.88);
+/* =====================================================
+   VR 안내
+   실제 VR 페이지를 새 창으로 열기 때문에
+   메인 페이지에는 별도 VR iframe을 사용하지 않습니다.
+===================================================== */
+
+.vr-mobile-notice{
+  display:none;
 }
 
-.vr-modal-box{
-  position:relative;
-  width:min(1200px,100%);
-  height:min(92vh,850px);
-  background:#000;
-  border-radius:10px;
-  overflow:hidden;
-  box-shadow:0 20px 70px rgba(0,0,0,.5);
-}
 
-.vr-modal-head{
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  z-index:10;
-  height:54px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 15px 0 20px;
-  background:linear-gradient(
-    to bottom,
-    rgba(0,0,0,.75),
-    rgba(0,0,0,0)
-  );
-  color:#fff;
-  pointer-events:none;
-}
-
-.vr-modal-title{
-  font-size:15px;
-  font-weight:800;
-  text-shadow:0 1px 3px #000;
-}
-
-.vr-close{
-  pointer-events:auto;
-  width:42px;
-  height:42px;
-  border:0;
-  border-radius:50%;
-  background:rgba(0,0,0,.7);
-  color:#fff;
-  font-size:30px;
-  line-height:1;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.vr-close:hover{
-  background:var(--orange);
-}
-
-#vrFrame{
-  width:100%;
-  height:100%;
-  display:block;
-  border:0;
-  background:#000;
-}
-
-/* MOBILE */
+/* =====================================================
+   MOBILE
+===================================================== */
 
 @media(max-width:900px){
 
@@ -1036,25 +1024,25 @@ button{
     font-size:16px;
   }
 
-  .vr-modal{
-    padding:0;
+  .unit-vr-link{
+    -webkit-tap-highlight-color:transparent;
   }
 
-  .vr-modal-box{
-    width:100%;
-    height:100%;
-    max-height:none;
-    border-radius:0;
+}
+
+
+/* =====================================================
+   VR 안내 페이지용 모바일 브라우저 대응
+===================================================== */
+
+@media(max-width:600px){
+
+  .vr-button{
+    width:calc(100% - 40px);
+    margin-left:20px;
+    margin-right:20px;
   }
 
-  .vr-modal-head{
-    height:60px;
-  }
-
-  .vr-close{
-    width:44px;
-    height:44px;
-  }
 }
 </style>
 </head>
@@ -1062,38 +1050,95 @@ button{
 <body>
 
 <header class="header" id="header">
+
   <div class="container nav">
 
-    <button class="logo" type="button" data-target="top" aria-label="더파크 비스타동원 홈">
-      <img src="images/logo.png" alt="더파크 비스타동원" width="160" height="40">
+    <button
+      class="logo"
+      type="button"
+      data-target="top"
+      aria-label="더파크 비스타동원 홈"
+    >
+      <img
+        src="images/logo.png"
+        alt="더파크 비스타동원"
+        width="160"
+        height="40"
+      >
     </button>
 
-    <nav class="menu" id="mainMenu" aria-label="주요 메뉴">
-      <button type="button" data-target="overviewSection">사업개요</button>
-      <button type="button" data-target="premiumSection">프리미엄</button>
-      <button type="button" data-target="locationSection">입지환경</button>
-      <button type="button" data-target="complexSection">단지안내</button>
-      <button type="button" data-target="unitSection">주택형</button>
-      <button type="button" data-target="communitySection">커뮤니티</button>
-      <button type="button" data-target="contactSection">방문예약</button>
+    <nav
+      class="menu"
+      id="mainMenu"
+      aria-label="주요 메뉴"
+    >
+
+      <button type="button" data-target="overviewSection">
+        사업개요
+      </button>
+
+      <button type="button" data-target="premiumSection">
+        프리미엄
+      </button>
+
+      <button type="button" data-target="locationSection">
+        입지환경
+      </button>
+
+      <button type="button" data-target="complexSection">
+        단지안내
+      </button>
+
+      <button type="button" data-target="unitSection">
+        주택형
+      </button>
+
+      <button type="button" data-target="communitySection">
+        커뮤니티
+      </button>
+
+      <button type="button" data-target="contactSection">
+        방문예약
+      </button>
+
     </nav>
 
-    <a class="header-phone" href="tel:15519708">☎ 1551-9708</a>
+    <a
+      class="header-phone"
+      href="tel:15519708"
+    >
+      ☎ 1551-9708
+    </a>
 
-    <button class="mobile-menu" id="menuToggle" type="button" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+    <button
+      class="mobile-menu"
+      id="menuToggle"
+      type="button"
+      aria-label="메뉴 열기"
+      aria-expanded="false"
+    >
+      ☰
+    </button>
 
   </div>
+
 </header>
 
-<!-- HERO -->
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
 <section class="hero" id="home">
 
   <div class="hero-photo">
+
     <img
       src="images/photo01.webp"
       alt="더파크 비스타동원 아파트 조감도"
       fetchpriority="high"
     >
+
   </div>
 
   <div class="container hero-content">
@@ -1103,6 +1148,7 @@ button{
     </div>
 
     <h1>
+
       <span class="hero-main-title">
         공원 속의 프리미엄아파트
       </span>
@@ -1110,6 +1156,7 @@ button{
       <span class="hero-subtitle">
         사상공원 민간공원 특례사업
       </span>
+
     </h1>
 
     <p class="hero-text">
@@ -1118,6 +1165,7 @@ button{
     </p>
 
     <div class="hero-btn-group">
+
       <button
         type="button"
         class="hero-vr-btn"
@@ -1125,17 +1173,28 @@ button{
       >
         ✨ 360° VR 모델하우스 보기
       </button>
+
     </div>
 
   </div>
 
 </section>
 
-<!-- OVERVIEW -->
-<section class="section" id="overviewSection">
+
+<!-- =====================================================
+     OVERVIEW
+===================================================== -->
+
+<section
+  class="section"
+  id="overviewSection"
+>
+
   <div class="container">
 
-    <div class="label">PROJECT OVERVIEW</div>
+    <div class="label">
+      PROJECT OVERVIEW
+    </div>
 
     <h2 class="title center">
       도시와 자연의 가치를<br>
@@ -1149,6 +1208,7 @@ button{
     <div class="overview-grid">
 
       <div class="photo">
+
         <img
           src="images/photo02.webp"
           alt="더파크 비스타동원 사업개요"
@@ -1156,6 +1216,7 @@ button{
           width="600"
           height="400"
         >
+
       </div>
 
       <dl class="info">
@@ -1188,15 +1249,22 @@ button{
       </dl>
 
     </div>
+
   </div>
+
 </section>
 
-<!-- PREMIUM -->
+
+<!-- =====================================================
+     PREMIUM
+===================================================== -->
+
 <section id="premiumSection">
 
   <div class="park">
 
     <div class="photo">
+
       <img
         src="images/photo03.webp"
         alt="사상공원 프리미엄"
@@ -1204,11 +1272,14 @@ button{
         width="600"
         height="400"
       >
+
     </div>
 
     <div class="park-content">
 
-      <div class="label">PREMIUM</div>
+      <div class="label">
+        PREMIUM
+      </div>
 
       <h2>
         프리미엄 라이프를<br>
@@ -1228,10 +1299,16 @@ button{
 
   </div>
 
-  <div class="section" style="padding-top:30px;">
+
+  <div
+    class="section"
+    style="padding-top:30px;"
+  >
+
     <div class="container">
 
       <div class="full-image img-premium">
+
         <img
           src="images/premium_total.webp"
           alt="더파크 비스타동원 프리미엄 안내"
@@ -1239,6 +1316,7 @@ button{
           height="2130"
           loading="lazy"
         >
+
       </div>
 
       <p class="reference">
@@ -1246,16 +1324,26 @@ button{
       </p>
 
     </div>
+
   </div>
 
 </section>
 
-<!-- LOCATION -->
-<section class="section" id="locationSection">
+
+<!-- =====================================================
+     LOCATION
+===================================================== -->
+
+<section
+  class="section"
+  id="locationSection"
+>
 
   <div class="container">
 
-    <div class="label">LOCATION</div>
+    <div class="label">
+      LOCATION
+    </div>
 
     <h2 class="title center">
       생활과 교통을 가까이 누리는<br>
@@ -1266,6 +1354,7 @@ button{
       class="full-image img-location"
       style="margin-top:30px;"
     >
+
       <img
         src="images/location_total.webp"
         alt="더파크 비스타동원 입지환경"
@@ -1273,6 +1362,7 @@ button{
         height="3432"
         loading="lazy"
       >
+
     </div>
 
     <p class="reference">
@@ -1283,14 +1373,23 @@ button{
 
 </section>
 
-<!-- COMPLEX -->
-<section class="section complex" id="complexSection">
+
+<!-- =====================================================
+     COMPLEX
+===================================================== -->
+
+<section
+  class="section complex"
+  id="complexSection"
+>
 
   <div class="container">
 
     <div class="center">
 
-      <div class="label">COMPLEX</div>
+      <div class="label">
+        COMPLEX
+      </div>
 
       <h2 class="title">
         852세대 대단지의<br>
@@ -1324,6 +1423,7 @@ button{
     </div>
 
     <div class="complex-photo full-image">
+
       <img
         src="images/photo05.webp"
         alt="더파크 비스타동원 단지 조감도"
@@ -1331,9 +1431,11 @@ button{
         width="1100"
         height="600"
       >
+
     </div>
 
     <div class="complex-photo full-image">
+
       <img
         src="images/complex_add.webp"
         alt="더파크 비스타동원 단지 안내"
@@ -1341,20 +1443,30 @@ button{
         width="1100"
         height="600"
       >
+
     </div>
 
   </div>
 
 </section>
 
-<!-- UNIT -->
-<section class="section unit-section" id="unitSection">
+
+<!-- =====================================================
+     UNIT
+===================================================== -->
+
+<section
+  class="section unit-section"
+  id="unitSection"
+>
 
   <div class="container">
 
     <div class="center">
 
-      <div class="label">UNIT PLAN & VR</div>
+      <div class="label">
+        UNIT PLAN & VR
+      </div>
 
       <h2 class="title">
         가족의 라이프스타일을 담은<br>
@@ -1367,20 +1479,33 @@ button{
 
     </div>
 
+
     <div class="unit-list">
 
-      <!-- 84A -->
+
+      <!-- =================================================
+           84A
+      ================================================= -->
+
       <article class="unit-card">
 
         <div class="unit-type">
-          <small>TYPE 84A</small>
-          <h3>84㎡ A</h3>
+
+          <small>
+            TYPE 84A
+          </small>
+
+          <h3>
+            84㎡ A
+          </h3>
+
         </div>
+
 
         <button
           type="button"
           class="unit-vr-link"
-          data-vr="http://www.xn--9m1bxju0y9pev6fvvq4qa20m.com//vr/84a.html?v=251014"
+          data-vr="http://www.xn--9m1bxju0y9pev6fvvq4qa20m.com/vr/84a.html?v=251014"
           data-vr-title="84A 타입 360° VR"
           aria-label="84A 타입 360도 VR 보기"
         >
@@ -1401,18 +1526,30 @@ button{
 
       </article>
 
-      <!-- 84C -->
+
+      <!-- =================================================
+           84C
+      ================================================= -->
+
       <article class="unit-card">
 
         <div class="unit-type">
-          <small>TYPE 84C</small>
-          <h3>84㎡ C</h3>
+
+          <small>
+            TYPE 84C
+          </small>
+
+          <h3>
+            84㎡ C
+          </h3>
+
         </div>
+
 
         <button
           type="button"
           class="unit-vr-link"
-          data-vr="http://www.xn--9m1bxju0y9pev6fvvq4qa20m.com//vr/84c.html?v=251014"
+          data-vr="http://www.xn--9m1bxju0y9pev6fvvq4qa20m.com/vr/84c.html?v=251014"
           data-vr-title="84C 타입 360° VR"
           aria-label="84C 타입 360도 VR 보기"
         >
@@ -1439,7 +1576,11 @@ button{
 
 </section>
 
-<!-- COMMUNITY -->
+
+<!-- =====================================================
+     COMMUNITY
+===================================================== -->
+
 <section
   class="section community"
   id="communitySection"
@@ -1447,7 +1588,9 @@ button{
 
   <div class="container">
 
-    <div class="label">COMMUNITY</div>
+    <div class="label">
+      COMMUNITY
+    </div>
 
     <h2 class="title center">
       일상에 품격을 더하는<br>
@@ -1458,6 +1601,7 @@ button{
       class="full-image img-community"
       style="margin-top:30px;"
     >
+
       <img
         src="images/community_total.webp"
         alt="더파크 비스타동원 커뮤니티 시설 안내"
@@ -1465,6 +1609,7 @@ button{
         height="1442"
         loading="lazy"
       >
+
     </div>
 
     <p class="reference">
@@ -1475,14 +1620,20 @@ button{
 
 </section>
 
-<!-- PROJECT IMAGE -->
+
+<!-- =====================================================
+     PROJECT IMAGE
+===================================================== -->
+
 <section class="section">
 
   <div class="container">
 
     <div class="center">
 
-      <div class="label">PROJECT IMAGE</div>
+      <div class="label">
+        PROJECT IMAGE
+      </div>
 
       <h2 class="title">
         더파크 비스타동원의<br>
@@ -1495,6 +1646,7 @@ button{
       class="full-image"
       style="margin-top:30px;"
     >
+
       <img
         src="images/photo11.webp"
         alt="더파크 비스타동원 프로젝트 이미지"
@@ -1502,14 +1654,22 @@ button{
         width="1100"
         height="600"
       >
+
     </div>
 
   </div>
 
 </section>
 
-<!-- CONTACT -->
-<section class="section" id="contactSection">
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+
+<section
+  class="section"
+  id="contactSection"
+>
 
   <div class="container contact-grid">
 
@@ -1537,11 +1697,17 @@ button{
         class="phone-big"
         aria-label="1551-9708 전화하기"
       >
-        <span class="phone-circle">☎</span>
+
+        <span class="phone-circle">
+          ☎
+        </span>
+
         1551-9708
+
       </a>
 
     </div>
+
 
     <form
       class="form"
@@ -1549,13 +1715,17 @@ button{
       novalidate
     >
 
-      <h3>방문예약</h3>
+      <h3>
+        방문예약
+      </h3>
 
       <p class="form-sub">
         방문을 원하시는 정보를 입력해주세요.
       </p>
 
+
       <div class="hp-field">
+
         <input
           id="website"
           name="website"
@@ -1563,7 +1733,9 @@ button{
           tabindex="-1"
           autocomplete="off"
         >
+
       </div>
+
 
       <div class="form-row">
 
@@ -1583,6 +1755,7 @@ button{
 
       </div>
 
+
       <div class="form-row">
 
         <label for="phone">
@@ -1601,6 +1774,7 @@ button{
         >
 
       </div>
+
 
       <div class="form-row">
 
@@ -1626,6 +1800,7 @@ button{
         </div>
 
       </div>
+
 
       <div class="form-row">
 
@@ -1656,6 +1831,7 @@ button{
 
       </div>
 
+
       <div class="privacy">
 
         <div class="privacy-head">
@@ -1674,6 +1850,7 @@ button{
 
         </div>
 
+
         <label class="agree">
 
           <input
@@ -1684,19 +1861,28 @@ button{
           >
 
           <span>
-            <span class="required">[필수]</span>
+            <span class="required">
+              [필수]
+            </span>
+
             개인정보 수집 및 이용에 동의합니다.
           </span>
 
         </label>
 
+
         <div class="privacy-summary">
+
           수집항목 : 이름, 휴대폰 번호, 방문 희망일, 방문 희망시간<br>
+
           수집목적 : 방문예약 및 상담<br>
+
           보유기간 : 상담 목적 달성 후 지체 없이 파기
+
         </div>
 
       </div>
+
 
       <button
         class="submit"
@@ -1705,6 +1891,7 @@ button{
       >
         방문예약 신청하기
       </button>
+
 
       <div
         class="message"
@@ -1719,7 +1906,11 @@ button{
 
 </section>
 
-<!-- FOOTER -->
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
 <footer class="footer">
 
   <div class="container">
@@ -1745,9 +1936,11 @@ button{
     </p>
 
     <p class="footer-phone">
+
       <a href="tel:01094892528">
         광고문의 ㅣ 010-9489-2528
       </a>
+
     </p>
 
     <button
@@ -1762,7 +1955,11 @@ button{
 
 </footer>
 
-<!-- FLOAT -->
+
+<!-- =====================================================
+     FLOAT
+===================================================== -->
+
 <div class="float">
 
   <button
@@ -1783,7 +1980,11 @@ button{
 
 </div>
 
-<!-- POPUP -->
+
+<!-- =====================================================
+     POPUP
+===================================================== -->
+
 <div
   class="popup01"
   id="popup01"
@@ -1828,6 +2029,7 @@ button{
 
       </div>
 
+
       <div
         class="popup-box"
         id="popupBox2"
@@ -1862,6 +2064,7 @@ button{
 
     </div>
 
+
     <div class="popup-notice">
       팝업을 터치하거나 바깥 영역을 누르면 다음 팝업이 열리거나 닫힙니다.
     </div>
@@ -1870,7 +2073,11 @@ button{
 
 </div>
 
-<!-- PRIVACY -->
+
+<!-- =====================================================
+     PRIVACY
+===================================================== -->
+
 <div
   class="modal"
   id="privacyModal"
@@ -1896,9 +2103,11 @@ button{
 
     </div>
 
+
     <div class="modal-body">
 
       <div class="policy">
+
         <h4>
           1. 개인정보의 수집 및 이용 목적
         </h4>
@@ -1906,9 +2115,12 @@ button{
         <p>
           방문예약 및 상담 신청, 문의사항 답변과 관련 안내를 위해 개인정보를 수집·이용합니다.
         </p>
+
       </div>
 
+
       <div class="policy">
+
         <h4>
           2. 수집하는 개인정보 항목
         </h4>
@@ -1916,9 +2128,12 @@ button{
         <p>
           이름, 휴대폰 번호, 방문 희망일, 방문 희망시간
         </p>
+
       </div>
 
+
       <div class="policy">
+
         <h4>
           3. 개인정보 보유 및 이용기간
         </h4>
@@ -1926,9 +2141,12 @@ button{
         <p>
           상담 및 방문예약 목적 달성 후 지체 없이 파기합니다.
         </p>
+
       </div>
 
+
       <div class="policy">
+
         <h4>
           4. 동의 거부권
         </h4>
@@ -1936,9 +2154,12 @@ button{
         <p>
           이용자는 개인정보 수집 및 이용에 대한 동의를 거부할 권리가 있습니다.
         </p>
+
       </div>
 
+
       <div class="policy">
+
         <h4>
           5. 개인정보 제3자 제공
         </h4>
@@ -1946,9 +2167,12 @@ button{
         <p>
           원칙적으로 개인정보를 제3자에게 제공하지 않습니다.
         </p>
+
       </div>
 
+
       <div class="policy">
+
         <h4>
           6. 개인정보 보호책임자
         </h4>
@@ -1956,6 +2180,7 @@ button{
         <p>
           상담전화 : 1551-9708
         </p>
+
       </div>
 
     </div>
@@ -1964,55 +2189,15 @@ button{
 
 </div>
 
-<!-- VR MODAL -->
-<div
-  class="vr-modal"
-  id="vrModal"
-  role="dialog"
-  aria-modal="true"
-  aria-label="360도 VR 모델하우스"
->
-
-  <div class="vr-modal-box">
-
-    <div class="vr-modal-head">
-
-      <strong
-        class="vr-modal-title"
-        id="vrModalTitle"
-      >
-        360° VR 모델하우스
-      </strong>
-
-      <button
-        type="button"
-        class="vr-close"
-        id="vrClose"
-        aria-label="VR 닫기"
-      >
-        ×
-      </button>
-
-    </div>
-
-    <iframe
-      id="vrFrame"
-      src="about:blank"
-      title="360도 VR 모델하우스"
-      frameborder="0"
-      allow="autoplay; fullscreen; gyroscope; accelerometer"
-      allowfullscreen
-      loading="eager"
-    ></iframe>
-
-  </div>
-
-</div>
 
 <script>
 "use strict";
 
 document.addEventListener("DOMContentLoaded", function () {
+
+  /* =====================================================
+     ELEMENT
+  ===================================================== */
 
   const header =
     document.getElementById("header");
@@ -2035,18 +2220,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const privacyModal =
     document.getElementById("privacyModal");
 
-  const vrModal =
-    document.getElementById("vrModal");
-
-  const vrFrame =
-    document.getElementById("vrFrame");
-
-  const vrClose =
-    document.getElementById("vrClose");
-
-  const vrModalTitle =
-    document.getElementById("vrModalTitle");
-
   const leadForm =
     document.getElementById("leadForm");
 
@@ -2058,72 +2231,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   /* =====================================================
-     MODAL SCROLL POSITION
-     모달을 열기 전 위치를 저장하고
-     닫을 때 정확히 그 위치로 돌아갑니다.
+     SCROLL POSITION
   ===================================================== */
 
   let savedScrollY = 0;
 
-  function lockBody() {
 
-    if (!document.body.classList.contains("modal-open")) {
+  function saveScrollPosition() {
 
-      savedScrollY =
-        window.scrollY ||
-        window.pageYOffset ||
-        0;
-
-    }
-
-    document.body.classList.add(
-      "modal-open"
-    );
-
-  }
-
-  function unlockBody() {
-
-    document.body.classList.remove(
-      "modal-open"
-    );
-
-    window.scrollTo({
-      top:savedScrollY,
-      left:0,
-      behavior:"auto"
-    });
-
-  }
-
-
-  function updateBodyLock() {
-
-    const popupOpen =
-      popup &&
-      popup.classList.contains("show");
-
-    const privacyOpen =
-      privacyModal &&
-      privacyModal.classList.contains("show");
-
-    const vrOpen =
-      vrModal &&
-      vrModal.classList.contains("show");
-
-    if (
-      popupOpen ||
-      privacyOpen ||
-      vrOpen
-    ) {
-
-      lockBody();
-
-    } else {
-
-      unlockBody();
-
-    }
+    savedScrollY =
+      window.scrollY ||
+      window.pageYOffset ||
+      0;
 
   }
 
@@ -2149,6 +2268,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
+
     if (targetId === "top") {
 
       window.scrollTo({
@@ -2157,7 +2277,9 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       return;
+
     }
+
 
     const target =
       document.getElementById(targetId);
@@ -2166,15 +2288,18 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
+
     const headerHeight =
-      (header ?
-        header.offsetHeight :
-        80) - 15;
+      header ?
+      header.offsetHeight - 15 :
+      65;
+
 
     const targetPosition =
       target.getBoundingClientRect().top +
       window.pageYOffset -
       headerHeight;
+
 
     window.scrollTo({
       top:targetPosition,
@@ -2199,9 +2324,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
           if (targetId) {
 
-            moveToSection(
-              targetId
-            );
+            moveToSection(targetId);
 
           }
 
@@ -2227,13 +2350,16 @@ document.addEventListener("DOMContentLoaded", function () {
           return;
         }
 
+
         const isOpen =
           mainMenu.classList.toggle(
             "active"
           );
 
+
         menuToggle.textContent =
           isOpen ? "✕" : "☰";
+
 
         menuToggle.setAttribute(
           "aria-expanded",
@@ -2247,21 +2373,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   /* =====================================================
-     HEADER
+     HEADER SHADOW
   ===================================================== */
 
   window.addEventListener(
     "scroll",
     function () {
 
-      if (header) {
-
-        header.classList.toggle(
-          "scrolled",
-          window.scrollY > 40
-        );
-
+      if (!header) {
+        return;
       }
+
+      header.classList.toggle(
+        "scrolled",
+        window.scrollY > 40
+      );
 
     },
     {
@@ -2271,74 +2397,205 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   /* =====================================================
-     VR MODAL
-     여기서 VR 주소를 실제로 연결합니다.
+     VR POPUP WINDOW
+     
+     핵심 기능
+
+     데스크톱:
+     window.open으로 지정된 크기의 팝업창
+
+     모바일:
+     브라우저 정책상 새 탭으로 열릴 수 있음.
+     이 경우 VR 페이지 자체에서
+     "뒤로가기를 눌러 원래 사이트로 돌아가세요"
+     안내를 표시할 수 있도록
+     URL 파라미터를 추가합니다.
   ===================================================== */
 
-  function openVR(url, title) {
 
-    if (!vrModal || !vrFrame) {
-      return;
-    }
+  function isMobileDevice() {
 
-    /*
-     * 현재 페이지 위치를 먼저 저장합니다.
-     */
-    savedScrollY =
-      window.scrollY ||
-      window.pageYOffset ||
-      0;
-
-    /*
-     * VR 주소를 iframe에 넣습니다.
-     */
-    vrFrame.src = url;
-
-    if (vrModalTitle) {
-
-      vrModalTitle.textContent =
-        title ||
-        "360° VR 모델하우스";
-
-    }
-
-    vrModal.classList.add(
-      "show"
+    return (
+      window.innerWidth <= 900 ||
+      /Android|iPhone|iPad|iPod/i.test(
+        navigator.userAgent
+      )
     );
-
-    lockBody();
 
   }
 
 
-  function closeVR() {
+  function openVRWindow(url, title) {
 
-    if (!vrModal) {
+    if (!url) {
       return;
     }
 
-    vrModal.classList.remove(
-      "show"
-    );
+
+    saveScrollPosition();
+
 
     /*
-     * iframe을 비워서
-     * VR의 소리/영상/메모리 등을 정리합니다.
+     * 모바일에서는 뒤로가기 안내를
+     * VR 주소에 파라미터로 전달합니다.
+     *
+     * 단, 실제 VR 페이지가 이 파라미터를
+     * 처리하지 않는다면 아무 변화가 없습니다.
      */
-    if (vrFrame) {
-      vrFrame.src = "about:blank";
+    let vrUrl = url;
+
+
+    try {
+
+      const urlObject =
+        new URL(url);
+
+
+      urlObject.searchParams.set(
+        "from",
+        "main"
+      );
+
+
+      urlObject.searchParams.set(
+        "vrTitle",
+        title || "360° VR 모델하우스"
+      );
+
+
+      vrUrl =
+        urlObject.toString();
+
+    } catch (error) {
+
+      vrUrl = url;
+
     }
 
-    /*
-     * 닫은 뒤 반드시 원래 보던 위치로 복귀합니다.
-     */
-    updateBodyLock();
 
-    window.scrollTo({
-      top:savedScrollY,
-      left:0,
-      behavior:"auto"
-    });
+    /*
+     * 모바일
+     *
+     * 모바일 브라우저는
+     * window.open의 width/height를
+     * 무시할 수 있습니다.
+     *
+     * 그래도 window.open을 사용합니다.
+     */
+    if (isMobileDevice()) {
+
+      const mobileWindow =
+        window.open(
+          vrUrl,
+          "_blank",
+          "noopener,noreferrer"
+        );
+
+
+      /*
+       * 팝업 차단된 경우
+       */
+      if (!mobileWindow) {
+
+        alert(
+          "VR 화면이 차단되었습니다.\n\n" +
+          "브라우저의 팝업 허용 후 다시 눌러주세요."
+        );
+
+      }
+
+      return;
+
+    }
+
+
+    /*
+     * 데스크톱 팝업
+     */
+
+    const popupWidth = 1200;
+    const popupHeight = 850;
+
+
+    const screenWidth =
+      window.screen.availWidth ||
+      window.innerWidth;
+
+
+    const screenHeight =
+      window.screen.availHeight ||
+      window.innerHeight;
+
+
+    const left =
+      Math.max(
+        0,
+        Math.round(
+          (screenWidth - popupWidth) / 2
+        )
+      );
+
+
+    const top =
+      Math.max(
+        0,
+        Math.round(
+          (screenHeight - popupHeight) / 2
+        )
+      );
+
+
+    const features =
+      [
+        "width=" + popupWidth,
+        "height=" + popupHeight,
+        "left=" + left,
+        "top=" + top,
+        "resizable=yes",
+        "scrollbars=yes",
+        "toolbar=no",
+        "menubar=no",
+        "location=yes",
+        "status=no"
+      ].join(",");
+
+
+    const vrWindow =
+      window.open(
+        vrUrl,
+        "theparkVistaVR",
+        features
+      );
+
+
+    /*
+     * 브라우저가 팝업을 차단한 경우
+     */
+    if (!vrWindow) {
+
+      alert(
+        "VR 팝업이 차단되었습니다.\n\n" +
+        "브라우저에서 팝업을 허용한 후 다시 눌러주세요."
+      );
+
+      return;
+
+    }
+
+
+    /*
+     * 팝업창이 정상적으로 열린 경우
+     */
+    try {
+
+      vrWindow.focus();
+
+    } catch (error) {
+
+      /* 브라우저 보안정책으로 focus가
+         막혀도 기능에는 문제가 없습니다. */
+
+    }
 
   }
 
@@ -2346,6 +2603,7 @@ document.addEventListener("DOMContentLoaded", function () {
   /*
    * 84A / 84C VR 버튼
    */
+
   document
     .querySelectorAll(".unit-vr-link")
     .forEach(function (button) {
@@ -2356,19 +2614,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
           event.preventDefault();
 
+
           const url =
             this.getAttribute("data-vr");
+
 
           const title =
             this.getAttribute(
               "data-vr-title"
             );
 
-          if (!url) {
-            return;
-          }
 
-          openVR(
+          openVRWindow(
             url,
             title
           );
@@ -2379,86 +2636,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-  /*
-   * VR 닫기 버튼
-   */
-  if (vrClose) {
-
-    vrClose.addEventListener(
-      "click",
-      function (event) {
-
-        event.preventDefault();
-
-        closeVR();
-
-      }
-    );
-
-  }
-
-
-  /*
-   * VR 바깥쪽 클릭하면 닫기
-   */
-  if (vrModal) {
-
-    vrModal.addEventListener(
-      "click",
-      function (event) {
-
-        if (
-          event.target === vrModal
-        ) {
-
-          closeVR();
-
-        }
-
-      }
-    );
-
-  }
-
-
-  /* =====================================================
-     ESC
-  ===================================================== */
-
-  document.addEventListener(
-    "keydown",
-    function (event) {
-
-      if (event.key !== "Escape") {
-        return;
-      }
-
-      if (
-        vrModal &&
-        vrModal.classList.contains("show")
-      ) {
-
-        closeVR();
-
-        return;
-
-      }
-
-      if (
-        privacyModal &&
-        privacyModal.classList.contains("show")
-      ) {
-
-        closePrivacyModal();
-
-        return;
-
-      }
-
-    }
-  );
-
-
   /* =====================================================
      POPUP
   ===================================================== */
@@ -2467,6 +2644,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const isMobile =
       window.innerWidth <= 900;
+
 
     if (isMobile) {
 
@@ -2506,20 +2684,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
+
     popup.classList.add(
       "show"
     );
 
-    updateBodyLock();
 
-
-    /*
-     * 팝업 닫기 버튼
-     *
-     * 기존에는 버튼을 눌러도
-     * 부모 popup 클릭 이벤트까지 같이 발생할 수 있어서
-     * 여기서는 별도로 처리합니다.
-     */
     document
       .querySelectorAll(".popupCloseBtn")
       .forEach(function (button) {
@@ -2529,13 +2699,12 @@ document.addEventListener("DOMContentLoaded", function () {
           function (event) {
 
             event.preventDefault();
+
             event.stopPropagation();
 
             popup.classList.remove(
               "show"
             );
-
-            updateBodyLock();
 
           }
         );
@@ -2547,9 +2716,6 @@ document.addEventListener("DOMContentLoaded", function () {
       "click",
       function (event) {
 
-        /*
-         * 닫기 버튼은 위에서 처리
-         */
         if (
           event.target.closest(
             ".popupCloseBtn"
@@ -2558,9 +2724,7 @@ document.addEventListener("DOMContentLoaded", function () {
           return;
         }
 
-        /*
-         * 팝업 바깥쪽을 클릭한 경우 닫기
-         */
+
         if (
           event.target === popup
         ) {
@@ -2569,8 +2733,6 @@ document.addEventListener("DOMContentLoaded", function () {
             "show"
           );
 
-          updateBodyLock();
-
           return;
 
         }
@@ -2578,6 +2740,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const isMobileNow =
           window.innerWidth <= 900;
+
 
         if (isMobileNow) {
 
@@ -2591,6 +2754,7 @@ document.addEventListener("DOMContentLoaded", function () {
             popupBox1.classList.remove(
               "active-mobile"
             );
+
 
             if (popupBox2) {
 
@@ -2611,8 +2775,6 @@ document.addEventListener("DOMContentLoaded", function () {
               "show"
             );
 
-            updateBodyLock();
-
           }
 
         } else {
@@ -2620,8 +2782,6 @@ document.addEventListener("DOMContentLoaded", function () {
           popup.classList.remove(
             "show"
           );
-
-          updateBodyLock();
 
         }
 
@@ -2657,23 +2817,22 @@ document.addEventListener("DOMContentLoaded", function () {
       event.preventDefault();
     }
 
+
     if (!privacyModal) {
       return;
     }
 
-    /*
-     * 현재 위치 저장
-     */
-    savedScrollY =
-      window.scrollY ||
-      window.pageYOffset ||
-      0;
+
+    saveScrollPosition();
+
 
     privacyModal.classList.add(
       "show"
     );
 
-    lockBody();
+
+    document.body.style.overflow =
+      "hidden";
 
   }
 
@@ -2684,16 +2843,16 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
+
     privacyModal.classList.remove(
       "show"
     );
 
-    updateBodyLock();
 
-    /*
-     * 개인정보 모달 닫은 뒤
-     * 원래 위치 유지
-     */
+    document.body.style.overflow =
+      "";
+
+
     window.scrollTo({
       top:savedScrollY,
       left:0,
@@ -2755,6 +2914,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   /* =====================================================
+     ESC
+  ===================================================== */
+
+  document.addEventListener(
+    "keydown",
+    function (event) {
+
+      if (
+        event.key === "Escape"
+      ) {
+
+        if (
+          privacyModal &&
+          privacyModal.classList.contains(
+            "show"
+          )
+        ) {
+
+          closePrivacyModal();
+
+        }
+
+      }
+
+    }
+  );
+
+
+  /* =====================================================
      DATE
   ===================================================== */
 
@@ -2774,18 +2962,22 @@ document.addEventListener("DOMContentLoaded", function () {
     const today =
       new Date();
 
+
     const yyyy =
       today.getFullYear();
+
 
     const mm =
       String(
         today.getMonth() + 1
       ).padStart(2,"0");
 
+
     const dd =
       String(
         today.getDate()
       ).padStart(2,"0");
+
 
     return (
       yyyy +
@@ -2812,6 +3004,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
+
     try {
 
       if (
@@ -2824,6 +3017,7 @@ document.addEventListener("DOMContentLoaded", function () {
       } else {
 
         consultDate.focus();
+
         consultDate.click();
 
       }
@@ -2849,6 +3043,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ) {
           return;
         }
+
 
         openDatePicker();
 
@@ -2878,7 +3073,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   /* =====================================================
-     PHONE AUTO FORMAT
+     PHONE FORMAT
   ===================================================== */
 
   const phoneInput =
@@ -2898,6 +3093,7 @@ document.addEventListener("DOMContentLoaded", function () {
             /\D/g,
             ""
           );
+
 
         if (
           value.length <= 3
@@ -2944,30 +3140,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
         event.preventDefault();
 
+
         const nameInput =
           document.getElementById(
             "name"
           );
+
 
         const phoneInput =
           document.getElementById(
             "phone"
           );
 
+
         const consultDateInput =
           document.getElementById(
             "consultDate"
           );
+
 
         const consultTimeInput =
           document.getElementById(
             "consultTime"
           );
 
+
         const privacyCheckbox =
           document.getElementById(
             "privacy"
           );
+
 
         const websiteInput =
           document.getElementById(
@@ -3148,8 +3350,10 @@ document.addEventListener("DOMContentLoaded", function () {
             formMessage.textContent =
               "방문예약이 성공적으로 접수되었습니다. 곧 연락드리겠습니다!";
 
+
             formMessage.className =
               "message show success";
+
 
             leadForm.reset();
 
@@ -3170,8 +3374,10 @@ document.addEventListener("DOMContentLoaded", function () {
             error
           );
 
+
           formMessage.textContent =
             "예약 접수 중 오류가 발생했습니다. 유선(1551-9708)으로 문의해 주세요.";
+
 
           formMessage.className =
             "message show error";

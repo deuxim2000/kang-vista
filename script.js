@@ -1,9 +1,10 @@
+<script>
 "use strict";
 
 document.addEventListener("DOMContentLoaded", function () {
 
   /* =====================================================
-     기본 요소
+     ELEMENTS
   ===================================================== */
 
   const header =
@@ -38,70 +39,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   /* =====================================================
-     VR 요소
-  ===================================================== */
-
-  const vrModal =
-    document.getElementById("vrModal");
-
-  const vrFrame =
-    document.getElementById("vrFrame");
-
-  const vrModalClose =
-    document.getElementById("vrModalClose");
-
-  const vrModalTitle =
-    document.getElementById("vrModalTitle");
-
-  /*
-   * VR 모달을 열기 전 스크롤 위치
-   */
-  let savedScrollY = 0;
-
-
-  /* =====================================================
-     BODY LOCK
-  ===================================================== */
-
-  function updateBodyLock() {
-
-    const isOpen = Boolean(
-
-      (popup &&
-        popup.classList.contains("show"))
-
-      ||
-
-      (privacyModal &&
-        privacyModal.classList.contains("show"))
-
-      ||
-
-      (vrModal &&
-        vrModal.classList.contains("show"))
-
-    );
-
-    document.body.classList.toggle(
-      "modal-open",
-      isOpen
-    );
-
-  }
-
-
-  /* =====================================================
      SECTION MOVE
   ===================================================== */
 
   function moveToSection(targetId) {
 
     if (mainMenu) {
-
-      mainMenu.classList.remove(
-        "active"
-      );
-
+      mainMenu.classList.remove("active");
     }
 
     if (menuToggle) {
@@ -115,6 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
+
     if (targetId === "top") {
 
       window.scrollTo({
@@ -125,6 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
+
     const target =
       document.getElementById(targetId);
 
@@ -132,15 +78,18 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
+
     const headerHeight =
-      (header
+      header
         ? header.offsetHeight
-        : 80) - 15;
+        : 80;
+
 
     const targetPosition =
       target.getBoundingClientRect().top +
       window.pageYOffset -
       headerHeight;
+
 
     window.scrollTo({
       top: targetPosition,
@@ -151,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   /* =====================================================
-     DATA TARGET
+     NAVIGATION
   ===================================================== */
 
   document
@@ -165,16 +114,10 @@ document.addEventListener("DOMContentLoaded", function () {
           event.preventDefault();
 
           const targetId =
-            this.getAttribute(
-              "data-target"
-            );
+            this.getAttribute("data-target");
 
           if (targetId) {
-
-            moveToSection(
-              targetId
-            );
-
+            moveToSection(targetId);
           }
 
         }
@@ -187,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
      MOBILE MENU
   ===================================================== */
 
-  if (menuToggle) {
+  if (menuToggle && mainMenu) {
 
     menuToggle.addEventListener(
       "click",
@@ -195,25 +138,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
         event.preventDefault();
 
-        if (!mainMenu) {
-          return;
-        }
-
         const isOpen =
-          mainMenu.classList.toggle(
-            "active"
-          );
+          mainMenu.classList.toggle("active");
+
 
         menuToggle.textContent =
-          isOpen
-            ? "✕"
-            : "☰";
+          isOpen ? "✕" : "☰";
+
 
         menuToggle.setAttribute(
           "aria-expanded",
-          isOpen
-            ? "true"
-            : "false"
+          isOpen ? "true" : "false"
         );
 
       }
@@ -223,27 +158,276 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   /* =====================================================
-     HEADER
+     HEADER SCROLL
   ===================================================== */
 
   window.addEventListener(
     "scroll",
     function () {
 
-      if (header) {
-
-        header.classList.toggle(
-          "scrolled",
-          window.scrollY > 40
-        );
-
+      if (!header) {
+        return;
       }
+
+      header.classList.toggle(
+        "scrolled",
+        window.scrollY > 40
+      );
 
     },
     {
       passive: true
     }
   );
+
+
+  /* =====================================================
+     VR POPUP
+     
+     PC:
+       window.open() 팝업창
+
+     MOBILE:
+       브라우저 정책에 따라 새 탭/새 화면
+
+     중요:
+       VR 페이지 자체에 닫기 버튼을 만들지 않습니다.
+       모바일은 브라우저 뒤로가기를 사용합니다.
+  ===================================================== */
+
+
+  let vrWindow = null;
+
+
+  /*
+   * PC용 팝업 크기
+   */
+  function getVRPopupFeatures() {
+
+    const screenWidth =
+      window.screen.availWidth || 1200;
+
+    const screenHeight =
+      window.screen.availHeight || 800;
+
+
+    const popupWidth =
+      Math.min(
+        1200,
+        Math.max(
+          900,
+          screenWidth - 40
+        )
+      );
+
+
+    const popupHeight =
+      Math.min(
+        850,
+        Math.max(
+          650,
+          screenHeight - 80
+        )
+      );
+
+
+    const left =
+      Math.max(
+        0,
+        (screenWidth - popupWidth) / 2
+      );
+
+
+    const top =
+      Math.max(
+        0,
+        (screenHeight - popupHeight) / 2
+      );
+
+
+    return [
+      "width=" + popupWidth,
+      "height=" + popupHeight,
+      "left=" + left,
+      "top=" + top,
+      "resizable=yes",
+      "scrollbars=yes",
+      "toolbar=yes",
+      "menubar=no",
+      "location=yes",
+      "status=no"
+    ].join(",");
+
+  }
+
+
+  /*
+   * VR 열기
+   */
+  function openVR(url, title) {
+
+    if (!url) {
+      return;
+    }
+
+
+    /*
+     * 이미 열려 있는 VR 창이 있으면 재사용
+     */
+    if (
+      vrWindow &&
+      !vrWindow.closed
+    ) {
+
+      try {
+
+        vrWindow.location.href =
+          url;
+
+        vrWindow.focus();
+
+        return;
+
+      } catch (error) {
+
+        vrWindow = null;
+
+      }
+
+    }
+
+
+    /*
+     * window.open()
+     *
+     * 이 함수는 반드시 사용자의
+     * 버튼 클릭 이벤트에서 직접 실행됩니다.
+     */
+    vrWindow =
+      window.open(
+        url,
+        "TheParkVistaVR",
+        getVRPopupFeatures()
+      );
+
+
+    /*
+     * 팝업 차단
+     */
+    if (!vrWindow) {
+
+      alert(
+        "VR 창이 차단되었습니다.\n\n" +
+        "브라우저의 팝업 차단을 해제한 후 " +
+        "다시 눌러주세요."
+      );
+
+      return;
+    }
+
+
+    /*
+     * 창 포커스
+     */
+    try {
+
+      vrWindow.focus();
+
+    } catch (error) {}
+
+
+    /*
+     * 제목 변경
+     *
+     * 외부 도메인의 경우 브라우저 보안정책 때문에
+     * 변경되지 않을 수 있습니다.
+     */
+    try {
+
+      if (title) {
+
+        vrWindow.document.title =
+          title;
+
+      }
+
+    } catch (error) {}
+
+  }
+
+
+  /*
+   * 84A / 84C VR 버튼 연결
+   */
+  document
+    .querySelectorAll(".unit-vr-link")
+    .forEach(function (button) {
+
+      button.addEventListener(
+        "click",
+        function (event) {
+
+          event.preventDefault();
+          event.stopPropagation();
+
+
+          const url =
+            this.getAttribute(
+              "data-vr"
+            );
+
+
+          const title =
+            this.getAttribute(
+              "data-vr-title"
+            );
+
+
+          if (!url) {
+            return;
+          }
+
+
+          openVR(
+            url,
+            title
+          );
+
+        }
+      );
+
+    });
+
+
+  /* =====================================================
+     HERO VR BUTTON
+     
+     현재 HERO 버튼은
+     unitSection으로 이동하도록 유지합니다.
+  ===================================================== */
+
+  const heroVRButton =
+    document.querySelector(
+      ".hero-vr-btn"
+    );
+
+
+  if (heroVRButton) {
+
+    heroVRButton.addEventListener(
+      "click",
+      function (event) {
+
+        event.preventDefault();
+
+        moveToSection(
+          "unitSection"
+        );
+
+      }
+    );
+
+  }
 
 
   /* =====================================================
@@ -255,6 +439,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const isMobile =
       window.innerWidth <= 900;
 
+
     if (isMobile) {
 
       if (popupBox1) {
@@ -264,6 +449,7 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
       }
+
 
       if (popupBox2) {
 
@@ -283,6 +469,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       }
 
+
       if (popupBox2) {
 
         popupBox2.classList.add(
@@ -293,41 +480,74 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-    popup.classList.add(
-      "show"
-    );
 
-    updateBodyLock();
+    popup.classList.add("show");
 
 
+    /*
+     * 팝업 닫기
+     */
+    document
+      .querySelectorAll(".popupCloseBtn")
+      .forEach(function (button) {
+
+        button.addEventListener(
+          "click",
+          function (event) {
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            popup.classList.remove(
+              "show"
+            );
+
+          }
+        );
+
+      });
+
+
+    /*
+     * 팝업 클릭
+     */
     popup.addEventListener(
       "click",
       function (event) {
 
-        /*
-         * 닫기 버튼을 누른 경우
-         */
         if (
           event.target.closest(
             ".popupCloseBtn"
           )
+        ) {
+          return;
+        }
+
+
+        /*
+         * 검은색 바깥 영역
+         */
+        if (
+          event.target === popup
         ) {
 
           popup.classList.remove(
             "show"
           );
 
-          updateBodyLock();
-
           return;
         }
 
 
-        const isMobileNow =
-          window.innerWidth <= 900;
-
-
-        if (isMobileNow) {
+        /*
+         * 모바일
+         *
+         * 1번 팝업 → 2번 팝업
+         * 2번 팝업 → 닫기
+         */
+        if (
+          window.innerWidth <= 900
+        ) {
 
           if (
             popupBox1 &&
@@ -340,6 +560,7 @@ document.addEventListener("DOMContentLoaded", function () {
               "active-mobile"
             );
 
+
             if (popupBox2) {
 
               popupBox2.classList.add(
@@ -348,7 +569,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
             }
 
-          } else if (
+            return;
+          }
+
+
+          if (
             popupBox2 &&
             popupBox2.classList.contains(
               "active-mobile"
@@ -359,294 +584,24 @@ document.addEventListener("DOMContentLoaded", function () {
               "show"
             );
 
-            updateBodyLock();
-
+            return;
           }
 
         } else {
 
           /*
-           * PC에서는 바깥 또는 팝업 클릭 시 닫기
+           * PC는 팝업 클릭 시 닫기
            */
           popup.classList.remove(
             "show"
           );
 
-          updateBodyLock();
-
         }
 
       }
     );
 
   }
-
-
-  /* =====================================================
-     VR MODAL
-  ===================================================== */
-
-  function openVrModal(
-    url,
-    title
-  ) {
-
-    if (!vrModal || !vrFrame) {
-      return;
-    }
-
-
-    /*
-     * 현재 위치 저장
-     *
-     * 예:
-     * 단지안내 70% 위치에서 VR 클릭
-     * ↓
-     * 현재 위치 저장
-     * ↓
-     * VR 열림
-     */
-
-    savedScrollY =
-      window.scrollY;
-
-
-    /*
-     * 현재 페이지를 그 위치에 고정
-     */
-    document.body.style.position =
-      "fixed";
-
-    document.body.style.top =
-      "-" + savedScrollY + "px";
-
-    document.body.style.left =
-      "0";
-
-    document.body.style.right =
-      "0";
-
-    document.body.style.width =
-      "100%";
-
-
-    /*
-     * 제목
-     */
-
-    if (
-      vrModalTitle &&
-      title
-    ) {
-
-      vrModalTitle.textContent =
-        title;
-
-    }
-
-
-    /*
-     * VR 주소 연결
-     */
-
-    vrFrame.src =
-      url;
-
-
-    /*
-     * 모달 표시
-     */
-
-    vrModal.classList.add(
-      "show"
-    );
-
-    updateBodyLock();
-
-  }
-
-
-  function closeVrModal() {
-
-    if (!vrModal) {
-      return;
-    }
-
-
-    /*
-     * 모달 닫기
-     */
-
-    vrModal.classList.remove(
-      "show"
-    );
-
-
-    /*
-     * VR 종료
-     *
-     * iframe을 비워서 VR이
-     * 백그라운드에서 계속 실행되지 않게 함
-     */
-
-    if (vrFrame) {
-
-      vrFrame.src =
-        "about:blank";
-
-    }
-
-
-    /*
-     * BODY 고정 해제
-     */
-
-    document.body.style.position =
-      "";
-
-    document.body.style.top =
-      "";
-
-    document.body.style.left =
-      "";
-
-    document.body.style.right =
-      "";
-
-    document.body.style.width =
-      "";
-
-
-    /*
-     * ★ 핵심
-     *
-     * VR을 닫아도 원래 보던 위치로 돌아감
-     */
-
-    window.scrollTo(
-      0,
-      savedScrollY
-    );
-
-
-    updateBodyLock();
-
-  }
-
-
-  /*
-   * 84A / 84C VR 버튼
-   */
-
-  document
-    .querySelectorAll(".vr-open")
-    .forEach(function (button) {
-
-      button.addEventListener(
-        "click",
-        function (event) {
-
-          event.preventDefault();
-
-          const url =
-            this.getAttribute(
-              "data-vr"
-            );
-
-          const title =
-            this.getAttribute(
-              "data-title"
-            ) ||
-            "360° VR 모델하우스";
-
-
-          if (!url) {
-
-            alert(
-              "VR 주소를 찾을 수 없습니다."
-            );
-
-            return;
-          }
-
-
-          openVrModal(
-            url,
-            title
-          );
-
-        }
-      );
-
-    });
-
-
-  /*
-   * VR 닫기 버튼
-   */
-
-  if (vrModalClose) {
-
-    vrModalClose.addEventListener(
-      "click",
-      function (event) {
-
-        event.preventDefault();
-
-        closeVrModal();
-
-      }
-    );
-
-  }
-
-
-  /*
-   * VR 바깥 영역 클릭
-   */
-
-  if (vrModal) {
-
-    vrModal.addEventListener(
-      "click",
-      function (event) {
-
-        if (
-          event.target === vrModal
-        ) {
-
-          closeVrModal();
-
-        }
-
-      }
-    );
-
-  }
-
-
-  /*
-   * ESC 키
-   */
-
-  document.addEventListener(
-    "keydown",
-    function (event) {
-
-      if (
-        event.key === "Escape" &&
-        vrModal &&
-        vrModal.classList.contains(
-          "show"
-        )
-      ) {
-
-        closeVrModal();
-
-      }
-
-    }
-  );
 
 
   /* =====================================================
@@ -669,38 +624,61 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 
 
-  function openPrivacyModal(
-    event
-  ) {
+  let savedScrollY = 0;
+
+
+  function openPrivacyModal(event) {
 
     if (event) {
       event.preventDefault();
     }
 
-    if (privacyModal) {
 
-      privacyModal.classList.add(
-        "show"
-      );
-
-      updateBodyLock();
-
+    if (!privacyModal) {
+      return;
     }
+
+
+    savedScrollY =
+      window.scrollY ||
+      window.pageYOffset ||
+      0;
+
+
+    privacyModal.classList.add(
+      "show"
+    );
+
+
+    document.body.classList.add(
+      "modal-open"
+    );
 
   }
 
 
   function closePrivacyModal() {
 
-    if (privacyModal) {
-
-      privacyModal.classList.remove(
-        "show"
-      );
-
-      updateBodyLock();
-
+    if (!privacyModal) {
+      return;
     }
+
+
+    privacyModal.classList.remove(
+      "show"
+    );
+
+
+    document.body.classList.remove(
+      "modal-open"
+    );
+
+
+    window.scrollTo({
+      top: savedScrollY,
+      left: 0,
+      behavior: "auto"
+    });
 
   }
 
@@ -757,6 +735,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   /* =====================================================
+     ESC
+  ===================================================== */
+
+  document.addEventListener(
+    "keydown",
+    function (event) {
+
+      if (
+        event.key === "Escape"
+      ) {
+
+        if (
+          privacyModal &&
+          privacyModal.classList.contains(
+            "show"
+          )
+        ) {
+
+          closePrivacyModal();
+
+        }
+
+      }
+
+    }
+  );
+
+
+  /* =====================================================
      DATE
   ===================================================== */
 
@@ -776,18 +783,22 @@ document.addEventListener("DOMContentLoaded", function () {
     const today =
       new Date();
 
+
     const yyyy =
       today.getFullYear();
+
 
     const mm =
       String(
         today.getMonth() + 1
       ).padStart(2, "0");
 
+
     const dd =
       String(
         today.getDate()
       ).padStart(2, "0");
+
 
     return (
       yyyy +
@@ -813,6 +824,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!consultDate) {
       return;
     }
+
 
     try {
 
@@ -851,6 +863,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ) {
           return;
         }
+
 
         openDatePicker();
 
@@ -953,25 +966,30 @@ document.addEventListener("DOMContentLoaded", function () {
             "name"
           );
 
+
         const phoneInput =
           document.getElementById(
             "phone"
           );
+
 
         const consultDateInput =
           document.getElementById(
             "consultDate"
           );
 
+
         const consultTimeInput =
           document.getElementById(
             "consultTime"
           );
 
+
         const privacyCheckbox =
           document.getElementById(
             "privacy"
           );
+
 
         const websiteInput =
           document.getElementById(
@@ -979,6 +997,9 @@ document.addEventListener("DOMContentLoaded", function () {
           );
 
 
+        /*
+         * 봇 방지
+         */
         if (
           websiteInput &&
           websiteInput.value
@@ -989,6 +1010,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
+        /*
+         * 이름
+         */
         if (
           !nameInput.value.trim()
         ) {
@@ -1004,6 +1028,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
+        /*
+         * 전화번호
+         */
         if (
           !phoneInput.value.trim()
         ) {
@@ -1042,6 +1069,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
+        /*
+         * 방문일
+         */
         if (
           !consultDateInput.value
         ) {
@@ -1057,6 +1087,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
+        /*
+         * 방문시간
+         */
         if (
           !consultTimeInput.value
         ) {
@@ -1072,6 +1105,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
+        /*
+         * 개인정보
+         */
         if (
           !privacyCheckbox.checked
         ) {
@@ -1140,26 +1176,32 @@ document.addEventListener("DOMContentLoaded", function () {
             result =
               await response.json();
 
-          } catch (
-            jsonError
-          ) {
+          } catch (jsonError) {
 
             result = {};
 
           }
 
 
-          if (
-            response.ok
-          ) {
+          if (response.ok) {
 
             formMessage.textContent =
               "방문예약이 성공적으로 접수되었습니다. 곧 연락드리겠습니다!";
 
+
             formMessage.className =
               "message show success";
 
+
             leadForm.reset();
+
+
+            if (consultDate) {
+
+              consultDate.min =
+                getLocalDateString();
+
+            }
 
           } else {
 
@@ -1200,3 +1242,4 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 });
+</script>
