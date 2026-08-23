@@ -6,55 +6,266 @@
 <title>더파크 비스타동원 | 공식 방문예약</title>
 <meta name="description" content="사상공원 민간공원 특례사업 더파크 비스타동원 공식 방문예약 페이지. 전 세대 84㎡, 총 852세대 프리미엄 대단지.">
 <meta name="robots" content="index,follow">
+
 <style>
-:root{--navy:#09213b;--blue:#155da8;--burgundy:#8b263e;--orange:#f15a29;--red:#e04444;--green:#00c73c;--yellow:#ffcc00;--gray:#667085;--line:#e4e7ec;--max:1280px;--header:80px}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;color:#17202b;line-height:1.6;overflow-x:hidden;-webkit-text-size-adjust:100%}
-a{color:inherit;text-decoration:none}
-button,input,select{font:inherit}
-button{cursor:pointer}
-.container{width:min(calc(100% - 40px),var(--max));margin:auto}
-.section{padding:40px 0;scroll-margin-top:90px}
+:root{
+  --navy:#09213b;
+  --blue:#155da8;
+  --burgundy:#8b263e;
+  --orange:#f15a29;
+  --red:#e04444;
+  --green:#00c73c;
+  --yellow:#ffcc00;
+  --gray:#667085;
+  --line:#e4e7ec;
+  --max:1280px;
+  --header:80px
+}
 
-/* 2등분 이미지 여백 제로 밀착 및 GPU 가속 레이어 분리 */
-.full-image{width:100%;overflow:hidden;background:#f8fafc;display:flex;flex-direction:column;transform:translateZ(0);will-change:transform;contain:paint}
-.full-image img{display:block;width:100%;height:auto;margin:0;padding:0;border:0;transform:translateZ(0)}
-.photo img{display:block;width:100%;height:auto}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0
+}
 
-.label{margin-bottom:12px;color:var(--blue);font-size:20px;font-weight:800;letter-spacing:3px;text-align:center}
-.title{font-size:clamp(34px,5vw,60px);line-height:1.15;letter-spacing:-3px}
-.desc{margin-top:15px;color:var(--gray)}
-.center{text-align:center}
-.reference{margin-top:10px;color:#98a2b3;font-size:12px;text-align:right}
+html{
+  scroll-behavior:smooth
+}
 
-.header{position:fixed;inset:0 0 auto;z-index:1000;height:var(--header);background:rgba(255,255,255,.98);transition:.2s}
-.header.scrolled{border-bottom:1px solid var(--line)}
-.nav{height:100%;display:flex;align-items:center;justify-content:space-between}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
+  color:#17202b;
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-text-size-adjust:100%
+}
 
-.logo{display:inline-flex;align-items:center;height:34px;border:0;background:none;padding:0;cursor:pointer}
-.logo img{display:block;height:100%;width:auto;max-height:34px;object-fit:contain}
+a{
+  color:inherit;
+  text-decoration:none
+}
 
-/* PC 헤더 메뉴 1.3배 확대 */
-.menu{display:flex;align-items:center;gap:31px;font-size:19.5px;font-weight:700}
-.menu button{border:0;background:none;padding:0;color:#000;white-space:nowrap}
-.menu button:hover{color:var(--burgundy)}
+button,
+input,
+select{
+  font:inherit
+}
 
-.header-phone{padding:10px 20px;border:2px solid var(--burgundy);border-radius:30px;color:var(--burgundy);font-size:20px;font-weight:900}
-.mobile-menu{display:none;font-size:25px;border:0;background:none;padding:0}
+button{
+  cursor:pointer
+}
 
-.hero{position:relative;min-height:100vh;min-height:100dvh;display:flex;align-items:center;overflow:hidden;background:#06172b}
-.hero-photo{position:absolute;inset:0}
-.hero-photo img{width:100%;height:100%;object-fit:cover}
+.container{
+  width:min(calc(100% - 40px),var(--max));
+  margin:auto
+}
 
-.hero-content{position:relative;z-index:1;padding-top:0;transform:translateY(-55%);color:#000}
-.hero-label{margin-bottom:12px;font-size:13px;font-weight:800;letter-spacing:4px}
-.hero h1{line-height:1.3;letter-spacing:-2px}
-.hero-main-title,.hero-subtitle{display:block}
-.hero-main-title{margin-bottom:6px;color:var(--burgundy);font-size:clamp(30px,5vw,64px);font-weight:900}
-.hero-subtitle{margin-top:8px;font-size:clamp(20px,3vw,38px);font-weight:900}
-.hero-text{margin-top:15px;font-size:18px;font-weight:800}
-.hero-btn-group{margin-top:20px}
+.section{
+  padding:40px 0;
+  scroll-margin-top:90px
+}
+
+.full-image{
+  width:100%;
+  overflow:hidden;
+  background:#f8fafc;
+  display:flex;
+  flex-direction:column;
+  transform:translateZ(0);
+  will-change:transform;
+  contain:paint
+}
+
+.full-image img{
+  display:block;
+  width:100%;
+  height:auto;
+  margin:0;
+  padding:0;
+  border:0;
+  transform:translateZ(0)
+}
+
+.photo img{
+  display:block;
+  width:100%;
+  height:auto
+}
+
+.label{
+  margin-bottom:12px;
+  color:var(--blue);
+  font-size:20px;
+  font-weight:800;
+  letter-spacing:3px;
+  text-align:center
+}
+
+.title{
+  font-size:clamp(34px,5vw,60px);
+  line-height:1.15;
+  letter-spacing:-3px
+}
+
+.desc{
+  margin-top:15px;
+  color:var(--gray)
+}
+
+.center{
+  text-align:center
+}
+
+.reference{
+  margin-top:10px;
+  color:#98a2b3;
+  font-size:12px;
+  text-align:right
+}
+
+.header{
+  position:fixed;
+  inset:0 0 auto;
+  z-index:1000;
+  height:var(--header);
+  background:rgba(255,255,255,.98);
+  transition:.2s
+}
+
+.header.scrolled{
+  border-bottom:1px solid var(--line)
+}
+
+.nav{
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between
+}
+
+.logo{
+  display:inline-flex;
+  align-items:center;
+  height:34px;
+  border:0;
+  background:none;
+  padding:0;
+  cursor:pointer
+}
+
+.logo img{
+  display:block;
+  height:100%;
+  width:auto;
+  max-height:34px;
+  object-fit:contain
+}
+
+.menu{
+  display:flex;
+  align-items:center;
+  gap:31px;
+  font-size:19.5px;
+  font-weight:700
+}
+
+.menu button{
+  border:0;
+  background:none;
+  padding:0;
+  color:#000;
+  white-space:nowrap
+}
+
+.menu button:hover{
+  color:var(--burgundy)
+}
+
+.header-phone{
+  padding:10px 20px;
+  border:2px solid var(--burgundy);
+  border-radius:30px;
+  color:var(--burgundy);
+  font-size:20px;
+  font-weight:900
+}
+
+.mobile-menu{
+  display:none;
+  font-size:25px;
+  border:0;
+  background:none;
+  padding:0
+}
+
+.hero{
+  position:relative;
+  min-height:100vh;
+  min-height:100dvh;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  background:#06172b
+}
+
+.hero-photo{
+  position:absolute;
+  inset:0
+}
+
+.hero-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover
+}
+
+.hero-content{
+  position:relative;
+  z-index:1;
+  padding-top:0;
+  transform:translateY(-55%);
+  color:#000
+}
+
+.hero-label{
+  margin-bottom:12px;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:4px
+}
+
+.hero h1{
+  line-height:1.3;
+  letter-spacing:-2px
+}
+
+.hero-main-title,
+.hero-subtitle{
+  display:block
+}
+
+.hero-main-title{
+  margin-bottom:6px;
+  color:var(--burgundy);
+  font-size:clamp(30px,5vw,64px);
+  font-weight:900
+}
+
+.hero-subtitle{
+  margin-top:8px;
+  font-size:clamp(20px,3vw,38px);
+  font-weight:900
+}
+
+.hero-text{
+  margin-top:15px;
+  font-size:18px;
+  font-weight:800
+}
+
+.hero-btn-group{
+  margin-top:20px
+}
 
 .hero-vr-btn{
   position:relative;
@@ -68,72 +279,387 @@ button{cursor:pointer}
   color:#fff;
   font-size:17px;
   font-weight:800;
-  transition:all .3s ease;
+  transition:all .3s ease
 }
-.hero-vr-btn:hover{background:#d84a1e;transform:translateY(-2px)}
 
-.overview-grid,.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:35px;align-items:center}
-.info{border-top:2px solid var(--navy)}
-.info-row{display:grid;grid-template-columns:140px 1fr;padding:18px 0;border-bottom:1px solid var(--line)}
-.info-row dt{color:var(--gray)}
-.info-row dd{font-weight:600}
-.park{display:grid;grid-template-columns:1fr 1fr}
-.park .photo img{height:100%;object-fit:cover}
-.park-content{display:flex;flex-direction:column;justify-content:center;padding:60px 80px;background:var(--navy);color:#fff}
-.park-content .label{color:#79b9e9;text-align:left}
-.park-content h2{font-size:clamp(28px,3vw,42px);line-height:1.3;font-weight:800}
-.park-content p{margin-top:20px;color:#c7d4e2;font-size:clamp(19px, 1.8vw, 24px);line-height:1.5;font-weight:600}
-.highlight{margin-top:25px;padding-left:20px;border-left:2px solid #4c9bd4;font-size:clamp(18px, 1.6vw, 22px);line-height:1.5;font-weight:700}
+.hero-vr-btn:hover{
+  background:#d84a1e;
+  transform:translateY(-2px)
+}
 
-.complex{background:#f8fafc}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:35px;background:#fff;border-top:2px solid var(--navy)}
-.stat{padding:30px 15px;border-right:1px solid var(--line);text-align:center}
-.stat:last-child{border:0}
-.stat strong{display:block;color:var(--navy);font-size:40px}
-.stat span{color:var(--gray);font-size:13px}
-.complex-photo{margin-top:30px}
-.unit-list{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:35px}
-.unit-card{overflow:hidden;padding-bottom:30px;border:1px solid var(--line);border-radius:12px;background:#f8fafc}
-.unit-vr-link{display:block;width:100%;overflow:hidden;border:0;background:none;text-align:center}
-.unit-vr-link img{display:block;width:100%;height:auto;transition:transform .3s ease}
-.unit-vr-link:hover img{transform:scale(1.03)}
-.unit-type{margin:25px 0 15px;text-align:center}
-.unit-type small{display:block;margin-bottom:5px;color:var(--blue);font-size:15px;font-weight:800;letter-spacing:2px}
-.unit-type h3{color:var(--navy);font-size:30px}
-.vr-button{display:inline-flex;justify-content:center;align-items:center;min-height:60px;margin-top:25px;padding:15px 30px;border-radius:40px;color:#fff;font-size:18px;font-weight:900}
-.vr-button-a{background:rgba(9,33,59,.96)}
-.vr-button-c{background:var(--orange)}
+.overview-grid,
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  margin-top:35px;
+  align-items:center
+}
 
-.contact-grid{gap:60px}
-.phone-big{display:inline-flex;align-items:center;gap:10px;margin-top:25px;color:var(--orange);font-size:40px;font-weight:900}
-.phone-circle{display:grid;place-items:center;width:45px;height:45px;border-radius:50%;background:var(--orange);color:#fff}
-.form{width:100%;padding:35px;border:1px solid #e1e6ec;background:#fff}
-.form h3{font-size:25px}
-.form-sub{margin-bottom:25px;color:var(--gray);font-size:13px}
-.form-row{margin-bottom:15px}
-.form-row label{display:block;margin-bottom:7px;font-size:13px;font-weight:700}
-.required{color:#e04444}
-.form-row input,.form-row select{width:100%;padding:13px;border:1px solid #d0d5dd;border-radius:3px;outline:0}
-.date-field{position:relative}
-.date-field::after{content:"📅";position:absolute;top:50%;right:14px;transform:translateY(-50%);pointer-events:none}
-.date-field input{min-height:48px;cursor:pointer}
-.privacy{padding:17px;border:1px solid var(--line);background:#f8fafc}
-.privacy-head{display:flex;justify-content:space-between;gap:10px}
-.policy-btn,.footer-policy{border:0;background:none;color:var(--blue);font-size:12px;text-decoration:underline}
-.agree{display:flex;gap:8px;margin-top:12px;font-size:12px}
-.agree input{margin-top:4px}
-.privacy-summary{margin-top:10px;color:#667085;font-size:11px}
-.submit{width:100%;margin-top:18px;padding:16px;border:0;background:var(--blue);color:#fff;font-weight:800}
-.submit:disabled{opacity:.6;cursor:not-allowed}
-.message{display:none;margin-top:15px;padding:14px;border-radius:3px;font-size:13px}
-.message.show{display:block}
-.message.success{background:#ecfdf3;color:#027a48}
-.message.error{background:#fef3f2;color:#b42318}
-.hp-field{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0}
+.info{
+  border-top:2px solid var(--navy)
+}
 
-/* ==========================================
-   ✨ 플로팅 버튼 스타일 (PC 버전 - 빨간색 테두리 원복)
-   ========================================== */
+.info-row{
+  display:grid;
+  grid-template-columns:140px 1fr;
+  padding:18px 0;
+  border-bottom:1px solid var(--line)
+}
+
+.info-row dt{
+  color:var(--gray)
+}
+
+.info-row dd{
+  font-weight:600
+}
+
+.park{
+  display:grid;
+  grid-template-columns:1fr 1fr
+}
+
+.park .photo img{
+  height:100%;
+  object-fit:cover
+}
+
+.park-content{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:60px 80px;
+  background:var(--navy);
+  color:#fff
+}
+
+.park-content .label{
+  color:#79b9e9;
+  text-align:left
+}
+
+.park-content h2{
+  font-size:clamp(28px,3vw,42px);
+  line-height:1.3;
+  font-weight:800
+}
+
+.park-content p{
+  margin-top:20px;
+  color:#c7d4e2;
+  font-size:clamp(19px,1.8vw,24px);
+  line-height:1.5;
+  font-weight:600
+}
+
+.highlight{
+  margin-top:25px;
+  padding-left:20px;
+  border-left:2px solid #4c9bd4;
+  font-size:clamp(18px,1.6vw,22px);
+  line-height:1.5;
+  font-weight:700
+}
+
+.complex{
+  background:#f8fafc
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  margin-top:35px;
+  background:#fff;
+  border-top:2px solid var(--navy)
+}
+
+.stat{
+  padding:30px 15px;
+  border-right:1px solid var(--line);
+  text-align:center
+}
+
+.stat:last-child{
+  border:0
+}
+
+.stat strong{
+  display:block;
+  color:var(--navy);
+  font-size:40px
+}
+
+.stat span{
+  color:var(--gray);
+  font-size:13px
+}
+
+.complex-photo{
+  margin-top:30px
+}
+
+.unit-list{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  margin-top:35px
+}
+
+.unit-card{
+  overflow:hidden;
+  padding-bottom:30px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#f8fafc
+}
+
+.unit-vr-link{
+  display:block;
+  width:100%;
+  overflow:hidden;
+  border:0;
+  background:none;
+  text-align:center
+}
+
+.unit-vr-link img{
+  display:block;
+  width:100%;
+  height:auto;
+  transition:transform .3s ease
+}
+
+.unit-vr-link:hover img{
+  transform:scale(1.03)
+}
+
+.unit-type{
+  margin:25px 0 15px;
+  text-align:center
+}
+
+.unit-type small{
+  display:block;
+  margin-bottom:5px;
+  color:var(--blue);
+  font-size:15px;
+  font-weight:800;
+  letter-spacing:2px
+}
+
+.unit-type h3{
+  color:var(--navy);
+  font-size:30px
+}
+
+.vr-button{
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  min-height:60px;
+  margin-top:25px;
+  padding:15px 30px;
+  border-radius:40px;
+  color:#fff;
+  font-size:18px;
+  font-weight:900
+}
+
+.vr-button-a{
+  background:rgba(9,33,59,.96)
+}
+
+.vr-button-c{
+  background:var(--orange)
+}
+
+.contact-grid{
+  gap:60px
+}
+
+/* 방문예약 PC 기본 정렬 */
+#contactSection .contact-grid > div:first-child{
+  text-align:left
+}
+
+#contactSection .visit-label{
+  text-align:left
+}
+
+.phone-big{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  margin-top:25px;
+  color:var(--orange);
+  font-size:40px;
+  font-weight:900
+}
+
+.phone-circle{
+  display:grid;
+  place-items:center;
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  background:var(--orange);
+  color:#fff
+}
+
+.phone-circle svg{
+  width:28px;
+  height:28px;
+  fill:#fff
+}
+
+.form{
+  width:100%;
+  padding:35px;
+  border:1px solid #e1e6ec;
+  background:#fff
+}
+
+.form h3{
+  font-size:25px
+}
+
+.form-sub{
+  margin-bottom:25px;
+  color:var(--gray);
+  font-size:13px
+}
+
+.form-row{
+  margin-bottom:15px
+}
+
+.form-row label{
+  display:block;
+  margin-bottom:7px;
+  font-size:13px;
+  font-weight:700
+}
+
+.required{
+  color:#e04444
+}
+
+.form-row input,
+.form-row select{
+  width:100%;
+  padding:13px;
+  border:1px solid #d0d5dd;
+  border-radius:3px;
+  outline:0
+}
+
+.date-field{
+  position:relative;
+  display:flex;
+  align-items:center;
+  width:100%;
+  height:52px;
+  border:1px solid #d0d5dd;
+  border-radius:3px;
+  background:#fff;
+  cursor:pointer;
+  overflow:hidden
+}
+
+.date-field::after{
+  content:"📅";
+  position:absolute;
+  top:50%;
+  right:14px;
+  transform:translateY(-50%);
+  pointer-events:none;
+  font-size:18px
+}
+
+.date-field input{
+  width:100%;
+  height:100%;
+  border:0 !important;
+  background:transparent !important;
+  padding:0 45px 0 13px;
+  outline:0;
+  cursor:pointer;
+  font-size:16px;
+  color:#17202b;
+  -webkit-appearance:none
+}
+
+.date-field input::-webkit-calendar-picker-indicator{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  opacity:0;
+  cursor:pointer
+}
+
+.privacy{
+  padding:17px;
+  border:1px solid var(--line);
+  background:#f8fafc
+}
+
+.privacy-head{
+  display:flex;
+  justify-content:space-between;
+  gap:10px
+}
+
+.policy-btn,
+.footer-policy{
+  border:0;
+  background:none;
+  color:var(--blue);
+  font-size:12px;
+  text-decoration:underline
+}
+
+.agree{
+  display:flex;
+  gap:8px;
+  margin-top:12px;
+  font-size:12px
+}
+
+.agree input{
+  margin-top:4px
+}
+
+.privacy-summary{
+  margin-top:10px;
+  color:#667085;
+  font-size:11px
+}
+
+.submit{
+  width:100%;
+  margin-top:18px;
+  padding:16px;
+  border:0;
+  background:var(--blue);
+  color:#fff;
+  font-weight:800
+}
+
+.submit:disabled{
+  opacity:.6;
+  cursor:not-allowed
+}
+
+.hp-field{
+  position:absolute!important;
+  left:-9999px!important;
+  width:1px!important;
+  height:1px!important;
+  opacity:0
+}
+
 .float{
   position:fixed;
   right:25px;
@@ -148,7 +674,7 @@ button{cursor:pointer}
   padding:14px;
   border-radius:20px;
   border:2px solid var(--red);
-  box-shadow:0 12px 30px rgba(224, 68, 68, 0.15);
+  box-shadow:0 12px 30px rgba(224,68,68,0.15)
 }
 
 .float-item{
@@ -159,623 +685,2182 @@ button{cursor:pointer}
   justify-content:center;
   width:60px;
   height:60px;
-  border-radius:50%; 
+  border-radius:50%;
   border:1px solid var(--line);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12), 0 0 0 6px rgba(255, 255, 255, 0.4);
+  box-shadow:0 4px 15px rgba(0,0,0,0.12),0 0 0 6px rgba(255,255,255,0.4);
   cursor:pointer;
   text-decoration:none;
   text-align:center;
   overflow:visible;
-  transition: all .25s cubic-bezier(0.16, 1, 0.3, 1);
-  transform: translateX(0);
+  transition:all .25s cubic-bezier(0.16,1,0.3,1);
+  transform:translateX(0)
 }
 
-/* 1. 맨위로 버튼 (노란색 배경, ▲ 화살표 + TOP) */
 .float-top{
   background:var(--yellow);
   color:var(--navy);
   font-size:11px;
   font-weight:900;
   line-height:1.1;
-  border:none;
-}
-.float-top span{
-  font-size:15px;
-  font-weight:900;
+  border:none
 }
 
-/* 2. 방문예약 버튼 (주황색 배경) */
+.float-top span{
+  font-size:15px;
+  font-weight:900
+}
+
 .float-register{
   background:var(--orange);
   color:#fff;
   border:none;
   font-size:12px;
   font-weight:800;
-  line-height:1.2;
+  line-height:1.2
 }
 
-/* 3. 전화상담 버튼 (네이비 딥블루 배경 + 골드 컬러 이모지) */
 .float-phone{
-  background:var(--navy);
-  color:var(--yellow);
-  border:2px solid var(--yellow);
-  font-size:26px;
-  line-height:1;
+  background:var(--green);
+  color:#fff;
+  border:2px solid #fff;
+  display:flex;
+  align-items:center;
+  justify-content:center
+}
+
+.float-phone svg{
+  width:32px;
+  height:32px;
+  fill:#fff;
+  animation:phoneRing 1.2s infinite ease-in-out
+}
+
+@keyframes phoneRing{
+  0%{transform:rotate(0deg)}
+  10%{transform:rotate(14deg)}
+  20%{transform:rotate(-14deg)}
+  30%{transform:rotate(14deg)}
+  40%{transform:rotate(-14deg)}
+  50%{transform:rotate(0deg)}
+  100%{transform:rotate(0deg)}
 }
 
 .float-item:hover{
-  transform: scale(1.08);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.22), 0 0 0 8px rgba(255, 255, 255, 0.6);
-  z-index: 10;
+  transform:scale(1.08);
+  box-shadow:0 8px 25px rgba(0,0,0,0.22),0 0 0 8px rgba(255,255,255,0.6);
+  z-index:10
 }
 
-.popup01,.modal{position:fixed;inset:0;z-index:3000;display:none;justify-content:center;align-items:center;background:rgba(0,0,0,.6)}
-.popup01.show,.modal.show{display:flex}
-.popup-wrapper{width:min(1000px,95%)}
-.popup-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.popup-box{overflow:hidden;border-radius:8px;background:#fff;cursor:pointer}
-.popup-head,.modal-head{display:flex;align-items:center;justify-content:space-between}
-.popup-head{padding:15px 20px;background:var(--navy);color:#fff}
-.popup-head button{border:0;background:none;color:#fff;font-size:24px}
-.popup-body{line-height:0}
-.popup-body img{display:block;width:100%;height:auto}
-.popup-notice{margin-top:15px;color:#fff;font-size:13px;text-align:center}
-.modal{z-index:4000}
-.modal-box{width:min(700px,92%);max-height:85vh;overflow:auto;border-radius:8px;background:#fff}
-.modal-head{padding:20px;border-bottom:1px solid var(--line)}
-.modal-head button{width:35px;height:35px;border:0;border-radius:50%;background:#eee;font-size:20px}
-.modal-body{padding:25px}
-.policy{margin-bottom:25px}
-.policy h4{margin-bottom:7px;color:var(--navy)}
-.policy p{color:var(--gray);font-size:13px}
+.popup01,
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:3000;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  background:rgba(0,0,0,.6)
+}
 
-.vr-guide-modal{position:fixed;inset:0;z-index:5000;display:none;justify-content:center;align-items:center;background:rgba(0,0,0,0.6)}
-.vr-guide-modal.show{display:flex}
-.vr-guide-box{width:min(440px, 90%);background:#fff;border-radius:12px;overflow:hidden}
-.vr-guide-header{background:var(--navy);color:#fff;padding:18px 24px;font-size:18px;font-weight:800;display:flex;justify-content:space-between;align-items:center}
-.vr-guide-header button{background:none;border:0;color:#fff;font-size:22px;cursor:pointer}
-.vr-guide-content{padding:24px;text-align:center}
-.vr-guide-icon{font-size:40px;margin-bottom:12px}
-.vr-guide-title{font-size:19px;font-weight:900;color:var(--navy);margin-bottom:10px}
-.vr-guide-desc{font-size:15px;color:var(--gray);line-height:1.6}
-.vr-guide-footer{padding:0 24px 24px;display:flex;gap:10px}
-.vr-guide-btn{flex:1;padding:14px;border-radius:8px;font-size:16px;font-weight:800;border:0;cursor:pointer}
-.vr-guide-btn.cancel{background:#e4e7ec;color:#475467}
-.vr-guide-btn.confirm{background:var(--orange);color:#fff}
+.popup01.show,
+.modal.show{
+  display:flex
+}
+
+.popup-wrapper{
+  width:min(1000px,95%)
+}
+
+.popup-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px
+}
+
+.popup-box{
+  overflow:hidden;
+  border-radius:8px;
+  background:#fff;
+  cursor:pointer
+}
+
+.popup-head,
+.modal-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between
+}
+
+.popup-head{
+  padding:15px 20px;
+  background:var(--navy);
+  color:#fff
+}
+
+.popup-head button{
+  border:0;
+  background:none;
+  color:#fff;
+  font-size:24px
+}
+
+.popup-body{
+  line-height:0
+}
+
+.popup-body img{
+  display:block;
+  width:100%;
+  height:auto
+}
+
+.popup-notice{
+  margin-top:15px;
+  color:#fff;
+  font-size:13px;
+  text-align:center
+}
+
+.modal{
+  z-index:4000
+}
+
+.modal-box{
+  width:min(700px,92%);
+  max-height:85vh;
+  overflow:auto;
+  border-radius:8px;
+  background:#fff
+}
+
+.modal-head{
+  padding:20px;
+  border-bottom:1px solid var(--line)
+}
+
+.modal-head button{
+  width:35px;
+  height:35px;
+  border:0;
+  border-radius:50%;
+  background:#eee;
+  font-size:20px
+}
+
+.modal-body{
+  padding:25px
+}
+
+.policy{
+  margin-bottom:25px
+}
+
+.policy h4{
+  margin-bottom:7px;
+  color:var(--navy)
+}
+
+.policy p{
+  color:var(--gray);
+  font-size:13px
+}
+
+.alert-modal{
+  position:fixed;
+  inset:0;
+  z-index:6000;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  background:rgba(0,0,0,0.6)
+}
+
+.alert-modal.show{
+  display:flex
+}
+
+.alert-box{
+  width:min(400px,90%);
+  background:#fff;
+  border-radius:12px;
+  overflow:hidden;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+  animation:alertPop .3s cubic-bezier(0.16,1,0.3,1)
+}
+
+@keyframes alertPop{
+  0%{
+    transform:scale(0.9);
+    opacity:0
+  }
+  100%{
+    transform:scale(1);
+    opacity:1
+  }
+}
+
+.alert-icon{
+  font-size:45px;
+  margin-top:25px;
+  margin-bottom:12px
+}
+
+.alert-title{
+  font-size:20px;
+  font-weight:900;
+  color:var(--navy);
+  margin-bottom:10px
+}
+
+.alert-desc{
+  font-size:15px;
+  color:var(--gray);
+  line-height:1.5;
+  padding:0 24px;
+  margin-bottom:25px
+}
+
+.alert-footer{
+  padding:0 24px 24px
+}
+
+.alert-btn{
+  width:100%;
+  padding:14px;
+  border-radius:8px;
+  font-size:16px;
+  font-weight:800;
+  background:var(--blue);
+  color:#fff;
+  border:0;
+  cursor:pointer
+}
+
+.alert-btn:hover{
+  background:#0f447d
+}
+
+.vr-guide-modal{
+  position:fixed;
+  inset:0;
+  z-index:5000;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  background:rgba(0,0,0,0.6)
+}
+
+.vr-guide-modal.show{
+  display:flex
+}
+
+.vr-guide-box{
+  width:min(440px,90%);
+  background:#fff;
+  border-radius:12px;
+  overflow:hidden
+}
+
+.vr-guide-header{
+  background:var(--navy);
+  color:#fff;
+  padding:18px 24px;
+  font-size:18px;
+  font-weight:800;
+  display:flex;
+  justify-content:space-between;
+  align-items:center
+}
+
+.vr-guide-header button{
+  background:none;
+  border:0;
+  color:#fff;
+  font-size:22px;
+  cursor:pointer
+}
+
+.vr-guide-content{
+  padding:24px;
+  text-align:center
+}
+
+.vr-guide-icon{
+  font-size:40px;
+  margin-bottom:12px
+}
+
+.vr-guide-title{
+  font-size:19px;
+  font-weight:900;
+  color:var(--navy);
+  margin-bottom:10px
+}
+
+.vr-guide-desc{
+  font-size:15px;
+  color:var(--gray);
+  line-height:1.6
+}
+
+.vr-guide-footer{
+  padding:0 24px 24px;
+  display:flex;
+  gap:10px
+}
+
+.vr-guide-btn{
+  flex:1;
+  padding:14px;
+  border-radius:8px;
+  font-size:16px;
+  font-weight:800;
+  border:0;
+  cursor:pointer
+}
+
+.vr-guide-btn.cancel{
+  background:#e4e7ec;
+  color:#475467
+}
+
+.vr-guide-btn.confirm{
+  background:var(--orange);
+  color:#fff
+}
+
+
+/* =========================
+   TABLET / MOBILE
+========================= */
 
 @media(max-width:900px){
-.container{width:min(calc(100% - 30px),100%)}
-.section{padding:30px 0}
-.header-phone{display:none}
-.mobile-menu{display:block}
-.menu{position:absolute;top:80px;left:0;display:none;width:100%;flex-direction:column;gap:0;background:#fff;border-bottom:1px solid #eee}
-.menu.active{display:flex}
-.menu button{width:100%;padding:17px 25px;border-bottom:1px solid #eee;text-align:left;font-size:16px}
-.overview-grid,.contact-grid,.park,.unit-list{grid-template-columns:1fr}
-.park-content{padding:40px 25px}
-.stats{grid-template-columns:1fr 1fr}
-.stat:nth-child(2){border-right:0}
-.popup-wrapper{width:min(500px,92%)}
-.popup-grid{display:block}
-.popup-box{display:none;margin:auto}
-.popup-box.active-mobile{display:block}
 
-.hero-content{transform:translateY(-55%);text-align:center}
+  .container{
+    width:min(calc(100% - 30px),100%)
+  }
 
-.phone-big{font-size:30px}
-.date-field input{min-height:52px;font-size:16px}
+  .section{
+    padding:30px 0
+  }
 
-/* ==========================================
-   ✨ 모바일 화면: 하단 바닥에 바짝 붙도록 유지 + 흰색 테두리 추가
-   ========================================== */
-.float{
-  position:fixed;
-  inset:auto 8px 4px 8px;
-  z-index:2000;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:6px;
-  background:rgba(255, 255, 255, 0.95);
-  border:2px solid #fff;
-  border-radius:14px;
-  box-shadow:0 4px 20px rgba(0,0,0,.25);
-  padding:6px;
-}
-.float-item{
-  width:100%;
-  height:48px;
-  border-radius:10px;
-  border:0;
-  box-shadow:0 2px 8px rgba(0,0,0,.1);
-  transform:none;
-}
-/* 1. 탑 버튼 (노란색) */
-.float-top { 
-  background:var(--yellow); 
-  color:var(--navy); 
-  font-size:10px;
-  font-weight:900;
-  line-height:1.1;
-}
-.float-top span {
-  font-size:14px;
-  font-weight:900;
-}
-/* 2. 방문예약 버튼 (주황색) */
-.float-register{ 
-  background:var(--orange); 
-  color:#fff; 
-  font-size:13px;
-  font-weight:800;
-}
-/* 3. 전화상담 버튼 (네이비 딥블루 배경 + 골드 컬러 이모지) */
-.float-phone{ 
-  background:var(--navy); 
-  color:var(--yellow); 
-  border:1.5px solid var(--yellow);
-  font-size:26px;
-  line-height:1;
-}
-.float-item:hover{
-  transform:none;
-  box-shadow:0 4px 12px rgba(0,0,0,.15);
-}
+  .header-phone{
+    display:none
+  }
+
+  .mobile-menu{
+    display:block
+  }
+
+  .menu{
+    position:absolute;
+    top:80px;
+    left:0;
+    display:none;
+    width:100%;
+    flex-direction:column;
+    gap:0;
+    background:#fff;
+    border-bottom:1px solid #eee
+  }
+
+  .menu.active{
+    display:flex
+  }
+
+  .menu button{
+    width:100%;
+    padding:17px 25px;
+    border-bottom:1px solid #eee;
+    text-align:left;
+    font-size:16px
+  }
+
+  .overview-grid,
+  .contact-grid,
+  .park,
+  .unit-list{
+    grid-template-columns:1fr
+  }
+
+  .park-content{
+    padding:40px 25px
+  }
+
+  .stats{
+    grid-template-columns:1fr 1fr
+  }
+
+  .stat:nth-child(2){
+    border-right:0
+  }
+
+  .popup-wrapper{
+    width:min(500px,92%)
+  }
+
+  .popup-grid{
+    display:block
+  }
+
+  .popup-box{
+    display:none;
+    margin:auto
+  }
+
+  .popup-box.active-mobile{
+    display:block
+  }
+
+  .popup-box .popup-head{
+    display:none !important
+  }
+
+  .popup-box{
+    border-radius:8px
+  }
+
+  .hero-content{
+    transform:translateY(-55%);
+    text-align:center
+  }
+
+
+  /* =====================================
+     방문예약 영역
+     PC : 왼쪽 정렬
+     MOBILE : 가운데 정렬
+  ===================================== */
+
+  #contactSection .contact-grid > div:first-child{
+    text-align:center
+  }
+
+  #contactSection .visit-label{
+    text-align:center !important
+  }
+
+  #contactSection .contact-grid > div:first-child .title{
+    text-align:center
+  }
+
+  #contactSection .contact-grid > div:first-child .desc{
+    text-align:center
+  }
+
+  #contactSection .contact-grid > div:first-child .phone-big{
+    justify-content:center
+  }
+
+  .phone-big{
+    font-size:30px;
+    justify-content:center
+  }
+
+  .date-field input{
+    font-size:16px
+  }
+
+  .float{
+    position:fixed;
+    inset:auto 8px 4px 8px;
+    z-index:2000;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:6px;
+    background:rgba(255,255,255,0.95);
+    border:2px solid #fff;
+    border-radius:14px;
+    box-shadow:0 4px 20px rgba(0,0,0,.25);
+    padding:6px
+  }
+
+  .float-item{
+    width:100%;
+    height:48px;
+    border-radius:10px;
+    border:0;
+    box-shadow:0 2px 8px rgba(0,0,0,.1);
+    transform:none
+  }
+
+  .float-top{
+    background:var(--yellow);
+    color:var(--navy);
+    font-size:10px;
+    font-weight:900;
+    line-height:1.1
+  }
+
+  .float-top span{
+    font-size:14px;
+    font-weight:900
+  }
+
+  .float-register{
+    background:var(--orange);
+    color:#fff;
+    font-size:13px;
+    font-weight:800
+  }
+
+  .float-phone{
+    background:var(--green);
+    color:#fff;
+    border:1.5px solid #fff;
+    display:flex;
+    align-items:center;
+    justify-content:center
+  }
+
+  .float-phone svg{
+    width:26px;
+    height:26px
+  }
+
+  .float-item:hover{
+    transform:none;
+    box-shadow:0 4px 12px rgba(0,0,0,.15)
+  }
 }
 
 @media(max-width:600px){
-.vr-button{width:calc(100% - 40px);margin-left:20px;margin-right:20px}
+
+  .vr-button{
+    width:calc(100% - 40px);
+    margin-left:20px;
+    margin-right:20px
+  }
 }
 </style>
 </head>
+
 <body>
+
 <header class="header" id="header">
-<div class="container nav">
-<button class="logo" type="button" data-target="top" aria-label="더파크 비스타동원 홈"><img src="images/logo.png" alt="더파크 비스타동원" width="140" height="34"></button>
-<nav class="menu" id="mainMenu" aria-label="주요 메뉴">
-<button type="button" data-target="overviewSection">사업개요</button>
-<button type="button" data-target="premiumSection">프리미엄</button>
-<button type="button" data-target="locationSection">입지환경</button>
-<button type="button" data-target="complexSection">단지안내</button>
-<button type="button" data-target="unitSection">주택형(VR)</button>
-<button type="button" data-target="communitySection">커뮤니티</button>
-<button type="button" data-target="contactSection">방문예약</button>
-</nav>
-<a class="header-phone" href="tel:15519708">☎ 1551-9708</a>
-<button class="mobile-menu" id="menuToggle" type="button" aria-label="메뉴 열기" aria-expanded="false">☰</button>
-</div>
+  <div class="container nav">
+
+    <button class="logo" type="button" data-target="top" aria-label="더파크 비스타동원 홈">
+      <img src="images/logo.png" alt="더파크 비스타동원" width="140" height="34">
+    </button>
+
+    <nav class="menu" id="mainMenu" aria-label="주요 메뉴">
+      <button type="button" data-target="overviewSection">사업개요</button>
+      <button type="button" data-target="premiumSection">프리미엄</button>
+      <button type="button" data-target="locationSection">입지환경</button>
+      <button type="button" data-target="complexSection">단지안내</button>
+      <button type="button" data-target="unitSection">주택형(VR)</button>
+      <button type="button" data-target="communitySection">커뮤니티</button>
+      <button type="button" data-target="contactSection">방문예약</button>
+    </nav>
+
+    <a class="header-phone" href="tel:15519708">☎ 1551-9708</a>
+
+    <button class="mobile-menu" id="menuToggle" type="button"
+            aria-label="메뉴 열기" aria-expanded="false">
+      ☰
+    </button>
+
+  </div>
 </header>
 
+
 <section class="hero" id="home">
-<div class="hero-photo"><img src="images/photo01.webp" alt="더파크 비스타동원 아파트 조감도" fetchpriority="high"></div>
-<div class="container hero-content">
-<div class="hero-label">THE PARK VISTA DONGWON</div>
-<h1><span class="hero-main-title">공원속의 프리미엄 아파트</span><span class="hero-subtitle">사상공원 민간공원 특례사업</span></h1>
-<p class="hero-text">자연을 품은 프리미엄 주거공간<br>전 세대 84㎡ · 총 852세대</p>
-<div class="hero-btn-group"><button type="button" class="hero-vr-btn" data-target="unitSection">✨ 360° VR 모델하우스 보기</button></div>
-</div>
+
+  <div class="hero-photo">
+    <img src="images/photo01.webp"
+         alt="더파크 비스타동원 아파트 조감도"
+         fetchpriority="high">
+  </div>
+
+  <div class="container hero-content">
+
+    <div class="hero-label">
+      THE PARK VISTA DONGWON
+    </div>
+
+    <h1>
+      <span class="hero-main-title">공원속의 프리미엄 아파트</span>
+      <span class="hero-subtitle">사상공원 민간공원 특례사업</span>
+    </h1>
+
+    <p class="hero-text">
+      자연을 품은 프리미엄 주거공간<br>
+      전 세대 84㎡ · 총 852세대
+    </p>
+
+    <div class="hero-btn-group">
+      <button type="button"
+              class="hero-vr-btn"
+              data-target="unitSection">
+        ✨ 360° VR 모델하우스 보기
+      </button>
+    </div>
+
+  </div>
 </section>
+
 
 <section class="section" id="overviewSection">
-<div class="container">
-<div class="label">PROJECT OVERVIEW</div>
-<h2 class="title center">도시와 자연의 가치를<br>함께 누리는 주거공간</h2>
-<p class="desc center">더파크 비스타동원은 자연과 주거가 어우러지는 프리미엄 주거공간을 제안합니다.</p>
-<div class="overview-grid">
-<div class="photo"><img src="images/photo02.webp" alt="더파크 비스타동원 사업개요" width="600" height="400"></div>
-<dl class="info">
-<div class="info-row"><dt>대지면적</dt><dd>47,839.0000㎡</dd></div>
-<div class="info-row"><dt>대지위치</dt><dd>부산광역시 사상구 감전동 산1-9일원</dd></div>
-<div class="info-row"><dt>건축규모</dt><dd>지하 5층 ~ 지상 25층</dd></div>
-<div class="info-row"><dt>총 세대수</dt><dd>852세대</dd></div>
-<div class="info-row"><dt>주택형</dt><dd>전용 84㎡</dd></div>
-</dl>
-</div>
-</div>
+  <div class="container">
+
+    <div class="label">PROJECT OVERVIEW</div>
+
+    <h2 class="title center">
+      도시와 자연의 가치를<br>
+      함께 누리는 주거공간
+    </h2>
+
+    <p class="desc center">
+      더파크 비스타동원은 자연과 주거가 어우러지는 프리미엄 주거공간을 제안합니다.
+    </p>
+
+    <div class="overview-grid">
+
+      <div class="photo">
+        <img src="images/photo02.webp"
+             alt="더파크 비스타동원 사업개요"
+             width="600"
+             height="400"
+             loading="lazy"
+             decoding="async">
+      </div>
+
+      <dl class="info">
+        <div class="info-row">
+          <dt>대지면적</dt>
+          <dd>47,839.0000㎡</dd>
+        </div>
+
+        <div class="info-row">
+          <dt>대지위치</dt>
+          <dd>부산광역시 사상구 감전동 산1-9일원</dd>
+        </div>
+
+        <div class="info-row">
+          <dt>건축규모</dt>
+          <dd>지하 5층 ~ 지상 25층</dd>
+        </div>
+
+        <div class="info-row">
+          <dt>총 세대수</dt>
+          <dd>852세대</dd>
+        </div>
+
+        <div class="info-row">
+          <dt>주택형</dt>
+          <dd>전용 84㎡</dd>
+        </div>
+      </dl>
+
+    </div>
+  </div>
 </section>
+
 
 <section id="premiumSection">
-<div class="park">
-<div class="photo"><img src="images/photo03.webp" alt="사상공원 프리미엄" width="600" height="400"></div>
-<div class="park-content">
-<div class="label">PREMIUM</div>
-<h2>도시의 가치와 대자연의<br>감동을 잇는 프리미엄</h2>
-<p>자연과 하나가 되는 생활<br>새로운 주거환경을 제안합니다.</p>
-<div class="highlight">사상공원 민간공원 특례사업<br>일상이 휴식이 되는 하이엔드 웰니스 라이프</div>
-</div>
-</div>
-<div class="section" style="padding-top:30px">
-<div class="container">
-<div class="full-image">
-  <img src="images/premium_total1.webp" alt="더파크 비스타동원 프리미엄 안내 1" width="1100" height="1065">
-  <img src="images/premium_total2.webp" alt="더파크 비스타동원 프리미엄 안내 2" width="1100" height="1065">
-</div>
-<p class="reference">※ 본 이미지는 참고용 이미지입니다.</p>
-</div>
-</div>
+
+  <div class="park">
+
+    <div class="photo">
+      <img src="images/photo03.webp"
+           alt="사상공원 프리미엄"
+           width="600"
+           height="400"
+           loading="lazy"
+           decoding="async">
+    </div>
+
+    <div class="park-content">
+
+      <div class="label">PREMIUM</div>
+
+      <h2>
+        도시의 가치와 대자연의<br>
+        감동을 잇는 프리미엄
+      </h2>
+
+      <p>
+        자연과 하나가 되는 생활<br>
+        새로운 주거환경을 제안합니다.
+      </p>
+
+      <div class="highlight">
+        사상공원 민간공원 특례사업<br>
+        일상이 휴식이 되는 하이엔드 웰니스 라이프
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="section" style="padding-top:30px">
+
+    <div class="container">
+
+      <div class="full-image">
+        <img src="images/premium_total1.webp"
+             alt="더파크 비스타동원 프리미엄 안내 1"
+             width="1100"
+             height="1065"
+             loading="lazy"
+             decoding="async">
+
+        <img src="images/premium_total2.webp"
+             alt="더파크 비스타동원 프리미엄 안내 2"
+             width="1100"
+             height="1065"
+             loading="lazy"
+             decoding="async">
+      </div>
+
+      <p class="reference">
+        ※ 본 이미지는 참고용 이미지입니다.
+      </p>
+
+    </div>
+  </div>
+
 </section>
+
 
 <section class="section" id="locationSection">
-<div class="container">
-<div class="label">LOCATION</div>
-<h2 class="title center">
-<span style="display:block; color:var(--burgundy); margin-bottom:8px;">교통과 인프라를</span>
-<span style="display:block; font-size:0.85em; color:var(--navy);">가까이 누리는 편리한 입지환경</span>
-</h2>
-<div class="full-image" style="margin-top:30px">
-  <img src="images/location_total1.webp" alt="더파크 비스타동원 입지환경 1" width="1100" height="1716">
-  <img src="images/location_total2.webp" alt="더파크 비스타동원 입지환경 2" width="1100" height="1716">
-</div>
-<p class="reference">※ 본 이미지는 참고용 이미지입니다.</p>
-</div>
+
+  <div class="container">
+
+    <div class="label">LOCATION</div>
+
+    <h2 class="title center">
+      <span style="display:block;color:var(--burgundy);margin-bottom:8px;">
+        교통과 인프라를
+      </span>
+
+      <span style="display:block;font-size:0.85em;color:var(--navy);">
+        가까이 누리는 편리한 입지환경
+      </span>
+    </h2>
+
+    <div class="full-image" style="margin-top:30px">
+
+      <img src="images/location_total1.webp"
+           alt="더파크 비스타동원 입지환경 1"
+           width="1100"
+           height="1716"
+           loading="lazy"
+           decoding="async">
+
+      <img src="images/location_total2.webp"
+           alt="더파크 비스타동원 입지환경 2"
+           width="1100"
+           height="1716"
+           loading="lazy"
+           decoding="async">
+
+    </div>
+
+    <p class="reference">
+      ※ 본 이미지는 참고용 이미지입니다.
+    </p>
+
+  </div>
 </section>
+
 
 <section class="section complex" id="complexSection">
-<div class="container">
-<div class="center">
-<div class="label">COMPLEX</div>
-<h2 class="title">852세대 대단지의<br>프리미엄 라이프</h2>
-</div>
-<div class="stats">
-<div class="stat"><strong>852</strong><span>총 세대수</span></div>
-<div class="stat"><strong>10</strong><span>총 동수</span></div>
-<div class="stat"><strong>25</strong><span>최고 층수</span></div>
-<div class="stat"><span>전 세대</span><strong>84㎡</strong></div>
-</div>
-<div class="complex-photo full-image"><img src="images/photo05.webp" alt="더파크 비스타동원 단지 조감도" width="1100" height="600"></div>
-<div class="complex-photo full-image"><img src="images/complex_add.webp" alt="더파크 비스타동원 단지 안내" width="1100" height="600"></div>
-</div>
+
+  <div class="container">
+
+    <div class="center">
+
+      <div class="label">COMPLEX</div>
+
+      <h2 class="title">
+        852세대 대단지의<br>
+        프리미엄 라이프
+      </h2>
+
+    </div>
+
+
+    <div class="stats">
+
+      <div class="stat">
+        <strong>852</strong>
+        <span>총 세대수</span>
+      </div>
+
+      <div class="stat">
+        <strong>10</strong>
+        <span>총 동수</span>
+      </div>
+
+      <div class="stat">
+        <strong>25</strong>
+        <span>최고 층수</span>
+      </div>
+
+      <div class="stat">
+        <span>전 세대</span>
+        <strong>84㎡</strong>
+      </div>
+
+    </div>
+
+
+    <div class="complex-photo full-image">
+      <img src="images/photo05.webp"
+           alt="더파크 비스타동원 단지 조감도"
+           width="1100"
+           height="600"
+           loading="lazy"
+           decoding="async">
+    </div>
+
+
+    <div class="complex-photo full-image">
+      <img src="images/complex_add.webp"
+           alt="더파크 비스타동원 단지 안내"
+           width="1100"
+           height="600"
+           loading="lazy"
+           decoding="async">
+    </div>
+
+  </div>
 </section>
+
 
 <section class="section" id="unitSection">
-<div class="container">
-<div class="center">
-<div class="label">UNIT PLAN & VR</div>
-<h2 class="title">가족의 라이프스타일을 담은<br>84㎡ 타입</h2>
-<p class="desc">84A와 84C 타입의 평면 및 360° VR을 확인해보세요.</p>
-</div>
-<div class="unit-list">
-<article class="unit-card">
-<div class="unit-type"><small>TYPE 84A</small><h3>84㎡ A</h3></div>
-<button type="button" class="unit-vr-link" data-vr="http://www.xn--9m1bxju0y9pev6fvvq4qa20m.com/vr/84a.html?v=251014" data-vr-title="84A 타입 360° VR" aria-label="84A 타입 360도 VR 보기">
-<img src="images/photo06.webp" alt="더파크 비스타동원 84A 타입" width="500" height="350">
-<span class="vr-button vr-button-a">🔍 A타입 360° VR 보기</span>
-</button>
-</article>
-<article class="unit-card">
-<div class="unit-type"><small>TYPE 84C</small><h3>84㎡ C</h3></div>
-<button type="button" class="unit-vr-link" data-vr="http://www.xn--9m1bxju0y9pev6fvvq4qa20m.com/vr/84c.html?v=251014" data-vr-title="84C 타입 360° VR" aria-label="84C 타입 360도 VR 보기">
-<img src="images/photo08.webp" alt="더파크 비스타동원 84C 타입" width="500" height="350">
-<span class="vr-button vr-button-c">🔥 C타입 360° VR 보기</span>
-</button>
-</article>
-</div>
-</div>
+
+  <div class="container">
+
+    <div class="center">
+
+      <div class="label">UNIT PLAN & VR</div>
+
+      <h2 class="title">
+        가족의 라이프스타일을 담은<br>
+        84㎡ 타입
+      </h2>
+
+      <p class="desc">
+        84A와 84C 타입의 평면 및 360° VR을 확인해보세요.
+      </p>
+
+    </div>
+
+
+    <div class="unit-list">
+
+      <article class="unit-card">
+
+        <div class="unit-type">
+          <small>TYPE 84A</small>
+          <h3>84㎡ A</h3>
+        </div>
+
+        <button type="button"
+                class="unit-vr-link"
+                data-vr="http://www.xn--9m1bxju0y9pev6fvvq4qa20m.com/vr/84a.html?v=251014"
+                data-vr-title="84A 타입 360° VR"
+                aria-label="84A 타입 360도 VR 보기">
+
+          <img src="images/photo06.webp"
+               alt="더파크 비스타동원 84A 타입"
+               width="500"
+               height="350"
+               loading="lazy"
+               decoding="async">
+
+          <span class="vr-button vr-button-a">
+            🔍 A타입 360° VR 보기
+          </span>
+
+        </button>
+
+      </article>
+
+
+      <article class="unit-card">
+
+        <div class="unit-type">
+          <small>TYPE 84C</small>
+          <h3>84㎡ C</h3>
+        </div>
+
+        <button type="button"
+                class="unit-vr-link"
+                data-vr="http://www.xn--9m1bxju0y9pev6fvvq4qa20m.com/vr/84c.html?v=251014"
+                data-vr-title="84C 타입 360° VR"
+                aria-label="84C 타입 360도 VR 보기">
+
+          <img src="images/photo08.webp"
+               alt="더파크 비스타동원 84C 타입"
+               width="500"
+               height="350"
+               loading="lazy"
+               decoding="async">
+
+          <span class="vr-button vr-button-c">
+            🔥 C타입 360° VR 보기
+          </span>
+
+        </button>
+
+      </article>
+
+    </div>
+
+  </div>
 </section>
+
 
 <section class="section" id="communitySection">
-<div class="container">
-<div class="label">COMMUNITY</div>
-<h2 class="title center">일상에 품격을 더하는<br>프리미엄 커뮤니티</h2>
-<div class="full-image img-community" style="margin-top:30px"><img src="images/community_total.webp" alt="더파크 비스타동원 커뮤니티 시설 안내" width="1100" height="1442"></div>
-<p class="reference">※ 본 이미지는 참고용 이미지입니다.</p>
-</div>
+
+  <div class="container">
+
+    <div class="label">COMMUNITY</div>
+
+    <h2 class="title center">
+      일상에 품격을 더하는<br>
+      프리미엄 커뮤니티
+    </h2>
+
+    <div class="full-image img-community" style="margin-top:30px">
+
+      <img src="images/community_total.webp"
+           alt="더파크 비스타동원 커뮤니티 시설 안내"
+           width="1100"
+           height="1442"
+           loading="lazy"
+           decoding="async">
+
+    </div>
+
+    <p class="reference">
+      ※ 본 이미지는 참고용 이미지입니다.
+    </p>
+
+  </div>
 </section>
+
 
 <section class="section">
-<div class="container">
-<div class="center">
-<div class="label">PROJECT IMAGE</div>
-<h2 class="title">더파크 비스타동원의<br>미래가치를 경험하세요</h2>
-</div>
-<div class="full-image" style="margin-top:30px"><img src="images/photo11.webp" alt="더파크 비스타동원 프로젝트 이미지" width="1100" height="600"></div>
-</div>
+
+  <div class="container">
+
+    <div class="center">
+
+      <div class="label">PROJECT IMAGE</div>
+
+      <h2 class="title">
+        더파크 비스타동원의<br>
+        미래가치를 경험하세요
+      </h2>
+
+    </div>
+
+    <div class="full-image" style="margin-top:30px">
+
+      <img src="images/photo11.webp"
+           alt="더파크 비스타동원 프로젝트 이미지"
+           width="1100"
+           height="600"
+           loading="lazy"
+           decoding="async">
+
+    </div>
+
+  </div>
 </section>
+
+
+<!-- =========================
+     방문예약
+========================= -->
 
 <section class="section" id="contactSection">
-<div class="container contact-grid">
-<div>
-<div class="label" style="text-align:left">VISIT RESERVATION</div>
-<h2 class="title">방문예약을 신청하고<br>자세한 정보를 받아보세요.</h2>
-<p class="desc">방문을 원하시는 날짜와 시간을 선택해주시면<br>상담 담당자가 확인 후 안내드립니다.</p>
-<a href="tel:15519708" class="phone-big" aria-label="1551-9708 전화하기"><span class="phone-circle">☎</span>1551-9708</a>
-</div>
-<form class="form" id="leadForm" novalidate>
-<h3>방문예약</h3>
-<p class="form-sub">방문을 원하시는 정보를 입력해주세요.</p>
-<div class="hp-field"><input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
-<div class="form-row"><label for="name">이름 <span class="required">*</span></label><input id="name" name="name" type="text" maxlength="50" autocomplete="name" placeholder="이름을 입력해주세요" required></div>
-<div class="form-row"><label for="phone">휴대폰 번호 <span class="required">*</span></label><input id="phone" name="phone" type="tel" inputmode="tel" maxlength="13" autocomplete="tel" placeholder="010-0000-0000" required></div>
-<div class="form-row">
-<label for="consultDate">방문 희망일 <span class="required">*</span></label>
-<div class="date-field" id="dateField" role="button" tabindex="0"><input id="consultDate" name="consultDate" type="date" required></div>
-</div>
-<div class="form-row">
-<label for="consultTime">방문 희망시간 <span class="required">*</span></label>
-<select id="consultTime" name="consultTime" required>
-<option value="">방문 시간을 선택해주세요</option>
-<option value="10:00">10:00</option><option value="11:00">11:00</option><option value="12:00">12:00</option><option value="13:00">13:00</option><option value="14:00">14:00</option><option value="15:00">15:00</option><option value="16:00">16:00</option><option value="17:00">17:00</option>
-</select>
-</div>
-<div class="privacy">
-<div class="privacy-head"><strong>개인정보 수집·이용 동의</strong><button type="button" class="policy-btn" id="policyOpen">자세히 보기</button></div>
-<label class="agree"><input id="privacy" name="privacy" type="checkbox" required><span><span class="required">[필수]</span> 개인정보 수집 및 이용에 동의합니다.</span></label>
-<div class="privacy-summary">수집항목 : 이름, 휴대폰 번호, 방문 희망일, 방문 희망시간<br>수집목적 : 방문예약 및 상담<br>보유기간 : 상담 목적 달성 후 지체 없이 파기</div>
-</div>
-<button class="submit" id="submitButton" type="submit">방문예약 신청하기</button>
-<div class="message" id="formMessage" role="alert" aria-live="polite"></div>
-</form>
-</div>
+
+  <div class="container contact-grid">
+
+    <!-- PC에서는 왼쪽 / 모바일에서는 가운데 -->
+    <div class="contact-intro">
+
+      <div class="label visit-label">
+        VISIT RESERVATION
+      </div>
+
+      <h2 class="title">
+        방문예약을 신청하고<br>
+        상세내용을 안내받으세요.
+      </h2>
+
+      <p class="desc">
+        방문을 원하시는 날짜와 시간을 선택해주시면<br>
+        상담 담당자가 확인 후 안내드립니다.
+      </p>
+
+      <a href="tel:15519708"
+         class="phone-big"
+         aria-label="1551-9708 전화하기">
+
+        <span class="phone-circle">
+
+          <svg viewBox="0 0 24 24">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+
+        </span>
+
+        1551-9708
+
+      </a>
+
+    </div>
+
+
+    <form class="form" id="leadForm" novalidate>
+
+      <h3>방문예약</h3>
+
+      <p class="form-sub">
+        방문을 원하시는 정보를 입력해주세요.
+      </p>
+
+      <div class="hp-field">
+        <input id="website"
+               name="website"
+               type="text"
+               tabindex="-1"
+               autocomplete="off">
+      </div>
+
+
+      <div class="form-row">
+
+        <label for="name">
+          이름 <span class="required">*</span>
+        </label>
+
+        <input id="name"
+               name="name"
+               type="text"
+               maxlength="50"
+               autocomplete="name"
+               placeholder="이름을 입력해주세요"
+               required>
+
+      </div>
+
+
+      <div class="form-row">
+
+        <label for="phone">
+          휴대폰 번호 <span class="required">*</span>
+        </label>
+
+        <input id="phone"
+               name="phone"
+               type="tel"
+               inputmode="tel"
+               maxlength="13"
+               autocomplete="tel"
+               placeholder="010-0000-0000"
+               required>
+
+      </div>
+
+
+      <div class="form-row">
+
+        <label for="consultDate">
+          방문 희망일 <span class="required">*</span>
+        </label>
+
+        <div class="date-field"
+             id="dateField"
+             role="button"
+             tabindex="0">
+
+          <input id="consultDate"
+                 name="consultDate"
+                 type="date"
+                 required>
+
+        </div>
+
+      </div>
+
+
+      <div class="form-row">
+
+        <label for="consultTime">
+          방문 희망시간 <span class="required">*</span>
+        </label>
+
+        <select id="consultTime"
+                name="consultTime"
+                required>
+
+          <option value="">
+            방문 시간을 선택해주세요
+          </option>
+
+          <option value="10:00">10:00</option>
+          <option value="11:00">11:00</option>
+          <option value="12:00">12:00</option>
+          <option value="13:00">13:00</option>
+          <option value="14:00">14:00</option>
+          <option value="15:00">15:00</option>
+          <option value="16:00">16:00</option>
+          <option value="17:00">17:00</option>
+
+        </select>
+
+      </div>
+
+
+      <div class="privacy">
+
+        <div class="privacy-head">
+
+          <strong>
+            개인정보 수집·이용 동의
+          </strong>
+
+          <button type="button"
+                  class="policy-btn"
+                  id="policyOpen">
+            자세히 보기
+          </button>
+
+        </div>
+
+
+        <label class="agree">
+
+          <input id="privacy"
+                 name="privacy"
+                 type="checkbox"
+                 required>
+
+          <span>
+            <span class="required">[필수]</span>
+            개인정보 수집 및 이용에 동의합니다.
+          </span>
+
+        </label>
+
+
+        <div class="privacy-summary">
+          수집항목 : 이름, 휴대폰 번호, 방문 희망일, 방문 희망시간<br>
+          수집목적 : 방문예약 및 상담<br>
+          보유기간 : 상담 목적 달성 후 지체 없이 파기
+        </div>
+
+      </div>
+
+
+      <button class="submit"
+              id="submitButton"
+              type="submit">
+        방문예약 신청하기
+      </button>
+
+    </form>
+
+  </div>
 </section>
 
+
 <footer class="footer">
-<div class="container">
-<h3>현장명 ㅣ 더파크 비스타동원</h3>
-<p>현장주소 ㅣ 부산광역시 사상구 감전동 산 1-9일원</p>
-<p>관리자 ㅣ 최용석</p>
-<p>광고대행 ㅣ Hosting by intoindesign</p>
-<p>사업자번호 ㅣ 605-23-83014</p>
-<p class="footer-phone"><a href="tel:01094892528">광고문의 ㅣ 010-9489-2528</a></p>
-<button class="footer-policy" id="policyOpen2" type="button">개인정보처리방침</button>
-</div>
+
+  <div class="container">
+
+    <h3>
+      현장명 ㅣ 더파크 비스타동원
+    </h3>
+
+    <p>
+      현장주소 ㅣ 부산광역시 사상구 감전동 산 1-9일원
+    </p>
+
+    <p>
+      관리자 ㅣ 최용석
+    </p>
+
+    <p>
+      광고대행 ㅣ Hosting by intoindesign
+    </p>
+
+    <p>
+      사업자번호 ㅣ 605-23-83014
+    </p>
+
+    <p class="footer-phone">
+      <a href="tel:01094892528">
+        광고문의 ㅣ 010-9489-2528
+      </a>
+    </p>
+
+    <button class="footer-policy"
+            id="policyOpen2"
+            type="button">
+      개인정보처리방침
+    </button>
+
+  </div>
+
 </footer>
 
-<!-- 플로팅 버튼 박스 -->
+
 <div class="float">
-<button type="button" class="float-item float-top" data-target="top" aria-label="맨 위로 가기">▲<span>TOP</span></button>
-<button type="button" class="float-item float-register" data-target="contactSection" aria-label="방문예약 바로가기">방문예약</button>
-<a href="tel:15519708" class="float-item float-phone" aria-label="전화상담">📞</a>
+
+  <button type="button"
+          class="float-item float-top"
+          data-target="top"
+          aria-label="맨 위로 가기">
+    ▲
+    <span>TOP</span>
+  </button>
+
+  <button type="button"
+          class="float-item float-register"
+          data-target="contactSection"
+          aria-label="방문예약 바로가기">
+    방문예약
+  </button>
+
+  <a href="tel:15519708"
+     class="float-item float-phone"
+     aria-label="전화상담">
+
+    <svg viewBox="0 0 24 24">
+      <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+    </svg>
+
+  </a>
+
 </div>
 
-<div class="popup01" id="popup01" role="dialog" aria-modal="true">
-<div class="popup-wrapper">
-<div class="popup-grid">
-<div class="popup-box" id="popupBox1">
-<div class="popup-head"><strong>공지사항 1</strong><button class="popupCloseBtn" type="button" aria-label="팝업 닫기">×</button></div>
-<div class="popup-body"><img src="images/popup01.webp" alt="공지사항 팝업 이미지 1"></div>
-</div>
-<div class="popup-box" id="popupBox2">
-<div class="popup-head"><strong>공지사항 2</strong><button class="popupCloseBtn" type="button" aria-label="팝업 닫기">×</button></div>
-<div class="popup-body"><img src="images/popup02.webp" alt="공지사항 팝업 이미지 2"></div>
-</div>
-</div>
-<div class="popup-notice">팝업을 터치하거나 바깥 영역을 누르면 다음 팝업이 열리거나 닫힙니다.</div>
-</div>
+
+<div class="popup01"
+     id="popup01"
+     role="dialog"
+     aria-modal="true">
+
+  <div class="popup-wrapper">
+
+    <div class="popup-grid">
+
+      <div class="popup-box" id="popupBox1">
+
+        <div class="popup-head">
+          <strong>공지사항 1</strong>
+
+          <button class="popupCloseBtn"
+                  type="button"
+                  aria-label="팝업 닫기">
+            ×
+          </button>
+        </div>
+
+        <div class="popup-body">
+          <img src="images/popup01.webp"
+               alt="공지사항 팝업 이미지 1">
+        </div>
+
+      </div>
+
+
+      <div class="popup-box" id="popupBox2">
+
+        <div class="popup-head">
+          <strong>공지사항 2</strong>
+
+          <button class="popupCloseBtn"
+                  type="button"
+                  aria-label="팝업 닫기">
+            ×
+          </button>
+        </div>
+
+        <div class="popup-body">
+          <img src="images/popup02.webp"
+               alt="공지사항 팝업 이미지 2">
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="popup-notice">
+      팝업을 터치하거나 바깥 영역을 누르면 다음 팝업이 열리거나 닫힙니다.
+    </div>
+
+  </div>
 </div>
 
-<div class="modal" id="privacyModal" role="dialog" aria-modal="true">
-<div class="modal-box">
-<div class="modal-head"><strong>개인정보처리방침</strong><button id="policyClose" type="button" aria-label="닫기">×</button></div>
-<div class="modal-body">
-<div class="policy"><h4>1. 개인정보의 수집 및 이용 목적</h4><p>방문예약 및 상담 신청, 문의사항 답변과 관련 안내를 위해 개인정보를 수집·이용합니다.</p></div>
-<div class="policy"><h4>2. 수집하는 개인정보 항목</h4><p>이름, 휴대폰 번호, 방문 희망일, 방문 희망시간</p></div>
-<div class="policy"><h4>3. 개인정보 보유 및 이용기간</h4><p>상담 및 방문예약 목적 달성 후 지체 없이 파기합니다.</p></div>
-<div class="policy"><h4>4. 동의 거부권</h4><p>이용자는 개인정보 수집 및 이용에 대한 동의를 거부할 권리가 있습니다.</p></div>
-<div class="policy"><h4>5. 개인정보 제3자 제공</h4><p>원칙적으로 개인정보를 제3자에게 제공하지 않습니다.</p></div>
-<div class="policy"><h4>6. 개인정보 보호책임자</h4><p>상담전화 : 1551-9708</p></div>
-</div>
-</div>
+
+<div class="modal"
+     id="privacyModal"
+     role="dialog"
+     aria-modal="true">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+
+      <strong>개인정보처리방침</strong>
+
+      <button id="policyClose"
+              type="button"
+              aria-label="닫기">
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="modal-body">
+
+      <div class="policy">
+        <h4>1. 개인정보의 수집 및 이용 목적</h4>
+        <p>
+          방문예약 및 상담 신청, 문의사항 답변과 관련 안내를 위해
+          개인정보를 수집·이용합니다.
+        </p>
+      </div>
+
+      <div class="policy">
+        <h4>2. 수집하는 개인정보 항목</h4>
+        <p>
+          이름, 휴대폰 번호, 방문 희망일, 방문 희망시간
+        </p>
+      </div>
+
+      <div class="policy">
+        <h4>3. 개인정보 보유 및 이용기간</h4>
+        <p>
+          상담 및 방문예약 목적 달성 후 지체 없이 파기합니다.
+        </p>
+      </div>
+
+      <div class="policy">
+        <h4>4. 동의 거부권</h4>
+        <p>
+          이용자는 개인정보 수집 및 이용에 대한 동의를 거부할 권리가 있습니다.
+        </p>
+      </div>
+
+      <div class="policy">
+        <h4>5. 개인정보 제3자 제공</h4>
+        <p>
+          원칙적으로 개인정보를 제3자에게 제공하지 않습니다.
+        </p>
+      </div>
+
+      <div class="policy">
+        <h4>6. 개인정보 보호책임자</h4>
+        <p>
+          상담전화 : 1551-9708
+        </p>
+      </div>
+
+    </div>
+
+  </div>
 </div>
 
-<div class="vr-guide-modal" id="vrGuideModal" role="dialog" aria-modal="true">
-<div class="vr-guide-box">
-<div class="vr-guide-header">
-<span id="vrGuideTitleText">360° VR 안내</span>
-<button type="button" id="vrGuideClose" aria-label="닫기">×</button>
+
+<div class="alert-modal"
+     id="alertModal"
+     role="dialog"
+     aria-modal="true">
+
+  <div class="alert-box">
+
+    <div class="alert-icon">🎉</div>
+
+    <div class="alert-title">
+      방문예약 완료
+    </div>
+
+    <p class="alert-desc" id="alertDesc">
+      방문예약이 성공적으로 접수되었습니다.<br>
+      빠른 시일 내로 안내해 드리겠습니다.
+    </p>
+
+    <div class="alert-footer">
+
+      <button type="button"
+              class="alert-btn"
+              id="alertCloseBtn">
+        확인
+      </button>
+
+    </div>
+
+  </div>
 </div>
-<div class="vr-guide-content">
-<div class="vr-guide-icon">💡</div>
-<div class="vr-guide-title">안내사항</div>
-<p class="vr-guide-desc">VR 관람을 마친 뒤에는<br><strong>브라우저 창을 닫거나 뒤로가기</strong>를 눌러<br>공식 홈페이지로 다시 돌아와 주세요!</p>
+
+
+<div class="vr-guide-modal"
+     id="vrGuideModal"
+     role="dialog"
+     aria-modal="true">
+
+  <div class="vr-guide-box">
+
+    <div class="vr-guide-header">
+
+      <span id="vrGuideTitleText">
+        360° VR 안내
+      </span>
+
+      <button type="button"
+              id="vrGuideClose"
+              aria-label="닫기">
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="vr-guide-content">
+
+      <div class="vr-guide-icon">
+        💡
+      </div>
+
+      <div class="vr-guide-title">
+        안내사항
+      </div>
+
+      <p class="vr-guide-desc">
+        VR 관람을 마친 뒤에는<br>
+        <strong>브라우저 창을 닫거나 뒤로가기</strong>를 눌러<br>
+        공식 홈페이지로 다시 돌아와 주세요!
+      </p>
+
+    </div>
+
+
+    <div class="vr-guide-footer">
+
+      <button type="button"
+              class="vr-guide-btn cancel"
+              id="vrGuideCancel">
+        취소
+      </button>
+
+      <button type="button"
+              class="vr-guide-btn confirm"
+              id="vrGuideConfirm">
+        확인 및 VR 시작
+      </button>
+
+    </div>
+
+  </div>
 </div>
-<div class="vr-guide-footer">
-<button type="button" class="vr-guide-btn cancel" id="vrGuideCancel">취소</button>
-<button type="button" class="vr-guide-btn confirm" id="vrGuideConfirm">확인 및 VR 시작</button>
-</div>
-</div>
-</div>
+
 
 <script>
 "use strict";
+
 document.addEventListener("DOMContentLoaded",()=>{
-const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
-const header=$("#header"),menu=$("#mainMenu"),toggle=$("#menuToggle"),popup=$("#popup01"),box1=$("#popupBox1"),box2=$("#popupBox2"),modal=$("#privacyModal"),form=$("#leadForm"),message=$("#formMessage"),submit=$("#submitButton"),date=$("#consultDate"),dateField=$("#dateField"),phone=$("#phone");
-let savedScroll=0;
 
-const vrGuideModal=$("#vrGuideModal");
-const vrGuideTitleText=$("#vrGuideTitleText");
-const vrGuideClose=$("#vrGuideClose");
-const vrGuideCancel=$("#vrGuideCancel");
-const vrGuideConfirm=$("#vrGuideConfirm");
-let pendingVrUrl="";
+  const $=s=>document.querySelector(s);
+  const $$=s=>document.querySelectorAll(s);
 
-const move=id=>{
-  menu?.classList.remove("active");
-  if(toggle){toggle.textContent="☰";toggle.setAttribute("aria-expanded","false")}
-  if(id==="top")return scrollTo({top:0,behavior:"smooth"});
-  const target=$("#"+id);
-  if(target){
-    const headerHeight=header?.offsetHeight||80;
-    const doScroll=()=>{
-      const targetPos=target.getBoundingClientRect().top+window.scrollY-(headerHeight-10);
-      window.scrollTo({top:targetPos,behavior:"smooth"});
-    };
-    doScroll();
-  }
-};
+  const header=$("#header");
+  const menu=$("#mainMenu");
+  const toggle=$("#menuToggle");
 
-$$("[data-target]").forEach(el=>el.addEventListener("click",e=>{
-  e.preventDefault();
-  move(el.dataset.target);
-}));
+  const popup=$("#popup01");
+  const box1=$("#popupBox1");
+  const box2=$("#popupBox2");
 
-toggle?.addEventListener("click",()=>{
-  const open=menu.classList.toggle("active");
-  toggle.textContent=open?"✕":"☰";
-  toggle.setAttribute("aria-expanded",open);
-});
+  const modal=$("#privacyModal");
+  const form=$("#leadForm");
+  const submit=$("#submitButton");
+  const date=$("#consultDate");
+  const dateField=$("#dateField");
+  const phone=$("#phone");
 
-addEventListener("scroll",()=>header?.classList.toggle("scrolled",scrollY>40),{passive:true});
+  let savedScroll=0;
 
-const requestVR=(url,title)=>{
-  if(!url)return;
-  pendingVrUrl=url;
-  if(vrGuideTitleText) vrGuideTitleText.textContent = title || "360° VR 안내";
-  vrGuideModal?.classList.add("show");
-  document.body.style.overflow="hidden";
-};
 
-const launchVR=()=>{
-  if(!pendingVrUrl)return;
-  let url=pendingVrUrl;
-  try{
-    const u=new URL(url);
-    u.searchParams.set("from","main");
-    url=u;
-  }catch{}
-  const mobile=innerWidth<=900||/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-  const win=mobile?open(url,"_blank","noopener,noreferrer"):open(url,"theparkVistaVR","width=1200,height=850,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=yes,status=no");
-  if(!win) alert("VR 화면이 차단되었습니다.\n\n브라우저의 팝업 허용 후 다시 눌러주세요.");
-  else {
-    try{win.focus()}catch{}
-  }
-  closeVrGuide();
-};
+  /* =========================
+     ALERT
+  ========================= */
 
-const closeVrGuide=()=>{
-  vrGuideModal?.classList.remove("show");
-  document.body.style.overflow="";
-  pendingVrUrl="";
-};
+  const alertModal=$("#alertModal");
+  const alertDesc=$("#alertDesc");
+  const alertCloseBtn=$("#alertCloseBtn");
 
-vrGuideClose?.addEventListener("click",closeVrGuide);
-vrGuideCancel?.addEventListener("click",closeVrGuide);
-vrGuideConfirm?.addEventListener("click",launchVR);
-vrGuideModal?.addEventListener("click",e=>{if(e.target===vrGuideModal)closeVrGuide();});
+  const showAlert=(title,text)=>{
 
-$$(".unit-vr-link").forEach(btn=>btn.addEventListener("click",()=>requestVR(btn.dataset.vr,btn.dataset.vrTitle)));
-
-if(popup){
-  const mobile=innerWidth<=900;
-  box1?.classList.add("active-mobile");
-  if(!mobile)box2?.classList.add("active-mobile");
-  popup.classList.add("show");
-
-  $$(".popupCloseBtn").forEach(btn=>btn.addEventListener("click",e=>{
-    e.stopPropagation();
-    popup.classList.remove("show");
-  }));
-
-  popup.addEventListener("click",e=>{
-    if(e.target===popup)return popup.classList.remove("show");
-    if(innerWidth>900)return popup.classList.remove("show");
-    if(box1?.classList.contains("active-mobile")){
-      box1.classList.remove("active-mobile");
-      box2?.classList.add("active-mobile");
-    }else if(box2?.classList.contains("active-mobile")){
-      popup.classList.remove("show");
+    if(alertDesc){
+      alertDesc.innerHTML=text;
     }
-  });
-}
 
-const openModal=e=>{
-  e?.preventDefault();
-  if(!modal)return;
-  savedScroll=scrollY;
-  modal.classList.add("show");
-  document.body.style.overflow="hidden";
-};
-const closeModal=()=>{
-  modal?.classList.remove("show");
-  document.body.style.overflow="";
-  scrollTo(0,savedScroll);
-};
+    const alertTitle=document.querySelector(".alert-title");
 
-$("#policyOpen")?.addEventListener("click",openModal);
-$("#policyOpen2")?.addEventListener("click",openModal);
-$("#policyClose")?.addEventListener("click",closeModal);
-modal?.addEventListener("click",e=>e.target===modal&&closeModal());
+    if(alertTitle){
+      alertTitle.textContent=title;
+    }
 
-document.addEventListener("keydown",e=>{
-  if(e.key==="Escape"){
-    if(modal?.classList.contains("show")) closeModal();
-    if(vrGuideModal?.classList.contains("show")) closeVrGuide();
-  }
-});
-
-const today=()=>{
-  const d=new Date();
-  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
-};
-if(date)date.min=today();
-
-const showDate=()=>{
-  if(!date)return;
-  try{
-    typeof date.showPicker==="function"?date.showPicker():(date.focus(),date.click());
-  }catch{date.focus()}
-};
-
-dateField?.addEventListener("click",e=>e.target!==date&&showDate());
-dateField?.addEventListener("keydown",e=>{
-  if(e.key==="Enter"||e.key===" "){
-    e.preventDefault();
-    showDate();
-  }
-});
-
-phone?.addEventListener("input",()=>{
-  const v=phone.value.replace(/\D/g,"").slice(0,11);
-  phone.value=v.length<=3?v:v.length<=7?`${v.slice(0,3)}-${v.slice(3)}`:`${v.slice(0,3)}-${v.slice(3,7)}-${v.slice(7)}`;
-});
-
-form?.addEventListener("submit",async e=>{
-  e.preventDefault();
-  const name=$("#name"),time=$("#consultTime"),privacy=$("#privacy"),honeypot=$("#website");
-  if(honeypot?.value)return;
-
-  const fail=(text,el)=>{
-    alert(text);
-    el?.focus();
+    alertModal?.classList.add("show");
+    document.body.style.overflow="hidden";
   };
 
-  if(!name.value.trim())return fail("이름을 입력해주세요.",name);
-  const phoneNumber=phone.value.replace(/\D/g,"");
-  if(phoneNumber.length<10||phoneNumber.length>11)return fail("휴대폰 번호를 정확하게 입력해주세요.",phone);
-  if(!date.value)return fail("방문 희망일을 선택해주세요.",date);
-  if(!time.value)return fail("방문 희망시간을 선택해주세요.",time);
-  if(!privacy.checked)return fail("개인정보 수집 및 이용에 동의해주세요.",privacy);
 
-  submit.disabled=true;
-  message.textContent="방문예약 접수 및 알림톡 발송 중입니다...";
-  message.className="message show";
+  const closeAlert=()=>{
 
-  try{
-    const res=await fetch("/.netlify/functions/send-alimtalk",{
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({
-        name:name.value.trim(),
-        phone:phone.value.trim(),
-        consultDate:date.value,
-        consultTime:time.value
-      })
+    alertModal?.classList.remove("show");
+    document.body.style.overflow="";
+  };
+
+
+  alertCloseBtn?.addEventListener("click",closeAlert);
+
+  alertModal?.addEventListener("click",e=>{
+    if(e.target===alertModal){
+      closeAlert();
+    }
+  });
+
+
+  /* =========================
+     VR GUIDE
+  ========================= */
+
+  const vrGuideModal=$("#vrGuideModal");
+  const vrGuideTitleText=$("#vrGuideTitleText");
+  const vrGuideClose=$("#vrGuideClose");
+  const vrGuideCancel=$("#vrGuideCancel");
+  const vrGuideConfirm=$("#vrGuideConfirm");
+
+  let pendingVrUrl="";
+
+
+  const move=id=>{
+
+    menu?.classList.remove("active");
+
+    if(toggle){
+      toggle.textContent="☰";
+      toggle.setAttribute("aria-expanded","false");
+    }
+
+    if(id==="top"){
+      scrollTo({
+        top:0,
+        behavior:"smooth"
+      });
+
+      return;
+    }
+
+    const target=$("#"+id);
+
+    if(target){
+
+      const headerHeight=header?.offsetHeight||80;
+
+      const targetPos=
+        target.getBoundingClientRect().top+
+        window.scrollY-
+        (headerHeight-10);
+
+      window.scrollTo({
+        top:targetPos,
+        behavior:"smooth"
+      });
+    }
+  };
+
+
+  $$("[data-target]").forEach(el=>{
+
+    el.addEventListener("click",e=>{
+
+      e.preventDefault();
+
+      move(el.dataset.target);
+
     });
-    let result={};
-    try{result=await res.json()}catch{}
-    if(!res.ok)throw new Error(result.error||"서버 전송 실패");
-    message.textContent="방문예약이 성공적으로 접수되었습니다. 곧 연락드리겠습니다!";
-    message.className="message show success";
-    form.reset();
-    date.min=today();
-  }catch(error){
-    console.error("예약 전송 오류:",error);
-    message.textContent="예약 접수 중 오류가 발생했습니다. 유선(1551-9708)으로 문의해 주세요.";
-    message.className="message show error";
-  }finally{
-    submit.disabled=false;
+
+  });
+
+
+  toggle?.addEventListener("click",()=>{
+
+    const open=menu.classList.toggle("active");
+
+    toggle.textContent=open?"✕":"☰";
+
+    toggle.setAttribute(
+      "aria-expanded",
+      open
+    );
+
+  });
+
+
+  addEventListener(
+    "scroll",
+    ()=>header?.classList.toggle(
+      "scrolled",
+      scrollY>40
+    ),
+    {passive:true}
+  );
+
+
+  const requestVR=(url,title)=>{
+
+    if(!url)return;
+
+    pendingVrUrl=url;
+
+    if(vrGuideTitleText){
+      vrGuideTitleText.textContent=
+        title||"360° VR 안내";
+    }
+
+    vrGuideModal?.classList.add("show");
+
+    document.body.style.overflow="hidden";
+  };
+
+
+  const closeVrGuide=()=>{
+
+    vrGuideModal?.classList.remove("show");
+
+    document.body.style.overflow="";
+
+    pendingVrUrl="";
+  };
+
+
+  const launchVR=()=>{
+
+    if(!pendingVrUrl)return;
+
+    let url=pendingVrUrl;
+
+    try{
+
+      const u=new URL(url);
+
+      u.searchParams.set(
+        "from",
+        "main"
+      );
+
+      url=u.href;
+
+    }catch{}
+
+
+    const mobile=
+      innerWidth<=900||
+      /Android|iPhone|iPad|iPod/i.test(
+        navigator.userAgent
+      );
+
+
+    const win=mobile
+      ?open(
+          url,
+          "_blank",
+          "noopener,noreferrer"
+        )
+      :open(
+          url,
+          "theparkVistaVR",
+          "width=1200,height=850,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=yes,status=no"
+        );
+
+
+    if(win){
+
+      try{
+        win.focus();
+      }catch{}
+
+    }
+
+
+    closeVrGuide();
+  };
+
+
+  vrGuideClose?.addEventListener(
+    "click",
+    closeVrGuide
+  );
+
+  vrGuideCancel?.addEventListener(
+    "click",
+    closeVrGuide
+  );
+
+  vrGuideConfirm?.addEventListener(
+    "click",
+    launchVR
+  );
+
+
+  vrGuideModal?.addEventListener(
+    "click",
+    e=>{
+      if(e.target===vrGuideModal){
+        closeVrGuide();
+      }
+    }
+  );
+
+
+  $$(".unit-vr-link").forEach(btn=>{
+
+    btn.addEventListener(
+      "click",
+      ()=>{
+        requestVR(
+          btn.dataset.vr,
+          btn.dataset.vrTitle
+        );
+      }
+    );
+
+  });
+
+
+  /* =========================
+     POPUP
+  ========================= */
+
+  if(popup){
+
+    const mobile=innerWidth<=900;
+
+    box1?.classList.add("active-mobile");
+
+    if(!mobile){
+      box2?.classList.add("active-mobile");
+    }
+
+    popup.classList.add("show");
+
+
+    $$(".popupCloseBtn").forEach(btn=>{
+
+      btn.addEventListener(
+        "click",
+        e=>{
+
+          e.stopPropagation();
+
+          popup.classList.remove("show");
+
+        }
+      );
+
+    });
+
+
+    popup.addEventListener(
+      "click",
+      e=>{
+
+        if(e.target===popup){
+          return popup.classList.remove("show");
+        }
+
+        if(innerWidth>900){
+          return popup.classList.remove("show");
+        }
+
+
+        if(box1?.classList.contains("active-mobile")){
+
+          box1.classList.remove(
+            "active-mobile"
+          );
+
+          box2?.classList.add(
+            "active-mobile"
+          );
+
+        }else if(
+          box2?.classList.contains(
+            "active-mobile"
+          )
+        ){
+
+          popup.classList.remove(
+            "show"
+          );
+
+        }
+
+      }
+    );
+
   }
-});
+
+
+  /* =========================
+     PRIVACY MODAL
+  ========================= */
+
+  const openModal=e=>{
+
+    e?.preventDefault();
+
+    if(!modal)return;
+
+    savedScroll=scrollY;
+
+    modal.classList.add("show");
+
+    document.body.style.overflow="hidden";
+  };
+
+
+  const closeModal=()=>{
+
+    modal?.classList.remove("show");
+
+    document.body.style.overflow="";
+
+    scrollTo(
+      0,
+      savedScroll
+    );
+  };
+
+
+  $("#policyOpen")?.addEventListener(
+    "click",
+    openModal
+  );
+
+  $("#policyOpen2")?.addEventListener(
+    "click",
+    openModal
+  );
+
+  $("#policyClose")?.addEventListener(
+    "click",
+    closeModal
+  );
+
+
+  modal?.addEventListener(
+    "click",
+    e=>{
+      if(e.target===modal){
+        closeModal();
+      }
+    }
+  );
+
+
+  document.addEventListener(
+    "keydown",
+    e=>{
+
+      if(e.key==="Escape"){
+
+        if(modal?.classList.contains("show")){
+          closeModal();
+        }
+
+        if(vrGuideModal?.classList.contains("show")){
+          closeVrGuide();
+        }
+
+        if(alertModal?.classList.contains("show")){
+          closeAlert();
+        }
+
+      }
+
+    }
+  );
+
+
+  /* =========================
+     DATE
+  ========================= */
+
+  const today=()=>{
+
+    const d=new Date();
+
+    return `${d.getFullYear()}-${String(
+      d.getMonth()+1
+    ).padStart(2,"0")}-${String(
+      d.getDate()
+    ).padStart(2,"0")}`;
+
+  };
+
+
+  if(date){
+    date.min=today();
+  }
+
+
+  const showDate=()=>{
+
+    if(!date)return;
+
+    try{
+
+      typeof date.showPicker==="function"
+        ?date.showPicker()
+        :(date.focus(),date.click());
+
+    }catch{
+
+      date.focus();
+
+    }
+
+  };
+
+
+  dateField?.addEventListener(
+    "click",
+    ()=>showDate()
+  );
+
+
+  dateField?.addEventListener(
+    "keydown",
+    e=>{
+
+      if(
+        e.key==="Enter"||
+        e.key===" "
+      ){
+
+        e.preventDefault();
+
+        showDate();
+
+      }
+
+    }
+  );
+
+
+  /* =========================
+     PHONE FORMAT
+  ========================= */
+
+  phone?.addEventListener(
+    "input",
+    ()=>{
+
+      const v=
+        phone.value
+        .replace(/\D/g,"")
+        .slice(0,11);
+
+      phone.value=
+        v.length<=3
+          ?v
+          :v.length<=7
+            ?`${v.slice(0,3)}-${v.slice(3)}`
+            :`${v.slice(0,3)}-${v.slice(3,7)}-${v.slice(7)}`;
+
+    }
+  );
+
+
+  /* =========================
+     RESERVATION FORM
+  ========================= */
+
+  form?.addEventListener(
+    "submit",
+    async e=>{
+
+      e.preventDefault();
+
+
+      const name=$("#name");
+      const time=$("#consultTime");
+      const privacy=$("#privacy");
+      const honeypot=$("#website");
+
+
+      if(honeypot?.value){
+        return;
+      }
+
+
+      const fail=(text,el)=>{
+
+        alert(text);
+
+        el?.focus();
+
+      };
+
+
+      if(!name.value.trim()){
+
+        return fail(
+          "이름을 입력해주세요.",
+          name
+        );
+
+      }
+
+
+      const phoneNumber=
+        phone.value.replace(/\D/g,"");
+
+
+      if(
+        phoneNumber.length<10||
+        phoneNumber.length>11
+      ){
+
+        return fail(
+          "휴대폰 번호를 정확하게 입력해주세요.",
+          phone
+        );
+
+      }
+
+
+      if(!date.value){
+
+        return fail(
+          "방문 희망일을 선택해주세요.",
+          date
+        );
+
+      }
+
+
+      if(!time.value){
+
+        return fail(
+          "방문 희망시간을 선택해주세요.",
+          time
+        );
+
+      }
+
+
+      if(!privacy.checked){
+
+        return fail(
+          "개인정보 수집 및 이용에 동의해주세요.",
+          privacy
+        );
+
+      }
+
+
+      submit.disabled=true;
+
+      submit.textContent="접수 중...";
+
+
+      try{
+
+        const res=await fetch(
+          "/.netlify/functions/send-alimtalk",
+          {
+            method:"POST",
+            headers:{
+              "Content-Type":
+                "application/json"
+            },
+            body:JSON.stringify({
+
+              name:name.value.trim(),
+
+              phone:phone.value.trim(),
+
+              consultDate:date.value,
+
+              consultTime:time.value
+
+            })
+          }
+        );
+
+
+        let result={};
+
+        try{
+          result=await res.json();
+        }catch{}
+
+
+        if(!res.ok){
+
+          throw new Error(
+            result.error||
+            "서버 전송 실패"
+          );
+
+        }
+
+
+        showAlert(
+          "방문예약 완료",
+          "방문예약이 성공적으로 접수되었습니다.<br>빠른 시일 내로 안내해 드리겠습니다."
+        );
+
+
+        form.reset();
+
+        date.min=today();
+
+
+      }catch(error){
+
+        console.error(
+          "예약 전송 오류:",
+          error
+        );
+
+
+        showAlert(
+          "접수 안내",
+          "예약 접수 중 오류가 발생했습니다.<br>유선(1551-9708)으로 문의해 주세요."
+        );
+
+
+      }finally{
+
+        submit.disabled=false;
+
+        submit.textContent=
+          "방문예약 신청하기";
+
+      }
+
+    }
+  );
+
 });
 </script>
+
 </body>
 </html>
