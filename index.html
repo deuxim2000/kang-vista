@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-
 <meta charset="UTF-8">
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-961TDW5RWD"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments)}
+gtag('js',new Date());
+gtag('config','G-961TDW5RWD');
+</script>
 
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 
 <title>더파크 비스타동원 | 공식 방문예약</title>
 
-<meta name="description" content="사상공원 민간공원 특례사업 더파크 비스타동원 공식 방문예약 페이지. 부산 사상구 감전동, 전 세대 84㎡, 총 852세대 프리미엄 대단지. 방문예약 및 360° VR 모델하우스를 확인하세요.">
-
+<meta name="description" content="사상공원 민간공원 특례사업 더파크 비스타동원 공식 방문예약 페이지. 부산 사상구 감전동, 전 세대 전용84㎡ 5억대분양, 총 852세대 프리미엄 대단지. 방문예약 및 360° VR 모델하우스를 확인하세요.">
 <meta name="robots" content="index,follow">
 <meta name="googlebot" content="index,follow">
 <meta name="naverbot" content="index,follow">
 
-<!-- 네이버 사이트 소유확인 -->
 <meta name="naver-site-verification" content="d53db0b0ad6646a472410448a3754a6a3995459d">
-
-<!-- 구글 사이트 소유확인 -->
 <meta name="google-site-verification" content="grqCJa_ZLico6s1zQicYZ3D9Z1MNV_RAaWFkIrfuEng">
 
-<!-- Canonical -->
 <link rel="canonical" href="https://intoindesign.co.kr/1551-9708">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://intoindesign.co.kr/1551-9708">
 <meta property="og:title" content="더파크 비스타동원 | 공식 방문예약">
-<meta property="og:description" content="사상공원 민간공원 특례사업 더파크 비스타동원. 전 세대 84㎡, 총 852세대 프리미엄 대단지. 방문예약 및 360° VR 모델하우스를 확인하세요.">
+<meta property="og:description" content="사상공원 민간공원 특례사업 더파크 비스타동원. 전 세대 전용84㎡ 5억대분양, 총 852세대 프리미엄 대단지. 방문예약 및 360° VR 모델하우스를 확인하세요.">
 <meta property="og:image" content="https://intoindesign.co.kr/1551-9708/images/photo01.webp">
 <meta property="og:site_name" content="더파크 비스타동원">
 <meta property="og:locale" content="ko_KR">
@@ -35,13 +38,11 @@
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="더파크 비스타동원 | 공식 방문예약">
-<meta name="twitter:description" content="사상공원 민간공원 특례사업 더파크 비스타동원. 전 세대 84㎡, 총 852세대 프리미엄 대단지.">
+<meta name="twitter:description" content="사상공원 민간공원 특례사업 더파크 비스타동원. 전 세대 전용84㎡ 5억대분양, 총 852세대 프리미엄 대단지.">
 <meta name="twitter:image" content="https://intoindesign.co.kr/1551-9708/images/photo01.webp">
 
-<!-- 모바일 -->
 <meta name="theme-color" content="#09213b">
 <meta name="format-detection" content="telephone=yes">
-
 
 <style>
 :root{
@@ -55,17 +56,17 @@
   --gray:#667085;
   --line:#e4e7ec;
   --max:1280px;
-  --header:80px
+  --header:80px;
 }
 
 *{
   box-sizing:border-box;
   margin:0;
-  padding:0
+  padding:0;
 }
 
 html{
-  scroll-behavior:smooth
+  scroll-behavior:smooth;
 }
 
 body{
@@ -73,32 +74,36 @@ body{
   color:#17202b;
   line-height:1.6;
   overflow-x:hidden;
-  -webkit-text-size-adjust:100%
+  -webkit-text-size-adjust:100%;
+}
+
+body.modal-open{
+  overflow:hidden;
 }
 
 a{
   color:inherit;
-  text-decoration:none
+  text-decoration:none;
 }
 
 button,
 input,
 select{
-  font:inherit
+  font:inherit;
 }
 
 button{
-  cursor:pointer
+  cursor:pointer;
 }
 
 .container{
   width:min(calc(100% - 40px),var(--max));
-  margin:auto
+  margin:auto;
 }
 
 .section{
   padding:40px 0;
-  scroll-margin-top:90px
+  scroll-margin-top:90px;
 }
 
 .full-image{
@@ -107,25 +112,20 @@ button{
   background:#f8fafc;
   display:flex;
   flex-direction:column;
-  transform:translateZ(0);
-  will-change:transform;
-  contain:paint
+  contain:paint;
 }
 
-.full-image img{
-  display:block;
-  width:100%;
-  height:auto;
-  margin:0;
-  padding:0;
-  border:0;
-  transform:translateZ(0)
-}
-
+.full-image img,
 .photo img{
   display:block;
   width:100%;
-  height:auto
+  height:auto;
+}
+
+.full-image img{
+  margin:0;
+  padding:0;
+  border:0;
 }
 
 .label{
@@ -134,30 +134,32 @@ button{
   font-size:20px;
   font-weight:800;
   letter-spacing:3px;
-  text-align:center
+  text-align:center;
 }
 
 .title{
   font-size:clamp(34px,5vw,60px);
   line-height:1.15;
-  letter-spacing:-3px
+  letter-spacing:-3px;
 }
 
 .desc{
   margin-top:15px;
-  color:var(--gray)
+  color:var(--gray);
 }
 
 .center{
-  text-align:center
+  text-align:center;
 }
 
 .reference{
   margin-top:10px;
   color:#98a2b3;
   font-size:12px;
-  text-align:right
+  text-align:right;
 }
+
+/* HEADER */
 
 .header{
   position:fixed;
@@ -165,18 +167,18 @@ button{
   z-index:1000;
   height:var(--header);
   background:rgba(255,255,255,.98);
-  transition:.2s
+  transition:border-color .2s;
 }
 
 .header.scrolled{
-  border-bottom:1px solid var(--line)
+  border-bottom:1px solid var(--line);
 }
 
 .nav{
   height:100%;
   display:flex;
   align-items:center;
-  justify-content:space-between
+  justify-content:space-between;
 }
 
 .logo{
@@ -186,15 +188,14 @@ button{
   border:0;
   background:none;
   padding:0;
-  cursor:pointer
 }
 
 .logo img{
   display:block;
-  height:100%;
   width:auto;
+  height:100%;
   max-height:34px;
-  object-fit:contain
+  object-fit:contain;
 }
 
 .menu{
@@ -202,7 +203,7 @@ button{
   align-items:center;
   gap:31px;
   font-size:19.5px;
-  font-weight:700
+  font-weight:700;
 }
 
 .menu button{
@@ -210,11 +211,11 @@ button{
   background:none;
   padding:0;
   color:#000;
-  white-space:nowrap
+  white-space:nowrap;
 }
 
 .menu button:hover{
-  color:var(--burgundy)
+  color:var(--burgundy);
 }
 
 .header-phone{
@@ -223,16 +224,18 @@ button{
   border-radius:30px;
   color:var(--burgundy);
   font-size:20px;
-  font-weight:900
+  font-weight:900;
 }
 
 .mobile-menu{
   display:none;
-  font-size:25px;
   border:0;
   background:none;
-  padding:0
+  padding:0;
+  font-size:25px;
 }
+
+/* HERO */
 
 .hero{
   position:relative;
@@ -241,70 +244,69 @@ button{
   display:flex;
   align-items:center;
   overflow:hidden;
-  background:#06172b
+  background:#06172b;
 }
 
 .hero-photo{
   position:absolute;
-  inset:0
+  inset:0;
 }
 
 .hero-photo img{
   width:100%;
   height:100%;
-  object-fit:cover
+  object-fit:cover;
 }
 
 .hero-content{
   position:relative;
   z-index:1;
   padding-top:0;
-  transform:translateY(-55%);
-  color:#000
+  transform:translateY(-35%);
+  color:#000;
 }
 
 .hero-label{
   margin-bottom:12px;
   font-size:13px;
   font-weight:800;
-  letter-spacing:4px
+  letter-spacing:4px;
 }
 
 .hero h1{
   line-height:1.3;
-  letter-spacing:-2px
+  letter-spacing:-2px;
 }
 
 .hero-main-title,
 .hero-subtitle{
-  display:block
+  display:block;
 }
 
 .hero-main-title{
   margin-bottom:6px;
   color:var(--burgundy);
   font-size:clamp(30px,5vw,64px);
-  font-weight:900
+  font-weight:900;
 }
 
 .hero-subtitle{
   margin-top:8px;
   font-size:clamp(20px,3vw,38px);
-  font-weight:900
+  font-weight:900;
 }
 
 .hero-text{
   margin-top:15px;
   font-size:18px;
-  font-weight:800
+  font-weight:800;
 }
 
 .hero-btn-group{
-  margin-top:20px
+  margin-top:20px;
 }
 
 .hero-vr-btn{
-  position:relative;
   display:inline-flex;
   align-items:center;
   justify-content:center;
@@ -315,13 +317,15 @@ button{
   color:#fff;
   font-size:17px;
   font-weight:800;
-  transition:all .3s ease
+  transition:transform .3s,background .3s;
 }
 
 .hero-vr-btn:hover{
   background:#d84a1e;
-  transform:translateY(-2px)
+  transform:translateY(-2px);
 }
+
+/* OVERVIEW */
 
 .overview-grid,
 .contact-grid{
@@ -329,36 +333,38 @@ button{
   grid-template-columns:1fr 1fr;
   gap:40px;
   margin-top:35px;
-  align-items:center
+  align-items:center;
 }
 
 .info{
-  border-top:2px solid var(--navy)
+  border-top:2px solid var(--navy);
 }
 
 .info-row{
   display:grid;
   grid-template-columns:140px 1fr;
   padding:18px 0;
-  border-bottom:1px solid var(--line)
+  border-bottom:1px solid var(--line);
 }
 
 .info-row dt{
-  color:var(--gray)
+  color:var(--gray);
 }
 
 .info-row dd{
-  font-weight:600
+  font-weight:600;
 }
+
+/* PREMIUM */
 
 .park{
   display:grid;
-  grid-template-columns:1fr 1fr
+  grid-template-columns:1fr 1fr;
 }
 
 .park .photo img{
   height:100%;
-  object-fit:cover
+  object-fit:cover;
 }
 
 .park-content{
@@ -367,18 +373,18 @@ button{
   justify-content:center;
   padding:60px 80px;
   background:var(--navy);
-  color:#fff
+  color:#fff;
 }
 
 .park-content .label{
   color:#79b9e9;
-  text-align:left
+  text-align:left;
 }
 
 .park-content h2{
   font-size:clamp(28px,3vw,42px);
   line-height:1.3;
-  font-weight:800
+  font-weight:800;
 }
 
 .park-content p{
@@ -386,7 +392,7 @@ button{
   color:#c7d4e2;
   font-size:clamp(19px,1.8vw,24px);
   line-height:1.5;
-  font-weight:600
+  font-weight:600;
 }
 
 .highlight{
@@ -395,11 +401,13 @@ button{
   border-left:2px solid #4c9bd4;
   font-size:clamp(18px,1.6vw,22px);
   line-height:1.5;
-  font-weight:700
+  font-weight:700;
 }
 
+/* COMPLEX */
+
 .complex{
-  background:#f8fafc
+  background:#f8fafc;
 }
 
 .stats{
@@ -407,39 +415,37 @@ button{
   grid-template-columns:repeat(4,1fr);
   margin-top:35px;
   background:#fff;
-  border-top:2px solid var(--navy)
+  border-top:2px solid var(--navy);
 }
 
 .stat{
   padding:30px 15px;
   border-right:1px solid var(--line);
-  text-align:center
+  text-align:center;
 }
 
 .stat:last-child{
-  border:0
+  border:0;
 }
 
 .stat strong{
   display:block;
   color:var(--navy);
-  font-size:40px
+  font-size:40px;
 }
 
 .stat span{
   color:var(--gray);
-  font-size:13px
+  font-size:13px;
 }
 
-.complex-photo{
-  margin-top:30px
-}
+/* UNIT */
 
 .unit-list{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:40px;
-  margin-top:35px
+  margin-top:35px;
 }
 
 .unit-card{
@@ -447,7 +453,7 @@ button{
   padding-bottom:30px;
   border:1px solid var(--line);
   border-radius:12px;
-  background:#f8fafc
+  background:#f8fafc;
 }
 
 .unit-vr-link{
@@ -456,23 +462,23 @@ button{
   overflow:hidden;
   border:0;
   background:none;
-  text-align:center
+  text-align:center;
 }
 
 .unit-vr-link img{
   display:block;
   width:100%;
   height:auto;
-  transition:transform .3s ease
+  transition:transform .3s;
 }
 
 .unit-vr-link:hover img{
-  transform:scale(1.03)
+  transform:scale(1.03);
 }
 
 .unit-type{
   margin:25px 0 15px;
-  text-align:center
+  text-align:center;
 }
 
 .unit-type small{
@@ -481,45 +487,44 @@ button{
   color:var(--blue);
   font-size:15px;
   font-weight:800;
-  letter-spacing:2px
+  letter-spacing:2px;
 }
 
 .unit-type h3{
   color:var(--navy);
-  font-size:30px
+  font-size:30px;
 }
 
 .vr-button{
   display:inline-flex;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
   min-height:60px;
   margin-top:25px;
   padding:15px 30px;
   border-radius:40px;
   color:#fff;
   font-size:18px;
-  font-weight:900
+  font-weight:900;
 }
 
 .vr-button-a{
-  background:rgba(9,33,59,.96)
+  background:rgba(9,33,59,.96);
 }
 
 .vr-button-c{
-  background:var(--orange)
+  background:var(--orange);
 }
+
+/* CONTACT */
 
 .contact-grid{
-  gap:60px
+  gap:60px;
 }
 
-#contactSection .contact-grid > div:first-child{
-  text-align:left
-}
-
+#contactSection .contact-grid>div:first-child,
 #contactSection .visit-label{
-  text-align:left
+  text-align:left;
 }
 
 .phone-big{
@@ -529,7 +534,7 @@ button{
   margin-top:25px;
   color:var(--orange);
   font-size:40px;
-  font-weight:900
+  font-weight:900;
 }
 
 .phone-circle{
@@ -539,45 +544,45 @@ button{
   height:52px;
   border-radius:50%;
   background:var(--orange);
-  color:#fff
+  color:#fff;
 }
 
 .phone-circle svg{
   width:28px;
   height:28px;
-  fill:#fff
+  fill:#fff;
 }
 
 .form{
   width:100%;
   padding:35px;
   border:1px solid #e1e6ec;
-  background:#fff
+  background:#fff;
 }
 
 .form h3{
-  font-size:25px
+  font-size:25px;
 }
 
 .form-sub{
   margin-bottom:25px;
   color:var(--gray);
-  font-size:13px
+  font-size:13px;
 }
 
 .form-row{
-  margin-bottom:15px
+  margin-bottom:15px;
 }
 
 .form-row label{
   display:block;
   margin-bottom:7px;
   font-size:13px;
-  font-weight:700
+  font-weight:700;
 }
 
 .required{
-  color:#e04444
+  color:var(--red);
 }
 
 .form-row input,
@@ -586,7 +591,13 @@ button{
   padding:13px;
   border:1px solid #d0d5dd;
   border-radius:3px;
-  outline:0
+  outline:0;
+}
+
+.form-row input:focus,
+.form-row select:focus{
+  border-color:var(--blue);
+  box-shadow:0 0 0 3px rgba(21,93,168,.1);
 }
 
 .date-field{
@@ -595,11 +606,16 @@ button{
   align-items:center;
   width:100%;
   height:52px;
+  overflow:hidden;
   border:1px solid #d0d5dd;
   border-radius:3px;
   background:#fff;
   cursor:pointer;
-  overflow:hidden
+}
+
+.date-field:focus-within{
+  border-color:var(--blue);
+  box-shadow:0 0 0 3px rgba(21,93,168,.1);
 }
 
 .date-field::after{
@@ -609,20 +625,20 @@ button{
   right:14px;
   transform:translateY(-50%);
   pointer-events:none;
-  font-size:18px
+  font-size:18px;
 }
 
 .date-field input{
   width:100%;
   height:100%;
-  border:0 !important;
-  background:transparent !important;
   padding:0 45px 0 13px;
+  border:0!important;
   outline:0;
+  background:transparent!important;
   cursor:pointer;
   font-size:16px;
   color:#17202b;
-  -webkit-appearance:none
+  -webkit-appearance:none;
 }
 
 .date-field input::-webkit-calendar-picker-indicator{
@@ -631,19 +647,19 @@ button{
   width:100%;
   height:100%;
   opacity:0;
-  cursor:pointer
+  cursor:pointer;
 }
 
 .privacy{
   padding:17px;
   border:1px solid var(--line);
-  background:#f8fafc
+  background:#f8fafc;
 }
 
 .privacy-head{
   display:flex;
   justify-content:space-between;
-  gap:10px
+  gap:10px;
 }
 
 .policy-btn,
@@ -652,24 +668,24 @@ button{
   background:none;
   color:var(--blue);
   font-size:12px;
-  text-decoration:underline
+  text-decoration:underline;
 }
 
 .agree{
   display:flex;
   gap:8px;
   margin-top:12px;
-  font-size:12px
+  font-size:12px;
 }
 
 .agree input{
-  margin-top:4px
+  margin-top:4px;
 }
 
 .privacy-summary{
   margin-top:10px;
   color:#667085;
-  font-size:11px
+  font-size:11px;
 }
 
 .submit{
@@ -677,14 +693,20 @@ button{
   margin-top:18px;
   padding:16px;
   border:0;
+  border-radius:4px;
   background:var(--blue);
   color:#fff;
-  font-weight:800
+  font-weight:800;
+  transition:background .2s,opacity .2s;
+}
+
+.submit:hover:not(:disabled){
+  background:#0f447d;
 }
 
 .submit:disabled{
   opacity:.6;
-  cursor:not-allowed
+  cursor:not-allowed;
 }
 
 .hp-field{
@@ -692,24 +714,26 @@ button{
   left:-9999px!important;
   width:1px!important;
   height:1px!important;
-  opacity:0
+  opacity:0;
 }
+
+/* FLOAT */
 
 .float{
   position:fixed;
   right:25px;
   top:50%;
-  transform:translateY(-50%);
   z-index:2000;
   display:flex;
   flex-direction:column;
   gap:12px;
   align-items:flex-end;
-  background:transparent;
   padding:14px;
-  border-radius:20px;
   border:2px solid var(--red);
-  box-shadow:0 12px 30px rgba(224,68,68,0.15)
+  border-radius:20px;
+  background:transparent;
+  box-shadow:0 12px 30px rgba(224,68,68,.15);
+  transform:translateY(-50%);
 }
 
 .float-item{
@@ -720,144 +744,147 @@ button{
   justify-content:center;
   width:60px;
   height:60px;
-  border-radius:50%;
-  border:1px solid var(--line);
-  box-shadow:0 4px 15px rgba(0,0,0,0.12),0 0 0 6px rgba(255,255,255,0.4);
-  cursor:pointer;
-  text-decoration:none;
-  text-align:center;
   overflow:visible;
-  transition:all .25s cubic-bezier(0.16,1,0.3,1);
-  transform:translateX(0)
+  border:1px solid var(--line);
+  border-radius:50%;
+  box-shadow:0 4px 15px rgba(0,0,0,.12),0 0 0 6px rgba(255,255,255,.4);
+  text-align:center;
+  text-decoration:none;
+  transition:transform .25s,box-shadow .25s;
 }
 
 .float-top{
+  border:0;
   background:var(--yellow);
   color:var(--navy);
   font-size:11px;
   font-weight:900;
   line-height:1.1;
-  border:none
 }
 
 .float-top span{
   font-size:15px;
-  font-weight:900
+  font-weight:900;
 }
 
 .float-register{
+  border:0;
   background:var(--orange);
   color:#fff;
-  border:none;
   font-size:12px;
   font-weight:800;
-  line-height:1.2
+  line-height:1.2;
 }
 
 .float-phone{
-  background:var(--green);
-  color:#fff;
-  border:2px solid #fff;
   display:flex;
   align-items:center;
-  justify-content:center
+  justify-content:center;
+  border:2px solid #fff;
+  background:var(--green);
+  color:#fff;
 }
 
 .float-phone svg{
   width:32px;
   height:32px;
   fill:#fff;
-  animation:phoneRing 1.2s infinite ease-in-out
-}
-
-@keyframes phoneRing{
-  0%{transform:rotate(0deg)}
-  10%{transform:rotate(14deg)}
-  20%{transform:rotate(-14deg)}
-  30%{transform:rotate(14deg)}
-  40%{transform:rotate(-14deg)}
-  50%{transform:rotate(0deg)}
-  100%{transform:rotate(0deg)}
+  animation:phoneRing 1.2s infinite ease-in-out;
 }
 
 .float-item:hover{
+  z-index:10;
   transform:scale(1.08);
-  box-shadow:0 8px 25px rgba(0,0,0,0.22),0 0 0 8px rgba(255,255,255,0.6);
-  z-index:10
+  box-shadow:0 8px 25px rgba(0,0,0,.22),0 0 0 8px rgba(255,255,255,.6);
 }
 
+@keyframes phoneRing{
+  0%,50%,100%{transform:rotate(0)}
+  10%,30%{transform:rotate(14deg)}
+  20%,40%{transform:rotate(-14deg)}
+}
+
+/* POPUP / MODAL */
+
 .popup01,
-.modal{
+.modal,
+.alert-modal,
+.vr-guide-modal{
   position:fixed;
   inset:0;
-  z-index:3000;
   display:none;
   justify-content:center;
   align-items:center;
-  background:rgba(0,0,0,.6)
+  background:rgba(0,0,0,.6);
 }
 
 .popup01.show,
-.modal.show{
-  display:flex
+.modal.show,
+.alert-modal.show,
+.vr-guide-modal.show{
+  display:flex;
+}
+
+.popup01{
+  z-index:3000;
 }
 
 .popup-wrapper{
-  width:min(1000px,95%)
+  width:min(1000px,95%);
 }
 
 .popup-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:20px
+  gap:20px;
 }
 
 .popup-box{
   overflow:hidden;
   border-radius:8px;
   background:#fff;
-  cursor:pointer
+  cursor:pointer;
 }
 
 .popup-head,
 .modal-head{
   display:flex;
   align-items:center;
-  justify-content:space-between
+  justify-content:space-between;
 }
 
 .popup-head{
   padding:15px 20px;
   background:var(--navy);
-  color:#fff
+  color:#fff;
 }
 
 .popup-head button{
   border:0;
   background:none;
   color:#fff;
-  font-size:24px
+  font-size:24px;
 }
 
 .popup-body{
-  line-height:0
+  line-height:0;
 }
 
 .popup-body img{
   display:block;
   width:100%;
-  height:auto
+  height:auto;
 }
 
 .popup-notice{
   margin-top:15px;
   color:#fff;
   font-size:13px;
-  text-align:center
+  text-align:center;
 }
 
 .modal{
-  z-index:4000
+  z-index:4000;
 }
 
 .modal-box{
@@ -865,12 +892,12 @@ button{
   max-height:85vh;
   overflow:auto;
   border-radius:8px;
-  background:#fff
+  background:#fff;
 }
 
 .modal-head{
   padding:20px;
-  border-bottom:1px solid var(--line)
+  border-bottom:1px solid var(--line);
 }
 
 .modal-head button{
@@ -879,200 +906,177 @@ button{
   border:0;
   border-radius:50%;
   background:#eee;
-  font-size:20px
+  font-size:20px;
 }
 
 .modal-body{
-  padding:25px
+  padding:25px;
 }
 
 .policy{
-  margin-bottom:25px
+  margin-bottom:25px;
 }
 
 .policy h4{
   margin-bottom:7px;
-  color:var(--navy)
+  color:var(--navy);
 }
 
 .policy p{
   color:var(--gray);
-  font-size:13px
+  font-size:13px;
 }
+
+/* ALERT */
 
 .alert-modal{
-  position:fixed;
-  inset:0;
   z-index:6000;
-  display:none;
-  justify-content:center;
-  align-items:center;
-  background:rgba(0,0,0,0.6)
-}
-
-.alert-modal.show{
-  display:flex
 }
 
 .alert-box{
   width:min(400px,90%);
-  background:#fff;
-  border-radius:12px;
   overflow:hidden;
+  border-radius:12px;
+  background:#fff;
   text-align:center;
-  box-shadow:0 10px 30px rgba(0,0,0,0.2);
-  animation:alertPop .3s cubic-bezier(0.16,1,0.3,1)
-}
-
-@keyframes alertPop{
-  0%{
-    transform:scale(0.9);
-    opacity:0
-  }
-  100%{
-    transform:scale(1);
-    opacity:1
-  }
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
+  animation:alertPop .3s cubic-bezier(.16,1,.3,1);
 }
 
 .alert-icon{
+  margin:25px 0 12px;
   font-size:45px;
-  margin-top:25px;
-  margin-bottom:12px
 }
 
 .alert-title{
+  margin-bottom:10px;
+  color:var(--navy);
   font-size:20px;
   font-weight:900;
-  color:var(--navy);
-  margin-bottom:10px
 }
 
 .alert-desc{
-  font-size:15px;
-  color:var(--gray);
-  line-height:1.5;
+  margin-bottom:25px;
   padding:0 24px;
-  margin-bottom:25px
+  color:var(--gray);
+  font-size:15px;
+  line-height:1.5;
 }
 
 .alert-footer{
-  padding:0 24px 24px
+  padding:0 24px 24px;
 }
 
 .alert-btn{
   width:100%;
   padding:14px;
+  border:0;
   border-radius:8px;
-  font-size:16px;
-  font-weight:800;
   background:var(--blue);
   color:#fff;
-  border:0;
-  cursor:pointer
+  font-size:16px;
+  font-weight:800;
 }
 
 .alert-btn:hover{
-  background:#0f447d
+  background:#0f447d;
 }
+
+@keyframes alertPop{
+  from{
+    transform:scale(.9);
+    opacity:0;
+  }
+  to{
+    transform:scale(1);
+    opacity:1;
+  }
+}
+
+/* VR GUIDE */
 
 .vr-guide-modal{
-  position:fixed;
-  inset:0;
   z-index:5000;
-  display:none;
-  justify-content:center;
-  align-items:center;
-  background:rgba(0,0,0,0.6)
-}
-
-.vr-guide-modal.show{
-  display:flex
 }
 
 .vr-guide-box{
   width:min(440px,90%);
-  background:#fff;
+  overflow:hidden;
   border-radius:12px;
-  overflow:hidden
+  background:#fff;
 }
 
 .vr-guide-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:18px 24px;
   background:var(--navy);
   color:#fff;
-  padding:18px 24px;
   font-size:18px;
   font-weight:800;
-  display:flex;
-  justify-content:space-between;
-  align-items:center
 }
 
 .vr-guide-header button{
-  background:none;
   border:0;
+  background:none;
   color:#fff;
   font-size:22px;
-  cursor:pointer
 }
 
 .vr-guide-content{
   padding:24px;
-  text-align:center
+  text-align:center;
 }
 
 .vr-guide-icon{
+  margin-bottom:12px;
   font-size:40px;
-  margin-bottom:12px
 }
 
 .vr-guide-title{
+  margin-bottom:10px;
+  color:var(--navy);
   font-size:19px;
   font-weight:900;
-  color:var(--navy);
-  margin-bottom:10px
 }
 
 .vr-guide-desc{
-  font-size:15px;
   color:var(--gray);
-  line-height:1.6
+  font-size:15px;
+  line-height:1.6;
 }
 
 .vr-guide-footer{
-  padding:0 24px 24px;
   display:flex;
-  gap:10px
+  gap:10px;
+  padding:0 24px 24px;
 }
 
 .vr-guide-btn{
   flex:1;
   padding:14px;
+  border:0;
   border-radius:8px;
   font-size:16px;
   font-weight:800;
-  border:0;
-  cursor:pointer
 }
 
 .vr-guide-btn.cancel{
   background:#e4e7ec;
-  color:#475467
+  color:#475467;
 }
 
 .vr-guide-btn.confirm{
   background:var(--orange);
-  color:#fff
+  color:#fff;
 }
 
-
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 .footer{
   padding:45px 0 120px;
-  background:#09213b;
+  background:var(--navy);
   color:#fff;
   font-size:13px;
 }
@@ -1088,7 +1092,7 @@ button{
 }
 
 .footer-phone{
-  margin-top:10px !important;
+  margin-top:10px!important;
 }
 
 .footer-phone a{
@@ -1100,27 +1104,24 @@ button{
   color:#9ec7e9;
 }
 
-
-/* =========================
-   TABLET / MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width:900px){
 
   .container{
-    width:min(calc(100% - 30px),100%)
+    width:min(calc(100% - 30px),100%);
   }
 
   .section{
-    padding:30px 0
+    padding:30px 0;
   }
 
   .header-phone{
-    display:none
+    display:none;
   }
 
   .mobile-menu{
-    display:block
+    display:block;
   }
 
   .menu{
@@ -1132,11 +1133,11 @@ button{
     flex-direction:column;
     gap:0;
     background:#fff;
-    border-bottom:1px solid #eee
+    border-bottom:1px solid #eee;
   }
 
   .menu.active{
-    display:flex
+    display:flex;
   }
 
   .menu button{
@@ -1144,156 +1145,181 @@ button{
     padding:17px 25px;
     border-bottom:1px solid #eee;
     text-align:left;
-    font-size:16px
+    font-size:16px;
   }
 
   .overview-grid,
   .contact-grid,
   .park,
   .unit-list{
-    grid-template-columns:1fr
+    grid-template-columns:1fr;
   }
 
   .park-content{
-    padding:40px 25px
+    padding:40px 25px;
   }
 
   .stats{
-    grid-template-columns:1fr 1fr
+    grid-template-columns:1fr 1fr;
   }
 
   .stat:nth-child(2){
-    border-right:0
+    border-right:0;
   }
 
   .popup-wrapper{
-    width:min(500px,92%)
+    width:min(500px,92%);
   }
 
   .popup-grid{
-    display:block
+    display:block;
   }
 
   .popup-box{
     display:none;
-    margin:auto
+    margin:auto;
   }
 
   .popup-box.active-mobile{
-    display:block
+    display:block;
   }
 
   .popup-box .popup-head{
-    display:none !important
-  }
-
-  .popup-box{
-    border-radius:8px
+    display:none!important;
   }
 
   .hero-content{
-    transform:translateY(-55%);
-    text-align:center
+    text-align:center;
+    transform:translateY(-45%);
   }
 
-  #contactSection .contact-grid > div:first-child{
-    text-align:center
+  #contactSection .contact-grid>div:first-child,
+  #contactSection .visit-label,
+  #contactSection .contact-grid>div:first-child .title,
+  #contactSection .contact-grid>div:first-child .desc{
+    text-align:center;
   }
 
-  #contactSection .visit-label{
-    text-align:center !important
-  }
-
-  #contactSection .contact-grid > div:first-child .title{
-    text-align:center
-  }
-
-  #contactSection .contact-grid > div:first-child .desc{
-    text-align:center
-  }
-
-  #contactSection .contact-grid > div:first-child .phone-big{
-    justify-content:center
+  #contactSection .contact-grid>div:first-child .phone-big{
+    justify-content:center;
   }
 
   .phone-big{
+    justify-content:center;
     font-size:30px;
-    justify-content:center
   }
 
   .date-field input{
-    font-size:16px
+    font-size:16px;
   }
 
   .float{
     position:fixed;
-    inset:auto 8px 4px 8px;
+    inset:auto 8px 4px;
     z-index:2000;
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:6px;
-    background:rgba(255,255,255,0.95);
+    padding:6px;
     border:2px solid #fff;
     border-radius:14px;
+    background:rgba(255,255,255,.95);
     box-shadow:0 4px 20px rgba(0,0,0,.25);
-    padding:6px
+    transform:none;
   }
 
   .float-item{
     width:100%;
     height:48px;
-    border-radius:10px;
     border:0;
+    border-radius:10px;
     box-shadow:0 2px 8px rgba(0,0,0,.1);
-    transform:none
+    transform:none;
   }
 
   .float-top{
     background:var(--yellow);
     color:var(--navy);
     font-size:10px;
-    font-weight:900;
-    line-height:1.1
   }
 
   .float-top span{
     font-size:14px;
-    font-weight:900
   }
 
   .float-register{
     background:var(--orange);
     color:#fff;
     font-size:13px;
-    font-weight:800
   }
 
   .float-phone{
-    background:var(--green);
-    color:#fff;
     border:1.5px solid #fff;
-    display:flex;
-    align-items:center;
-    justify-content:center
+    background:var(--green);
   }
 
   .float-phone svg{
     width:26px;
-    height:26px
+    height:26px;
   }
 
   .float-item:hover{
     transform:none;
-    box-shadow:0 4px 12px rgba(0,0,0,.15)
+    box-shadow:0 4px 12px rgba(0,0,0,.15);
+  }
+
+  .form{
+    padding:25px 20px;
   }
 }
 
 @media(max-width:600px){
 
+  .title{
+    letter-spacing:-2px;
+  }
+
+  .hero-main-title{
+    font-size:clamp(27px,8vw,42px);
+  }
+
+  .hero-subtitle{
+    font-size:clamp(18px,5vw,28px);
+  }
+
+  .hero-text{
+    font-size:16px;
+  }
+
   .vr-button{
     width:calc(100% - 40px);
+    margin-right:20px;
     margin-left:20px;
-    margin-right:20px
+  }
+
+  .stats{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .stat{
+    padding:22px 10px;
+  }
+
+  .stat strong{
+    font-size:32px;
+  }
+
+  .info-row{
+    grid-template-columns:105px 1fr;
+    font-size:14px;
+  }
+
+  .popup-wrapper{
+    width:94%;
+  }
+
+  .vr-guide-footer{
+    padding:0 18px 18px;
   }
 }
 </style>
@@ -1304,11 +1330,18 @@ button{
 <header class="header" id="header">
   <div class="container nav">
 
-    <button class="logo" type="button" data-target="top" aria-label="더파크 비스타동원 홈">
-      <img src="images/logo.png" alt="더파크 비스타동원" width="140" height="34">
+    <button class="logo"
+            type="button"
+            data-target="top"
+            aria-label="더파크 비스타동원 홈">
+      <img src="images/logo.png"
+           alt="더파크 비스타동원"
+           width="140"
+           height="34">
     </button>
 
     <nav class="menu" id="mainMenu" aria-label="주요 메뉴">
+
       <button type="button" data-target="overviewSection">사업개요</button>
       <button type="button" data-target="premiumSection">프리미엄</button>
       <button type="button" data-target="locationSection">입지환경</button>
@@ -1316,18 +1349,26 @@ button{
       <button type="button" data-target="unitSection">주택형(VR)</button>
       <button type="button" data-target="communitySection">커뮤니티</button>
       <button type="button" data-target="contactSection">방문예약</button>
+
     </nav>
 
-    <a class="header-phone" href="tel:15519708">☎ 1551-9708</a>
+    <a class="header-phone"
+       href="tel:15519708">
+      ☎ 1551-9708
+    </a>
 
-    <button class="mobile-menu" id="menuToggle" type="button"
-            aria-label="메뉴 열기" aria-expanded="false">
+    <button class="mobile-menu"
+            id="menuToggle"
+            type="button"
+            aria-label="메뉴 열기"
+            aria-expanded="false">
       ☰
     </button>
 
   </div>
 </header>
 
+<!-- HERO -->
 
 <section class="hero" id="home">
 
@@ -1344,13 +1385,20 @@ button{
     </div>
 
     <h1>
-      <span class="hero-main-title">공원속의 프리미엄 아파트</span>
-      <span class="hero-subtitle">사상공원 민간공원 특례사업</span>
+      <span class="hero-main-title">
+        공원속의 프리미엄 아파트
+      </span>
+
+      <span class="hero-subtitle">
+        사상공원 민간공원 특례사업<br>
+        5억대 분양가!<br>
+        계약금 0원!!
+      </span>
     </h1>
 
     <p class="hero-text">
       자연을 품은 프리미엄 주거공간<br>
-      전 세대 84㎡ · 총 852세대
+      전 세대 전용84㎡ · 총 852세대
     </p>
 
     <div class="hero-btn-group">
@@ -1364,11 +1412,15 @@ button{
   </div>
 </section>
 
+<!-- OVERVIEW -->
 
 <section class="section" id="overviewSection">
+
   <div class="container">
 
-    <div class="label">PROJECT OVERVIEW</div>
+    <div class="label">
+      PROJECT OVERVIEW
+    </div>
 
     <h2 class="title center">
       도시와 자연의 가치를<br>
@@ -1391,6 +1443,7 @@ button{
       </div>
 
       <dl class="info">
+
         <div class="info-row">
           <dt>대지면적</dt>
           <dd>47,839.0000㎡</dd>
@@ -1415,12 +1468,15 @@ button{
           <dt>주택형</dt>
           <dd>전용 84㎡</dd>
         </div>
+
       </dl>
 
     </div>
+
   </div>
 </section>
 
+<!-- PREMIUM -->
 
 <section id="premiumSection">
 
@@ -1437,7 +1493,9 @@ button{
 
     <div class="park-content">
 
-      <div class="label">PREMIUM</div>
+      <div class="label">
+        PREMIUM
+      </div>
 
       <h2>
         도시의 가치와 대자연의<br>
@@ -1455,14 +1513,15 @@ button{
       </div>
 
     </div>
-  </div>
 
+  </div>
 
   <div class="section" style="padding-top:30px">
 
     <div class="container">
 
       <div class="full-image">
+
         <img src="images/premium_total1.webp"
              alt="더파크 비스타동원 프리미엄 안내 1"
              width="1100"
@@ -1476,6 +1535,7 @@ button{
              height="1065"
              loading="lazy"
              decoding="async">
+
       </div>
 
       <p class="reference">
@@ -1483,16 +1543,20 @@ button{
       </p>
 
     </div>
+
   </div>
 
 </section>
 
+<!-- LOCATION -->
 
 <section class="section" id="locationSection">
 
   <div class="container">
 
-    <div class="label">LOCATION</div>
+    <div class="label">
+      LOCATION
+    </div>
 
     <h2 class="title center">
 
@@ -1500,7 +1564,7 @@ button{
         교통과 인프라를
       </span>
 
-      <span style="display:block;font-size:0.85em;color:var(--navy);">
+      <span style="display:block;font-size:.85em;color:var(--navy);">
         가까이 누리는 편리한 입지환경
       </span>
 
@@ -1529,8 +1593,10 @@ button{
     </p>
 
   </div>
+
 </section>
 
+<!-- COMPLEX -->
 
 <section class="section complex" id="complexSection">
 
@@ -1538,7 +1604,9 @@ button{
 
     <div class="center">
 
-      <div class="label">COMPLEX</div>
+      <div class="label">
+        COMPLEX
+      </div>
 
       <h2 class="title">
         852세대 대단지의<br>
@@ -1572,26 +1640,32 @@ button{
     </div>
 
     <div class="complex-photo full-image">
+
       <img src="images/photo05.webp"
            alt="더파크 비스타동원 단지 조감도"
            width="1100"
            height="600"
            loading="lazy"
            decoding="async">
+
     </div>
 
     <div class="complex-photo full-image">
+
       <img src="images/complex_add.webp"
            alt="더파크 비스타동원 단지 안내"
            width="1100"
            height="600"
            loading="lazy"
            decoding="async">
+
     </div>
 
   </div>
+
 </section>
 
+<!-- UNIT -->
 
 <section class="section" id="unitSection">
 
@@ -1599,7 +1673,9 @@ button{
 
     <div class="center">
 
-      <div class="label">UNIT PLAN & VR</div>
+      <div class="label">
+        UNIT PLAN & VR
+      </div>
 
       <h2 class="title">
         가족의 라이프스타일을 담은<br>
@@ -1614,11 +1690,16 @@ button{
 
     <div class="unit-list">
 
+      <!-- 84A -->
+
       <article class="unit-card">
 
         <div class="unit-type">
+
           <small>TYPE 84A</small>
+
           <h3>84㎡ A</h3>
+
         </div>
 
         <button type="button"
@@ -1642,12 +1723,16 @@ button{
 
       </article>
 
+      <!-- 84C -->
 
       <article class="unit-card">
 
         <div class="unit-type">
+
           <small>TYPE 84C</small>
+
           <h3>84㎡ C</h3>
+
         </div>
 
         <button type="button"
@@ -1674,21 +1759,25 @@ button{
     </div>
 
   </div>
+
 </section>
 
+<!-- COMMUNITY -->
 
 <section class="section" id="communitySection">
 
   <div class="container">
 
-    <div class="label">COMMUNITY</div>
+    <div class="label">
+      COMMUNITY
+    </div>
 
     <h2 class="title center">
       일상에 품격을 더하는<br>
       프리미엄 커뮤니티
     </h2>
 
-    <div class="full-image img-community" style="margin-top:30px">
+    <div class="full-image" style="margin-top:30px">
 
       <img src="images/community_total.webp"
            alt="더파크 비스타동원 프리미엄 커뮤니티 시설 안내"
@@ -1704,8 +1793,10 @@ button{
     </p>
 
   </div>
+
 </section>
 
+<!-- PROJECT IMAGE -->
 
 <section class="section">
 
@@ -1713,7 +1804,9 @@ button{
 
     <div class="center">
 
-      <div class="label">PROJECT IMAGE</div>
+      <div class="label">
+        PROJECT IMAGE
+      </div>
 
       <h2 class="title">
         더파크 비스타동원의<br>
@@ -1734,8 +1827,10 @@ button{
     </div>
 
   </div>
+
 </section>
 
+<!-- CONTACT -->
 
 <section class="section" id="contactSection">
 
@@ -1763,7 +1858,7 @@ button{
 
         <span class="phone-circle">
 
-          <svg viewBox="0 0 24 24">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
           </svg>
 
@@ -1775,8 +1870,11 @@ button{
 
     </div>
 
+    <!-- RESERVATION FORM -->
 
-    <form class="form" id="leadForm" novalidate>
+    <form class="form"
+          id="leadForm"
+          novalidate>
 
       <h3>방문예약</h3>
 
@@ -1784,6 +1882,7 @@ button{
         방문을 원하시는 정보를 입력해주세요.
       </p>
 
+      <!-- Honeypot -->
       <div class="hp-field">
         <input id="website"
                name="website"
@@ -1791,7 +1890,6 @@ button{
                tabindex="-1"
                autocomplete="off">
       </div>
-
 
       <div class="form-row">
 
@@ -1808,7 +1906,6 @@ button{
                required>
 
       </div>
-
 
       <div class="form-row">
 
@@ -1827,7 +1924,6 @@ button{
 
       </div>
 
-
       <div class="form-row">
 
         <label for="consultDate">
@@ -1837,7 +1933,8 @@ button{
         <div class="date-field"
              id="dateField"
              role="button"
-             tabindex="0">
+             tabindex="0"
+             aria-label="방문 희망일 선택">
 
           <input id="consultDate"
                  name="consultDate"
@@ -1847,7 +1944,6 @@ button{
         </div>
 
       </div>
-
 
       <div class="form-row">
 
@@ -1876,6 +1972,7 @@ button{
 
       </div>
 
+      <!-- PRIVACY -->
 
       <div class="privacy">
 
@@ -1893,7 +1990,6 @@ button{
 
         </div>
 
-
         <label class="agree">
 
           <input id="privacy"
@@ -1908,15 +2004,15 @@ button{
 
         </label>
 
-
         <div class="privacy-summary">
+
           수집항목 : 이름, 휴대폰 번호, 방문 희망일, 방문 희망시간<br>
           수집목적 : 방문예약 및 상담<br>
           보유기간 : 상담 목적 달성 후 지체 없이 파기
+
         </div>
 
       </div>
-
 
       <button class="submit"
               id="submitButton"
@@ -1927,8 +2023,10 @@ button{
     </form>
 
   </div>
+
 </section>
 
+<!-- FOOTER -->
 
 <footer class="footer">
 
@@ -1955,9 +2053,11 @@ button{
     </p>
 
     <p class="footer-phone">
+
       <a href="tel:01094892528">
         광고문의 ㅣ 010-9489-2528
       </a>
+
     </p>
 
     <button class="footer-policy"
@@ -1970,6 +2070,7 @@ button{
 
 </footer>
 
+<!-- FLOAT -->
 
 <div class="float">
 
@@ -1977,22 +2078,26 @@ button{
           class="float-item float-top"
           data-target="top"
           aria-label="맨 위로 가기">
+
     ▲
     <span>TOP</span>
+
   </button>
 
   <button type="button"
           class="float-item float-register"
           data-target="contactSection"
           aria-label="방문예약 바로가기">
+
     방문예약
+
   </button>
 
   <a href="tel:15519708"
      class="float-item float-phone"
      aria-label="전화상담">
 
-    <svg viewBox="0 0 24 24">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
       <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
     </svg>
 
@@ -2000,51 +2105,66 @@ button{
 
 </div>
 
+<!-- POPUP -->
 
 <div class="popup01"
      id="popup01"
      role="dialog"
-     aria-modal="true">
+     aria-modal="true"
+     aria-label="공지사항">
 
   <div class="popup-wrapper">
 
     <div class="popup-grid">
 
-      <div class="popup-box" id="popupBox1">
+      <div class="popup-box"
+           id="popupBox1">
 
         <div class="popup-head">
-          <strong>공지사항 1</strong>
+
+          <strong>
+            공지사항 1
+          </strong>
 
           <button class="popupCloseBtn"
                   type="button"
                   aria-label="팝업 닫기">
             ×
           </button>
+
         </div>
 
         <div class="popup-body">
+
           <img src="images/popup01.webp"
                alt="더파크 비스타동원 공지사항 1">
+
         </div>
 
       </div>
 
-
-      <div class="popup-box" id="popupBox2">
+      <div class="popup-box"
+           id="popupBox2">
 
         <div class="popup-head">
-          <strong>공지사항 2</strong>
+
+          <strong>
+            공지사항 2
+          </strong>
 
           <button class="popupCloseBtn"
                   type="button"
                   aria-label="팝업 닫기">
             ×
           </button>
+
         </div>
 
         <div class="popup-body">
+
           <img src="images/popup02.webp"
                alt="더파크 비스타동원 공지사항 2">
+
         </div>
 
       </div>
@@ -2056,19 +2176,24 @@ button{
     </div>
 
   </div>
+
 </div>
 
+<!-- PRIVACY MODAL -->
 
 <div class="modal"
      id="privacyModal"
      role="dialog"
-     aria-modal="true">
+     aria-modal="true"
+     aria-labelledby="privacyModalTitle">
 
   <div class="modal-box">
 
     <div class="modal-head">
 
-      <strong>개인정보처리방침</strong>
+      <strong id="privacyModalTitle">
+        개인정보처리방침
+      </strong>
 
       <button id="policyClose"
               type="button"
@@ -2078,72 +2203,108 @@ button{
 
     </div>
 
-
     <div class="modal-body">
 
       <div class="policy">
-        <h4>1. 개인정보의 수집 및 이용 목적</h4>
+
+        <h4>
+          1. 개인정보의 수집 및 이용 목적
+        </h4>
+
         <p>
           방문예약 및 상담 신청, 문의사항 답변과 관련 안내를 위해
           개인정보를 수집·이용합니다.
         </p>
+
       </div>
 
       <div class="policy">
-        <h4>2. 수집하는 개인정보 항목</h4>
+
+        <h4>
+          2. 수집하는 개인정보 항목
+        </h4>
+
         <p>
           이름, 휴대폰 번호, 방문 희망일, 방문 희망시간
         </p>
+
       </div>
 
       <div class="policy">
-        <h4>3. 개인정보 보유 및 이용기간</h4>
+
+        <h4>
+          3. 개인정보 보유 및 이용기간
+        </h4>
+
         <p>
           상담 및 방문예약 목적 달성 후 지체 없이 파기합니다.
         </p>
+
       </div>
 
       <div class="policy">
-        <h4>4. 동의 거부권</h4>
+
+        <h4>
+          4. 동의 거부권
+        </h4>
+
         <p>
           이용자는 개인정보 수집 및 이용에 대한 동의를 거부할 권리가 있습니다.
         </p>
+
       </div>
 
       <div class="policy">
-        <h4>5. 개인정보 제3자 제공</h4>
+
+        <h4>
+          5. 개인정보 제3자 제공
+        </h4>
+
         <p>
           원칙적으로 개인정보를 제3자에게 제공하지 않습니다.
         </p>
+
       </div>
 
       <div class="policy">
-        <h4>6. 개인정보 보호책임자</h4>
+
+        <h4>
+          6. 개인정보 보호책임자
+        </h4>
+
         <p>
           상담전화 : 1551-9708
         </p>
+
       </div>
 
     </div>
 
   </div>
+
 </div>
 
+<!-- ALERT -->
 
 <div class="alert-modal"
      id="alertModal"
      role="dialog"
-     aria-modal="true">
+     aria-modal="true"
+     aria-labelledby="alertTitle">
 
   <div class="alert-box">
 
-    <div class="alert-icon">🎉</div>
+    <div class="alert-icon">
+      🎉
+    </div>
 
-    <div class="alert-title">
+    <div class="alert-title"
+         id="alertTitle">
       방문예약 완료
     </div>
 
-    <p class="alert-desc" id="alertDesc">
+    <p class="alert-desc"
+       id="alertDesc">
       방문예약이 성공적으로 접수되었습니다.<br>
       빠른 시일 내로 안내해 드리겠습니다.
     </p>
@@ -2162,11 +2323,13 @@ button{
 
 </div>
 
+<!-- VR GUIDE -->
 
 <div class="vr-guide-modal"
      id="vrGuideModal"
      role="dialog"
-     aria-modal="true">
+     aria-modal="true"
+     aria-labelledby="vrGuideTitleText">
 
   <div class="vr-guide-box">
 
@@ -2183,7 +2346,6 @@ button{
       </button>
 
     </div>
-
 
     <div class="vr-guide-content">
 
@@ -2203,7 +2365,6 @@ button{
 
     </div>
 
-
     <div class="vr-guide-footer">
 
       <button type="button"
@@ -2221,16 +2382,16 @@ button{
     </div>
 
   </div>
-</div>
 
+</div>
 
 <script>
 "use strict";
 
 document.addEventListener("DOMContentLoaded",()=>{
 
-  const $=s=>document.querySelector(s);
-  const $$=s=>document.querySelectorAll(s);
+  const $=selector=>document.querySelector(selector);
+  const $$=selector=>document.querySelectorAll(selector);
 
   const header=$("#header");
   const menu=$("#mainMenu");
@@ -2241,59 +2402,17 @@ document.addEventListener("DOMContentLoaded",()=>{
   const box2=$("#popupBox2");
 
   const modal=$("#privacyModal");
+
   const form=$("#leadForm");
   const submit=$("#submitButton");
   const date=$("#consultDate");
   const dateField=$("#dateField");
   const phone=$("#phone");
 
-  let savedScroll=0;
-
-
-  /* =========================
-     ALERT
-  ========================= */
-
   const alertModal=$("#alertModal");
+  const alertTitle=document.querySelector(".alert-title");
   const alertDesc=$("#alertDesc");
   const alertCloseBtn=$("#alertCloseBtn");
-
-  const showAlert=(title,text)=>{
-
-    if(alertDesc){
-      alertDesc.innerHTML=text;
-    }
-
-    const alertTitle=document.querySelector(".alert-title");
-
-    if(alertTitle){
-      alertTitle.textContent=title;
-    }
-
-    alertModal?.classList.add("show");
-    document.body.style.overflow="hidden";
-  };
-
-
-  const closeAlert=()=>{
-
-    alertModal?.classList.remove("show");
-    document.body.style.overflow="";
-  };
-
-
-  alertCloseBtn?.addEventListener("click",closeAlert);
-
-  alertModal?.addEventListener("click",e=>{
-    if(e.target===alertModal){
-      closeAlert();
-    }
-  });
-
-
-  /* =========================
-     VR GUIDE
-  ========================= */
 
   const vrGuideModal=$("#vrGuideModal");
   const vrGuideTitleText=$("#vrGuideTitleText");
@@ -2301,20 +2420,43 @@ document.addEventListener("DOMContentLoaded",()=>{
   const vrGuideCancel=$("#vrGuideCancel");
   const vrGuideConfirm=$("#vrGuideConfirm");
 
+  let savedScroll=0;
   let pendingVrUrl="";
 
+  /* =========================
+     BODY LOCK
+  ========================= */
+
+  const lockBody=()=>{
+    document.body.classList.add("modal-open");
+  };
+
+  const unlockBody=()=>{
+    document.body.classList.remove("modal-open");
+  };
+
+  /* =========================
+     COMMON MOVE
+  ========================= */
 
   const move=id=>{
 
     menu?.classList.remove("active");
 
     if(toggle){
+
       toggle.textContent="☰";
-      toggle.setAttribute("aria-expanded","false");
+
+      toggle.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
     }
 
     if(id==="top"){
-      scrollTo({
+
+      window.scrollTo({
         top:0,
         behavior:"smooth"
       });
@@ -2324,22 +2466,20 @@ document.addEventListener("DOMContentLoaded",()=>{
 
     const target=$("#"+id);
 
-    if(target){
+    if(!target)return;
 
-      const headerHeight=header?.offsetHeight||80;
+    const offset=(header?.offsetHeight||80)-10;
 
-      const targetPos=
-        target.getBoundingClientRect().top+
-        window.scrollY-
-        (headerHeight-10);
+    const top=
+      target.getBoundingClientRect().top+
+      window.scrollY-
+      offset;
 
-      window.scrollTo({
-        top:targetPos,
-        behavior:"smooth"
-      });
-    }
+    window.scrollTo({
+      top,
+      behavior:"smooth"
+    });
   };
-
 
   $$("[data-target]").forEach(el=>{
 
@@ -2353,30 +2493,101 @@ document.addEventListener("DOMContentLoaded",()=>{
 
   });
 
+  /* =========================
+     MOBILE MENU
+  ========================= */
 
   toggle?.addEventListener("click",()=>{
 
-    const open=menu.classList.toggle("active");
+    const open=
+      menu.classList.toggle("active");
 
-    toggle.textContent=open?"✕":"☰";
+    toggle.textContent=
+      open?"✕":"☰";
 
     toggle.setAttribute(
       "aria-expanded",
-      open
+      String(open)
     );
 
   });
 
+  /* =========================
+     HEADER SCROLL
+  ========================= */
 
-  addEventListener(
+  let scrollTick=false;
+
+  window.addEventListener(
     "scroll",
-    ()=>header?.classList.toggle(
-      "scrolled",
-      scrollY>40
-    ),
+    ()=>{
+
+      if(scrollTick)return;
+
+      scrollTick=true;
+
+      requestAnimationFrame(()=>{
+
+        header?.classList.toggle(
+          "scrolled",
+          window.scrollY>40
+        );
+
+        scrollTick=false;
+
+      });
+
+    },
     {passive:true}
   );
 
+  /* =========================
+     ALERT
+  ========================= */
+
+  const showAlert=(title,text)=>{
+
+    if(alertTitle){
+      alertTitle.textContent=title;
+    }
+
+    if(alertDesc){
+      alertDesc.innerHTML=text;
+    }
+
+    alertModal?.classList.add("show");
+
+    lockBody();
+
+  };
+
+  const closeAlert=()=>{
+
+    alertModal?.classList.remove("show");
+
+    unlockBody();
+
+  };
+
+  alertCloseBtn?.addEventListener(
+    "click",
+    closeAlert
+  );
+
+  alertModal?.addEventListener(
+    "click",
+    e=>{
+
+      if(e.target===alertModal){
+        closeAlert();
+      }
+
+    }
+  );
+
+  /* =========================
+     VR
+  ========================= */
 
   const requestVR=(url,title)=>{
 
@@ -2385,31 +2596,38 @@ document.addEventListener("DOMContentLoaded",()=>{
     pendingVrUrl=url;
 
     if(vrGuideTitleText){
+
       vrGuideTitleText.textContent=
         title||"360° VR 안내";
+
     }
 
     vrGuideModal?.classList.add("show");
 
-    document.body.style.overflow="hidden";
-  };
+    lockBody();
 
+  };
 
   const closeVrGuide=()=>{
 
     vrGuideModal?.classList.remove("show");
 
-    document.body.style.overflow="";
+    unlockBody();
 
     pendingVrUrl="";
-  };
 
+  };
 
   const launchVR=()=>{
 
     if(!pendingVrUrl)return;
 
     let url=pendingVrUrl;
+
+    /*
+      VR 원본 주소는 변경하지 않습니다.
+      기존 URL에 from=main 파라미터만 추가합니다.
+    */
 
     try{
 
@@ -2422,28 +2640,45 @@ document.addEventListener("DOMContentLoaded",()=>{
 
       url=u.href;
 
-    }catch{}
+    }catch(error){
 
+      console.warn(
+        "VR URL 처리 오류:",
+        error
+      );
+
+    }
 
     const mobile=
-      innerWidth<=900||
+      window.innerWidth<=900||
       /Android|iPhone|iPad|iPod/i.test(
         navigator.userAgent
       );
 
+    let win=null;
 
-    const win=mobile
-      ?open(
-          url,
-          "_blank",
-          "noopener,noreferrer"
-        )
-      :open(
-          url,
-          "theparkVistaVR",
-          "width=1200,height=850,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=yes,status=no"
-        );
+    try{
 
+      win=mobile
+        ?window.open(
+            url,
+            "_blank",
+            "noopener,noreferrer"
+          )
+        :window.open(
+            url,
+            "theparkVistaVR",
+            "width=1200,height=850,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=yes,status=no"
+          );
+
+    }catch(error){
+
+      console.error(
+        "VR 실행 오류:",
+        error
+      );
+
+    }
 
     if(win){
 
@@ -2451,12 +2686,21 @@ document.addEventListener("DOMContentLoaded",()=>{
         win.focus();
       }catch{}
 
+    }else{
+
+      /*
+        팝업 차단 시 현재 탭에서 실행
+      */
+
+      try{
+        window.location.href=url;
+      }catch{}
+
     }
 
-
     closeVrGuide();
-  };
 
+  };
 
   vrGuideClose?.addEventListener(
     "click",
@@ -2473,31 +2717,32 @@ document.addEventListener("DOMContentLoaded",()=>{
     launchVR
   );
 
-
   vrGuideModal?.addEventListener(
     "click",
     e=>{
+
       if(e.target===vrGuideModal){
         closeVrGuide();
       }
+
     }
   );
-
 
   $$(".unit-vr-link").forEach(btn=>{
 
     btn.addEventListener(
       "click",
       ()=>{
+
         requestVR(
           btn.dataset.vr,
           btn.dataset.vrTitle
         );
+
       }
     );
 
   });
-
 
   /* =========================
      POPUP
@@ -2505,16 +2750,24 @@ document.addEventListener("DOMContentLoaded",()=>{
 
   if(popup){
 
-    const mobile=innerWidth<=900;
+    const mobile=
+      window.innerWidth<=900;
 
-    box1?.classList.add("active-mobile");
+    box1?.classList.add(
+      "active-mobile"
+    );
 
     if(!mobile){
-      box2?.classList.add("active-mobile");
+
+      box2?.classList.add(
+        "active-mobile"
+      );
+
     }
 
     popup.classList.add("show");
 
+    lockBody();
 
     $$(".popupCloseBtn").forEach(btn=>{
 
@@ -2526,26 +2779,40 @@ document.addEventListener("DOMContentLoaded",()=>{
 
           popup.classList.remove("show");
 
+          unlockBody();
+
         }
       );
 
     });
-
 
     popup.addEventListener(
       "click",
       e=>{
 
         if(e.target===popup){
-          return popup.classList.remove("show");
+
+          popup.classList.remove("show");
+
+          unlockBody();
+
+          return;
         }
 
-        if(innerWidth>900){
-          return popup.classList.remove("show");
+        if(window.innerWidth>900){
+
+          popup.classList.remove("show");
+
+          unlockBody();
+
+          return;
         }
 
-
-        if(box1?.classList.contains("active-mobile")){
+        if(
+          box1?.classList.contains(
+            "active-mobile"
+          )
+        ){
 
           box1.classList.remove(
             "active-mobile"
@@ -2565,13 +2832,14 @@ document.addEventListener("DOMContentLoaded",()=>{
             "show"
           );
 
+          unlockBody();
+
         }
 
       }
     );
 
   }
-
 
   /* =========================
      PRIVACY MODAL
@@ -2583,26 +2851,26 @@ document.addEventListener("DOMContentLoaded",()=>{
 
     if(!modal)return;
 
-    savedScroll=scrollY;
+    savedScroll=window.scrollY;
 
     modal.classList.add("show");
 
-    document.body.style.overflow="hidden";
-  };
+    lockBody();
 
+  };
 
   const closeModal=()=>{
 
     modal?.classList.remove("show");
 
-    document.body.style.overflow="";
+    unlockBody();
 
-    scrollTo(
+    window.scrollTo(
       0,
       savedScroll
     );
-  };
 
+  };
 
   $("#policyOpen")?.addEventListener(
     "click",
@@ -2619,40 +2887,67 @@ document.addEventListener("DOMContentLoaded",()=>{
     closeModal
   );
 
-
   modal?.addEventListener(
     "click",
     e=>{
+
       if(e.target===modal){
         closeModal();
       }
+
     }
   );
 
+  /* =========================
+     ESC
+  ========================= */
 
   document.addEventListener(
     "keydown",
     e=>{
 
-      if(e.key==="Escape"){
+      if(e.key!=="Escape")return;
 
-        if(modal?.classList.contains("show")){
-          closeModal();
-        }
+      if(
+        modal?.classList.contains(
+          "show"
+        )
+      ){
+        closeModal();
+      }
 
-        if(vrGuideModal?.classList.contains("show")){
-          closeVrGuide();
-        }
+      if(
+        vrGuideModal?.classList.contains(
+          "show"
+        )
+      ){
+        closeVrGuide();
+      }
 
-        if(alertModal?.classList.contains("show")){
-          closeAlert();
-        }
+      if(
+        alertModal?.classList.contains(
+          "show"
+        )
+      ){
+        closeAlert();
+      }
+
+      if(
+        popup?.classList.contains(
+          "show"
+        )
+      ){
+
+        popup.classList.remove(
+          "show"
+        );
+
+        unlockBody();
 
       }
 
     }
   );
-
 
   /* =========================
      DATE
@@ -2662,19 +2957,23 @@ document.addEventListener("DOMContentLoaded",()=>{
 
     const d=new Date();
 
-    return `${d.getFullYear()}-${String(
-      d.getMonth()+1
-    ).padStart(2,"0")}-${String(
-      d.getDate()
-    ).padStart(2,"0")}`;
+    return [
+      d.getFullYear(),
+      String(
+        d.getMonth()+1
+      ).padStart(2,"0"),
+      String(
+        d.getDate()
+      ).padStart(2,"0")
+    ].join("-");
 
   };
 
-
   if(date){
-    date.min=today();
-  }
 
+    date.min=today();
+
+  }
 
   const showDate=()=>{
 
@@ -2682,9 +2981,18 @@ document.addEventListener("DOMContentLoaded",()=>{
 
     try{
 
-      typeof date.showPicker==="function"
-        ?date.showPicker()
-        :(date.focus(),date.click());
+      if(
+        typeof date.showPicker==="function"
+      ){
+
+        date.showPicker();
+
+      }else{
+
+        date.focus();
+        date.click();
+
+      }
 
     }catch{
 
@@ -2694,12 +3002,10 @@ document.addEventListener("DOMContentLoaded",()=>{
 
   };
 
-
   dateField?.addEventListener(
     "click",
-    ()=>showDate()
+    showDate
   );
-
 
   dateField?.addEventListener(
     "keydown",
@@ -2719,7 +3025,6 @@ document.addEventListener("DOMContentLoaded",()=>{
     }
   );
 
-
   /* =========================
      PHONE FORMAT
   ========================= */
@@ -2730,22 +3035,30 @@ document.addEventListener("DOMContentLoaded",()=>{
 
       const v=
         phone.value
-        .replace(/\D/g,"")
-        .slice(0,11);
+          .replace(/\D/g,"")
+          .slice(0,11);
 
-      phone.value=
-        v.length<=3
-          ?v
-          :v.length<=7
-            ?`${v.slice(0,3)}-${v.slice(3)}`
-            :`${v.slice(0,3)}-${v.slice(3,7)}-${v.slice(7)}`;
+      if(v.length<=3){
+
+        phone.value=v;
+
+      }else if(v.length<=7){
+
+        phone.value=
+          `${v.slice(0,3)}-${v.slice(3)}`;
+
+      }else{
+
+        phone.value=
+          `${v.slice(0,3)}-${v.slice(3,7)}-${v.slice(7)}`;
+
+      }
 
     }
   );
 
-
   /* =========================
-     RESERVATION FORM
+     FORM
   ========================= */
 
   form?.addEventListener(
@@ -2754,28 +3067,39 @@ document.addEventListener("DOMContentLoaded",()=>{
 
       e.preventDefault();
 
+      if(submit?.disabled)return;
 
       const name=$("#name");
       const time=$("#consultTime");
       const privacy=$("#privacy");
       const honeypot=$("#website");
 
-
       if(honeypot?.value){
         return;
       }
 
-
       const fail=(text,el)=>{
 
-        alert(text);
+        showAlert(
+          "입력 확인",
+          text
+        );
 
-        el?.focus();
+        setTimeout(
+          ()=>{
+            el?.focus();
+          },
+          100
+        );
 
       };
 
+      /* 이름 */
 
-      if(!name.value.trim()){
+      const nameValue=
+        name?.value.trim()||"";
+
+      if(!nameValue){
 
         return fail(
           "이름을 입력해주세요.",
@@ -2784,14 +3108,25 @@ document.addEventListener("DOMContentLoaded",()=>{
 
       }
 
+      if(nameValue.length>50){
+
+        return fail(
+          "이름은 50자 이내로 입력해주세요.",
+          name
+        );
+
+      }
+
+      /* 전화번호 */
 
       const phoneNumber=
-        phone.value.replace(/\D/g,"");
-
+        phone?.value
+          .replace(/\D/g,"")||"";
 
       if(
-        phoneNumber.length<10||
-        phoneNumber.length>11
+        !/^01[0-9]\d{7,8}$/.test(
+          phoneNumber
+        )
       ){
 
         return fail(
@@ -2801,8 +3136,9 @@ document.addEventListener("DOMContentLoaded",()=>{
 
       }
 
+      /* 날짜 */
 
-      if(!date.value){
+      if(!date?.value){
 
         return fail(
           "방문 희망일을 선택해주세요.",
@@ -2811,8 +3147,18 @@ document.addEventListener("DOMContentLoaded",()=>{
 
       }
 
+      if(date.value<today()){
 
-      if(!time.value){
+        return fail(
+          "오늘 이후의 방문 희망일을 선택해주세요.",
+          date
+        );
+
+      }
+
+      /* 시간 */
+
+      if(!time?.value){
 
         return fail(
           "방문 희망시간을 선택해주세요.",
@@ -2821,8 +3167,9 @@ document.addEventListener("DOMContentLoaded",()=>{
 
       }
 
+      /* 개인정보 */
 
-      if(!privacy.checked){
+      if(!privacy?.checked){
 
         return fail(
           "개인정보 수집 및 이용에 동의해주세요.",
@@ -2831,43 +3178,55 @@ document.addEventListener("DOMContentLoaded",()=>{
 
       }
 
+      /* 접수 중 */
 
       submit.disabled=true;
 
-      submit.textContent="접수 중...";
-
+      submit.textContent=
+        "접수 중...";
 
       try{
 
-        const res=await fetch(
-          "/.netlify/functions/send-alimtalk",
-          {
-            method:"POST",
-            headers:{
-              "Content-Type":
-                "application/json"
-            },
-            body:JSON.stringify({
+        const res=
+          await fetch(
+            "/.netlify/functions/send-alimtalk",
+            {
+              method:"POST",
 
-              name:name.value.trim(),
+              headers:{
+                "Content-Type":
+                  "application/json"
+              },
 
-              phone:phone.value.trim(),
+              body:JSON.stringify({
 
-              consultDate:date.value,
+                name:nameValue,
 
-              consultTime:time.value
+                phone:
+                  phone.value.trim(),
 
-            })
-          }
-        );
+                consultDate:
+                  date.value,
 
+                consultTime:
+                  time.value
+
+              })
+            }
+          );
 
         let result={};
 
         try{
-          result=await res.json();
-        }catch{}
 
+          result=
+            await res.json();
+
+        }catch{
+
+          result={};
+
+        }
 
         if(!res.ok){
 
@@ -2878,17 +3237,16 @@ document.addEventListener("DOMContentLoaded",()=>{
 
         }
 
+        /* 성공 */
 
         showAlert(
           "방문예약 완료",
           "방문예약이 성공적으로 접수되었습니다.<br>빠른 시일 내로 안내해 드리겠습니다."
         );
 
-
         form.reset();
 
         date.min=today();
-
 
       }catch(error){
 
@@ -2897,12 +3255,10 @@ document.addEventListener("DOMContentLoaded",()=>{
           error
         );
 
-
         showAlert(
           "접수 안내",
           "예약 접수 중 오류가 발생했습니다.<br>유선(1551-9708)으로 문의해 주세요."
         );
-
 
       }finally{
 
