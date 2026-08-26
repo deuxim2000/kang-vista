@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 
-<!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-961TDW5RWD"></script>
 <script>
 window.dataLayer=window.dataLayer||[];
@@ -25,8 +24,8 @@ gtag('config','G-961TDW5RWD');
 <meta name="google-site-verification" content="grqCJa_ZLico6s1zQicYZ3D9Z1MNV_RAaWFkIrfuEng">
 
 <link rel="canonical" href="https://intoindesign.co.kr/1551-9708">
+<link rel="preload" as="image" href="images/photo01.webp" fetchpriority="high">
 
-<!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://intoindesign.co.kr/1551-9708">
 <meta property="og:title" content="더파크 비스타동원 | 공식 방문예약">
@@ -35,7 +34,6 @@ gtag('config','G-961TDW5RWD');
 <meta property="og:site_name" content="더파크 비스타동원">
 <meta property="og:locale" content="ko_KR">
 
-<!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="더파크 비스타동원 | 공식 방문예약">
 <meta name="twitter:description" content="사상공원 민간공원 특례사업 더파크 비스타동원. 전 세대 전용84㎡ 5억대분양, 총 852세대 프리미엄 대단지.">
@@ -45,1284 +43,267 @@ gtag('config','G-961TDW5RWD');
 <meta name="format-detection" content="telephone=yes">
 
 <style>
-:root{
-  --navy:#09213b;
-  --blue:#155da8;
-  --burgundy:#8b263e;
-  --orange:#f15a29;
-  --red:#e04444;
-  --green:#00c73c;
-  --yellow:#ffcc00;
-  --gray:#667085;
-  --line:#e4e7ec;
-  --max:1280px;
-  --header:80px;
-}
-
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
-  color:#17202b;
-  line-height:1.6;
-  overflow-x:hidden;
-  -webkit-text-size-adjust:100%;
-}
-
-body.modal-open{
-  overflow:hidden;
-}
-
-a{
-  color:inherit;
-  text-decoration:none;
-}
-
-button,
-input,
-select{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-.container{
-  width:min(calc(100% - 40px),var(--max));
-  margin:auto;
-}
-
-.section{
-  padding:40px 0;
-  scroll-margin-top:90px;
-}
-
-.full-image{
-  width:100%;
-  overflow:hidden;
-  background:#f8fafc;
-  display:flex;
-  flex-direction:column;
-  contain:paint;
-}
-
-.full-image img,
-.photo img{
-  display:block;
-  width:100%;
-  height:auto;
-}
-
-.full-image img{
-  margin:0;
-  padding:0;
-  border:0;
-}
-
-.label{
-  margin-bottom:12px;
-  color:var(--blue);
-  font-size:20px;
-  font-weight:800;
-  letter-spacing:3px;
-  text-align:center;
-}
-
-.title{
-  font-size:clamp(34px,5vw,60px);
-  line-height:1.15;
-  letter-spacing:-3px;
-}
-
-.desc{
-  margin-top:15px;
-  color:var(--gray);
-}
-
-.center{
-  text-align:center;
-}
-
-.reference{
-  margin-top:10px;
-  color:#98a2b3;
-  font-size:12px;
-  text-align:right;
-}
-
-/* HEADER */
-
-.header{
-  position:fixed;
-  inset:0 0 auto;
-  z-index:1000;
-  height:var(--header);
-  background:rgba(255,255,255,.98);
-  transition:border-color .2s;
-}
-
-.header.scrolled{
-  border-bottom:1px solid var(--line);
-}
-
-.nav{
-  height:100%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-.logo{
-  display:inline-flex;
-  align-items:center;
-  height:34px;
-  border:0;
-  background:none;
-  padding:0;
-}
-
-.logo img{
-  display:block;
-  width:auto;
-  height:100%;
-  max-height:34px;
-  object-fit:contain;
-}
-
-.menu{
-  display:flex;
-  align-items:center;
-  gap:31px;
-  font-size:19.5px;
-  font-weight:700;
-}
-
-.menu button{
-  border:0;
-  background:none;
-  padding:0;
-  color:#000;
-  white-space:nowrap;
-}
-
-.menu button:hover{
-  color:var(--burgundy);
-}
-
-.header-phone{
-  padding:10px 20px;
-  border:2px solid var(--burgundy);
-  border-radius:30px;
-  color:var(--burgundy);
-  font-size:20px;
-  font-weight:900;
-}
-
-.mobile-menu{
-  display:none;
-  border:0;
-  background:none;
-  padding:0;
-  font-size:25px;
-}
-
-/* HERO */
-
-.hero{
-  position:relative;
-  min-height:100vh;
-  min-height:100dvh;
-  display:flex;
-  align-items:center;
-  overflow:hidden;
-  background:#06172b;
-}
-
-.hero-photo{
-  position:absolute;
-  inset:0;
-}
-
-.hero-photo img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.hero-content{
-  position:relative;
-  z-index:1;
-  padding-top:0;
-  transform:translateY(-35%);
-  color:#000;
-}
-
-.hero-label{
-  margin-bottom:12px;
-  font-size:13px;
-  font-weight:800;
-  letter-spacing:4px;
-}
-
-.hero h1{
-  line-height:1.3;
-  letter-spacing:-2px;
-}
-
-.hero-main-title,
-.hero-subtitle{
-  display:block;
-}
-
-.hero-main-title{
-  margin-bottom:6px;
-  color:var(--burgundy);
-  font-size:clamp(30px,5vw,64px);
-  font-weight:900;
-}
-
-.hero-subtitle{
-  margin-top:8px;
-  font-size:clamp(20px,3vw,38px);
-  font-weight:900;
-}
-
-.hero-text{
-  margin-top:15px;
-  font-size:18px;
-  font-weight:800;
-}
-
-.hero-btn-group{
-  margin-top:20px;
-}
-
-.hero-vr-btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:15px 35px;
-  border:2px solid var(--orange);
-  border-radius:40px;
-  background:var(--orange);
-  color:#fff;
-  font-size:17px;
-  font-weight:800;
-  transition:transform .3s,background .3s;
-}
-
-.hero-vr-btn:hover{
-  background:#d84a1e;
-  transform:translateY(-2px);
-}
-
-/* OVERVIEW */
-
-.overview-grid,
-.contact-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:40px;
-  margin-top:35px;
-  align-items:center;
-}
-
-.info{
-  border-top:2px solid var(--navy);
-}
-
-.info-row{
-  display:grid;
-  grid-template-columns:140px 1fr;
-  padding:18px 0;
-  border-bottom:1px solid var(--line);
-}
-
-.info-row dt{
-  color:var(--gray);
-}
-
-.info-row dd{
-  font-weight:600;
-}
-
-/* PREMIUM */
-
-.park{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-}
-
-.park .photo img{
-  height:100%;
-  object-fit:cover;
-}
-
-.park-content{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  padding:60px 80px;
-  background:var(--navy);
-  color:#fff;
-}
-
-.park-content .label{
-  color:#79b9e9;
-  text-align:left;
-}
-
-.park-content h2{
-  font-size:clamp(28px,3vw,42px);
-  line-height:1.3;
-  font-weight:800;
-}
-
-.park-content p{
-  margin-top:20px;
-  color:#c7d4e2;
-  font-size:clamp(19px,1.8vw,24px);
-  line-height:1.5;
-  font-weight:600;
-}
-
-.highlight{
-  margin-top:25px;
-  padding-left:20px;
-  border-left:2px solid #4c9bd4;
-  font-size:clamp(18px,1.6vw,22px);
-  line-height:1.5;
-  font-weight:700;
-}
-
-/* COMPLEX */
-
-.complex{
-  background:#f8fafc;
-}
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  margin-top:35px;
-  background:#fff;
-  border-top:2px solid var(--navy);
-}
-
-.stat{
-  padding:30px 15px;
-  border-right:1px solid var(--line);
-  text-align:center;
-}
-
-.stat:last-child{
-  border:0;
-}
-
-.stat strong{
-  display:block;
-  color:var(--navy);
-  font-size:40px;
-}
-
-.stat span{
-  color:var(--gray);
-  font-size:13px;
-}
-
-/* UNIT */
-
-.unit-list{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:40px;
-  margin-top:35px;
-}
-
-.unit-card{
-  overflow:hidden;
-  padding-bottom:30px;
-  border:1px solid var(--line);
-  border-radius:12px;
-  background:#f8fafc;
-}
-
-.unit-vr-link{
-  display:block;
-  width:100%;
-  overflow:hidden;
-  border:0;
-  background:none;
-  text-align:center;
-}
-
-.unit-vr-link img{
-  display:block;
-  width:100%;
-  height:auto;
-  transition:transform .3s;
-}
-
-.unit-vr-link:hover img{
-  transform:scale(1.03);
-}
-
-.unit-type{
-  margin:25px 0 15px;
-  text-align:center;
-}
-
-.unit-type small{
-  display:block;
-  margin-bottom:5px;
-  color:var(--blue);
-  font-size:15px;
-  font-weight:800;
-  letter-spacing:2px;
-}
-
-.unit-type h3{
-  color:var(--navy);
-  font-size:30px;
-}
-
-.vr-button{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-height:60px;
-  margin-top:25px;
-  padding:15px 30px;
-  border-radius:40px;
-  color:#fff;
-  font-size:18px;
-  font-weight:900;
-}
-
-.vr-button-a{
-  background:rgba(9,33,59,.96);
-}
-
-.vr-button-c{
-  background:var(--orange);
-}
-
-/* CONTACT */
-
-.contact-grid{
-  gap:60px;
-}
-
-#contactSection .contact-grid>div:first-child,
-#contactSection .visit-label{
-  text-align:left;
-}
-
-.phone-big{
-  display:inline-flex;
-  align-items:center;
-  gap:12px;
-  margin-top:25px;
-  color:var(--orange);
-  font-size:40px;
-  font-weight:900;
-}
-
-.phone-circle{
-  display:grid;
-  place-items:center;
-  width:52px;
-  height:52px;
-  border-radius:50%;
-  background:var(--orange);
-  color:#fff;
-}
-
-.phone-circle svg{
-  width:28px;
-  height:28px;
-  fill:#fff;
-}
-
-.form{
-  width:100%;
-  padding:35px;
-  border:1px solid #e1e6ec;
-  background:#fff;
-}
-
-.form h3{
-  font-size:25px;
-}
-
-.form-sub{
-  margin-bottom:25px;
-  color:var(--gray);
-  font-size:13px;
-}
-
-.form-row{
-  margin-bottom:15px;
-}
-
-.form-row label{
-  display:block;
-  margin-bottom:7px;
-  font-size:13px;
-  font-weight:700;
-}
-
-.required{
-  color:var(--red);
-}
-
-.form-row input,
-.form-row select{
-  width:100%;
-  padding:13px;
-  border:1px solid #d0d5dd;
-  border-radius:3px;
-  outline:0;
-}
-
-.form-row input:focus,
-.form-row select:focus{
-  border-color:var(--blue);
-  box-shadow:0 0 0 3px rgba(21,93,168,.1);
-}
-
-.date-field{
-  position:relative;
-  display:flex;
-  align-items:center;
-  width:100%;
-  height:52px;
-  overflow:hidden;
-  border:1px solid #d0d5dd;
-  border-radius:3px;
-  background:#fff;
-  cursor:pointer;
-}
-
-.date-field:focus-within{
-  border-color:var(--blue);
-  box-shadow:0 0 0 3px rgba(21,93,168,.1);
-}
-
-.date-field::after{
-  content:"📅";
-  position:absolute;
-  top:50%;
-  right:14px;
-  transform:translateY(-50%);
-  pointer-events:none;
-  font-size:18px;
-}
-
-.date-field input{
-  width:100%;
-  height:100%;
-  padding:0 45px 0 13px;
-  border:0!important;
-  outline:0;
-  background:transparent!important;
-  cursor:pointer;
-  font-size:16px;
-  color:#17202b;
-  -webkit-appearance:none;
-}
-
-.date-field input::-webkit-calendar-picker-indicator{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  opacity:0;
-  cursor:pointer;
-}
-
-.privacy{
-  padding:17px;
-  border:1px solid var(--line);
-  background:#f8fafc;
-}
-
-.privacy-head{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-}
-
-.policy-btn,
-.footer-policy{
-  border:0;
-  background:none;
-  color:var(--blue);
-  font-size:12px;
-  text-decoration:underline;
-}
-
-.agree{
-  display:flex;
-  gap:8px;
-  margin-top:12px;
-  font-size:12px;
-}
-
-.agree input{
-  margin-top:4px;
-}
-
-.privacy-summary{
-  margin-top:10px;
-  color:#667085;
-  font-size:11px;
-}
-
-.submit{
-  width:100%;
-  margin-top:18px;
-  padding:16px;
-  border:0;
-  border-radius:4px;
-  background:var(--blue);
-  color:#fff;
-  font-weight:800;
-  transition:background .2s,opacity .2s;
-}
-
-.submit:hover:not(:disabled){
-  background:#0f447d;
-}
-
-.submit:disabled{
-  opacity:.6;
-  cursor:not-allowed;
-}
-
-.hp-field{
-  position:absolute!important;
-  left:-9999px!important;
-  width:1px!important;
-  height:1px!important;
-  opacity:0;
-}
-
-/* FLOAT */
-
-.float{
-  position:fixed;
-  right:25px;
-  top:50%;
-  z-index:2000;
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-  align-items:flex-end;
-  padding:14px;
-  border:2px solid var(--red);
-  border-radius:20px;
-  background:transparent;
-  box-shadow:0 12px 30px rgba(224,68,68,.15);
-  transform:translateY(-50%);
-}
-
-.float-item{
-  position:relative;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  width:60px;
-  height:60px;
-  overflow:visible;
-  border:1px solid var(--line);
-  border-radius:50%;
-  box-shadow:0 4px 15px rgba(0,0,0,.12),0 0 0 6px rgba(255,255,255,.4);
-  text-align:center;
-  text-decoration:none;
-  transition:transform .25s,box-shadow .25s;
-}
-
-.float-top{
-  border:0;
-  background:var(--yellow);
-  color:var(--navy);
-  font-size:11px;
-  font-weight:900;
-  line-height:1.1;
-}
-
-.float-top span{
-  font-size:15px;
-  font-weight:900;
-}
-
-.float-register{
-  border:0;
-  background:var(--orange);
-  color:#fff;
-  font-size:12px;
-  font-weight:800;
-  line-height:1.2;
-}
-
-.float-phone{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border:2px solid #fff;
-  background:var(--green);
-  color:#fff;
-}
-
-.float-phone svg{
-  width:32px;
-  height:32px;
-  fill:#fff;
-  animation:phoneRing 1.2s infinite ease-in-out;
-}
-
-.float-item:hover{
-  z-index:10;
-  transform:scale(1.08);
-  box-shadow:0 8px 25px rgba(0,0,0,.22),0 0 0 8px rgba(255,255,255,.6);
-}
-
-@keyframes phoneRing{
-  0%,50%,100%{transform:rotate(0)}
-  10%,30%{transform:rotate(14deg)}
-  20%,40%{transform:rotate(-14deg)}
-}
-
-/* POPUP / MODAL */
-
-.popup01,
-.modal,
-.alert-modal,
-.vr-guide-modal{
-  position:fixed;
-  inset:0;
-  display:none;
-  justify-content:center;
-  align-items:center;
-  background:rgba(0,0,0,.6);
-}
-
-.popup01.show,
-.modal.show,
-.alert-modal.show,
-.vr-guide-modal.show{
-  display:flex;
-}
-
-.popup01{
-  z-index:3000;
-}
-
-.popup-wrapper{
-  width:min(1000px,95%);
-}
-
-.popup-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
-}
-
-.popup-box{
-  overflow:hidden;
-  border-radius:8px;
-  background:#fff;
-  cursor:pointer;
-}
-
-.popup-head,
-.modal-head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-.popup-head{
-  padding:15px 20px;
-  background:var(--navy);
-  color:#fff;
-}
-
-.popup-head button{
-  border:0;
-  background:none;
-  color:#fff;
-  font-size:24px;
-}
-
-.popup-body{
-  line-height:0;
-}
-
-.popup-body img{
-  display:block;
-  width:100%;
-  height:auto;
-}
-
-.popup-notice{
-  margin-top:15px;
-  color:#fff;
-  font-size:13px;
-  text-align:center;
-}
-
-.modal{
-  z-index:4000;
-}
-
-.modal-box{
-  width:min(700px,92%);
-  max-height:85vh;
-  overflow:auto;
-  border-radius:8px;
-  background:#fff;
-}
-
-.modal-head{
-  padding:20px;
-  border-bottom:1px solid var(--line);
-}
-
-.modal-head button{
-  width:35px;
-  height:35px;
-  border:0;
-  border-radius:50%;
-  background:#eee;
-  font-size:20px;
-}
-
-.modal-body{
-  padding:25px;
-}
-
-.policy{
-  margin-bottom:25px;
-}
-
-.policy h4{
-  margin-bottom:7px;
-  color:var(--navy);
-}
-
-.policy p{
-  color:var(--gray);
-  font-size:13px;
-}
-
-/* ALERT */
-
-.alert-modal{
-  z-index:6000;
-}
-
-.alert-box{
-  width:min(400px,90%);
-  overflow:hidden;
-  border-radius:12px;
-  background:#fff;
-  text-align:center;
-  box-shadow:0 10px 30px rgba(0,0,0,.2);
-  animation:alertPop .3s cubic-bezier(.16,1,.3,1);
-}
-
-.alert-icon{
-  margin:25px 0 12px;
-  font-size:45px;
-}
-
-.alert-title{
-  margin-bottom:10px;
-  color:var(--navy);
-  font-size:20px;
-  font-weight:900;
-}
-
-.alert-desc{
-  margin-bottom:25px;
-  padding:0 24px;
-  color:var(--gray);
-  font-size:15px;
-  line-height:1.5;
-}
-
-.alert-footer{
-  padding:0 24px 24px;
-}
-
-.alert-btn{
-  width:100%;
-  padding:14px;
-  border:0;
-  border-radius:8px;
-  background:var(--blue);
-  color:#fff;
-  font-size:16px;
-  font-weight:800;
-}
-
-.alert-btn:hover{
-  background:#0f447d;
-}
-
-@keyframes alertPop{
-  from{
-    transform:scale(.9);
-    opacity:0;
+:root{--navy:#09213b;--blue:#155da8;--burgundy:#8b263e;--orange:#f15a29;--red:#e04444;--green:#00c73c;--yellow:#ffcc00;--gray:#667085;--line:#e4e7ec;--max:1280px;--header:80px}*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;color:#17202b;line-height:1.6;overflow-x:hidden;-webkit-text-size-adjust:100%}body.modal-open{overflow:hidden}a{color:inherit;text-decoration:none}button,input,select{font:inherit}button{cursor:pointer}.container{width:min(calc(100% - 40px),var(--max));margin:auto}.section{padding:40px 0;scroll-margin-top:90px}.full-image{width:100%;overflow:hidden;background:#f8fafc;display:flex;flex-direction:column;contain:paint}.full-image img,.photo img{display:block;width:100%;height:auto}.full-image img{margin:0;padding:0;border:0}.label{margin-bottom:12px;color:var(--blue);font-size:20px;font-weight:800;letter-spacing:3px;text-align:center}.title{font-size:clamp(34px,5vw,60px);line-height:1.15;letter-spacing:-3px}.desc{margin-top:15px;color:var(--gray)}.center{text-align:center}.reference{margin-top:10px;color:#98a2b3;font-size:12px;text-align:right}.header{position:fixed;inset:0 0 auto;z-index:1000;height:var(--header);background:rgba(255,255,255,.98);transition:border-color .2s}.header.scrolled{border-bottom:1px solid var(--line)}.nav{height:100%;display:flex;align-items:center;justify-content:space-between}.logo{display:inline-flex;align-items:center;height:34px;border:0;background:none;padding:0}.logo img{display:block;width:auto;height:100%;max-height:34px;object-fit:contain}.menu{display:flex;align-items:center;gap:31px;font-size:19.5px;font-weight:700}.menu button{border:0;background:none;padding:0;color:#000;white-space:nowrap}.menu button:hover{color:var(--burgundy)}.header-phone{padding:10px 20px;border:2px solid var(--burgundy);border-radius:30px;color:var(--burgundy);font-size:20px;font-weight:900}.mobile-menu{display:none;border:0;background:none;padding:0;font-size:25px}.hero{position:relative;min-height:100dvh;display:flex;align-items:center;overflow:hidden;background:#06172b}.hero-photo{position:absolute;inset:0}.hero-photo img{width:100%;height:100%;object-fit:cover}.hero-content{position:relative;z-index:1;padding-top:0;transform:translateY(-35%);color:#000}.hero-label{margin-bottom:12px;font-size:13px;font-weight:800;letter-spacing:4px}.hero h1{line-height:1.3;letter-spacing:-2px}.hero-main-title,.hero-subtitle{display:block}.hero-main-title{margin-bottom:6px;color:var(--burgundy);font-size:clamp(30px,5vw,64px);font-weight:900}.hero-subtitle{margin-top:8px;font-size:clamp(20px,3vw,38px);font-weight:900}.hero-text{margin-top:15px;font-size:18px;font-weight:800}.hero-btn-group{margin-top:20px}.hero-vr-btn{display:inline-flex;align-items:center;justify-content:center;padding:15px 35px;border:2px solid var(--orange);border-radius:40px;background:var(--orange);color:#fff;font-size:17px;font-weight:800;transition:transform .3s,background .3s}.hero-vr-btn:hover{background:#d84a1e;transform:translateY(-2px)}.overview-grid,.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:35px;align-items:center}.info{border-top:2px solid var(--navy)}.info-row{display:grid;grid-template-columns:140px 1fr;padding:18px 0;border-bottom:1px solid var(--line)}.info-row dt{color:var(--gray)}.info-row dd{font-weight:600}.park{display:grid;grid-template-columns:1fr 1fr}.park .photo img{height:100%;object-fit:cover}.park-content{display:flex;flex-direction:column;justify-content:center;padding:60px 80px;background:var(--navy);color:#fff}.park-content .label{color:#79b9e9;text-align:left}.park-content h2{font-size:clamp(28px,3vw,42px);line-height:1.3;font-weight:800}.park-content p{margin-top:20px;color:#c7d4e2;font-size:clamp(19px,1.8vw,24px);line-height:1.5;font-weight:600}.highlight{margin-top:25px;padding-left:20px;border-left:2px solid #4c9bd4;font-size:clamp(18px,1.6vw,22px);line-height:1.5;font-weight:700}.complex{background:#f8fafc}.stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:35px;background:#fff;border-top:2px solid var(--navy)}.stat{padding:30px 15px;border-right:1px solid var(--line);text-align:center}.stat:last-child{border:0}.stat strong{display:block;color:var(--navy);font-size:40px}.stat span{color:var(--gray);font-size:13px}.unit-list{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:35px}.unit-card{overflow:hidden;padding-bottom:30px;border:1px solid var(--line);border-radius:12px;background:#f8fafc}.unit-vr-link{display:block;width:100%;overflow:hidden;border:0;background:none;text-align:center}.unit-vr-link img{display:block;width:100%;height:auto;transition:transform .3s}.unit-vr-link:hover img{transform:scale(1.03)}.unit-type{margin:25px 0 15px;text-align:center}.unit-type small{display:block;margin-bottom:5px;color:var(--blue);font-size:15px;font-weight:800;letter-spacing:2px}.unit-type h3{color:var(--navy);font-size:30px}.vr-button{display:inline-flex;align-items:center;justify-content:center;min-height:60px;margin-top:25px;padding:15px 30px;border-radius:40px;color:#fff;font-size:18px;font-weight:900}.vr-button-a{background:rgba(9,33,59,.96)}.vr-button-c{background:var(--orange)}.contact-grid{gap:60px}#contactSection .contact-grid>div:first-child,#contactSection .visit-label{text-align:left}.phone-big{display:inline-flex;align-items:center;gap:12px;margin-top:25px;color:var(--orange);font-size:40px;font-weight:900}.phone-circle{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--orange);color:#fff}.phone-circle svg{width:28px;height:28px;fill:#fff}.form{width:100%;padding:35px;border:1px solid #e1e6ec;background:#fff}.form h3{font-size:25px}.form-sub{margin-bottom:25px;color:var(--gray);font-size:13px}.form-row{margin-bottom:15px}.form-row label{display:block;margin-bottom:7px;font-size:13px;font-weight:700}.required{color:var(--red)}.form-row input,.form-row select{width:100%;padding:13px;border:1px solid #d0d5dd;border-radius:3px;outline:0}.form-row input:focus,.form-row select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(21,93,168,.1)}.date-field{position:relative;display:flex;align-items:center;width:100%;height:52px;overflow:hidden;border:1px solid #d0d5dd;border-radius:3px;background:#fff;cursor:pointer}.date-field:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px rgba(21,93,168,.1)}.date-field::after{content:"📅";position:absolute;top:50%;right:14px;transform:translateY(-50%);pointer-events:none;font-size:18px}.date-field input{width:100%;height:100%;padding:0 45px 0 13px;border:0!important;outline:0;background:transparent!important;cursor:pointer;font-size:16px;color:#17202b;-webkit-appearance:none}.date-field input::-webkit-calendar-picker-indicator{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}.privacy{padding:17px;border:1px solid var(--line);background:#f8fafc}.privacy-head{display:flex;justify-content:space-between;gap:10px}.policy-btn,.footer-policy{border:0;background:none;color:var(--blue);font-size:12px;text-decoration:underline}.agree{display:flex;gap:8px;margin-top:12px;font-size:12px}.agree input{margin-top:4px}.privacy-summary{margin-top:10px;color:#667085;font-size:11px}.submit{width:100%;margin-top:18px;padding:16px;border:0;border-radius:4px;background:var(--blue);color:#fff;font-weight:800;transition:background .2s,opacity .2s}.submit:hover:not(:disabled){background:#0f447d}.submit:disabled{opacity:.6;cursor:not-allowed}.hp-field{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0}.float{position:fixed;right:25px;top:50%;z-index:2000;display:flex;flex-direction:column;gap:12px;align-items:flex-end;padding:14px;border-radius:20px;transform:translateY(-50%)}.float-item{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;width:60px;height:60px;overflow:visible;border:1px solid var(--line);border-radius:50%;box-shadow:0 4px 15px rgba(0,0,0,.12),0 0 0 6px rgba(255,255,255,.4);text-align:center;text-decoration:none;transition:transform .25s,box-shadow .25s}.float-top{border:0;font-size:11px;font-weight:900;line-height:1.1}.float-top span{font-size:15px;font-weight:900}.float-register{border:0;color:#fff;font-size:12px;font-weight:800;line-height:1.2}.float-phone{display:flex;align-items:center;justify-content:center;border:2px solid #fff;color:#fff}.float-phone svg{fill:#fff;animation:phoneRing 1.2s infinite ease-in-out}.float-item:hover{z-index:10;transform:scale(1.08);box-shadow:0 8px 25px rgba(0,0,0,.22),0 0 0 8px rgba(255,255,255,.6)}@keyframes phoneRing{0%,50%,100%{transform:rotate(0)}10%,30%{transform:rotate(14deg)}20%,40%{transform:rotate(-14deg)}}.modal,.alert-modal,.vr-guide-modal{position:fixed;inset:0;display:none;justify-content:center;align-items:center;background:rgba(0,0,0,.6)}.modal.show,.alert-modal.show,.vr-guide-modal.show{display:flex}.modal-head{display:flex;align-items:center;justify-content:space-between}.modal{z-index:4000}.modal-box{width:min(700px,92%);max-height:85vh;overflow:auto;border-radius:8px;background:#fff}.modal-head{padding:20px;border-bottom:1px solid var(--line)}.modal-head button{width:35px;height:35px;border:0;border-radius:50%;background:#eee;font-size:20px}.modal-body{padding:25px}.policy{margin-bottom:25px}.policy h4{margin-bottom:7px;color:var(--navy)}.policy p{color:var(--gray);font-size:13px}.alert-modal{z-index:6000}.alert-box{width:min(400px,90%);overflow:hidden;border-radius:12px;background:#fff;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.2);animation:alertPop .3s cubic-bezier(.16,1,.3,1)}.alert-icon{margin:25px 0 12px;font-size:45px}.alert-title{margin-bottom:10px;color:var(--navy);font-size:20px;font-weight:900}.alert-desc{margin-bottom:25px;padding:0 24px;color:var(--gray);font-size:15px;line-height:1.5}.alert-footer{padding:0 24px 24px}.alert-btn{width:100%;padding:14px;border:0;border-radius:8px;background:var(--blue);color:#fff;font-size:16px;font-weight:800}.alert-btn:hover{background:#0f447d}@keyframes alertPop{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}.vr-guide-modal{z-index:5000}.vr-guide-box{width:min(440px,90%);overflow:hidden;border-radius:12px;background:#fff}.vr-guide-header{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:var(--navy);color:#fff;font-size:18px;font-weight:800}.vr-guide-header button{border:0;background:none;color:#fff;font-size:22px}.vr-guide-content{padding:24px;text-align:center}.vr-guide-icon{margin-bottom:12px;font-size:40px}.vr-guide-title{margin-bottom:10px;color:var(--navy);font-size:19px;font-weight:900}.vr-guide-desc{color:var(--gray);font-size:15px;line-height:1.6}.vr-guide-footer{display:flex;gap:10px;padding:0 24px 24px}.vr-guide-btn{flex:1;padding:14px;border:0;border-radius:8px;font-size:16px;font-weight:800}.vr-guide-btn.cancel{background:#e4e7ec;color:#475467}.vr-guide-btn.confirm{background:var(--orange);color:#fff}.footer{padding:45px 0 120px;background:var(--navy);color:#fff;font-size:13px}.footer h3{margin-bottom:15px;font-size:16px}.footer p{margin-top:5px;color:#c7d4e2}.footer-phone{margin-top:10px!important}.footer-phone a{color:#fff}.footer-policy{margin-top:15px;color:#9ec7e9}@media(max-width:900px){.container{width:min(calc(100% - 30px),100%)}.section{padding:30px 0}.header-phone{display:none}.mobile-menu{display:block}.menu{position:absolute;top:80px;left:0;display:none;width:100%;flex-direction:column;gap:0;background:#fff;border-bottom:1px solid #eee}.menu.active{display:flex}.menu button{width:100%;padding:17px 25px;border-bottom:1px solid #eee;text-align:left;font-size:16px}.overview-grid,.contact-grid,.park,.unit-list{grid-template-columns:1fr}.park-content{padding:40px 25px}.stats{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:0}.hero-content{text-align:center;transform:translateY(-45%)}#contactSection .contact-grid>div:first-child,#contactSection .visit-label,#contactSection .contact-grid>div:first-child .title,#contactSection .contact-grid>div:first-child .desc{text-align:center}#contactSection .contact-grid>div:first-child .phone-big{justify-content:center}.phone-big{justify-content:center;font-size:30px}.date-field input{font-size:16px}.float{position:fixed;inset:auto 8px 4px;z-index:2000;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:6px;border:2px solid #fff;border-radius:14px;background:rgba(255,255,255,.95);box-shadow:0 4px 20px rgba(0,0,0,.25);transform:none}.float-item{width:100%;height:48px;border:0;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.1);transform:none}.float-top{background:var(--yellow);color:var(--navy);font-size:10px}.float-top span{font-size:14px}.float-register{background:var(--orange);color:#fff;font-size:13px}.float-phone{border:1.5px solid #fff;background:var(--green)}.float-phone svg{width:26px;height:26px}.float-item:hover{transform:none;box-shadow:0 4px 12px rgba(0,0,0,.15)}.form{padding:25px 20px}}@media(max-width:600px){.title{letter-spacing:-2px}.hero-main-title{font-size:clamp(27px,8vw,42px)}.hero-subtitle{font-size:clamp(18px,5vw,28px)}.hero-text{font-size:16px}.vr-button{width:calc(100% - 40px);margin-right:20px;margin-left:20px}.stats{grid-template-columns:1fr 1fr}.stat{padding:22px 10px}.stat strong{font-size:32px}.info-row{grid-template-columns:105px 1fr;font-size:14px}.vr-guide-footer{padding:0 18px 18px}}.hero-conversion-group{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:380px;max-width:100%;align-items:center}.hero-action-btn{display:inline-flex;align-items:center;justify-content:center;width:100%;min-height:54px;padding:13px 18px;border:0;border-radius:40px;color:#fff;font-size:16px;font-weight:900;box-shadow:0 8px 22px rgba(0,0,0,.16)}.hero-visit-btn{background:var(--orange)}.hero-call-btn{background:var(--green)}.hero-vr-secondary{grid-column:1 / -1;width:100%;min-height:54px;margin-top:0;padding:12px 18px;background:rgba(9,33,59,.9);border-color:rgba(255,255,255,.7);font-size:15px}@media(min-width:901px){.hero-content{transform:translateY(-43%)}}.offer-section{background:#f6f8fb}.offer-heading{margin-bottom:28px}.offer-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch}.offer-card{overflow:hidden;border-radius:14px;background:#fff;box-shadow:0 10px 30px rgba(9,33,59,.09)}.offer-card img{display:block;width:100%;height:100%;object-fit:cover}.offer-note{margin-top:14px;color:#667085;font-size:12px;text-align:center}.offer-actions{display:flex;justify-content:center;gap:10px;margin-top:20px}.offer-btn{display:inline-flex;align-items:center;justify-content:center;min-width:190px;min-height:52px;padding:12px 24px;border:0;border-radius:10px;color:#fff;font-weight:900}.offer-visit{background:var(--orange)}.offer-call{background:var(--green)}.continue-section{padding:28px 15px;background:linear-gradient(180deg,#fff,#f6f8fb);text-align:center}.continue-btn{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;width:min(100%,560px);min-height:156px;padding:24px 30px;border:2px solid rgba(255,255,255,.72);border-radius:18px;background:linear-gradient(135deg,#155da8 0%,#0f4f91 55%,#092f58 100%);color:#fff;box-shadow:0 12px 30px rgba(21,93,168,.28);animation:detailBoxFloat 2.4s ease-in-out infinite;transition:border-color .25s,box-shadow .25s,transform .25s}.continue-btn:hover{border-color:#fff;box-shadow:0 16px 38px rgba(21,93,168,.36)}.continue-btn strong{font-size:24px;line-height:1.35;color:#fff;font-weight:900;letter-spacing:-.5px}.continue-btn span{color:#fff;font-size:17px;font-weight:800;line-height:1.55;letter-spacing:-.25px}.continue-btn b{font-size:30px;line-height:1;color:#fff;animation:detailArrow 1.4s ease-in-out infinite}.continue-btn em{display:inline-flex;align-items:center;justify-content:center;margin-top:3px;padding:7px 16px;border:1px solid rgba(255,255,255,.55);border-radius:999px;background:rgba(255,255,255,.12);font-size:13px;font-style:normal;font-weight:900;color:#fff}.continue-inline{display:flex;width:min(100%,560px);margin:48px auto 0;border-top:0}.detail-anchor{height:1px;scroll-margin-top:90px}@keyframes detailArrow{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}@keyframes detailBoxFloat{0%,100%{transform:translateY(0);box-shadow:0 10px 28px rgba(9,33,59,.12)}50%{transform:translateY(-6px);box-shadow:0 16px 36px rgba(21,93,168,.2)}}@media (prefers-reduced-motion:reduce){.continue-btn,.continue-btn b{animation:none!important}}.final-btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:14px 24px;border:0;border-radius:10px;color:#fff;font-weight:900;white-space:nowrap}.final-visit{background:var(--orange)}.final-call{background:var(--green)}.float{background:rgba(255,255,255,.96);border:1px solid rgba(9,33,59,.12);box-shadow:0 12px 32px rgba(9,33,59,.18)}.float-item{gap:2px;font-size:10px;font-weight:900}.float-icon{font-size:16px;font-weight:900;line-height:1}.float-vr{border:0;background:var(--navy);color:#fff}.float-register{background:var(--orange)}.float-phone{flex-direction:column;background:var(--green)}.float-phone svg{width:24px;height:24px}.float-top{background:#eef1f4;color:var(--navy)}@media(max-width:900px){.hero-conversion-group{justify-content:center}.hero-action-btn{flex:1 1 calc(50% - 5px);min-width:0;padding:12px 10px}.hero-vr-secondary{flex:1 0 100%;width:100%;margin-top:0}.offer-grid{grid-template-columns:1fr;gap:12px}.offer-actions{display:grid;grid-template-columns:1fr 1fr}.offer-btn{min-width:0;padding:12px 8px;font-size:14px}.final-btn{padding:12px 8px;font-size:14px}.float{grid-template-columns:repeat(2,1fr)}.float-vr,.float-top{display:none}.float-phone{flex-direction:row;gap:8px}.float-phone svg{width:22px;height:22px}#contactSection .contact-grid{gap:16px}#contactSection .contact-intro{margin-bottom:0}#contactSection .continue-inline{width:min(100%,500px);margin-top:32px}#contactSection .form{width:calc(100% - 16px);max-width:430px;margin:0 auto;padding:18px 16px;border-radius:10px}#contactSection .form h3{font-size:20px;line-height:1.3}#contactSection .form-sub{margin:6px 0 14px;font-size:12px;line-height:1.5}#contactSection .form-row{margin-bottom:10px}#contactSection .form-row label{margin-bottom:5px;font-size:12px}#contactSection .form-row input,#contactSection .form-row select{padding:10px 11px;font-size:15px}#contactSection .date-field{height:46px}#contactSection .date-field input{padding:0 42px 0 11px;font-size:15px}#contactSection .privacy{padding:12px}#contactSection .privacy-head{align-items:center}#contactSection .agree{margin-top:8px;font-size:11px}#contactSection .privacy-summary{margin-top:7px;font-size:10px;line-height:1.45}#contactSection .submit{margin-top:12px;padding:13px;font-size:14px}}@media(max-width:600px){.hero-action-btn{font-size:14px}.offer-section{padding-top:24px}.offer-heading .title{font-size:28px}.continue-btn{min-height:176px;padding:24px 18px;border-radius:18px;gap:8px}.continue-btn strong{font-size:22px;line-height:1.35;letter-spacing:-.7px}.continue-btn span{font-size:17px;line-height:1.55;font-weight:900;white-space:normal}.continue-btn b{font-size:32px}.continue-btn em{font-size:14px;padding:7px 17px}#contactSection .form{width:100%;padding:16px 14px}#contactSection .privacy-summary{font-size:9.5px}}.continue-mobile{display:none}@media(max-width:900px){.continue-desktop{display:none!important}#contactSection .continue-mobile{display:flex!important;grid-column:1/-1;width:calc(100% - 16px);max-width:430px;min-height:176px;margin:26px auto 8px;padding:24px 18px;border:2px solid rgba(255,255,255,.95);border-radius:18px;background:linear-gradient(135deg,#1769bc 0%,#155da8 48%,#0b3766 100%);box-shadow:0 12px 30px rgba(9,33,59,.28),0 0 0 4px rgba(21,93,168,.08);position:relative;z-index:2}#contactSection .continue-mobile strong{font-size:18px;line-height:1.35;font-weight:900;text-shadow:0 1px 2px rgba(0,0,0,.18)}#contactSection .continue-mobile span{font-size:17px;line-height:1.55;font-weight:900;color:#fff}#contactSection .continue-mobile em{margin-top:4px;background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.75)}}@media(max-width:600px){#contactSection .form{width:calc(100% - 28px);max-width:390px;padding:13px 13px 14px;border-radius:10px}#contactSection .form h3{font-size:18px;margin-bottom:2px}#contactSection .form-sub{margin:3px 0 10px;font-size:11px;line-height:1.35}#contactSection .form-row{margin-bottom:7px}#contactSection .form-row label{margin-bottom:3px;font-size:11px;line-height:1.3}#contactSection .form-row input,#contactSection .form-row select{min-height:40px;padding:8px 10px;font-size:14px}#contactSection .date-field{height:40px}#contactSection .date-field input{height:40px;padding:0 38px 0 10px;font-size:14px}#contactSection .privacy{padding:9px 10px}#contactSection .privacy-head strong{font-size:11px}#contactSection .policy-btn{font-size:10px}#contactSection .agree{margin-top:5px;font-size:10px;line-height:1.35}#contactSection .privacy-summary{margin-top:5px;font-size:8.5px;line-height:1.35}#contactSection .submit{margin-top:9px;padding:11px 10px;font-size:13px}}@media(max-width:600px){#contactSection{padding:6px 0 12px}#contactSection .contact-grid{gap:7px}#contactSection .contact-intro{margin:0}#contactSection .visit-label{margin-bottom:5px;font-size:18px;line-height:1.05;letter-spacing:2.5px}#contactSection .contact-intro .title{font-size:24px;line-height:1.18;letter-spacing:-1.4px}#contactSection .visit-copy{width:100%}#contactSection .visit-copy-line{display:block;width:100%;white-space:nowrap;font-size:clamp(15px,4.8vw,21px);line-height:1.24;letter-spacing:-0.045em}#contactSection .contact-intro .desc{display:none}#contactSection .phone-big{margin-top:6px;font-size:26px;gap:7px;line-height:1}#contactSection .phone-circle{width:36px;height:36px}#contactSection .phone-circle svg{width:20px;height:20px}#contactSection .form{padding:10px 11px 10px;border-radius:10px}#contactSection .form h3{font-size:17px;line-height:1.15;margin:0 0 2px}#contactSection .form-sub{display:none}#contactSection .form-row{margin-bottom:5px}#contactSection .form-row label{margin-bottom:2px;font-size:10.5px;line-height:1.15}#contactSection .form-row input,#contactSection .form-row select{height:37px;min-height:37px;padding:6px 9px;font-size:16px}#contactSection .date-field{height:37px}#contactSection .date-field input{height:37px;padding:0 36px 0 9px;font-size:16px}#contactSection .date-field::after{right:9px;font-size:14px}#contactSection .privacy{padding:6px 8px}#contactSection .privacy-head strong{font-size:10.5px}#contactSection .policy-btn{font-size:9.5px}#contactSection .agree{margin-top:4px;gap:4px;font-size:9.5px;line-height:1.2}#contactSection .agree input{margin-top:0}#contactSection .privacy-summary{display:none}#contactSection .submit{margin-top:6px;min-height:39px;padding:7px 9px;font-size:13.5px;border-radius:6px}#contactSection .continue-mobile{width:100%;margin:10px auto 2px;min-height:140px;padding:16px 14px;border-radius:16px}#contactSection .continue-mobile strong{font-size:18px;line-height:1.3;white-space:nowrap}#contactSection .continue-mobile span{font-size:16px;line-height:1.45;font-weight:800}#contactSection .continue-mobile em{font-size:13px;padding:8px 17px}}@media(max-width:600px) and (max-height:820px){#contactSection .visit-label{font-size:16px;margin-bottom:3px}#contactSection .contact-intro .title{font-size:22px;line-height:1.14}#contactSection .phone-big{margin-top:4px;font-size:24px}#contactSection .phone-circle{width:34px;height:34px}#contactSection .form{padding:8px 10px}#contactSection .form-row{margin-bottom:4px}#contactSection .form-row input,#contactSection .form-row select,#contactSection .date-field,#contactSection .date-field input{height:35px;min-height:35px}#contactSection .privacy{padding:5px 7px}#contactSection .submit{min-height:37px;margin-top:5px}#contactSection .continue-mobile{min-height:128px;margin-top:8px;padding:13px 12px}#contactSection .continue-mobile strong{font-size:17px}#contactSection .continue-mobile span{font-size:15px}}@media(max-width:768px){#contactSection .contact-intro .title{font-size:21px;line-height:1.28;letter-spacing:-1.25px;word-break:keep-all}}@media(max-width:380px){#contactSection .contact-intro .title{font-size:19px;line-height:1.28;letter-spacing:-1.1px}}@media (min-width:901px){.hero-content{transform:translateY(calc(-52%+43px))}.hero-subtitle{line-height:1.28}.hero-offer-line{display:inline-block;white-space:nowrap;margin-top:2px;letter-spacing:-0.045em}.hero-text{margin-top:14px}.hero-conversion-group{margin-top:14px}}@media (min-width:901px){.hero-offer-price{color:#e04444;font-weight:900;text-shadow:0 1px 1px rgba(255,255,255,.35)}.hero-offer-zero{color:#f15a29;font-weight:900;text-shadow:0 1px 1px rgba(255,255,255,.35)}}@media (max-width:900px){.hero-conversion-group{display:block;width:100%}.hero-conversion-group .hero-visit-btn,.hero-conversion-group .hero-call-btn{display:none!important}.hero-conversion-group .hero-vr-secondary{display:inline-flex;width:auto;min-width:250px;max-width:100%;margin:0}}#contactSection{background:#F3F7FB}#contactSection .form{background:#fff}@media (min-width:901px){#contactSection{position:relative;padding-bottom:72px;border-bottom:1px solid #d9e2ec;box-shadow:0 18px 30px -28px rgba(9,33,59,.42)}#complexSection{position:relative;padding-top:88px;background:#fff}#complexSection::before{content:"";position:absolute;top:0;left:50%;width:min(1120px,calc(100% - 80px));height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,#cbd5e1 18%,#cbd5e1 82%,transparent)}}@media (prefers-reduced-motion:reduce){.header-phone-icon,.header-phone-icon svg,.header-phone-text{animation:none!important}}.hero-offer-line{display:inline-flex;align-items:center;gap:16px;white-space:nowrap}.hero-offer-item{display:inline-flex;align-items:center;gap:8px}.hero-offer-icon{display:inline-grid;place-items:center;width:30px;height:30px;flex:0 0 30px;border-radius:50%;background:rgba(255,255,255,.80);box-shadow:0 4px 12px rgba(9,33,59,.12)}.hero-offer-icon svg{width:18px;height:18px;fill:var(--red)}.hero-offer-icon-gift svg{fill:var(--orange)}.hero-offer-divider{width:1px;height:24px;background:rgba(9,33,59,.28)}@media(max-width:900px){.hero-offer-line{gap:10px}.hero-offer-item{gap:6px}.hero-offer-icon{width:26px;height:26px;flex-basis:26px}.hero-offer-icon svg{width:16px;height:16px}.hero-offer-divider{height:20px}}@media (min-width:901px){.hero-text{font-size:24px;line-height:1.45;font-weight:600;letter-spacing:-0.025em;margin-top:10px;transform:translateY(-8px)}.hero-conversion-group{margin-top:6px}}@media (min-width:901px){.hero-text{width:auto;max-width:100%;letter-spacing:-0.025em;text-align:left}.hero-text-line{display:block;width:max-content;max-width:100%;text-align:left}.hero-text-line:first-child{letter-spacing:-0.025em}.hero-text-line:last-child{letter-spacing:.018em}}@media (min-width:901px){.hero-action-btn{font-size:18px;font-weight:900;letter-spacing:-0.02em}.hero-vr-secondary{font-size:17px;font-weight:900;letter-spacing:-0.02em}}@media (min-width:901px){.hero-offer-icon{width:36px;height:36px;flex-basis:36px;box-shadow:0 5px 14px rgba(9,33,59,.14)}.hero-offer-icon svg{width:21px;height:21px}}@media (max-width:900px){.hero-offer-icon{width:30px;height:30px;flex-basis:30px}.hero-offer-icon svg{width:18px;height:18px}}@media (min-width:901px){#mainMenu{gap:22px}#mainMenu button[data-target="contactSection"]{padding:14px 28px;min-height:50px;font-size:19px;line-height:1;margin-right:-14px}.header-phone{margin-left:0;gap:9px;padding-left:4px}}@media (min-width:901px){#mainMenu button[data-target="contactSection"]{margin-left:auto;margin-right:-20px}.header-phone{margin-left:0!important}}@media (min-width:901px){.header-visit-cta{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:14px 30px;margin-left:16px;margin-right:4px;border:0;border-radius:999px;background:var(--orange);color:#fff;font-size:19px;line-height:1;font-weight:900;letter-spacing:-.02em;cursor:pointer;box-shadow:0 6px 16px rgba(241,90,41,.24);transition:transform .2s ease,box-shadow .2s ease;white-space:nowrap}.header-visit-cta:hover{transform:translateY(-1px);box-shadow:0 9px 20px rgba(241,90,41,.30)}.header-phone{margin-left:0!important}}@media(max-width:900px){.header-visit-cta{display:none!important}}@media (min-width:901px){.header-visit-cta{margin-right:-4px}.header-phone{margin-left:0!important}}@media (min-width:901px){.header-conversion-cta{display:inline-flex;align-items:stretch;margin-left:18px;border-radius:16px;overflow:hidden;box-shadow:0 7px 20px rgba(9,33,59,.13)}.header-conversion-cta .header-visit-cta{min-height:52px;margin:0!important;padding:0 27px;border-radius:0;box-shadow:none;background:var(--orange);color:#fff;font-size:19px;font-weight:900}.header-conversion-cta .header-phone{min-height:52px;margin:0!important;padding:0 15px 0 12px;gap:9px;border-radius:0;background:#fff}.header-conversion-cta .header-phone-icon{width:36px;height:36px;flex-basis:36px}.header-conversion-cta .header-phone-text{font-size:clamp(26px,1.75vw,32px)}.float>a,.float>button,.float>.float-item{display:none!important}.pc-float-tools{display:flex;flex-direction:column;gap:8px}.pc-float-tools button{width:72px;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border:0;border-radius:14px;cursor:pointer;font-family:inherit;font-weight:900;transition:transform .18s ease,box-shadow .18s ease}.pc-float-tools button:hover{transform:translateY(-2px)}.pc-float-vr{background:var(--navy);color:#fff;box-shadow:0 7px 18px rgba(9,33,59,.20)}.pc-float-top{background:#fff;color:var(--navy);box-shadow:0 7px 18px rgba(9,33,59,.14);border:1px solid rgba(9,33,59,.10)!important}.pc-float-icon{font-size:15px;line-height:1}.pc-float-arrow{font-size:20px;line-height:1}}@media (max-width:900px){.header-conversion-cta{display:none!important}.pc-float-tools{display:none!important}}@media (min-width:901px){#mainMenu{display:flex;align-items:center;justify-content:center;gap:26px;height:100%}#mainMenu button{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 2px;font-size:19px;line-height:1;font-weight:800;letter-spacing:-.035em;white-space:nowrap}.header-conversion-cta{height:54px;align-items:stretch;flex:0 0 auto}.header-conversion-cta .header-visit-cta{width:128px;min-width:128px;height:54px;min-height:54px;padding:0;display:flex;align-items:center;justify-content:center;font-size:19px;line-height:1}.header-conversion-cta .header-phone{width:210px;min-width:210px;height:54px;min-height:54px;padding:0 14px;display:flex;align-items:center;justify-content:center;gap:9px}.header-conversion-cta .header-phone-icon{width:36px;height:36px;flex:0 0 36px}.header-conversion-cta .header-phone-text{font-size:29px;line-height:1;letter-spacing:-1.5px}}@media (min-width:901px){.header-conversion-cta{display:inline-flex;align-items:center;gap:8px;height:auto;margin-left:18px;border-radius:0;overflow:visible;box-shadow:none}.header-conversion-cta .header-visit-cta{width:132px;min-width:132px;height:52px;min-height:52px;margin:0!important;padding:0 18px;border:0;border-radius:15px;background:var(--orange);color:#fff;font-size:19px;line-height:1;font-weight:900;box-shadow:0 6px 16px rgba(241,90,41,.24);transition:transform .18s ease,box-shadow .18s ease,background .18s ease}.header-conversion-cta .header-phone{width:212px;min-width:212px;height:52px;min-height:52px;margin:0!important;padding:0 15px;gap:9px;border:0;border-radius:15px;background:var(--navy);color:#fff;box-shadow:0 6px 16px rgba(9,33,59,.20);transition:transform .18s ease,box-shadow .18s ease,background .18s ease}.header-conversion-cta .header-phone-icon{width:35px;height:35px;flex:0 0 35px;background:var(--orange);box-shadow:none}.header-conversion-cta .header-phone-text{color:#fff;font-size:29px;line-height:1;letter-spacing:-1.5px;animation:none}.header-conversion-cta .header-visit-cta:hover,.header-conversion-cta .header-phone:hover{transform:translateY(-2px)}.header-conversion-cta .header-visit-cta:hover{box-shadow:0 9px 20px rgba(241,90,41,.30);background:#e95122}.header-conversion-cta .header-phone:hover{box-shadow:0 9px 20px rgba(9,33,59,.26);background:#0d2b4b}.header-conversion-cta .header-phone-icon svg{animation:headerPhoneRing 2.8s ease-in-out infinite}}@media (min-width:901px){.header-conversion-cta{gap:8px}.header-conversion-cta .header-visit-cta,.header-conversion-cta .header-phone{width:190px;min-width:190px;height:52px;min-height:52px;padding:0 14px;border-radius:15px}.header-conversion-cta .header-visit-cta{font-size:20px}.header-conversion-cta .header-phone{justify-content:center;gap:8px}.header-conversion-cta .header-phone-icon{width:32px;height:32px;flex-basis:32px}.header-conversion-cta .header-phone-icon svg{width:19px;height:19px}.header-conversion-cta .header-phone-text{font-size:26px;letter-spacing:-1.3px}}@media (min-width:901px){.hero-conversion-group .hero-visit-btn,.hero-conversion-group .hero-call-btn{display:none!important}.hero-conversion-group .hero-vr-secondary{display:inline-flex!important;width:100%}}
+@media (min-width:901px){
+  .header-conversion-cta{
+    flex-shrink:0;
   }
-  to{
-    transform:scale(1);
-    opacity:1;
+  .header-conversion-cta .header-phone{
+    width:190px;
+    min-width:190px;
+    flex:0 0 190px;
+    white-space:nowrap;
+    flex-wrap:nowrap;
   }
-}
-
-/* VR GUIDE */
-
-.vr-guide-modal{
-  z-index:5000;
-}
-
-.vr-guide-box{
-  width:min(440px,90%);
-  overflow:hidden;
-  border-radius:12px;
-  background:#fff;
-}
-
-.vr-guide-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:18px 24px;
-  background:var(--navy);
-  color:#fff;
-  font-size:18px;
-  font-weight:800;
-}
-
-.vr-guide-header button{
-  border:0;
-  background:none;
-  color:#fff;
-  font-size:22px;
-}
-
-.vr-guide-content{
-  padding:24px;
-  text-align:center;
-}
-
-.vr-guide-icon{
-  margin-bottom:12px;
-  font-size:40px;
-}
-
-.vr-guide-title{
-  margin-bottom:10px;
-  color:var(--navy);
-  font-size:19px;
-  font-weight:900;
-}
-
-.vr-guide-desc{
-  color:var(--gray);
-  font-size:15px;
-  line-height:1.6;
-}
-
-.vr-guide-footer{
-  display:flex;
-  gap:10px;
-  padding:0 24px 24px;
-}
-
-.vr-guide-btn{
-  flex:1;
-  padding:14px;
-  border:0;
-  border-radius:8px;
-  font-size:16px;
-  font-weight:800;
-}
-
-.vr-guide-btn.cancel{
-  background:#e4e7ec;
-  color:#475467;
-}
-
-.vr-guide-btn.confirm{
-  background:var(--orange);
-  color:#fff;
-}
-
-/* FOOTER */
-
-.footer{
-  padding:45px 0 120px;
-  background:var(--navy);
-  color:#fff;
-  font-size:13px;
-}
-
-.footer h3{
-  margin-bottom:15px;
-  font-size:16px;
-}
-
-.footer p{
-  margin-top:5px;
-  color:#c7d4e2;
-}
-
-.footer-phone{
-  margin-top:10px!important;
-}
-
-.footer-phone a{
-  color:#fff;
-}
-
-.footer-policy{
-  margin-top:15px;
-  color:#9ec7e9;
-}
-
-/* MOBILE */
-
-@media(max-width:900px){
-
-  .container{
-    width:min(calc(100% - 30px),100%);
-  }
-
-  .section{
-    padding:30px 0;
-  }
-
-  .header-phone{
-    display:none;
-  }
-
-  .mobile-menu{
+  .header-conversion-cta .header-phone-text{
     display:block;
+    white-space:nowrap;
+    word-break:keep-all;
+    flex:0 0 auto;
+  }
+}
+@media (min-width:901px){
+  .header-conversion-cta{
+    gap:8px;
   }
 
-  .menu{
-    position:absolute;
-    top:80px;
-    left:0;
-    display:none;
-    width:100%;
-    flex-direction:column;
-    gap:0;
-    background:#fff;
-    border-bottom:1px solid #eee;
+  .header-conversion-cta .header-visit-cta,
+  .header-conversion-cta .header-phone{
+    width:190px;
+    min-width:190px;
+    height:52px;
+    min-height:52px;
+    border-radius:15px;
+    overflow:hidden;
   }
 
-  .menu.active{
+  .header-conversion-cta .header-visit-cta{
     display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    background:var(--orange);
+    color:#fff;
+    font-size:20px;
+    font-weight:900;
   }
 
-  .menu button{
-    width:100%;
-    padding:17px 25px;
-    border-bottom:1px solid #eee;
-    text-align:left;
-    font-size:16px;
+  .header-cta-icon,
+  .header-conversion-cta .header-phone-icon{
+    display:grid;
+    place-items:center;
+    width:30px;
+    height:30px;
+    flex:0 0 30px;
+    background:transparent;
+    border-radius:0;
+    box-shadow:none;
+    animation:headerCtaHeartbeat 2.8s ease-in-out infinite;
+    transform-origin:center;
   }
 
-  .overview-grid,
-  .contact-grid,
-  .park,
-  .unit-list{
-    grid-template-columns:1fr;
+  .header-cta-icon svg,
+  .header-conversion-cta .header-phone-icon svg{
+    width:25px;
+    height:25px;
+    fill:none;
+    stroke:currentColor;
+    stroke-width:1.8;
+    stroke-linecap:round;
+    stroke-linejoin:round;
   }
 
-  .park-content{
-    padding:40px 25px;
+  .header-hand-icon{
+    color:#fff;
   }
 
-  .stats{
-    grid-template-columns:1fr 1fr;
+  .header-hand-accent{
+    fill:none;
+    stroke:currentColor;
   }
 
-  .stat:nth-child(2){
-    border-right:0;
+  .header-conversion-cta .header-phone{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    background:var(--navy);
+    color:#fff;
+    white-space:nowrap;
   }
 
-  .popup-wrapper{
-    width:min(500px,92%);
+  .header-conversion-cta .header-phone-icon{
+    color:#fff;
+    animation-delay:.16s;
   }
 
-  .popup-grid{
-    display:block;
+  .header-conversion-cta .header-phone-text{
+    color:#fff;
+    font-size:26px;
+    font-weight:950;
+    white-space:nowrap;
+    animation:none!important;
   }
 
-  .popup-box{
-    display:none;
-    margin:auto;
+  @keyframes headerCtaHeartbeat{
+    0%,68%,100%{transform:scale(1)}
+    72%{transform:scale(1.16)}
+    76%{transform:scale(.98)}
+    80%{transform:scale(1.11)}
+    85%{transform:scale(1)}
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .header-cta-icon,
+  .header-conversion-cta .header-phone-icon{
+    animation:none!important;
+  }
+}
+@media (min-width:901px){
+
+  .header-conversion-cta{
+    gap:24px;
+    margin-left:22px;
+    box-shadow:none;
+    background:transparent;
   }
 
-  .popup-box.active-mobile{
-    display:block;
+  .header-conversion-cta .header-visit-cta,
+  .header-conversion-cta .header-phone{
+    width:auto;
+    min-width:0;
+    height:auto;
+    min-height:0;
+    padding:8px 0;
+    margin:0!important;
+    border:0!important;
+    border-radius:0!important;
+    background:transparent!important;
+    box-shadow:none!important;
+    overflow:visible;
   }
 
-  .popup-box .popup-head{
+  .header-conversion-cta .header-visit-cta{
+    gap:8px;
+    color:var(--orange);
+    font-size:20px;
+    font-weight:950;
+  }
+
+  .header-conversion-cta .header-phone{
+    gap:8px;
+    color:var(--navy);
+  }
+
+  .header-conversion-cta .header-phone-text{
+    color:var(--navy);
+    font-size:27px;
+    font-weight:950;
+  }
+
+  .header-hand-icon{
+    color:var(--orange);
+  }
+
+  .header-conversion-cta .header-phone-icon{
+    color:var(--navy);
+  }
+
+  .header-cta-icon,
+  .header-conversion-cta .header-phone-icon{
+    width:30px;
+    height:30px;
+    flex-basis:30px;
+    background:transparent!important;
+    box-shadow:none!important;
+  }
+
+  .header-conversion-cta .header-visit-cta:hover,
+  .header-conversion-cta .header-phone:hover{
+    transform:none;
+    box-shadow:none!important;
+    opacity:.72;
+  }
+}
+@media (min-width:901px){
+  .header-conversion-cta .header-visit-cta{
+    font-size:24px;
+    font-weight:950;
+    letter-spacing:-.04em;
+  }
+
+  .header-conversion-cta .header-phone-text{
+    font-size:32px;
+    font-weight:950;
+    letter-spacing:-1.5px;
+  }
+
+  .header-cta-icon,
+  .header-conversion-cta .header-phone-icon{
+    width:33px;
+    height:33px;
+    flex-basis:33px;
+  }
+
+  .header-cta-icon svg,
+  .header-conversion-cta .header-phone-icon svg{
+    width:28px;
+    height:28px;
+  }
+}
+@media (min-width:901px){
+
+  .header-conversion-cta .header-visit-cta,
+  .header-conversion-cta .header-phone-text{
+    font-size:28px;
+    line-height:1;
+    font-weight:950;
+    letter-spacing:-.045em;
+  }
+
+  .header-conversion-cta .header-visit-cta,
+  .header-conversion-cta .header-phone{
+    gap:9px;
+  }
+
+  .header-cta-icon,
+  .header-conversion-cta .header-phone-icon{
+    width:32px;
+    height:32px;
+    flex:0 0 32px;
+  }
+
+  .header-cta-icon svg,
+  .header-conversion-cta .header-phone-icon svg{
+    width:27px;
+    height:27px;
+  }
+}
+@media (max-width:900px){
+  .hero-offer-price{
+    color:var(--burgundy)!important;
+  }
+  .hero-offer-zero{
+    color:var(--orange)!important;
+  }
+}
+@media (max-width:900px){
+  .hero-conversion-group .hero-visit-btn,
+  .hero-conversion-group .hero-call-btn{
     display:none!important;
   }
 
-  .hero-content{
-    text-align:center;
-    transform:translateY(-45%);
-  }
-
-  #contactSection .contact-grid>div:first-child,
-  #contactSection .visit-label,
-  #contactSection .contact-grid>div:first-child .title,
-  #contactSection .contact-grid>div:first-child .desc{
-    text-align:center;
-  }
-
-  #contactSection .contact-grid>div:first-child .phone-big{
-    justify-content:center;
-  }
-
-  .phone-big{
-    justify-content:center;
-    font-size:30px;
-  }
-
-  .date-field input{
-    font-size:16px;
-  }
-
-  .float{
-    position:fixed;
-    inset:auto 8px 4px;
-    z-index:2000;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:6px;
-    padding:6px;
-    border:2px solid #fff;
-    border-radius:14px;
-    background:rgba(255,255,255,.95);
-    box-shadow:0 4px 20px rgba(0,0,0,.25);
-    transform:none;
-  }
-
-  .float-item{
-    width:100%;
-    height:48px;
-    border:0;
-    border-radius:10px;
-    box-shadow:0 2px 8px rgba(0,0,0,.1);
-    transform:none;
-  }
-
-  .float-top{
-    background:var(--yellow);
-    color:var(--navy);
-    font-size:10px;
-  }
-
-  .float-top span{
-    font-size:14px;
-  }
-
-  .float-register{
-    background:var(--orange);
-    color:#fff;
-    font-size:13px;
-  }
-
-  .float-phone{
-    border:1.5px solid #fff;
-    background:var(--green);
-  }
-
-  .float-phone svg{
-    width:26px;
-    height:26px;
-  }
-
-  .float-item:hover{
-    transform:none;
-    box-shadow:0 4px 12px rgba(0,0,0,.15);
-  }
-
-  .form{
-    padding:25px 20px;
-  }
-}
-
-@media(max-width:600px){
-
-  .title{
-    letter-spacing:-2px;
-  }
-
-  .hero-main-title{
-    font-size:clamp(27px,8vw,42px);
-  }
-
-  .hero-subtitle{
-    font-size:clamp(18px,5vw,28px);
-  }
-
-  .hero-text{
-    font-size:16px;
-  }
-
-  .vr-button{
-    width:calc(100% - 40px);
-    margin-right:20px;
-    margin-left:20px;
-  }
-
-  .stats{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .stat{
-    padding:22px 10px;
-  }
-
-  .stat strong{
-    font-size:32px;
-  }
-
-  .info-row{
-    grid-template-columns:105px 1fr;
-    font-size:14px;
-  }
-
-  .popup-wrapper{
-    width:94%;
-  }
-
-  .vr-guide-footer{
-    padding:0 18px 18px;
+  .hero-conversion-group .hero-vr-secondary{
+    display:inline-flex!important;
   }
 }
 </style>
+
+
+
+
+
 </head>
 
 <body>
@@ -1341,21 +322,26 @@ button{
     </button>
 
     <nav class="menu" id="mainMenu" aria-label="주요 메뉴">
-
+      <button type="button" data-target="offerSection">특별혜택</button>
       <button type="button" data-target="overviewSection">사업개요</button>
-      <button type="button" data-target="premiumSection">프리미엄</button>
-      <button type="button" data-target="locationSection">입지환경</button>
-      <button type="button" data-target="complexSection">단지안내</button>
-      <button type="button" data-target="unitSection">주택형(VR)</button>
-      <button type="button" data-target="communitySection">커뮤니티</button>
-      <button type="button" data-target="contactSection">방문예약</button>
+      <button type="button" data-target="unitSection">360° VR</button>
+      <button type="button" data-target="complexSection">상세안내</button>
+</nav>
 
-    </nav>
-
-    <a class="header-phone"
-       href="tel:15519708">
-      ☎ 1551-9708
+    <div class="header-conversion-cta">
+    <button type="button" class="header-visit-cta" data-target="contactSection"><span class="header-cta-icon header-hand-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24">
+        <path d="M9.5 11V4.8a1.5 1.5 0 0 1 3 0V10h.5V7.7a1.35 1.35 0 0 1 2.7 0V10h.5V8.7a1.3 1.3 0 0 1 2.6 0v2.1h.45a1.75 1.75 0 0 1 1.75 1.75v2.2C21 18.2 18.2 21 14.75 21h-1.4a6 6 0 0 1-4.65-2.2L5 14.25a1.55 1.55 0 0 1 2.25-2.12L9.5 14.1V11Z"/>
+        <path d="M6.5 3.5 5 2M5 6H3M8 2V0" class="header-hand-accent"/>
+      </svg>
+    </span><span class="header-visit-label">방문예약</span></button>
+    <a class="header-phone" href="tel:15519708" aria-label="1551-9708 전화상담">
+      <span class="header-phone-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M7.1 3.5 9.4 8c.25.5.12 1.1-.3 1.48l-1.45 1.3a14.2 14.2 0 0 0 5.55 5.55l1.3-1.45c.38-.42.98-.55 1.48-.3l4.52 2.3c.48.24.74.77.63 1.3l-.42 2.05c-.12.58-.63 1-1.22 1C10.28 21.23 2.77 13.72 2.77 4.5c0-.6.42-1.1 1-1.22l2.03-.42c.53-.11 1.06.16 1.3.64Z"/>
+      </svg></span>
+      <span class="header-phone-text">1551-9708</span>
     </a>
+    </div>
 
     <button class="mobile-menu"
             id="menuToggle"
@@ -1367,8 +353,6 @@ button{
 
   </div>
 </header>
-
-<!-- HERO -->
 
 <section class="hero" id="home">
 
@@ -1391,20 +375,41 @@ button{
 
       <span class="hero-subtitle">
         사상공원 민간공원 특례사업<br>
-        5억대 분양가!<br>
-        계약금 0원!!
+        <span class="hero-offer-line">
+          <span class="hero-offer-item">
+            <span class="hero-offer-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M3 11.2 12 4l9 7.2v8.3a1.5 1.5 0 0 1-1.5 1.5h-5.2v-6.2H9.7V21H4.5A1.5 1.5 0 0 1 3 19.5v-8.3Z"/>
+              </svg>
+            </span>
+            <span class="hero-offer-price">5억대 분양가</span>
+          </span>
+          <span class="hero-offer-divider" aria-hidden="true"></span>
+          <span class="hero-offer-item">
+            <span class="hero-offer-icon hero-offer-icon-gift" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M20 7h-2.18A3 3 0 0 0 12 5.7 3 3 0 0 0 6.18 7H4a2 2 0 0 0-2 2v3h9V9H4V9h7V7H8.1a1 1 0 1 1 1.8-.6L12 9l2.1-2.6a1 1 0 1 1 1.8.6H13v2h7v3h-7v9h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2ZM3 14v5a2 2 0 0 0 2 2h6v-7H3Z"/>
+              </svg>
+            </span>
+            <span class="hero-offer-zero">계약금 0원</span>
+          </span>
+        </span>
       </span>
     </h1>
 
     <p class="hero-text">
-      자연을 품은 프리미엄 주거공간<br>
-      전 세대 전용84㎡ · 총 852세대
-    </p>
+        <span class="hero-text-line">자연을 품은 프리미엄 주거공간</span>
+        <span class="hero-text-line">전 세대 전용84㎡ · 총 852세대</span>
+      </p>
 
-    <div class="hero-btn-group">
-      <button type="button"
-              class="hero-vr-btn"
-              data-target="unitSection">
+    <div class="hero-btn-group hero-conversion-group">
+      <button type="button" class="hero-action-btn hero-visit-btn" data-target="contactSection">
+        방문예약
+      </button>
+      <a class="hero-action-btn hero-call-btn" href="tel:15519708" aria-label="1551-9708 전화상담">
+        ☎ 전화상담
+      </a>
+      <button type="button" class="hero-vr-btn hero-vr-secondary" data-target="unitSection">
         ✨ 360° VR 모델하우스 보기
       </button>
     </div>
@@ -1412,7 +417,24 @@ button{
   </div>
 </section>
 
-<!-- OVERVIEW -->
+<section class="section offer-section" id="offerSection">
+  <div class="container">
+    <div class="center offer-heading">
+      <div class="label">SPECIAL OFFER</div>
+      <h2 class="title">현재 분양조건을 한눈에 확인하세요</h2>
+      <p class="desc">광고에서 확인하신 주요 분양조건과 계약 혜택을 안내합니다.</p>
+    </div>
+    <div class="offer-grid">
+      <figure class="offer-card">
+        <img src="images/popup01.webp" alt="더파크 비스타동원 5억대 분양가 안내" loading="lazy" decoding="async" fetchpriority="low">
+      </figure>
+      <figure class="offer-card">
+        <img src="images/popup02.webp" alt="더파크 비스타동원 선착순 동호 지정 및 계약 혜택 안내" loading="lazy" decoding="async" fetchpriority="low">
+      </figure>
+    </div>
+    <p class="offer-note">※ 일부 세대 한정 및 세부 적용 조건은 상담을 통해 확인해 주세요.</p>
+</div>
+</section>
 
 <section class="section" id="overviewSection">
 
@@ -1476,197 +498,6 @@ button{
   </div>
 </section>
 
-<!-- PREMIUM -->
-
-<section id="premiumSection">
-
-  <div class="park">
-
-    <div class="photo">
-      <img src="images/photo03.webp"
-           alt="더파크 비스타동원 사상공원 프리미엄"
-           width="600"
-           height="400"
-           loading="lazy"
-           decoding="async">
-    </div>
-
-    <div class="park-content">
-
-      <div class="label">
-        PREMIUM
-      </div>
-
-      <h2>
-        도시의 가치와 대자연의<br>
-        감동을 잇는 프리미엄
-      </h2>
-
-      <p>
-        자연과 하나가 되는 생활<br>
-        새로운 주거환경을 제안합니다.
-      </p>
-
-      <div class="highlight">
-        사상공원 민간공원 특례사업<br>
-        일상이 휴식이 되는 하이엔드 웰니스 라이프
-      </div>
-
-    </div>
-
-  </div>
-
-  <div class="section" style="padding-top:30px">
-
-    <div class="container">
-
-      <div class="full-image">
-
-        <img src="images/premium_total1.webp"
-             alt="더파크 비스타동원 프리미엄 안내 1"
-             width="1100"
-             height="1065"
-             loading="lazy"
-             decoding="async">
-
-        <img src="images/premium_total2.webp"
-             alt="더파크 비스타동원 프리미엄 안내 2"
-             width="1100"
-             height="1065"
-             loading="lazy"
-             decoding="async">
-
-      </div>
-
-      <p class="reference">
-        ※ 본 이미지는 참고용 이미지입니다.
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- LOCATION -->
-
-<section class="section" id="locationSection">
-
-  <div class="container">
-
-    <div class="label">
-      LOCATION
-    </div>
-
-    <h2 class="title center">
-
-      <span style="display:block;color:var(--burgundy);margin-bottom:8px;">
-        교통과 인프라를
-      </span>
-
-      <span style="display:block;font-size:.85em;color:var(--navy);">
-        가까이 누리는 편리한 입지환경
-      </span>
-
-    </h2>
-
-    <div class="full-image" style="margin-top:30px">
-
-      <img src="images/location_total1.webp"
-           alt="더파크 비스타동원 입지환경 1"
-           width="1100"
-           height="1716"
-           loading="lazy"
-           decoding="async">
-
-      <img src="images/location_total2.webp"
-           alt="더파크 비스타동원 입지환경 2"
-           width="1100"
-           height="1716"
-           loading="lazy"
-           decoding="async">
-
-    </div>
-
-    <p class="reference">
-      ※ 본 이미지는 참고용 이미지입니다.
-    </p>
-
-  </div>
-
-</section>
-
-<!-- COMPLEX -->
-
-<section class="section complex" id="complexSection">
-
-  <div class="container">
-
-    <div class="center">
-
-      <div class="label">
-        COMPLEX
-      </div>
-
-      <h2 class="title">
-        852세대 대단지의<br>
-        프리미엄 라이프
-      </h2>
-
-    </div>
-
-    <div class="stats">
-
-      <div class="stat">
-        <strong>852</strong>
-        <span>총 세대수</span>
-      </div>
-
-      <div class="stat">
-        <strong>10</strong>
-        <span>총 동수</span>
-      </div>
-
-      <div class="stat">
-        <strong>25</strong>
-        <span>최고 층수</span>
-      </div>
-
-      <div class="stat">
-        <span>전 세대</span>
-        <strong>84㎡</strong>
-      </div>
-
-    </div>
-
-    <div class="complex-photo full-image">
-
-      <img src="images/photo05.webp"
-           alt="더파크 비스타동원 단지 조감도"
-           width="1100"
-           height="600"
-           loading="lazy"
-           decoding="async">
-
-    </div>
-
-    <div class="complex-photo full-image">
-
-      <img src="images/complex_add.webp"
-           alt="더파크 비스타동원 단지 안내"
-           width="1100"
-           height="600"
-           loading="lazy"
-           decoding="async">
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- UNIT -->
-
 <section class="section" id="unitSection">
 
   <div class="container">
@@ -1689,8 +520,6 @@ button{
     </div>
 
     <div class="unit-list">
-
-      <!-- 84A -->
 
       <article class="unit-card">
 
@@ -1722,8 +551,6 @@ button{
         </button>
 
       </article>
-
-      <!-- 84C -->
 
       <article class="unit-card">
 
@@ -1762,76 +589,6 @@ button{
 
 </section>
 
-<!-- COMMUNITY -->
-
-<section class="section" id="communitySection">
-
-  <div class="container">
-
-    <div class="label">
-      COMMUNITY
-    </div>
-
-    <h2 class="title center">
-      일상에 품격을 더하는<br>
-      프리미엄 커뮤니티
-    </h2>
-
-    <div class="full-image" style="margin-top:30px">
-
-      <img src="images/community_total.webp"
-           alt="더파크 비스타동원 프리미엄 커뮤니티 시설 안내"
-           width="1100"
-           height="1442"
-           loading="lazy"
-           decoding="async">
-
-    </div>
-
-    <p class="reference">
-      ※ 본 이미지는 참고용 이미지입니다.
-    </p>
-
-  </div>
-
-</section>
-
-<!-- PROJECT IMAGE -->
-
-<section class="section">
-
-  <div class="container">
-
-    <div class="center">
-
-      <div class="label">
-        PROJECT IMAGE
-      </div>
-
-      <h2 class="title">
-        더파크 비스타동원의<br>
-        미래가치를 경험하세요
-      </h2>
-
-    </div>
-
-    <div class="full-image" style="margin-top:30px">
-
-      <img src="images/photo11.webp"
-           alt="더파크 비스타동원 프로젝트 이미지"
-           width="1100"
-           height="600"
-           loading="lazy"
-           decoding="async">
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- CONTACT -->
-
 <section class="section" id="contactSection">
 
   <div class="container contact-grid">
@@ -1842,14 +599,14 @@ button{
         VISIT RESERVATION
       </div>
 
-      <h2 class="title">
-        방문예약을 신청하고<br>
-        상세내용을 안내받으세요.
+      <h2 class="title visit-copy">
+        <span class="visit-copy-line">궁금한 분양조건과 잔여세대를</span>
+        <span class="visit-copy-line">방문상담으로 자세히 안내받으세요.</span>
       </h2>
 
       <p class="desc">
-        방문을 원하시는 날짜와 시간을 선택해주시면<br>
-        상담 담당자가 확인 후 안내드립니다.
+        현재 적용 가능한 분양조건과 잔여세대를 확인하고<br>
+        원하시는 날짜에 방문예약을 신청하세요.
       </p>
 
       <a href="tel:15519708"
@@ -1868,21 +625,24 @@ button{
 
       </a>
 
-    </div>
+      <button type="button" class="continue-btn continue-inline continue-desktop" data-target="detailSection" aria-label="상세안내 계속 보기">
+        <strong>아래에 더 많은 정보를 확인해보세요</strong>
+        <span>프리미엄 · 입지환경 · 단지안내 · 커뮤니티</span>
+        <em>상세안내 계속 보기</em>
+      </button>
 
-    <!-- RESERVATION FORM -->
+    </div>
 
     <form class="form"
           id="leadForm"
           novalidate>
 
-      <h3>방문예약</h3>
+      <h3>방문예약 · 분양조건 상담</h3>
 
       <p class="form-sub">
-        방문을 원하시는 정보를 입력해주세요.
+        방문 희망 정보를 남겨주시면 담당자가 확인 후 안내드립니다.
       </p>
 
-      <!-- Honeypot -->
       <div class="hp-field">
         <input id="website"
                name="website"
@@ -1972,8 +732,6 @@ button{
 
       </div>
 
-      <!-- PRIVACY -->
-
       <div class="privacy">
 
         <div class="privacy-head">
@@ -2022,12 +780,264 @@ button{
 
     </form>
 
+    <button type="button" class="continue-btn continue-inline continue-mobile" data-target="detailSection" aria-label="상세안내 계속 보기">
+      <strong>아래에 더 많은 정보를 확인해보세요</strong>
+      <span>프리미엄 · 입지환경 · 단지안내 · 커뮤니티</span>
+      <em>상세안내 계속 보기</em>
+    </button>
+
   </div>
 
 </section>
 
-<!-- FOOTER -->
+<div id="detailSection" class="detail-anchor" aria-hidden="true"></div>
 
+<section class="section complex" id="complexSection">
+
+  <div class="container">
+
+    <div class="center">
+
+      <div class="label">
+        COMPLEX
+      </div>
+
+      <h2 class="title">
+        852세대 대단지의<br>
+        프리미엄 라이프
+      </h2>
+
+    </div>
+
+    <div class="stats">
+
+      <div class="stat">
+        <strong>852</strong>
+        <span>총 세대수</span>
+      </div>
+
+      <div class="stat">
+        <strong>10</strong>
+        <span>총 동수</span>
+      </div>
+
+      <div class="stat">
+        <strong>25</strong>
+        <span>최고 층수</span>
+      </div>
+
+      <div class="stat">
+        <span>전 세대</span>
+        <strong>84㎡</strong>
+      </div>
+
+    </div>
+
+    <div class="complex-photo full-image">
+
+      <img src="images/photo05.webp"
+           alt="더파크 비스타동원 단지 조감도"
+           width="1100"
+           height="600"
+           loading="lazy"
+           decoding="async">
+
+    </div>
+
+    <div class="complex-photo full-image">
+
+      <img src="images/complex_add.webp"
+           alt="더파크 비스타동원 단지 안내"
+           width="1100"
+           height="600"
+           loading="lazy"
+           decoding="async">
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="premiumSection">
+
+  <div class="park">
+
+    <div class="photo">
+      <img src="images/photo03.webp"
+           alt="더파크 비스타동원 사상공원 프리미엄"
+           width="600"
+           height="400"
+           loading="lazy"
+           decoding="async">
+    </div>
+
+    <div class="park-content">
+
+      <div class="label">
+        PREMIUM
+      </div>
+
+      <h2>
+        도시의 가치와 대자연의<br>
+        감동을 잇는 프리미엄
+      </h2>
+
+      <p>
+        자연과 하나가 되는 생활<br>
+        새로운 주거환경을 제안합니다.
+      </p>
+
+      <div class="highlight">
+        사상공원 민간공원 특례사업<br>
+        일상이 휴식이 되는 하이엔드 웰니스 라이프
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="section" style="padding-top:30px">
+
+    <div class="container">
+
+      <div class="full-image">
+
+        <img src="images/premium_total1.webp"
+             alt="더파크 비스타동원 프리미엄 안내 1"
+             width="1100"
+             height="1065"
+             loading="lazy"
+             decoding="async">
+
+        <img src="images/premium_total2.webp"
+             alt="더파크 비스타동원 프리미엄 안내 2"
+             width="1100"
+             height="1065"
+             loading="lazy"
+             decoding="async">
+
+      </div>
+
+      <p class="reference">
+        ※ 본 이미지는 참고용 이미지입니다.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="section" id="locationSection">
+
+  <div class="container">
+
+    <div class="label">
+      LOCATION
+    </div>
+
+    <h2 class="title center">
+
+      <span style="display:block;color:var(--burgundy);margin-bottom:8px;">
+        교통과 인프라를
+      </span>
+
+      <span style="display:block;font-size:.85em;color:var(--navy);">
+        가까이 누리는 편리한 입지환경
+      </span>
+
+    </h2>
+
+    <div class="full-image" style="margin-top:30px">
+
+      <img src="images/location_total1.webp"
+           alt="더파크 비스타동원 입지환경 1"
+           width="1100"
+           height="1716"
+           loading="lazy"
+           decoding="async">
+
+      <img src="images/location_total2.webp"
+           alt="더파크 비스타동원 입지환경 2"
+           width="1100"
+           height="1716"
+           loading="lazy"
+           decoding="async">
+
+    </div>
+
+    <p class="reference">
+      ※ 본 이미지는 참고용 이미지입니다.
+    </p>
+
+  </div>
+
+</section>
+
+<section class="section" id="communitySection">
+
+  <div class="container">
+
+    <div class="label">
+      COMMUNITY
+    </div>
+
+    <h2 class="title center">
+      일상에 품격을 더하는<br>
+      프리미엄 커뮤니티
+    </h2>
+
+    <div class="full-image" style="margin-top:30px">
+
+      <img src="images/community_total.webp"
+           alt="더파크 비스타동원 프리미엄 커뮤니티 시설 안내"
+           width="1100"
+           height="1442"
+           loading="lazy"
+           decoding="async">
+
+    </div>
+
+    <p class="reference">
+      ※ 본 이미지는 참고용 이미지입니다.
+    </p>
+
+  </div>
+
+</section>
+
+<section class="section">
+
+  <div class="container">
+
+    <div class="center">
+
+      <div class="label">
+        PROJECT IMAGE
+      </div>
+
+      <h2 class="title">
+        더파크 비스타동원의<br>
+        미래가치를 경험하세요
+      </h2>
+
+    </div>
+
+    <div class="full-image" style="margin-top:30px">
+
+      <img src="images/photo11.webp"
+           alt="더파크 비스타동원 프로젝트 이미지"
+           width="1100"
+           height="600"
+           loading="lazy"
+           decoding="async">
+
+    </div>
+
+  </div>
+
+</section>
 <footer class="footer">
 
   <div class="container">
@@ -2070,116 +1080,32 @@ button{
 
 </footer>
 
-<!-- FLOAT -->
-
-<div class="float">
-
-  <button type="button"
-          class="float-item float-top"
-          data-target="top"
-          aria-label="맨 위로 가기">
-
-    ▲
-    <span>TOP</span>
-
+<div class="float" aria-label="빠른 메뉴">
+  <button type="button" class="float-item float-vr" data-target="unitSection" aria-label="360도 VR 보기">
+    <span class="float-icon">360°</span><span>VR 보기</span>
   </button>
-
-  <button type="button"
-          class="float-item float-register"
-          data-target="contactSection"
-          aria-label="방문예약 바로가기">
-
-    방문예약
-
+  <button type="button" class="float-item float-register" data-target="contactSection" aria-label="방문예약 바로가기">
+    <span class="float-icon">✓</span><span>방문예약</span>
   </button>
-
-  <a href="tel:15519708"
-     class="float-item float-phone"
-     aria-label="전화상담">
-
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-    </svg>
-
+  <a href="tel:15519708" class="float-item float-phone" aria-label="1551-9708 전화상담">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+    <span>전화상담</span>
   </a>
+  <button type="button" class="float-item float-top" data-target="top" aria-label="맨 위로 가기">
+    <span class="float-icon">▲</span><span>TOP</span>
+  </button>
 
-</div>
-
-<!-- POPUP -->
-
-<div class="popup01"
-     id="popup01"
-     role="dialog"
-     aria-modal="true"
-     aria-label="공지사항">
-
-  <div class="popup-wrapper">
-
-    <div class="popup-grid">
-
-      <div class="popup-box"
-           id="popupBox1">
-
-        <div class="popup-head">
-
-          <strong>
-            공지사항 1
-          </strong>
-
-          <button class="popupCloseBtn"
-                  type="button"
-                  aria-label="팝업 닫기">
-            ×
-          </button>
-
-        </div>
-
-        <div class="popup-body">
-
-          <img src="images/popup01.webp"
-               alt="더파크 비스타동원 공지사항 1">
-
-        </div>
-
-      </div>
-
-      <div class="popup-box"
-           id="popupBox2">
-
-        <div class="popup-head">
-
-          <strong>
-            공지사항 2
-          </strong>
-
-          <button class="popupCloseBtn"
-                  type="button"
-                  aria-label="팝업 닫기">
-            ×
-          </button>
-
-        </div>
-
-        <div class="popup-body">
-
-          <img src="images/popup02.webp"
-               alt="더파크 비스타동원 공지사항 2">
-
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="popup-notice">
-      팝업을 터치하거나 바깥 영역을 누르면 다음 팝업이 열리거나 닫힙니다.
-    </div>
-
+  <div class="pc-float-tools" aria-label="빠른 메뉴">
+    <button type="button" class="pc-float-vr" data-target="unitSection" aria-label="360도 VR 섹션으로 이동">
+      <span class="pc-float-icon" aria-hidden="true">360°</span>
+      <span>VR</span>
+    </button>
+    <button type="button" class="pc-float-top" data-target="top" aria-label="페이지 맨 위로">
+      <span class="pc-float-arrow" aria-hidden="true">↑</span>
+      <span>TOP</span>
+    </button>
   </div>
-
 </div>
-
-<!-- PRIVACY MODAL -->
 
 <div class="modal"
      id="privacyModal"
@@ -2284,8 +1210,6 @@ button{
 
 </div>
 
-<!-- ALERT -->
-
 <div class="alert-modal"
      id="alertModal"
      role="dialog"
@@ -2322,8 +1246,6 @@ button{
   </div>
 
 </div>
-
-<!-- VR GUIDE -->
 
 <div class="vr-guide-modal"
      id="vrGuideModal"
@@ -2397,10 +1319,6 @@ document.addEventListener("DOMContentLoaded",()=>{
   const menu=$("#mainMenu");
   const toggle=$("#menuToggle");
 
-  const popup=$("#popup01");
-  const box1=$("#popupBox1");
-  const box2=$("#popupBox2");
-
   const modal=$("#privacyModal");
 
   const form=$("#leadForm");
@@ -2424,8 +1342,75 @@ document.addEventListener("DOMContentLoaded",()=>{
   let pendingVrUrl="";
 
   /* =========================
-     BODY LOCK
+     GA4 / GFA ATTRIBUTION
   ========================= */
+
+  const safeGtag=(eventName,params={})=>{
+    if(typeof window.gtag!=="function")return;
+
+    window.gtag(
+      "event",
+      eventName,
+      {
+        ...params,
+        transport_type:"beacon"
+      }
+    );
+  };
+
+  const getTrafficAttribution=()=>{
+
+    const params=
+      new URLSearchParams(
+        window.location.search
+      );
+
+    const keys=[
+      "utm_source",
+      "utm_medium",
+      "utm_campaign",
+      "utm_content",
+      "utm_term",
+      "n_campaign",
+      "n_ad_group",
+      "n_ad"
+    ];
+
+    const current={};
+
+    keys.forEach(key=>{
+      const value=params.get(key);
+      if(value)current[key]=value;
+    });
+
+    if(Object.keys(current).length){
+      try{
+        sessionStorage.setItem(
+          "landing_attribution",
+          JSON.stringify(current)
+        );
+      }catch(e){}
+    }
+
+    try{
+      return JSON.parse(
+        sessionStorage.getItem(
+          "landing_attribution"
+        )||"{}"
+      );
+    }catch(e){
+      return current;
+    }
+  };
+
+  const attribution=
+    getTrafficAttribution();
+
+  const withAttribution=params=>({
+    ...params,
+    ...attribution
+  });
+
 
   const lockBody=()=>{
     document.body.classList.add("modal-open");
@@ -2434,10 +1419,6 @@ document.addEventListener("DOMContentLoaded",()=>{
   const unlockBody=()=>{
     document.body.classList.remove("modal-open");
   };
-
-  /* =========================
-     COMMON MOVE
-  ========================= */
 
   const move=id=>{
 
@@ -2468,7 +1449,13 @@ document.addEventListener("DOMContentLoaded",()=>{
 
     if(!target)return;
 
-    const offset=(header?.offsetHeight||80)-10;
+    const headerHeight=(header?.offsetHeight||80);
+    const isMobile=window.matchMedia("(max-width:900px)").matches;
+
+    // 모바일 방문예약 이동 시 타이틀이 고정 헤더 바로 아래에 오도록 조정
+    const offset=(id==="contactSection" && isMobile)
+      ? Math.max(48,headerHeight-16)
+      : headerHeight-10;
 
     const top=
       target.getBoundingClientRect().top+
@@ -2481,6 +1468,95 @@ document.addEventListener("DOMContentLoaded",()=>{
     });
   };
 
+
+  /* =========================
+     GA4 INTERACTION EVENTS
+  ========================= */
+
+  document.addEventListener(
+    "click",
+    e=>{
+
+      const tel=
+        e.target.closest(
+          'a[href^="tel:"]'
+        );
+
+      if(tel){
+
+        safeGtag(
+          "click_tel",
+          withAttribution({
+            link_location:
+              tel.className||"tel_link"
+          })
+        );
+
+        return;
+      }
+
+      const visit=
+        e.target.closest(
+          '[data-target="contactSection"]'
+        );
+
+      if(visit){
+
+        safeGtag(
+          "click_visit",
+          withAttribution({
+            link_location:
+              visit.className||"visit_cta"
+          })
+        );
+
+      }
+
+    },
+    true
+  );
+
+  if(form){
+
+    let formStarted=false;
+
+    const trackFormStart=e=>{
+
+      if(formStarted)return;
+      if(e.target?.id==="website")return;
+
+      formStarted=true;
+
+      safeGtag(
+        "form_start",
+        withAttribution({
+          form_id:"leadForm",
+          form_name:"visit_reservation"
+        })
+      );
+
+    };
+
+    form.addEventListener(
+      "focusin",
+      trackFormStart,
+      {passive:true}
+    );
+
+    form.addEventListener(
+      "input",
+      trackFormStart,
+      {passive:true}
+    );
+
+    form.addEventListener(
+      "change",
+      trackFormStart,
+      {passive:true}
+    );
+
+  }
+
   $$("[data-target]").forEach(el=>{
 
     el.addEventListener("click",e=>{
@@ -2492,10 +1568,6 @@ document.addEventListener("DOMContentLoaded",()=>{
     });
 
   });
-
-  /* =========================
-     MOBILE MENU
-  ========================= */
 
   toggle?.addEventListener("click",()=>{
 
@@ -2511,10 +1583,6 @@ document.addEventListener("DOMContentLoaded",()=>{
     );
 
   });
-
-  /* =========================
-     HEADER SCROLL
-  ========================= */
 
   let scrollTick=false;
 
@@ -2540,10 +1608,6 @@ document.addEventListener("DOMContentLoaded",()=>{
     },
     {passive:true}
   );
-
-  /* =========================
-     ALERT
-  ========================= */
 
   const showAlert=(title,text)=>{
 
@@ -2585,10 +1649,6 @@ document.addEventListener("DOMContentLoaded",()=>{
     }
   );
 
-  /* =========================
-     VR
-  ========================= */
-
   const requestVR=(url,title)=>{
 
     if(!url)return;
@@ -2623,11 +1683,6 @@ document.addEventListener("DOMContentLoaded",()=>{
     if(!pendingVrUrl)return;
 
     let url=pendingVrUrl;
-
-    /*
-      VR 원본 주소는 변경하지 않습니다.
-      기존 URL에 from=main 파라미터만 추가합니다.
-    */
 
     try{
 
@@ -2688,10 +1743,6 @@ document.addEventListener("DOMContentLoaded",()=>{
 
     }else{
 
-      /*
-        팝업 차단 시 현재 탭에서 실행
-      */
-
       try{
         window.location.href=url;
       }catch{}
@@ -2734,6 +1785,15 @@ document.addEventListener("DOMContentLoaded",()=>{
       "click",
       ()=>{
 
+        safeGtag(
+          "click_vr",
+          withAttribution({
+            vr_title:
+              btn.dataset.vrTitle||
+              "360_vr"
+          })
+        );
+
         requestVR(
           btn.dataset.vr,
           btn.dataset.vrTitle
@@ -2743,107 +1803,6 @@ document.addEventListener("DOMContentLoaded",()=>{
     );
 
   });
-
-  /* =========================
-     POPUP
-  ========================= */
-
-  if(popup){
-
-    const mobile=
-      window.innerWidth<=900;
-
-    box1?.classList.add(
-      "active-mobile"
-    );
-
-    if(!mobile){
-
-      box2?.classList.add(
-        "active-mobile"
-      );
-
-    }
-
-    popup.classList.add("show");
-
-    lockBody();
-
-    $$(".popupCloseBtn").forEach(btn=>{
-
-      btn.addEventListener(
-        "click",
-        e=>{
-
-          e.stopPropagation();
-
-          popup.classList.remove("show");
-
-          unlockBody();
-
-        }
-      );
-
-    });
-
-    popup.addEventListener(
-      "click",
-      e=>{
-
-        if(e.target===popup){
-
-          popup.classList.remove("show");
-
-          unlockBody();
-
-          return;
-        }
-
-        if(window.innerWidth>900){
-
-          popup.classList.remove("show");
-
-          unlockBody();
-
-          return;
-        }
-
-        if(
-          box1?.classList.contains(
-            "active-mobile"
-          )
-        ){
-
-          box1.classList.remove(
-            "active-mobile"
-          );
-
-          box2?.classList.add(
-            "active-mobile"
-          );
-
-        }else if(
-          box2?.classList.contains(
-            "active-mobile"
-          )
-        ){
-
-          popup.classList.remove(
-            "show"
-          );
-
-          unlockBody();
-
-        }
-
-      }
-    );
-
-  }
-
-  /* =========================
-     PRIVACY MODAL
-  ========================= */
 
   const openModal=e=>{
 
@@ -2898,10 +1857,6 @@ document.addEventListener("DOMContentLoaded",()=>{
     }
   );
 
-  /* =========================
-     ESC
-  ========================= */
-
   document.addEventListener(
     "keydown",
     e=>{
@@ -2932,26 +1887,8 @@ document.addEventListener("DOMContentLoaded",()=>{
         closeAlert();
       }
 
-      if(
-        popup?.classList.contains(
-          "show"
-        )
-      ){
-
-        popup.classList.remove(
-          "show"
-        );
-
-        unlockBody();
-
-      }
-
     }
   );
-
-  /* =========================
-     DATE
-  ========================= */
 
   const today=()=>{
 
@@ -3025,10 +1962,6 @@ document.addEventListener("DOMContentLoaded",()=>{
     }
   );
 
-  /* =========================
-     PHONE FORMAT
-  ========================= */
-
   phone?.addEventListener(
     "input",
     ()=>{
@@ -3056,10 +1989,6 @@ document.addEventListener("DOMContentLoaded",()=>{
 
     }
   );
-
-  /* =========================
-     FORM
-  ========================= */
 
   form?.addEventListener(
     "submit",
@@ -3094,8 +2023,6 @@ document.addEventListener("DOMContentLoaded",()=>{
 
       };
 
-      /* 이름 */
-
       const nameValue=
         name?.value.trim()||"";
 
@@ -3117,8 +2044,6 @@ document.addEventListener("DOMContentLoaded",()=>{
 
       }
 
-      /* 전화번호 */
-
       const phoneNumber=
         phone?.value
           .replace(/\D/g,"")||"";
@@ -3135,8 +2060,6 @@ document.addEventListener("DOMContentLoaded",()=>{
         );
 
       }
-
-      /* 날짜 */
 
       if(!date?.value){
 
@@ -3156,8 +2079,6 @@ document.addEventListener("DOMContentLoaded",()=>{
 
       }
 
-      /* 시간 */
-
       if(!time?.value){
 
         return fail(
@@ -3167,8 +2088,6 @@ document.addEventListener("DOMContentLoaded",()=>{
 
       }
 
-      /* 개인정보 */
-
       if(!privacy?.checked){
 
         return fail(
@@ -3177,8 +2096,6 @@ document.addEventListener("DOMContentLoaded",()=>{
         );
 
       }
-
-      /* 접수 중 */
 
       submit.disabled=true;
 
@@ -3228,7 +2145,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
         }
 
-        if(!res.ok){
+        if(!res.ok || result.success !== true){
 
           throw new Error(
             result.error||
@@ -3237,7 +2154,13 @@ document.addEventListener("DOMContentLoaded",()=>{
 
         }
 
-        /* 성공 */
+        safeGtag(
+          "generate_lead",
+          withAttribution({
+            lead_type:"visit_reservation",
+            form_id:"leadForm"
+          })
+        );
 
         showAlert(
           "방문예약 완료",
@@ -3274,6 +2197,5 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 });
 </script>
-
 </body>
 </html>

@@ -14,9 +14,3 @@
   from = "/1551-9708/"
   to = "/index.html"
   status = 200
-
-# Netlify Function
-[[redirects]]
-  from = "/.netlify/functions/*"
-  to = "/.netlify/functions/:splat"
-  status = 200
