@@ -468,6 +468,32 @@ gtag('config','G-961TDW5RWD');
     height:25px;
   }
 }
+
+/* 통합 프리미엄 섹션 */
+.premium-combined-section{overflow:visible;background:#f7f6ef}
+.premium-intro-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(400px,.95fr);align-items:stretch;gap:34px}
+.premium-illustration{overflow:hidden;border-radius:16px;background:#eeeee2;box-shadow:0 12px 30px rgba(9,33,59,.09)}
+.premium-illustration img{display:block;width:100%;height:100%;object-fit:cover}
+.premium-copy{display:flex;flex-direction:column;justify-content:center;padding:42px;border-radius:16px;background:var(--navy);color:#fff;box-shadow:0 12px 30px rgba(9,33,59,.12)}
+.premium-copy .label{color:#79b9e9;text-align:left}
+.premium-copy h2{font-size:clamp(30px,3vw,44px);line-height:1.25;letter-spacing:-1.8px}
+.premium-copy-lead{margin-top:18px;color:#d7e2ee;font-size:clamp(18px,1.55vw,22px);line-height:1.6;font-weight:700}
+.premium-copy-highlight{margin-top:24px;padding-left:18px;border-left:3px solid #79b9e9;color:#fff;font-size:18px;line-height:1.65;font-weight:800}
+.premium-explain{margin-top:30px;padding:24px;border-radius:12px;background:rgba(255,255,255,.08)}
+.premium-explain h3{font-size:20px;color:#fff}
+.premium-explain p{margin-top:12px;color:#d7e2ee;font-size:15px;line-height:1.75;word-break:keep-all}
+.premium-explain p+p{margin-top:14px;color:#fff;font-weight:700}
+.premium-offer-block{margin-top:56px}
+.premium-offer-wide{width:92%;max-width:none;margin-left:50%;transform:translateX(-50%)}
+.premium-offer-wide .offer-card{flex:1 1 0;min-width:0}
+.premium-offer-wide .offer-card img{width:100%;height:auto;transform:none!important;object-fit:contain}
+.detail-value-heading{margin-bottom:30px}
+.schedule-note{margin:-3px 0 17px;color:var(--burgundy);font-size:15px;line-height:1.5;font-weight:800}
+.hero-project-line{display:inline-block;font-size:1.05em}
+.hero-mobile-break{display:none}
+@media(max-width:600px){.hero-mobile-break{display:block}}
+@media(max-width:900px){.premium-intro-grid{grid-template-columns:1fr;gap:16px}.premium-illustration img{height:auto;object-fit:contain}.premium-copy{padding:30px 24px}.premium-offer-block{margin-top:34px}}
+@media(max-width:600px){.premium-combined-section{padding:28px 0}.premium-illustration,.premium-copy{border-radius:12px}.premium-copy{padding:25px 20px}.premium-copy h2{font-size:27px}.premium-copy-lead{font-size:17px}.premium-copy-highlight{margin-top:18px;font-size:15px}.premium-explain{margin-top:22px;padding:18px}.premium-explain h3{font-size:18px}.premium-explain p{font-size:14px;line-height:1.7}.premium-offer-block{margin-top:30px}.premium-offer-block .offer-heading .title{font-size:28px}.premium-offer-wide{width:100%;margin-left:0;transform:none}}
 </style>
 
 
@@ -492,7 +518,7 @@ gtag('config','G-961TDW5RWD');
     </button>
 
     <nav class="menu" id="mainMenu" aria-label="주요 메뉴">
-      <button type="button" data-target="offerSection">특별혜택</button>
+      <button type="button" data-target="premiumSection">프리미엄</button>
       <button type="button" data-target="overviewSection">사업개요</button>
       <button type="button" data-target="unitSection">360° VR</button>
       <button type="button" data-target="complexSection">상세안내</button>
@@ -540,11 +566,11 @@ gtag('config','G-961TDW5RWD');
 
     <h1>
       <span class="hero-main-title">
-        공원속의 프리미엄 아파트
+        도시의 하루,<br class="hero-mobile-break"> 공원에서 쉬어갑니다
       </span>
 
       <span class="hero-subtitle">
-        사상공원 민간공원 특례사업<br>
+        <span class="hero-project-line">서부산 최초 민간공원특례사업</span><br>
         <span class="hero-offer-line">
           <span class="hero-offer-item">
             <span class="hero-offer-icon" aria-hidden="true">
@@ -552,7 +578,7 @@ gtag('config','G-961TDW5RWD');
                 <path d="M3 11.2 12 4l9 7.2v8.3a1.5 1.5 0 0 1-1.5 1.5h-5.2v-6.2H9.7V21H4.5A1.5 1.5 0 0 1 3 19.5v-8.3Z"/>
               </svg>
             </span>
-            <span class="hero-offer-price">5억대 분양가</span>
+            <span class="hero-offer-price">5억원대 합리적 분양가</span>
           </span>
           <span class="hero-offer-divider" aria-hidden="true"></span>
           <span class="hero-offer-item">
@@ -587,23 +613,64 @@ gtag('config','G-961TDW5RWD');
   </div>
 </section>
 
-<section class="section offer-section" id="offerSection">
+<section class="section premium-combined-section" id="premiumSection">
   <div class="container">
-    <div class="center offer-heading">
-      <div class="label">SPECIAL OFFER</div>
-      <h2 class="title">현재 분양조건을 한눈에 확인하세요</h2>
-      <p class="desc">주요 분양조건과 계약 혜택을 안내합니다.</p>
-    </div>
-    <div class="offer-grid">
-      <figure class="offer-card">
-        <img src="images/popup01.webp" alt="더파크 비스타동원 5억대 분양가 안내" loading="lazy" decoding="async" fetchpriority="low">
+    <div class="premium-intro-grid">
+      <figure class="premium-illustration">
+        <img src="images/photo03.webp"
+             alt="사상공원 민간공원 특례사업 안내"
+             width="1920"
+             height="1826"
+             loading="lazy"
+             decoding="async">
       </figure>
-      <figure class="offer-card">
-        <img src="images/popup02.webp" alt="더파크 비스타동원 선착순 동호 지정 및 계약 혜택 안내" loading="lazy" decoding="async" fetchpriority="low">
-      </figure>
+
+      <div class="premium-copy">
+        <div class="label">PREMIUM</div>
+        <h2>일상에서 만나는<br>대자연의 감동</h2>
+
+        <p class="premium-copy-lead">
+          사상공원 민간공원 특례사업으로 완성되는<br>
+          자연과 가까운 프리미엄 주거환경
+        </p>
+
+        <div class="premium-copy-highlight">
+          사상공원 민간공원 특례사업<br>
+          일상이 휴식이 되는 하이엔드 웰니스 라이프
+        </div>
+
+        <div class="premium-explain">
+          <h3>민간공원 특례사업이란?</h3>
+          <p>
+            5만㎡ 이상 도시공원 계획부지의 70% 이상을<br>
+            공원으로 조성해 지자체에 기부채납하고,<br>
+            남은 부지에 공동주택 등을 조성하는 사업입니다.
+          </p>
+          <p>
+            대규모 공원을 가까이 누리는 쾌적한 주거환경과<br>
+            높은 생활 만족도, 장기적인 주거가치 향상을 기대할 수 있습니다.
+          </p>
+        </div>
+      </div>
     </div>
-    <p class="offer-note">※ 일부 세대 한정 및 세부 적용 조건은 상담을 통해 확인해 주세요.</p>
-</div>
+
+    <div class="premium-offer-block">
+      <div class="center offer-heading">
+        <div class="label">SPECIAL OFFER</div>
+        <h2 class="title">현재 분양조건을 한눈에 확인하세요</h2>
+        <p class="desc">주요 분양조건과 계약 혜택을 안내합니다.</p>
+      </div>
+      <div class="offer-grid premium-offer-wide">
+        <figure class="offer-card">
+          <img src="images/popup01.webp" alt="더파크 비스타동원 5억대 분양가 안내" loading="lazy" decoding="async" fetchpriority="low">
+        </figure>
+        <figure class="offer-card">
+          <img src="images/popup02.webp" alt="더파크 비스타동원 선착순 동호 지정 및 계약 혜택 안내" loading="lazy" decoding="async" fetchpriority="low">
+        </figure>
+      </div>
+      <p class="offer-note">※ 일부 세대 한정 및 세부 적용 조건은 상담을 통해 확인해 주세요.</p>
+    </div>
+  </div>
 </section>
 
 <section class="section" id="overviewSection">
@@ -857,7 +924,7 @@ gtag('config','G-961TDW5RWD');
       <div class="form-row">
 
         <label for="consultDate">
-          방문 희망일 <span class="required">*</span>
+          방문 희망일
         </label>
 
         <div class="date-field"
@@ -868,8 +935,7 @@ gtag('config','G-961TDW5RWD');
 
           <input id="consultDate"
                  name="consultDate"
-                 type="date"
-                 required>
+                 type="date">
 
         </div>
 
@@ -878,12 +944,11 @@ gtag('config','G-961TDW5RWD');
       <div class="form-row">
 
         <label for="consultTime">
-          방문 희망시간 <span class="required">*</span>
+          방문 희망시간
         </label>
 
         <select id="consultTime"
-                name="consultTime"
-                required>
+                name="consultTime">
 
           <option value="">
             방문 시간을 선택해주세요
@@ -901,6 +966,10 @@ gtag('config','G-961TDW5RWD');
         </select>
 
       </div>
+
+      <p class="schedule-note">
+        ※ 방문 희망일·희망시간 미선택 시 상담 후 결정으로 접수됩니다.
+      </p>
 
       <div class="privacy">
 
@@ -1029,47 +1098,15 @@ gtag('config','G-961TDW5RWD');
 
 </section>
 
-<section id="premiumSection">
-
-  <div class="park">
-
-    <div class="photo">
-      <img src="images/photo03.webp"
-           alt="더파크 비스타동원 사상공원 프리미엄"
-           width="600"
-           height="400"
-           loading="lazy"
-           decoding="async">
-    </div>
-
-    <div class="park-content">
-
-      <div class="label">
-        PREMIUM
-      </div>
-
-      <h2>
-        일상에서 만나는<br>
-        대자연의 감동
-      </h2>
-
-      <p>
-        자연과 하나 되는 생활 속<br>
-        프리미엄 주거공간을 누리다
-      </p>
-
-      <div class="highlight">
-        사상공원 민간공원 특례사업<br>
-        일상이 휴식이 되는 하이엔드 웰니스 라이프
-      </div>
-
-    </div>
-
-  </div>
-
+<section id="valueSection">
   <div class="section" style="padding-top:30px">
 
     <div class="container">
+
+      <div class="center detail-value-heading">
+        <div class="label">LIFE &amp; VALUE</div>
+        <h2 class="title">더파크 비스타동원의<br>6가지 핵심가치</h2>
+      </div>
 
       <div class="full-image">
 
@@ -2231,29 +2268,11 @@ document.addEventListener("DOMContentLoaded",()=>{
 
       }
 
-      if(!date?.value){
-
-        return fail(
-          "방문 희망일을 선택해주세요.",
-          date
-        );
-
-      }
-
-      if(date.value<today()){
+      if(date?.value&&date.value<today()){
 
         return fail(
           "오늘 이후의 방문 희망일을 선택해주세요.",
           date
-        );
-
-      }
-
-      if(!time?.value){
-
-        return fail(
-          "방문 희망시간을 선택해주세요.",
-          time
         );
 
       }
@@ -2293,10 +2312,10 @@ document.addEventListener("DOMContentLoaded",()=>{
                   phone.value.trim(),
 
                 consultDate:
-                  date.value,
+                  date.value||"상담 후 결정",
 
                 consultTime:
-                  time.value
+                  time.value||"상담 후 결정"
 
               })
             }

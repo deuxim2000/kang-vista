@@ -354,6 +354,7 @@ exports.handler = async function (event) {
     // =====================================================
 
     if (
+      cleanDate !== "상담 후 결정" &&
       !/^\d{4}-\d{2}-\d{2}$/
         .test(cleanDate)
     ) {
@@ -386,6 +387,7 @@ exports.handler = async function (event) {
     ];
 
     if (
+      cleanTime !== "상담 후 결정" &&
       !allowedTimes.includes(
         cleanTime
       )
