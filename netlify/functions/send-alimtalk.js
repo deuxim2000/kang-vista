@@ -823,8 +823,8 @@ exports.handler = async function (event) {
     // =====================================================
 
     if (
-      firstMessage &&
-      firstMessage.requestStatusCode &&
+      !firstMessage ||
+      !firstMessage.messageId ||
       firstMessage.requestStatusCode !==
         "A000"
     ) {
@@ -840,14 +840,15 @@ exports.handler = async function (event) {
           success: false,
 
           error:
-            firstMessage.requestStatusDesc ||
-            "알림톡 요청에 실패했습니다.",
+            firstMessage?.requestStatusDesc ||
+            "알림톡 발송 접수 결과를 확인하지 못했습니다.",
 
           requestStatusCode:
-            firstMessage.requestStatusCode,
+            firstMessage?.requestStatusCode ||
+            null,
 
           messageId:
-            firstMessage.messageId ||
+            firstMessage?.messageId ||
             null
 
         }
