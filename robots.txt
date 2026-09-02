@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://intoindesign.co.kr/1551-9708/sitemap.xml

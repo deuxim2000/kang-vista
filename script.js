@@ -1,749 +1,862 @@
 "use strict";
-
-document.addEventListener("DOMContentLoaded", function () {
-
-  const $ = id => document.getElementById(id);
-  const $$ = s => document.querySelectorAll(s);
-
-  const header = $("header");
-  const mainMenu = $("mainMenu");
-  const menuToggle = $("menuToggle");
-
-  const popup = $("popup01");
-  const popupBox1 = $("popupBox1");
-  const popupBox2 = $("popupBox2");
-
-  const privacyModal = $("privacyModal");
-  const leadForm = $("leadForm");
-  const formMessage = $("formMessage");
-  const submitButton = $("submitButton");
-
-  let vrWindow = null;
-  let savedScrollY = 0;
-
-
-  /* ==================================================
-     섹션 이동
-  ================================================== */
-
-  function moveToSection(id) {
-
-    mainMenu?.classList.remove("active");
-
-    if (menuToggle) {
-      menuToggle.textContent = "☰";
-      menuToggle.setAttribute("aria-expanded", "false");
+document.addEventListener("DOMContentLoaded",()=>{
+  const $=selector=>document.querySelector(selector);
+  const $$=selector=>document.querySelectorAll(selector);
+  const header=$("#header");
+  const heroScrollGuide=$("#heroScrollGuide");
+  const menu=$("#mainMenu");
+  const toggle=$("#menuToggle");
+  const modal=$("#privacyModal");
+  const form=$("#leadForm");
+  const submit=$("#submitButton");
+  const imageZoomModal=$("#imageZoomModal");
+  const imageZoomStage=$("#imageZoomStage");
+  const imageZoomTarget=$("#imageZoomTarget");
+  const imageZoomClose=$("#imageZoomClose");
+  const date=$("#consultDate");
+  const dateField=$("#dateField");
+  const time=$("#consultTime");
+  const scheduleUndecided=$("#scheduleUndecided");
+  const phone=$("#phone");
+  const visitModal=$("#visitModal");
+  const visitModalBody=$("#visitModalBody");
+  const infoModal=$("#infoModal");
+  const infoForm=$("#infoForm");
+  const infoPhone=$("#infoPhone");
+  const infoPrivacy=$("#infoPrivacy");
+  const infoSubmit=$("#infoSubmitButton");
+  const infoCompleteModal=$("#infoCompleteModal");
+  const infoCompletePhone=$("#infoCompletePhone");
+  const infoCompleteCloseBtn=$("#infoCompleteCloseBtn");
+  const contactSection=$("#contactSection");
+  const saveReminder=$("#saveReminder");
+  const alertModal=$("#alertModal");
+  const alertIcon=$("#alertIcon");
+  const alertTitle=document.querySelector(".alert-title");
+  const alertDesc=$("#alertDesc");
+  const alertCloseBtn=$("#alertCloseBtn");
+  const vrGuideModal=$("#vrGuideModal");
+  const vrGuideTitleText=$("#vrGuideTitleText");
+  const vrGuideClose=$("#vrGuideClose");
+  const vrGuideCancel=$("#vrGuideCancel");
+  const vrGuideConfirm=$("#vrGuideConfirm");
+  let savedScroll=0;
+  let pendingVrUrl="";
+  let pendingVrTitle="";
+  let infoIsSubmitting=false;
+  let saveReminderTimer=0;
+  let saveReminderVisibleAt=0;
+  let saveReminderHandled=false;
+  const safeGtag=(eventName,params={})=>{
+    if(typeof window.gtag!=="function")return;
+    window.gtag(
+      "event",
+      eventName,
+      {
+        ...params,
+        transport_type:"beacon"
+      }
+    );
+  };
+  const getTrafficAttribution=()=>{
+    const params=
+      new URLSearchParams(
+        window.location.search
+      );
+    const keys=[
+      "utm_source",
+      "utm_medium",
+      "utm_campaign",
+      "utm_content",
+      "utm_term",
+      "n_campaign",
+      "n_ad_group",
+      "n_ad"
+    ];
+    const current={};
+    keys.forEach(key=>{
+      const value=params.get(key);
+      if(value)current[key]=value;
+    });
+    if(Object.keys(current).length){
+      try{
+        sessionStorage.setItem(
+          "landing_attribution",
+          JSON.stringify(current)
+        );
+      }catch(e){}
     }
-
-    if (id === "top") {
+    try{
+      return JSON.parse(
+        sessionStorage.getItem(
+          "landing_attribution"
+        )||"{}"
+      );
+    }catch(e){
+      return current;
+    }
+  };
+  const attribution=
+    getTrafficAttribution();
+  const withAttribution=params=>({
+    ...params,
+    ...attribution
+  });
+  const lockBody=()=>{
+    document.body.classList.add("modal-open");
+  };
+  const unlockBody=()=>{
+    document.body.classList.remove("modal-open");
+  };
+  const hideSaveReminder=()=>{
+    if(!saveReminder)return;
+    window.clearTimeout(saveReminderTimer);
+    saveReminder.classList.remove("show");
+  };
+  const showSaveReminder=()=>{
+    if(!saveReminder || saveReminderHandled || document.querySelector(".action-modal.show"))return;
+    try{
+      if(sessionStorage.getItem("thepark_save_reminder_seen"))return;
+      sessionStorage.setItem("thepark_save_reminder_seen","1");
+    }catch(e){}
+    saveReminderVisibleAt=Date.now();
+    saveReminder.classList.add("show");
+    saveReminderTimer=window.setTimeout(hideSaveReminder,3000);
+  };
+  if(form && visitModalBody){
+    visitModalBody.appendChild(form);
+  }
+  const openActionModal=id=>{
+    const target=$("#"+id);
+    if(!target)return;
+    target.classList.add("show");
+    lockBody();
+    window.setTimeout(()=>{
+      target.querySelector("input:not([type='hidden']), button")?.focus();
+    },30);
+  };
+  const closeActionModal=target=>{
+    if(!target)return;
+    target.classList.remove("show");
+    const hint=target.querySelector(".action-modal-close-hint");
+    if(hint)hint.style.display="none";
+    if(!document.querySelector(".action-modal.show"))unlockBody();
+  };
+  $$('[data-open-modal]').forEach(button=>{
+    button.addEventListener("click",()=>{
+      const modalId=button.dataset.openModal;
+      const linkLocation=button.className||"modal_cta";
+      if(modalId==="visitModal"){
+        safeGtag(
+          "click_visit",
+          withAttribution({
+            link_location:linkLocation,
+            action_type:"open_modal"
+          })
+        );
+      }
+      if(modalId==="infoModal"){
+        saveReminderHandled=true;
+        hideSaveReminder();
+        safeGtag(
+          "open_info_modal",
+          withAttribution({
+            link_location:linkLocation
+          })
+        );
+      }
+      openActionModal(modalId);
+    });
+  });
+  if(contactSection && "IntersectionObserver" in window){
+    const saveReminderObserver=new IntersectionObserver(entries=>{
+      if(entries.some(entry=>entry.isIntersecting)){
+        showSaveReminder();
+        saveReminderObserver.disconnect();
+      }
+    },{threshold:.08});
+    saveReminderObserver.observe(contactSection);
+  }
+  const dismissSaveReminder=()=>{
+    if(Date.now()-saveReminderVisibleAt<500)return;
+    hideSaveReminder();
+  };
+  document.addEventListener("wheel",dismissSaveReminder,{passive:true});
+  document.addEventListener("touchstart",dismissSaveReminder,{passive:true});
+  $$('.action-modal').forEach(actionModal=>{
+    actionModal.querySelectorAll('[data-close-modal]').forEach(button=>{
+      button.addEventListener("click",()=>closeActionModal(actionModal));
+    });
+    const closeHint=document.createElement("div");
+    closeHint.className="action-modal-close-hint";
+    closeHint.textContent="닫기 버튼을 누르시면 닫힙니다";
+    actionModal.appendChild(closeHint);
+    if(window.matchMedia("(hover: hover) and (pointer: fine)").matches){
+      actionModal.addEventListener("pointermove",event=>{
+        if(event.target!==actionModal){
+          closeHint.style.display="none";
+          return;
+        }
+        closeHint.style.left=`${event.clientX}px`;
+        closeHint.style.top=`${event.clientY}px`;
+        closeHint.style.display="block";
+      });
+      actionModal.addEventListener("pointerleave",()=>{
+        closeHint.style.display="none";
+      });
+    }
+  });
+  const closeImageZoom=()=>{
+    if(!imageZoomModal?.classList.contains("show"))return;
+    imageZoomModal.classList.remove("show");
+    imageZoomTarget.removeAttribute("src");
+    imageZoomTarget.alt="";
+    unlockBody();
+  };
+  $$('.full-image img').forEach(image=>{
+    if(image.closest("button, a") || image.hasAttribute("data-no-zoom"))return;
+    image.addEventListener("click",()=>{
+      if(!window.matchMedia("(max-width: 900px)").matches)return;
+      imageZoomTarget.src=image.currentSrc||image.src;
+      imageZoomTarget.alt=image.alt||"확대 이미지";
+      imageZoomModal.classList.add("show");
+      lockBody();
+      imageZoomTarget.onload=()=>{
+        imageZoomStage.scrollTop=0;
+        imageZoomStage.scrollLeft=Math.max(0,(imageZoomStage.scrollWidth-imageZoomStage.clientWidth)/2);
+      };
+      imageZoomClose.focus();
+    });
+  });
+  imageZoomClose?.addEventListener("click",closeImageZoom);
+  document.addEventListener("keydown",event=>{
+    if(event.key!=="Escape")return;
+    closeImageZoom();
+    document.querySelectorAll(".action-modal.show").forEach(closeActionModal);
+  });
+  const formatMobile=value=>{
+    const digits=value.replace(/\D/g,"").slice(0,11);
+    if(digits.length<4)return digits;
+    if(digits.length<8)return digits.replace(/(\d{3})(\d+)/,"$1-$2");
+    return digits.replace(/(\d{3})(\d{3,4})(\d{4})/,"$1-$2-$3");
+  };
+  infoPhone?.addEventListener("input",()=>{
+    infoPhone.value=formatMobile(infoPhone.value);
+    if(phone && !phone.value)phone.value=infoPhone.value;
+  });
+  infoForm?.addEventListener("submit",async event=>{
+    event.preventDefault();
+    if(infoIsSubmitting)return;
+    const normalized=(infoPhone?.value||"").replace(/\D/g,"");
+    if(!/^01[016789]\d{7,8}$/.test(normalized)){
+      showAlert("입력 확인","휴대폰 번호를 정확히 입력해주세요.");
+      infoPhone?.focus();
+      return;
+    }
+    if(!infoPrivacy?.checked){
+      showAlert("동의 확인","개인정보 수집 및 이용에 동의해주세요.");
+      infoPrivacy?.focus();
+      return;
+    }
+    infoIsSubmitting=true;
+    infoSubmit.disabled=true;
+    infoSubmit.innerHTML='<span class="kakao-talk-icon" aria-hidden="true"></span><span>카톡에 담는 중...</span>';
+    try{
+      const response=await fetch("/.netlify/functions/send-site-info",{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({
+          phone:infoPhone.value.trim()
+        })
+      });
+      const result=await response.json().catch(()=>({}));
+      if(!response.ok || result.success!==true)throw new Error(result.error||"전송 실패");
+      safeGtag("generate_lead",withAttribution({lead_type:"site_info_alimtalk",form_id:"infoForm"}));
+      closeActionModal(infoModal);
+      infoForm.reset();
+      if(infoCompletePhone){
+        infoCompletePhone.textContent=`${normalized.slice(0,3)}-****-${normalized.slice(-4)}`;
+      }
+      infoCompleteModal?.classList.add("show");
+      lockBody();
+      requestAnimationFrame(()=>infoCompleteCloseBtn?.focus());
+    }catch(error){
+      console.error("홈페이지 링크 전송 오류:",error);
+      showAlert("전송 실패","카톡에 담지 못했습니다.<br>잠시 후 다시 시도하거나 1551-9708로 문의해 주세요.");
+    }finally{
+      infoIsSubmitting=false;
+      infoSubmit.disabled=false;
+      infoSubmit.innerHTML='<span class="kakao-talk-icon" aria-hidden="true"></span><span>카톡으로 링크 받기</span>';
+    }
+  });
+  const move=id=>{
+    menu?.classList.remove("active");
+    if(toggle){
+      toggle.textContent="☰";
+      toggle.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+    }
+    if(id==="top"){
       window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+        top:0,
+        behavior:"smooth"
       });
       return;
     }
-
-    const target = $(id);
-
-    if (!target) return;
-
-    const top =
-      target.getBoundingClientRect().top +
-      window.scrollY -
-      (header?.offsetHeight || 80);
-
+    const target=$("#"+id);
+    if(!target)return;
+    const headerHeight=(header?.offsetHeight||80);
+    const isMobile=window.matchMedia("(max-width:900px)").matches;
+    const offset=(id==="contactSection" && isMobile)
+      ? Math.max(48,headerHeight-16)
+      : headerHeight-10;
+    const top=
+      target.getBoundingClientRect().top+
+      window.scrollY-
+      offset;
     window.scrollTo({
       top,
-      behavior: "smooth"
+      behavior:"smooth"
     });
-  }
-
-
-  /*
-   * 현재 최종 index의
-   * 메뉴 / 특별혜택 / 사업개요 / VR / 상세안내 /
-   * 방문예약 / 사이드 VR / TOP 등을 공통 처리
-   */
-  $$("[data-target]").forEach(el => {
-
-    el.addEventListener("click", e => {
-
-      e.preventDefault();
-
-      const id = el.getAttribute("data-target");
-
-      if (id) {
-        moveToSection(id);
+  };
+  document.addEventListener(
+    "click",
+    e=>{
+      const tel=
+        e.target.closest(
+          'a[href^="tel:"]'
+        );
+      if(tel){
+        safeGtag(
+          "click_tel",
+          withAttribution({
+            link_location:
+              tel.className||"tel_link"
+          })
+        );
+        return;
       }
+      const visit=
+        e.target.closest(
+          '[data-target="contactSection"]'
+        );
+      if(visit){
+        safeGtag(
+          "click_visit",
+          withAttribution({
+            link_location:
+              visit.className||"visit_cta"
+          })
+        );
+      }
+    },
+    true
+  );
+  if(form){
+    let formStarted=false;
+    const trackFormStart=e=>{
+      if(formStarted)return;
+      if(e.target?.id==="website")return;
+      formStarted=true;
+      safeGtag(
+        "form_start",
+        withAttribution({
+          form_id:"leadForm",
+          form_name:"visit_reservation"
+        })
+      );
+    };
+    form.addEventListener(
+      "input",
+      trackFormStart,
+      {passive:true}
+    );
+    form.addEventListener(
+      "change",
+      trackFormStart,
+      {passive:true}
+    );
+  }
+  $$("[data-target]").forEach(el=>{
+    el.addEventListener("click",e=>{
+      e.preventDefault();
+      move(el.dataset.target);
     });
   });
-
-
-  /* ==================================================
-     모바일 메뉴
-  ================================================== */
-
-  menuToggle?.addEventListener("click", e => {
-
-    e.preventDefault();
-
-    const open = mainMenu.classList.toggle("active");
-
-    menuToggle.textContent = open ? "✕" : "☰";
-    menuToggle.setAttribute("aria-expanded", open);
+  toggle?.addEventListener("click",()=>{
+    const open=
+      menu.classList.toggle("active");
+    toggle.textContent=
+      open?"✕":"☰";
+    toggle.setAttribute(
+      "aria-expanded",
+      String(open)
+    );
   });
-
-
-  /* ==================================================
-     헤더 스크롤
-  ================================================== */
-
+  let scrollTick=false;
   window.addEventListener(
     "scroll",
-    () => {
-      header?.classList.toggle(
-        "scrolled",
-        window.scrollY > 40
-      );
-    },
-    { passive: true }
-  );
-
-
-  /* ==================================================
-     VR
-     HTTP VR이므로 iframe 사용하지 않고 새 창으로 실행
-  ================================================== */
-
-  function getVRPopupFeatures() {
-
-    const sw = screen.availWidth || 1200;
-    const sh = screen.availHeight || 800;
-
-    const w = Math.min(
-      1200,
-      Math.max(900, sw - 40)
-    );
-
-    const h = Math.min(
-      850,
-      Math.max(650, sh - 80)
-    );
-
-    const left = Math.max(
-      0,
-      (sw - w) / 2
-    );
-
-    const top = Math.max(
-      0,
-      (sh - h) / 2
-    );
-
-    return [
-      `width=${w}`,
-      `height=${h}`,
-      `left=${left}`,
-      `top=${top}`,
-      "resizable=yes",
-      "scrollbars=yes",
-      "toolbar=yes",
-      "menubar=no",
-      "location=yes",
-      "status=no"
-    ].join(",");
-  }
-
-
-  function openVR(url, title) {
-
-    if (!url) return;
-
-    /*
-     * 이미 VR 창이 열려 있으면
-     * 새 창을 계속 만들지 않고 기존 창 재사용
-     */
-    if (vrWindow && !vrWindow.closed) {
-
-      try {
-
-        vrWindow.location.href = url;
-        vrWindow.focus();
-
-        return;
-
-      } catch (e) {
-
-        vrWindow = null;
-      }
-    }
-
-
-    vrWindow = window.open(
-      url,
-      "TheParkVistaVR",
-      getVRPopupFeatures()
-    );
-
-
-    if (!vrWindow) {
-
-      alert(
-        "VR 창이 차단되었습니다.\n\n" +
-        "브라우저의 팝업 차단을 해제한 후 다시 눌러주세요."
-      );
-
-      return;
-    }
-
-
-    try {
-
-      vrWindow.focus();
-
-      if (title) {
-        vrWindow.document.title = title;
-      }
-
-    } catch (e) {
-      /*
-       * HTTP VR과 HTTPS 메인 사이트의
-       * cross-origin 제한이 있을 수 있으므로 무시
-       */
-    }
-  }
-
-
-  /*
-   * 실제 VR 실행 버튼
-   *
-   * 예:
-   * <button
-   *   class="unit-vr-link"
-   *   data-vr="http://thepark-vistadongwon.com/vr/84a.html?v=251014">
-   */
-  $$(".unit-vr-link").forEach(button => {
-
-    button.addEventListener("click", e => {
-
-      e.preventDefault();
-      e.stopPropagation();
-
-      openVR(
-        button.getAttribute("data-vr"),
-        button.getAttribute("data-vr-title")
-      );
-    });
-  });
-
-
-  /*
-   * 기존 HERO VR 버튼 대응
-   *
-   * 현재 최종 index에서 해당 요소가 없어도
-   * optional chaining 때문에 오류 발생하지 않음
-   */
-  document
-    .querySelector(".hero-vr-btn")
-    ?.addEventListener("click", e => {
-
-      e.preventDefault();
-
-      moveToSection("unitSection");
-    });
-
-
-  /* ==================================================
-     기존 팝업
-     현재 HTML에 popup01이 없어도 오류 없이 통과
-  ================================================== */
-
-  if (popup) {
-
-    const mobile = window.innerWidth <= 900;
-
-    popupBox1?.classList.add("active-mobile");
-
-    if (mobile) {
-
-      popupBox2?.classList.remove("active-mobile");
-
-    } else {
-
-      popupBox2?.classList.add("active-mobile");
-    }
-
-
-    popup.classList.add("show");
-
-
-    $$(".popupCloseBtn").forEach(button => {
-
-      button.addEventListener("click", e => {
-
-        e.preventDefault();
-        e.stopPropagation();
-
-        popup.classList.remove("show");
+    ()=>{
+      if(scrollTick)return;
+      scrollTick=true;
+      requestAnimationFrame(()=>{
+        header?.classList.toggle(
+          "scrolled",
+          window.scrollY>40
+        );
+        heroScrollGuide?.classList.toggle(
+          "is-hidden",
+          window.scrollY>24
+        );
+        scrollTick=false;
       });
-    });
-
-
-    popup.addEventListener("click", e => {
-
-      if (e.target === popup) {
-
-        popup.classList.remove("show");
-
-        return;
-      }
-
-
-      if (e.target.closest(".popupCloseBtn")) {
-        return;
-      }
-
-
-      if (window.innerWidth > 900) {
-
-        popup.classList.remove("show");
-
-        return;
-      }
-
-
-      if (
-        popupBox1?.classList.contains("active-mobile")
-      ) {
-
-        popupBox1.classList.remove("active-mobile");
-        popupBox2?.classList.add("active-mobile");
-
-      } else if (
-        popupBox2?.classList.contains("active-mobile")
-      ) {
-
-        popup.classList.remove("show");
-      }
-    });
-  }
-
-
-  /* ==================================================
-     개인정보 처리방침
-  ================================================== */
-
-  function openPrivacyModal(e) {
-
-    e?.preventDefault();
-
-    if (!privacyModal) return;
-
-    savedScrollY =
-      window.scrollY ||
-      window.pageYOffset ||
-      0;
-
-    privacyModal.classList.add("show");
-
-    document.body.classList.add(
-      "modal-open"
-    );
-  }
-
-
-  function closePrivacyModal() {
-
-    if (!privacyModal) return;
-
-    privacyModal.classList.remove("show");
-
-    document.body.classList.remove(
-      "modal-open"
-    );
-
-    window.scrollTo({
-      top: savedScrollY,
-      left: 0,
-      behavior: "auto"
-    });
-  }
-
-
-  $("policyOpen")
-    ?.addEventListener(
-      "click",
-      openPrivacyModal
-    );
-
-  $("policyOpen2")
-    ?.addEventListener(
-      "click",
-      openPrivacyModal
-    );
-
-  $("policyClose")
-    ?.addEventListener(
-      "click",
-      closePrivacyModal
-    );
-
-
-  privacyModal?.addEventListener(
+    },
+    {passive:true}
+  );
+  const showAlert=(title,text)=>{
+    if(alertIcon){
+      alertIcon.textContent=title.includes("완료")?"🎉":title.includes("실패")||title.includes("오류")?"⚠️":"ℹ️";
+    }
+    if(alertTitle){
+      alertTitle.textContent=title;
+    }
+    if(alertDesc){
+      alertDesc.innerHTML=text;
+    }
+    alertModal?.classList.add("show");
+    lockBody();
+    requestAnimationFrame(()=>alertCloseBtn?.focus());
+  };
+  const closeAlert=()=>{
+    alertModal?.classList.remove("show");
+    unlockBody();
+  };
+  alertCloseBtn?.addEventListener(
     "click",
-    e => {
-
-      if (e.target === privacyModal) {
-        closePrivacyModal();
+    closeAlert
+  );
+  alertModal?.addEventListener(
+    "click",
+    e=>{
+      if(e.target===alertModal){
+        closeAlert();
       }
     }
   );
-
-
+  const closeInfoComplete=()=>{
+    infoCompleteModal?.classList.remove("show");
+    unlockBody();
+  };
+  infoCompleteCloseBtn?.addEventListener("click",closeInfoComplete);
+  infoCompleteModal?.addEventListener("click",e=>{
+    if(e.target===infoCompleteModal)closeInfoComplete();
+  });
+  document.addEventListener("keydown",e=>{
+    if(e.key==="Escape" && infoCompleteModal?.classList.contains("show")){
+      closeInfoComplete();
+    }
+  });
+  const requestVR=(url,title)=>{
+    if(!url)return;
+    pendingVrUrl=url;
+    pendingVrTitle=title||"360_vr";
+    if(vrGuideTitleText){
+      vrGuideTitleText.textContent=
+        title||"360° VR 안내";
+    }
+    vrGuideModal?.classList.add("show");
+    lockBody();
+  };
+  const closeVrGuide=()=>{
+    vrGuideModal?.classList.remove("show");
+    unlockBody();
+    pendingVrUrl="";
+    pendingVrTitle="";
+  };
+  const launchVR=()=>{
+    if(!pendingVrUrl)return;
+    safeGtag(
+      "launch_vr",
+      withAttribution({
+        vr_title:pendingVrTitle||"360_vr"
+      })
+    );
+    let url=pendingVrUrl;
+    try{
+      const u=new URL(url);
+      u.searchParams.set(
+        "from",
+        "main"
+      );
+      url=u.href;
+    }catch(error){
+      console.warn(
+        "VR URL 처리 오류:",
+        error
+      );
+    }
+    const mobile=
+      window.innerWidth<=900||
+      /Android|iPhone|iPad|iPod/i.test(
+        navigator.userAgent
+      );
+    let win=null;
+    try{
+      win=mobile
+        ?window.open(
+            url,
+            "_blank",
+            "noopener,noreferrer"
+          )
+        :window.open(
+            url,
+            "theparkVistaVR",
+            "width=1200,height=850,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=yes,status=no"
+          );
+    }catch(error){
+      console.error(
+        "VR 실행 오류:",
+        error
+      );
+    }
+    if(win){
+      try{
+        win.focus();
+      }catch{}
+    }else{
+      try{
+        window.location.href=url;
+      }catch{}
+    }
+    closeVrGuide();
+  };
+  vrGuideClose?.addEventListener(
+    "click",
+    closeVrGuide
+  );
+  vrGuideCancel?.addEventListener(
+    "click",
+    closeVrGuide
+  );
+  vrGuideConfirm?.addEventListener(
+    "click",
+    launchVR
+  );
+  vrGuideModal?.addEventListener(
+    "click",
+    e=>{
+      if(e.target===vrGuideModal){
+        closeVrGuide();
+      }
+    }
+  );
+  $$(".unit-vr-link").forEach(btn=>{
+    btn.addEventListener(
+      "click",
+      ()=>{
+        safeGtag(
+          "click_vr",
+          withAttribution({
+            vr_title:
+              btn.dataset.vrTitle||
+              "360_vr"
+          })
+        );
+        requestVR(
+          btn.dataset.vr,
+          btn.dataset.vrTitle
+        );
+      }
+    );
+  });
+  const openModal=e=>{
+    e?.preventDefault();
+    if(!modal)return;
+    savedScroll=window.scrollY;
+    modal.classList.add("show");
+    lockBody();
+  };
+  const closeModal=()=>{
+    modal?.classList.remove("show");
+    unlockBody();
+    window.scrollTo(
+      0,
+      savedScroll
+    );
+  };
+  $("#policyOpen")?.addEventListener(
+    "click",
+    openModal
+  );
+  $("#policyOpen2")?.addEventListener(
+    "click",
+    openModal
+  );
+  $("#policyClose")?.addEventListener(
+    "click",
+    closeModal
+  );
+  modal?.addEventListener(
+    "click",
+    e=>{
+      if(e.target===modal){
+        closeModal();
+      }
+    }
+  );
   document.addEventListener(
     "keydown",
-    e => {
-
-      if (
-        e.key === "Escape" &&
-        privacyModal?.classList.contains("show")
-      ) {
-        closePrivacyModal();
+    e=>{
+      if(e.key!=="Escape")return;
+      if(
+        modal?.classList.contains(
+          "show"
+        )
+      ){
+        closeModal();
+      }
+      if(
+        vrGuideModal?.classList.contains(
+          "show"
+        )
+      ){
+        closeVrGuide();
+      }
+      if(
+        alertModal?.classList.contains(
+          "show"
+        )
+      ){
+        closeAlert();
       }
     }
   );
-
-
-  /* ==================================================
-     방문 희망일
-  ================================================== */
-
-  const consultDate = $("consultDate");
-  const dateField = $("dateField");
-
-
-  function getLocalDateString() {
-
-    const d = new Date();
-
-    return (
-      `${d.getFullYear()}-` +
-      `${String(d.getMonth() + 1).padStart(2, "0")}-` +
-      `${String(d.getDate()).padStart(2, "0")}`
-    );
+  const today=()=>{
+    const d=new Date();
+    return [
+      d.getFullYear(),
+      String(
+        d.getMonth()+1
+      ).padStart(2,"0"),
+      String(
+        d.getDate()
+      ).padStart(2,"0")
+    ].join("-");
+  };
+  if(date){
+    date.min=today();
   }
-
-
-  if (consultDate) {
-    consultDate.min = getLocalDateString();
-  }
-
-
-  function openDatePicker() {
-
-    if (!consultDate) return;
-
-    try {
-
-      if (
-        typeof consultDate.showPicker ===
-        "function"
-      ) {
-
-        consultDate.showPicker();
-
-      } else {
-
-        consultDate.focus();
-        consultDate.click();
+  const showDate=()=>{
+    if(!date || date.disabled)return;
+    try{
+      if(
+        typeof date.showPicker==="function"
+      ){
+        date.showPicker();
+      }else{
+        date.focus();
+        date.click();
       }
-
-    } catch (e) {
-
-      consultDate.focus();
+    }catch{
+      date.focus();
     }
-  }
-
-
+  };
   dateField?.addEventListener(
     "click",
-    e => {
-
-      if (e.target !== consultDate) {
-        openDatePicker();
-      }
-    }
+    showDate
   );
-
-
+  const syncScheduleChoice=()=>{
+    const undecided=Boolean(scheduleUndecided?.checked);
+    if(date){
+      date.disabled=undecided;
+      if(undecided)date.value="";
+    }
+    if(time){
+      time.disabled=undecided;
+      if(undecided)time.value="";
+    }
+    dateField?.classList.toggle("schedule-disabled",undecided);
+    dateField?.setAttribute("aria-disabled",String(undecided));
+  };
+  scheduleUndecided?.addEventListener("change",syncScheduleChoice);
+  syncScheduleChoice();
   dateField?.addEventListener(
     "keydown",
-    e => {
-
-      if (
-        e.key === "Enter" ||
-        e.key === " "
-      ) {
-
+    e=>{
+      if(
+        e.key==="Enter"||
+        e.key===" "
+      ){
         e.preventDefault();
-
-        openDatePicker();
+        showDate();
       }
     }
   );
-
-
-  /* ==================================================
-     휴대폰 번호 자동 하이픈
-  ================================================== */
-
-  const phoneInput = $("phone");
-
-
-  phoneInput?.addEventListener(
+  phone?.addEventListener(
     "input",
-    function () {
-
-      const v = this.value
-        .replace(/\D/g, "")
-        .slice(0, 11);
-
-
-      this.value =
-        v.length <= 3
-          ? v
-          : v.length <= 7
-            ? `${v.slice(0, 3)}-${v.slice(3)}`
-            : `${v.slice(0, 3)}-${v.slice(3, 7)}-${v.slice(7)}`;
+    ()=>{
+      const v=
+        phone.value
+          .replace(/\D/g,"")
+          .slice(0,11);
+      if(v.length<=3){
+        phone.value=v;
+      }else if(v.length<=7){
+        phone.value=
+          `${v.slice(0,3)}-${v.slice(3)}`;
+      }else{
+        phone.value=
+          `${v.slice(0,3)}-${v.slice(3,7)}-${v.slice(7)}`;
+      }
     }
   );
-
-
-  /* ==================================================
-     방문예약
-  ================================================== */
-
-  leadForm?.addEventListener(
+  form?.addEventListener(
     "submit",
-    async e => {
-
+    async e=>{
       e.preventDefault();
-
-
-      const nameInput = $("name");
-      const consultDateInput =
-        $("consultDate");
-
-      const consultTimeInput =
-        $("consultTime");
-
-      const privacyCheckbox =
-        $("privacy");
-
-      const websiteInput =
-        $("website");
-
-
-      /*
-       * 봇 방지용 honeypot
-       */
-      if (websiteInput?.value) {
+      if(submit?.disabled)return;
+      const name=$("#name");
+      const privacy=$("#privacy");
+      const honeypot=$("#website");
+      if(honeypot?.value){
         return;
       }
-
-
-      const fail = (text, el) => {
-
-        alert(text);
-
-        el?.focus();
+      const fail=(text,el)=>{
+        showAlert(
+          "입력 확인",
+          text
+        );
+        setTimeout(
+          ()=>{
+            el?.focus();
+          },
+          100
+        );
       };
-
-
-      /* 이름 */
-
-      if (!nameInput.value.trim()) {
-
+      const nameValue=
+        name?.value.trim()||"";
+      if(!nameValue){
         return fail(
           "이름을 입력해주세요.",
-          nameInput
+          name
         );
       }
-
-
-      /* 휴대폰 */
-
-      const phone =
-        phoneInput.value.replace(
-          /\D/g,
-          ""
-        );
-
-
-      if (!phoneInput.value.trim()) {
-
+      if(nameValue.length>50){
         return fail(
-          "휴대폰 번호를 입력해주세요.",
-          phoneInput
+          "이름은 50자 이내로 입력해주세요.",
+          name
         );
       }
-
-
-      if (
-        phone.length < 10 ||
-        phone.length > 11
-      ) {
-
+      const phoneNumber=
+        phone?.value
+          .replace(/\D/g,"")||"";
+      if(
+        !/^01[0-9]\d{7,8}$/.test(
+          phoneNumber
+        )
+      ){
         return fail(
           "휴대폰 번호를 정확하게 입력해주세요.",
-          phoneInput
+          phone
         );
       }
-
-
-      /* 방문일 */
-
-      if (!consultDateInput.value) {
-
+      const scheduleIsUndecided=Boolean(scheduleUndecided?.checked);
+      if(!scheduleIsUndecided && !date?.value){
         return fail(
-          "방문 희망일을 선택해주세요.",
-          consultDateInput
+          "방문 희망일을 선택하거나 상담 후 결정을 선택해주세요.",
+          date
         );
       }
-
-
-      /* 방문시간 */
-
-      if (!consultTimeInput.value) {
-
+      if(!scheduleIsUndecided && date.value<today()){
         return fail(
-          "방문 희망시간을 선택해주세요.",
-          consultTimeInput
+          "오늘 이후의 방문 희망일을 선택해주세요.",
+          date
         );
       }
-
-
-      /* 개인정보 */
-
-      if (!privacyCheckbox.checked) {
-
+      if(!scheduleIsUndecided && !time?.value){
+        return fail(
+          "방문 희망시간을 선택하거나 상담 후 결정을 선택해주세요.",
+          time
+        );
+      }
+      if(!privacy?.checked){
         return fail(
           "개인정보 수집 및 이용에 동의해주세요.",
-          privacyCheckbox
+          privacy
         );
       }
-
-
-      /*
-       * 중복 클릭 방지
-       */
-      submitButton.disabled = true;
-
-
-      formMessage.textContent =
-        "방문예약 접수 및 알림톡 발송 중입니다...";
-
-      formMessage.className =
-        "message show";
-
-
-      try {
-
-        const response = await fetch(
-          "/.netlify/functions/send-alimtalk",
-          {
-            method: "POST",
-
-            headers: {
-              "Content-Type":
-                "application/json"
-            },
-
-            body: JSON.stringify({
-
-              name:
-                nameInput.value.trim(),
-
-              phone:
-                phoneInput.value.trim(),
-
-              consultDate:
-                consultDateInput.value,
-
-              consultTime:
-                consultTimeInput.value
-            })
-          }
-        );
-
-
-        let result = {};
-
-
-        try {
-
-          result =
-            await response.json();
-
-        } catch (e) {}
-
-
-        /*
-         * HTTP 오류뿐 아니라
-         * Function이 success:false를 반환한 경우도 실패 처리
-         */
-        if (
-          !response.ok ||
-          result.success !== true
-        ) {
-
+      submit.disabled=true;
+      submit.textContent=
+        "접수 중...";
+      try{
+        const res=
+          await fetch(
+            "/.netlify/functions/send-alimtalk",
+            {
+              method:"POST",
+              headers:{
+                "Content-Type":
+                  "application/json"
+              },
+              body:JSON.stringify({
+                name:nameValue,
+                phone:
+                  phone.value.trim(),
+                consultDate:
+                  scheduleIsUndecided
+                    ?"상담 후 결정"
+                    :date.value,
+                consultTime:
+                  scheduleIsUndecided
+                    ?"상담 후 결정"
+                    :time.value
+              })
+            }
+          );
+        let result={};
+        try{
+          result=
+            await res.json();
+        }catch{
+          result={};
+        }
+        if(!res.ok || result.success !== true){
           throw new Error(
-            result.error ||
+            result.error||
             "서버 전송 실패"
           );
         }
-
-
-        /*
-         * 성공
-         */
-        formMessage.textContent =
-          "방문예약이 성공적으로 접수되었습니다. 곧 연락드리겠습니다!";
-
-        formMessage.className =
-          "message show success";
-
-
-        leadForm.reset();
-
-
-        if (consultDate) {
-          consultDate.min =
-            getLocalDateString();
-        }
-
-
-      } catch (error) {
-
+        safeGtag(
+          "generate_lead",
+          withAttribution({
+            lead_type:"visit_reservation",
+            form_id:"leadForm"
+          })
+        );
+        closeActionModal(visitModal);
+        showAlert(
+          "방문예약 완료",
+          "방문예약이 성공적으로 접수되었습니다.<br>빠른 시일 내로 안내해 드리겠습니다."
+        );
+        form.reset();
+        date.min=today();
+        syncScheduleChoice();
+      }catch(error){
         console.error(
           "예약 전송 오류:",
           error
         );
-
-
-        formMessage.textContent =
-          "예약 접수 중 오류가 발생했습니다. 유선(1551-9708)으로 문의해 주세요.";
-
-        formMessage.className =
-          "message show error";
-
-
-      } finally {
-
-        submitButton.disabled =
-          false;
+        showAlert(
+          "접수 실패",
+          "예약 접수 중 오류가 발생했습니다.<br>유선(1551-9708)으로 문의해 주세요."
+        );
+      }finally{
+        submit.disabled=false;
+        submit.textContent=
+          "방문예약 신청하기";
       }
     }
   );
-
 });
