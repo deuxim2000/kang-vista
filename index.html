@@ -740,6 +740,14 @@ gtag('config','G-961TDW5RWD');
 @keyframes heroScrollArrow{0%,100%{transform:translateY(-2px)}50%{transform:translateY(3px)}}
 @media(prefers-reduced-motion:reduce){.hero-scroll-guide b{animation:none}}
 </style>
+<style id="mobile-hero-header-fix">
+@media(max-width:900px){
+  /* Preserve the original composition and add viewport-based header clearance. */
+  .hero-content{
+    transform:translateY(calc(-45% + clamp(22px,4svh,42px)));
+  }
+}
+</style>
 <style id="kakao-link-feature-flag">
 /* 고객용 카카오 링크받기 임시 비활성화: 승인 후 body의 kakao-link-disabled 제거 */
 .kakao-link-disabled .contact-action-summary:first-child,
