@@ -59,14 +59,13 @@ document.addEventListener("DOMContentLoaded",()=>{
     heroContent.style.setProperty("--hero-safe-shift","0px");
     heroSafeFrame=requestAnimationFrame(()=>{
       const safeTop=header.getBoundingClientRect().bottom+16;
-      const contentTop=heroContent.getBoundingClientRect().top;
+      const contentTop=heroContent.getBoundingClientRect().top+window.scrollY;
       const shift=Math.max(0,Math.ceil(safeTop-contentTop));
       heroContent.style.setProperty("--hero-safe-shift",`${shift}px`);
     });
   };
   window.addEventListener("resize",syncMobileHeroClearance,{passive:true});
   window.visualViewport?.addEventListener("resize",syncMobileHeroClearance,{passive:true});
-  window.visualViewport?.addEventListener("scroll",syncMobileHeroClearance,{passive:true});
   document.fonts?.ready.then(syncMobileHeroClearance);
   syncMobileHeroClearance();
   const safeGtag=(eventName,params={})=>{
