@@ -742,9 +742,9 @@ gtag('config','G-961TDW5RWD');
 </style>
 <style id="mobile-hero-header-fix">
 @media(max-width:900px){
-  /* Preserve the original composition and add viewport-based header clearance. */
+  /* JS adds only the clearance required by the actual mobile visual viewport. */
   .hero-content{
-    transform:translateY(calc(-45% + clamp(22px,4svh,42px)));
+    transform:translateY(calc(-45% + var(--hero-safe-shift,0px)));
   }
 }
 </style>
@@ -1649,7 +1649,7 @@ gtag('config','G-961TDW5RWD');
   </div>
   <p class="image-zoom-help">손가락으로 움직이거나 확대해서 확인하세요.</p>
 </div>
-<script src="/script.js"></script>
+<script src="/script.js?v=20260903-hero2"></script>
 </body>
 </html>
 

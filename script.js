@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   const $=selector=>document.querySelector(selector);
   const $$=selector=>document.querySelectorAll(selector);
   const header=$("#header");
+  const heroContent=$(".hero-content");
   const heroScrollGuide=$("#heroScrollGuide");
   const menu=$("#mainMenu");
   const toggle=$("#menuToggle");
@@ -47,6 +48,27 @@ document.addEventListener("DOMContentLoaded",()=>{
   let saveReminderTimer=0;
   let saveReminderVisibleAt=0;
   let saveReminderHandled=false;
+  let heroSafeFrame=0;
+  const syncMobileHeroClearance=()=>{
+    if(!heroContent || !header)return;
+    cancelAnimationFrame(heroSafeFrame);
+    if(!matchMedia("(max-width:900px)").matches){
+      heroContent.style.removeProperty("--hero-safe-shift");
+      return;
+    }
+    heroContent.style.setProperty("--hero-safe-shift","0px");
+    heroSafeFrame=requestAnimationFrame(()=>{
+      const safeTop=header.getBoundingClientRect().bottom+16;
+      const contentTop=heroContent.getBoundingClientRect().top;
+      const shift=Math.max(0,Math.ceil(safeTop-contentTop));
+      heroContent.style.setProperty("--hero-safe-shift",`${shift}px`);
+    });
+  };
+  window.addEventListener("resize",syncMobileHeroClearance,{passive:true});
+  window.visualViewport?.addEventListener("resize",syncMobileHeroClearance,{passive:true});
+  window.visualViewport?.addEventListener("scroll",syncMobileHeroClearance,{passive:true});
+  document.fonts?.ready.then(syncMobileHeroClearance);
+  syncMobileHeroClearance();
   const safeGtag=(eventName,params={})=>{
     if(typeof window.gtag!=="function")return;
     window.gtag(
