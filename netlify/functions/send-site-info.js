@@ -1,6 +1,6 @@
 "use strict";
 const crypto = require("crypto");
-const TEMPLATE_CODE = "siteFavorite1";
+const TEMPLATE_CODE = "landinglinkv1";
 const SITE_NAME = "더파크 비스타동원";
 const CONTACT_NUMBER = "1551-9708";
 const SITE_URL = "intoindesign.co.kr/1551-9708";
