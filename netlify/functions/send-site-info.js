@@ -1,6 +1,20 @@
 "use strict";
 const crypto = require("crypto");
 const TEMPLATE_CODE = "siteFavorite1";
+const SITE_NAME = "더파크 비스타동원";
+const CONTACT_NUMBER = "1551-9708";
+const SITE_URL = "intoindesign.co.kr/1551-9708";
+const TEMPLATE_VALUES = {
+  siteName: SITE_NAME,
+  contactNumber: CONTACT_NUMBER,
+  siteUrl: SITE_URL
+};
+function replaceTemplateVariables(value) {
+  return String(value || "").replace(
+    /#\{(siteName|contactNumber|siteUrl)\}/g,
+    (_, key) => TEMPLATE_VALUES[key]
+  );
+}
 function jsonResponse(statusCode, data) {
   return {
     statusCode,
@@ -118,10 +132,32 @@ exports.handler = async function (event) {
         error: "알림톡 템플릿 본문이 없습니다."
       });
     }
-    if (/#\{[^}]+\}/.test(registeredContent)) {
+    const messageContent = replaceTemplateVariables(registeredContent);
+    if (/#\{[^}]+\}/.test(messageContent)) {
       return jsonResponse(500, {
         success: false,
-        error: "고정형 찜하기 템플릿에 치환되지 않은 변수가 있습니다."
+        error: "알림톡 템플릿에 지원하지 않는 변수가 있습니다."
+      });
+    }
+    const registeredButtons = Array.isArray(templateData.buttons)
+      ? templateData.buttons
+      : [];
+    const messageButtons = registeredButtons.map(button => {
+      const result = {
+        type: button.type,
+        name: replaceTemplateVariables(button.name).trim()
+      };
+      ["linkMobile", "linkPc", "schemeIos", "schemeAndroid"].forEach(key => {
+        if (button[key]) result[key] = replaceTemplateVariables(button[key]).trim();
+      });
+      return result;
+    });
+    if (messageButtons.some(button =>
+      Object.values(button).some(value => /#\{[^}]+\}/.test(String(value)))
+    )) {
+      return jsonResponse(500, {
+        success: false,
+        error: "알림톡 버튼에 치환되지 않은 변수가 있습니다."
       });
     }
     const sendUri = `/alimtalk/v2/services/${serviceId}/messages`;
@@ -137,7 +173,8 @@ exports.handler = async function (event) {
           {
             countryCode: "82",
             to: cleanPhone,
-            content: registeredContent,
+            content: messageContent,
+            ...(messageButtons.length ? { buttons: messageButtons } : {}),
             useSmsFailover: false
           }
         ]
