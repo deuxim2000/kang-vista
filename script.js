@@ -881,3 +881,25 @@ document.addEventListener("DOMContentLoaded",()=>{
     }
   );
 });
+(() => {
+  const overviewSection = document.getElementById("overviewSection");
+  const unitSection = document.getElementById("unitSection");
+  const contactSection = document.getElementById("contactSection");
+  if (!overviewSection || !unitSection || !contactSection) return;
+
+  const mobileOrder = window.matchMedia("(max-width: 900px)");
+  const syncSectionOrder = () => {
+    if (mobileOrder.matches) {
+      contactSection.insertAdjacentElement("afterend", overviewSection);
+    } else {
+      unitSection.insertAdjacentElement("beforebegin", overviewSection);
+    }
+  };
+
+  syncSectionOrder();
+  if (typeof mobileOrder.addEventListener === "function") {
+    mobileOrder.addEventListener("change", syncSectionOrder);
+  } else {
+    mobileOrder.addListener(syncSectionOrder);
+  }
+})();
