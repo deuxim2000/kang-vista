@@ -882,24 +882,58 @@ document.addEventListener("DOMContentLoaded",()=>{
   );
 });
 (() => {
-  const overviewSection = document.getElementById("overviewSection");
-  const unitSection = document.getElementById("unitSection");
+  const offerSection = document.getElementById("offerSection");
   const contactSection = document.getElementById("contactSection");
-  if (!overviewSection || !unitSection || !contactSection) return;
+  if (!offerSection || !contactSection) return;
+  offerSection.insertAdjacentElement("afterend", contactSection);
+})();
+(() => {
+  const quickButtons = Array.from(document.querySelectorAll(".pc-float-tools [data-target]"));
+  if (!quickButtons.length || !("IntersectionObserver" in window)) return;
 
-  const mobileOrder = window.matchMedia("(max-width: 900px)");
-  const syncSectionOrder = () => {
-    if (mobileOrder.matches) {
-      contactSection.insertAdjacentElement("afterend", overviewSection);
-    } else {
-      unitSection.insertAdjacentElement("beforebegin", overviewSection);
-    }
+  const sectionMap = new Map();
+  quickButtons.forEach(button => {
+    const id = button.dataset.target;
+    const section = id === "top" ? document.getElementById("home") : document.getElementById(id);
+    if (section) sectionMap.set(section, button);
+  });
+  const visitButton = document.querySelector(".pc-float-tools [data-quick-section='contactSection']");
+  const detailButton = quickButtons.find(button => button.dataset.target === "complexSection");
+  const topButton = quickButtons.find(button => button.dataset.target === "top");
+  const aliases = [
+    ["offerSection", topButton],
+    ["contactSection", visitButton],
+    ["valueSection", detailButton],
+    ["locationSection", detailButton],
+    ["communitySection", detailButton]
+  ];
+  aliases.forEach(([id, button]) => {
+    const section = document.getElementById(id);
+    if (section && button) sectionMap.set(section, button);
+  });
+
+  const activate = button => {
+    document.querySelectorAll(".pc-float-tools button").forEach(item => item.classList.toggle("is-active", item === button));
   };
 
-  syncSectionOrder();
-  if (typeof mobileOrder.addEventListener === "function") {
-    mobileOrder.addEventListener("change", syncSectionOrder);
-  } else {
-    mobileOrder.addListener(syncSectionOrder);
-  }
+  const orderedSections = Array.from(sectionMap.keys()).sort((a, b) => a.offsetTop - b.offsetTop);
+  let ticking = false;
+  const syncActiveSection = () => {
+    const marker = window.scrollY + window.innerHeight * 0.32;
+    let current = orderedSections[0];
+    orderedSections.forEach(section => {
+      if (section.offsetTop <= marker) current = section;
+    });
+    if (current) activate(sectionMap.get(current));
+    ticking = false;
+  };
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(syncActiveSection);
+    }
+  }, { passive: true });
+  window.addEventListener("resize", syncActiveSection);
+  quickButtons.forEach(button => button.addEventListener("click", () => activate(button)));
+  syncActiveSection();
 })();
