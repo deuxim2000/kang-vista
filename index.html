@@ -921,6 +921,7 @@ gtag('config','G-961TDW5RWD');
 </style>
 <style id="pc-quick-curtain-style">
 .page-curtain{position:fixed;inset:0;z-index:9999;pointer-events:none;overflow:hidden;animation:curtainClear .15s linear 2.45s forwards}
+.skip-page-curtain .page-curtain{display:none!important}
 .page-curtain-panel{position:absolute;top:0;width:50.5%;height:100%;background:linear-gradient(145deg,#f0f8fe 0%,#c4e5f8 48%,#91c9ea 100%)}
 .page-curtain-left{left:0;animation:curtainLeft .85s cubic-bezier(.76,0,.24,1) 1.52s forwards}
 .page-curtain-right{right:0;animation:curtainRight .85s cubic-bezier(.76,0,.24,1) 1.52s forwards}
@@ -980,8 +981,78 @@ gtag('config','G-961TDW5RWD');
     letter-spacing:-1.4px!important
   }
 }
+#contactSection .contact-modal-actions{display:flex!important;flex-direction:column!important;align-items:center!important;gap:12px!important}
+#contactSection .contact-action-summary,#contactSection .contact-info-btn{grid-area:auto!important;width:min(100%,310px)!important}
+@media(min-width:901px){
+  #contactSection .contact-grid{display:grid!important;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr)!important;align-items:stretch!important;gap:28px!important;max-width:1280px!important;text-align:initial!important}
+  #contactSection .contact-intro{display:flex!important;flex-direction:column;align-items:center;justify-content:center;padding:26px 30px;border:1px solid #e1e6ec;border-radius:14px;background:#fff;box-shadow:0 10px 28px rgba(9,33,59,.08);text-align:center!important}
+  #contactSection .contact-intro .title{font-size:clamp(34px,3.35vw,48px)!important;line-height:1.18!important;letter-spacing:-2.4px!important;text-align:center!important}
+  #contactSection .visit-label{text-align:center!important}
+  #contactSection .form{height:100%;padding:27px 30px;border-radius:14px;box-shadow:0 10px 28px rgba(9,33,59,.08)}
+  #contactSection .form-sub{margin-bottom:17px}
+  #contactSection .form-row{margin-bottom:10px}
+  #contactSection .form-row input,#contactSection .form-row select{padding:10px 12px}
+  #contactSection .date-field{height:46px}
+  #contactSection .privacy{padding:12px 14px}
+  #contactSection .agree{margin-top:8px}
+  #contactSection .privacy-summary{margin-top:7px}
+  #contactSection .submit{margin-top:12px;padding:13px}
+  #contactSection .contact-modal-actions{width:100%!important;margin-top:18px!important}
+  #contactSection .contact-action-summary,#contactSection .contact-info-btn{width:100%!important;max-width:none!important}
+  #contactSection .continue-desktop{width:100%!important;max-width:none!important;min-height:92px!important;margin-top:14px!important;padding:14px 20px!important;border-radius:14px!important;animation:none!important}
+  #contactSection .continue-desktop strong{font-size:21px!important}
+  #contactSection .continue-desktop span{font-size:15px!important}
+  #contactSection .continue-desktop em{display:none!important}
+}
+.visit-status-bubble,.info-status-bubble{position:absolute;z-index:3;display:inline-flex;align-items:center;justify-content:center;padding:7px 11px;border:1px solid #d8e1ea;border-radius:999px;background:#fff;color:var(--navy);box-shadow:0 6px 18px rgba(9,33,59,.18);font-size:12px;font-weight:900;line-height:1;letter-spacing:-.35px;white-space:nowrap;pointer-events:none}
+.info-status-bubble{line-height:1.25;text-align:center}
+@media(min-width:901px){
+  .pc-float-tools .pc-float-info{overflow:visible!important}
+  .pc-float-info .info-status-bubble,.pc-float-visit .visit-status-bubble{right:calc(100% + 10px);top:50%;transform:translateY(-50%)}
+  .pc-float-info .info-status-bubble::after,.pc-float-visit .visit-status-bubble::after{content:"";position:absolute;left:100%;top:50%;width:8px;height:8px;border-top:1px solid #d8e1ea;border-right:1px solid #d8e1ea;background:#fff;transform:translate(-4px,-50%) rotate(45deg)}
+}
+@media(max-width:900px){
+  .mobile-float-info,.mobile-float-visit{position:relative;overflow:visible!important}
+  .mobile-float-info .info-status-bubble,.mobile-float-visit .visit-status-bubble{display:none!important}
+  .mobile-float-info .info-status-bubble{left:4px}
+  .mobile-float-visit .visit-status-bubble{right:4px}
+  .mobile-float-info .info-status-bubble::after,.mobile-float-visit .visit-status-bubble::after{content:"";position:absolute;top:100%;width:8px;height:8px;border-right:1px solid #d8e1ea;border-bottom:1px solid #d8e1ea;background:#fff;transform:translateY(-4px) rotate(45deg)}
+  .mobile-float-info .info-status-bubble::after{left:20px}
+  .mobile-float-visit .visit-status-bubble::after{right:20px}
+}
+@media(max-width:900px){#offerSection .offer-heading .title{display:none!important}}
+@media(max-width:900px){#futureValueSection .future-value-pc-head{display:block!important}#futureValueSection .future-value-pc-head .label{display:block!important}#futureValueSection .future-value-pc-head h2,#futureValueSection .future-value-pc-head p{display:none!important}}
+@media(max-width:900px){
+  #contactSection .visit-copy{display:none!important}
+  #contactSection .contact-intro{margin-bottom:12px!important}
+  #contactSection .visit-section-desc{display:block!important;max-width:100%;margin:3px auto 5px;color:var(--navy);font-size:clamp(13px,3.8vw,18px);line-height:1.4;font-weight:800;letter-spacing:-.65px;text-align:center;white-space:nowrap}
+  #contactSection .phone-big{margin-top:3px!important;gap:10px!important;font-size:clamp(39px,10vw,45px)!important}
+  #contactSection .phone-circle{width:54px!important;height:54px!important}
+  #contactSection .phone-circle svg{width:30px!important;height:30px!important}
+  #contactSection .contact-modal-actions{width:100%!important;margin-top:14px!important;align-items:stretch!important}
+  #contactSection .contact-action-summary,#contactSection .contact-info-btn{width:100%!important;max-width:none!important}
+  #contactSection .contact-action-summary{min-height:64px!important;padding:7px 6px!important}
+  #contactSection .contact-action-summary br{display:none!important}
+  #contactSection .contact-action-summary strong{font-size:clamp(12px,3.55vw,15px)!important;line-height:1.35!important;letter-spacing:-.7px!important;white-space:nowrap!important}
+  #contactSection .contact-link-detail{font-size:clamp(10px,3vw,12px)!important;line-height:1.35!important;letter-spacing:-.65px!important;white-space:nowrap!important}
+  #contactSection .contact-info-btn{min-height:58px!important;font-size:clamp(15px,4.2vw,18px)!important}
+  #contactSection .privacy{padding:5px 8px!important}
+  #contactSection .privacy-head{min-height:0!important}
+  #contactSection .privacy .agree{min-height:24px!important;align-items:center!important;margin-top:3px!important}
+  #contactSection .privacy .agree input[type="checkbox"]{width:21px!important;height:21px!important;min-width:21px!important;flex:0 0 21px!important;margin-top:0!important}
+  #contactSection .privacy-summary{margin-top:5px!important}
+}
 </style></head>
 <body>
+<script>
+try{
+  if(localStorage.getItem("thepark_curtain_seen")==="1"){
+    document.documentElement.classList.add("skip-page-curtain");
+  }else{
+    localStorage.setItem("thepark_curtain_seen","1");
+  }
+}catch(error){}
+</script>
 <div class="page-curtain" aria-hidden="true">
   <div class="page-curtain-panel page-curtain-left"></div>
   <div class="page-curtain-panel page-curtain-right"></div>
@@ -1339,25 +1410,17 @@ gtag('config','G-961TDW5RWD');
       <div class="contact-modal-actions" aria-label="상담 신청 메뉴">
         <p class="contact-action-summary">
           <strong>홈페이지 링크를 받아<br>나중에 다시 확인하세요.</strong>
-          <span class="contact-link-detail">휴대전화 번호로<br>카카오톡 링크를 보내드립니다.</span>
-        </p>
-        <p class="contact-action-summary">
-          <strong>모델하우스 방문을<br>원하시나요?</strong>
-          <span class="contact-anytime-line">편한 날짜와 시간을 남겨주세요.</span>
-          <span class="contact-followup-line">담당자가 확인 후 안내해 드립니다.</span>
+          <span class="contact-link-detail">카카오톡으로<br>홈페이지 링크를 보내드립니다.</span>
         </p>
         <button type="button" class="contact-modal-btn contact-info-btn" data-open-modal="infoModal" aria-label="나중에 다시보기" title="나중에 다시보기">
           <span class="kakao-talk-icon" aria-hidden="true"></span> 나중에 다시보기
         </button>
-        <button type="button" class="contact-modal-btn contact-visit-btn" data-open-modal="visitModal">
-          <span class="visit-calendar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 2h2v2h6V2h2v2h1.5A2.5 2.5 0 0 1 21 6.5v13A2.5 2.5 0 0 1 18.5 22h-13A2.5 2.5 0 0 1 3 19.5v-13A2.5 2.5 0 0 1 5.5 4H7V2Zm11.5 18a.5.5 0 0 0 .5-.5V10H5v9.5a.5.5 0 0 0 .5.5h13ZM5 8h14V6.5a.5.5 0 0 0-.5-.5H17v1h-2V6H9v1H7V6H5.5a.5.5 0 0 0-.5.5V8Z"/></svg></span> 방문예약하기
-        </button>
       </div>
-      <button type="button" class="continue-btn continue-inline continue-desktop" data-target="detailSection" aria-label="상세안내 계속 보기">
+      <div class="continue-btn continue-inline continue-desktop" aria-label="더 많은 정보 안내">
         <strong>아래에 더 많은 정보를 확인해보세요</strong>
         <span>프리미엄 · 입지환경 · 단지안내 · 커뮤니티</span>
         <em>상세안내 계속 보기</em>
-      </button>
+      </div>
     </div>
     <form class="form"
           id="leadForm"
@@ -1468,11 +1531,11 @@ gtag('config','G-961TDW5RWD');
         방문예약 신청하기
       </button>
     </form>
-    <button type="button" class="continue-btn continue-inline continue-mobile" data-target="detailSection" aria-label="상세안내 계속 보기">
+    <div class="continue-btn continue-inline continue-mobile" aria-label="더 많은 정보 안내">
       <strong>아래에 더 많은 정보를 확인해보세요</strong>
       <span>프리미엄 · 입지환경 · 단지안내 · 커뮤니티</span>
       <em>상세안내 계속 보기</em>
-    </button>
+    </div>
   </div>
 </section>
 <div id="detailSection" class="detail-anchor" aria-hidden="true"></div>
@@ -1670,16 +1733,18 @@ gtag('config','G-961TDW5RWD');
     <button type="button" data-target="unitSection"><span class="pc-quick-icon pc-quick-vr" aria-hidden="true">e</span><span>모델하우스</span></button>
     <button type="button" data-target="complexSection"><span class="pc-quick-icon" aria-hidden="true">▦</span><span>단지안내</span></button>
     <button type="button" class="pc-float-info" data-open-modal="infoModal" aria-label="나중에 다시보기" title="나중에 다시보기">
+      <span class="info-status-bubble" aria-hidden="true">카톡으로<br>홈페이지 링크받기</span>
       <span class="pc-float-info-text">나중에다시보기</span>
       <span class="pc-float-tooltip" aria-hidden="true">카톡으로 링크를 받아 언제든 다시 방문하세요.<br>PC에서도 안내 내용과 360° VR을<br>더 크게 확인할 수 있습니다.</span>
     </button>
-    <button type="button" class="pc-float-visit" data-open-modal="visitModal" data-quick-section="contactSection" aria-label="방문예약하기">
+    <button type="button" class="pc-float-visit" data-target="contactSection" data-quick-section="contactSection" aria-label="방문예약하기">
+      <span class="visit-status-bubble" aria-hidden="true">상담예약 접수 중</span>
       <span>방문예약하기</span>
     </button>
   </div>
   <div class="mobile-float-actions" aria-label="모바일 빠른 메뉴">
-    <button type="button" class="mobile-float-info" data-open-modal="infoModal" aria-label="나중에 다시보기" title="나중에 다시보기"><span class="kakao-talk-icon" aria-hidden="true"></span><span>나중에 다시보기</span></button>
-    <button type="button" class="mobile-float-visit" data-open-modal="visitModal"><span class="visit-calendar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 2h2v2h6V2h2v2h1.5A2.5 2.5 0 0 1 21 6.5v13A2.5 2.5 0 0 1 18.5 22h-13A2.5 2.5 0 0 1 3 19.5v-13A2.5 2.5 0 0 1 5.5 4H7V2Zm11.5 18a.5.5 0 0 0 .5-.5V10H5v9.5a.5.5 0 0 0 .5.5h13ZM5 8h14V6.5a.5.5 0 0 0-.5-.5H17v1h-2V6H9v1H7V6H5.5a.5.5 0 0 0-.5.5V8Z"/></svg></span><span>방문예약하기</span></button>
+    <button type="button" class="mobile-float-info" data-open-modal="infoModal" aria-label="나중에 다시보기" title="나중에 다시보기"><span class="info-status-bubble" aria-hidden="true">카톡으로 홈페이지 링크 받기</span><span class="kakao-talk-icon" aria-hidden="true"></span><span>나중에 다시보기</span></button>
+    <button type="button" class="mobile-float-visit" data-target="contactSection"><span class="visit-status-bubble" aria-hidden="true">상담예약 접수 중</span><span class="visit-calendar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 2h2v2h6V2h2v2h1.5A2.5 2.5 0 0 1 21 6.5v13A2.5 2.5 0 0 1 18.5 22h-13A2.5 2.5 0 0 1 3 19.5v-13A2.5 2.5 0 0 1 5.5 4H7V2Zm11.5 18a.5.5 0 0 0 .5-.5V10H5v9.5a.5.5 0 0 0 .5.5h13ZM5 8h14V6.5a.5.5 0 0 0-.5-.5H17v1h-2V6H9v1H7V6H5.5a.5.5 0 0 0-.5.5V8Z"/></svg></span><span>방문예약하기</span></button>
   </div>
 </div>
 <button type="button"

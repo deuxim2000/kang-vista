@@ -144,9 +144,6 @@ document.addEventListener("DOMContentLoaded",()=>{
     saveReminder.classList.add("show");
     saveReminderTimer=window.setTimeout(hideSaveReminder,3000);
   };
-  if(form && visitModalBody){
-    visitModalBody.appendChild(form);
-  }
   const openActionModal=id=>{
     const target=$("#"+id);
     if(!target)return;
@@ -403,6 +400,12 @@ document.addEventListener("DOMContentLoaded",()=>{
   $$("[data-target]").forEach(el=>{
     el.addEventListener("click",e=>{
       e.preventDefault();
+      if(el.dataset.target==="contactSection"){
+        safeGtag("click_visit",withAttribution({
+          link_location:el.className||"section_cta",
+          action_type:"scroll_to_form"
+        }));
+      }
       move(el.dataset.target);
     });
   });
