@@ -36,14 +36,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   const alertTitle=document.querySelector(".alert-title");
   const alertDesc=$("#alertDesc");
   const alertCloseBtn=$("#alertCloseBtn");
-  const vrGuideModal=$("#vrGuideModal");
-  const vrGuideTitleText=$("#vrGuideTitleText");
-  const vrGuideClose=$("#vrGuideClose");
-  const vrGuideCancel=$("#vrGuideCancel");
-  const vrGuideConfirm=$("#vrGuideConfirm");
   let savedScroll=0;
-  let pendingVrUrl="";
-  let pendingVrTitle="";
   let infoIsSubmitting=false;
   let saveReminderTimer=0;
   let saveReminderVisibleAt=0;
@@ -482,119 +475,6 @@ document.addEventListener("DOMContentLoaded",()=>{
       closeInfoComplete();
     }
   });
-  const requestVR=(url,title)=>{
-    if(!url)return;
-    pendingVrUrl=url;
-    pendingVrTitle=title||"360_vr";
-    if(vrGuideTitleText){
-      vrGuideTitleText.textContent=
-        title||"360° VR 안내";
-    }
-    vrGuideModal?.classList.add("show");
-    lockBody();
-  };
-  const closeVrGuide=()=>{
-    vrGuideModal?.classList.remove("show");
-    unlockBody();
-    pendingVrUrl="";
-    pendingVrTitle="";
-  };
-  const launchVR=()=>{
-    if(!pendingVrUrl)return;
-    safeGtag(
-      "launch_vr",
-      withAttribution({
-        vr_title:pendingVrTitle||"360_vr"
-      })
-    );
-    let url=pendingVrUrl;
-    try{
-      const u=new URL(url);
-      u.searchParams.set(
-        "from",
-        "main"
-      );
-      url=u.href;
-    }catch(error){
-      console.warn(
-        "VR URL 처리 오류:",
-        error
-      );
-    }
-    const mobile=
-      window.innerWidth<=900||
-      /Android|iPhone|iPad|iPod/i.test(
-        navigator.userAgent
-      );
-    let win=null;
-    try{
-      win=mobile
-        ?window.open(
-            url,
-            "_blank",
-            "noopener,noreferrer"
-          )
-        :window.open(
-            url,
-            "theparkVistaVR",
-            "width=1200,height=850,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=yes,status=no"
-          );
-    }catch(error){
-      console.error(
-        "VR 실행 오류:",
-        error
-      );
-    }
-    if(win){
-      try{
-        win.focus();
-      }catch{}
-    }else{
-      try{
-        window.location.href=url;
-      }catch{}
-    }
-    closeVrGuide();
-  };
-  vrGuideClose?.addEventListener(
-    "click",
-    closeVrGuide
-  );
-  vrGuideCancel?.addEventListener(
-    "click",
-    closeVrGuide
-  );
-  vrGuideConfirm?.addEventListener(
-    "click",
-    launchVR
-  );
-  vrGuideModal?.addEventListener(
-    "click",
-    e=>{
-      if(e.target===vrGuideModal){
-        closeVrGuide();
-      }
-    }
-  );
-  $$(".unit-vr-link").forEach(btn=>{
-    btn.addEventListener(
-      "click",
-      ()=>{
-        safeGtag(
-          "click_vr",
-          withAttribution({
-            vr_title:
-              btn.dataset.vrTitle||
-              "360_vr"
-          })
-        );
-        requestVR(
-          btn.dataset.vr,
-          btn.dataset.vrTitle
-        );
-      }
-    );
-  });
   const openModal=e=>{
     e?.preventDefault();
     if(!modal)return;
@@ -641,13 +521,7 @@ document.addEventListener("DOMContentLoaded",()=>{
       ){
         closeModal();
       }
-      if(
-        vrGuideModal?.classList.contains(
-          "show"
-        )
-      ){
-        closeVrGuide();
-      }
+
       if(
         alertModal?.classList.contains(
           "show"
@@ -904,7 +778,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   const detailButton = quickButtons.find(button => button.dataset.target === "complexSection");
   const topButton = quickButtons.find(button => button.dataset.target === "top");
   const aliases = [
-    ["offerSection", topButton],
+
     ["contactSection", visitButton],
     ["valueSection", detailButton],
     ["locationSection", detailButton],
