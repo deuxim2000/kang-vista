@@ -14,3 +14,40 @@
   from = "/1551-9708/"
   to = "/index.html"
   status = 200
+
+# Independent GFA landing; existing sale routes and functions stay unchanged.
+[[redirects]]
+  from = "/intoingfa"
+  to = "https://intoingfa.netlify.app/intoingfa/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/intoingfa/api/*"
+  to = "https://intoingfa.netlify.app/.netlify/functions/gfa-api/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/intoingfa/manage.html"
+  to = "https://intoingfa.netlify.app/.netlify/functions/gfa-api/manage"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/intoingfa/login.html"
+  to = "https://intoingfa.netlify.app/.netlify/functions/gfa-api/login-page"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/intoingfa/works.json"
+  to = "https://intoingfa.netlify.app/.netlify/functions/gfa-api/works"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/intoingfa/*"
+  to = "https://intoingfa.netlify.app/intoingfa/:splat"
+  status = 200
+  force = true
